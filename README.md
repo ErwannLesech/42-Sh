@@ -35,13 +35,13 @@ All contributions are done by doing a merge request when you are done working on
 
 Please, follow these conventions for the repository property :
 
-#### Branch name
+### Branch name
 
 ```sh
 ^(<type>/<name>)$
 ```
 
-#### Commit name
+### Commit name
 
 ```sh
 ^(<type>(<scope>): <description>
@@ -49,9 +49,9 @@ Please, follow these conventions for the repository property :
 <body>)$
 ```
 
-### Naming convention
+## Naming Convention
 
-#### Types
+### Types
 The `type` refers to the purpose or nature of the commit. It is **mandatory**.
 * `feat` Commits, that adds or remove a new feature
 * `fix` Commits, that fixes a bug
@@ -64,20 +64,20 @@ The `type` refers to the purpose or nature of the commit. It is **mandatory**.
 * `ops` Commits, that affect operational components like infrastructure, deployment, backup, recovery, ...
 * `chore` Miscellaneous commits e.g. modifying `.gitignore`
 
-#### Scopes 
+### Scopes 
 The `scope` refers to the module, component, or area of the project that your commit affects. It is **optional**.
 
-#### Description
+### Description
 The `description` contains a concise description of the change. It is **mandatory**.
 * Use the imperative, present tense: "change" not "changed" nor "changes"
 * Don't capitalize the first letter
 * No dot (.) at the end
 
-#### Body
+### Body
 The `body` provides a more in-depth explanation of the changes made in the commit. It is **optional** but highly recommended.
 * Use the imperative, present tense: "change" not "changed" nor "changes"
 
-#### Exemples
+### Exemples
 ```
 fix(http_parser): use the correct HTTP response code for wrong version
  
