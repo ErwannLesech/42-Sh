@@ -340,6 +340,22 @@ Test(Lexer, lexer_backslash_n)
     lexer_free(lexer);
 }
 
+Test(Lexer, simple_comment)
+{
+    struct lexer *lexer = lexer_new("echo # Ceci est un commentaire");
+    struct token token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_WORD, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "echo", "token.data = %s", token.data);
+    cr_assert_eq(lexer->index, 5, "lexer->index = %lu", lexer->index);
+
+    token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_EOF);
+    cr_assert_str_eq(token.data, "\0");
+    cr_assert_eq(lexer->index, 30);
+
+    lexer_free(lexer);
+}
+
 /* ERROR CASES */
 
 Test(Lexer, only_one_single_quote)
