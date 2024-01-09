@@ -1,0 +1,12 @@
+*.m4
+ar-lib
+compile
+config.log
+configure
+configure~
+depcomp
+install-sh
+Makefile.in
+missing
+autom4te.cache
+.vscode
