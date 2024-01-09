@@ -4,10 +4,6 @@
 
 42sh is a powerful and user-friendly interactive shell designed to provide a seamless command-line interface for users. Built with efficiency and extensibility in mind, it aims to enhance the user experience in navigating and executing commands on a Unix-like system.
 
-## Features
-
-//TODO
-
 ## Table of Contents
 
 - [Installation](#installation)
@@ -17,16 +13,15 @@
 ## Installation
 
 ```sh
-git clone git@github.com:ErwannLesech/42-Sh.git
-cd 42-Sh
+git clone <path>
+cd <path>
 make
 ```
 
 ## Usage
 
 ```sh
-./42sh
-Usage #TODO
+Usage: ./42sh [OPTIONS] [SCRIPT] [ARGUMENTS ...]
 ```
 
 ## Contributing
