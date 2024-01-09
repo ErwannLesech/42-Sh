@@ -1,13 +1,24 @@
 #ifndef LEXER_H
 #define LEXER_H
 
+#include "token.h"
+
 #include <stddef.h>
+#include <stdbool.h>
 
 struct lexer
 {
-    char *data;
+    const char *data;
     size_t index;
+    struct token curr_tok;
 };
+
+struct lex_match
+{
+    const char *str;
+    enum token_type type;
+};
+
 
 /**
  * \brief Create a new lexer from the given input string.
@@ -34,5 +45,9 @@ struct token lexer_peek(struct lexer *lexer);
  */
 struct token lexer_pop(struct lexer *lexer);
 
+/**
+ * \brief Returns the next word in the input string.
+ */
+char *get_word(struct lexer *lexer, bool *is_diactivated);
 
 #endif /* !LEXER_H */

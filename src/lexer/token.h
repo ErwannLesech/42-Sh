@@ -12,7 +12,8 @@ enum token_type
     TOKEN_SIMPLE_QUOTE,
     TOKEN_WORD, // Any word 
     TOKEN_EOL, // End of line ('\n')
-    TOKEN_EOF // End of file
+    TOKEN_EOF, // End of file
+    TOKEN_ERROR // Error
 };
 
 struct token 
