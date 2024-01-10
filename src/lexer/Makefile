@@ -1,5 +1,5 @@
 CC ?= gcc
-CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99
+CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99 -fsanitize=address -g
 CPPFLAGS = -Isrc -lcriterion
 
 OBJ = lexer.o tests/lexer_tests.o 

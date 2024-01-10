@@ -31,6 +31,11 @@ struct lexer *lexer_new(const char *input);
 void lexer_free(struct lexer *lexer);
 
 /**
+ * \brief Free the given token.
+ */
+void token_free(struct token token);
+
+/**
  * \brief Returns a token from the input string.
  */
 struct token parse_input_for_tok(struct lexer *lexer);
