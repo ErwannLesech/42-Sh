@@ -11,7 +11,10 @@ AM_SILENT_RULES([yes])
 AC_PROG_CC
 
 # Check if a compiler have this list of  flags
-AX_COMPILER_FLAGS([], [], [], [-Wall -Wextra -Werror -Wvla -pedantic -std=c99])
+# AX_COMPILER_FLAGS([], [], [], [-Wall -Wextra -Werror -Wvla -pedantic -std=c99])
+
+MY_CFLAGS="-Wall -Wextra -Werror -Wvla -pedantic -std=c99"
+AC_SUBST([MY_CFLAGS])
 
 # Enable ar for Makefile
 AM_PROG_AR
