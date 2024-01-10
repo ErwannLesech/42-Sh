@@ -1,10 +1,18 @@
-#include "parser_element.h"
+#include "parser.h"
 
 struct ast_node *input(struct lexer *lexer)
 {
+    if (lexer_peek(lexer).type == TOKEN_EOL)
+    {
+        lexer_pop(lexer);
+        return ast_node_new(AST_EMPTY);
+    }
+    if (lexer_peek(lexer).type == TOKEN_EOF)
+        return ast_node_new(AST_EMPTY);
     struct ast_node *node = list(lexer);
-    if (lexer_peek(lexer).type == TOKEN_EOL 
-    || lexer_peek(lexer).type == TOKEN_EOF)
+    if (lexer_peek(lexer).type == TOKEN_EOL
+        || lexer_peek(lexer).type == TOKEN_EOF
+        || lexer_peek(lexer).type == TOKEN_SEMICOLON)
     {
         return node;
     }
@@ -21,19 +29,21 @@ struct ast_node *list(struct lexer *lexer)
         while (lexer_peek(lexer).type == TOKEN_SEMICOLON)
         {
             lexer_pop(lexer);
+            if (lexer_peek(lexer).type == TOKEN_EOL 
+            || lexer_peek(lexer).type == TOKEN_EOF)
+                return current;
             child = and_or(lexer);
+            //CHECK IF END OR ERROR
             if (child == NULL)
             {
-                free(current);
+                ast_free(current);
                 return NULL;
             }
             ast_append(current, child);
         }
-        if (lexer_peek(lexer).type == TOKEN_SEMICOLON)
-            lexer_pop(lexer);
         return current;
     }
-    free(current);
+    ast_free(current);
     return NULL;
 }
 
@@ -73,10 +83,9 @@ struct ast_node *simple_command(struct lexer *lexer)
             curr = element(lexer);
         }
         return current;
-        //simple comment
     }
     ast_free(current);
-    return NULL; 
+    return NULL;
 }
 
 struct ast_node *element(struct lexer *lexer)

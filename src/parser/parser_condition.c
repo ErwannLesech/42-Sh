@@ -1,4 +1,4 @@
-#include "parser_condition.h"
+#include "parser.h"
 
 struct ast_node *shell_command(struct lexer *lexer)
 {
@@ -23,16 +23,20 @@ struct ast_node *rule_if(struct lexer *lexer)
             goto ERROR;
         ast_append(current, response);
         struct ast_node *else_c = else_clause(lexer);
-        if (else_c != NULL)
+        if (else_c == NULL)
+            goto ERROR;
+        else if (else_c->type != AST_EMPTY)
             ast_append(current, else_c);
+        else
+            ast_free(else_c);
         if (lexer_peek(lexer).type != TOKEN_FI)
             goto ERROR;
         lexer_pop(lexer);
         return current;
     }
-    ERROR:
-        free(current);
-        return NULL;
+ERROR:
+    ast_free(current);
+    return NULL;
 }
 
 struct ast_node *else_clause(struct lexer *lexer)
@@ -41,6 +45,8 @@ struct ast_node *else_clause(struct lexer *lexer)
     {
         lexer_pop(lexer);
         struct ast_node *current = compound_list(lexer);
+        if (current == NULL)
+            goto ERROR;
         return current;
     }
     else if (lexer_peek(lexer).type == TOKEN_ELIF)
@@ -62,12 +68,12 @@ struct ast_node *else_clause(struct lexer *lexer)
         if (else_c != NULL)
             ast_append(current, else_c);
         return current;
-        ERROR:
-            free(current);
-            return NULL;
+    ERROR:
+        ast_free(current);
+        return NULL;
     }
     else
-        return NULL;
+        return ast_node_new(AST_EMPTY);
 }
 
 struct ast_node *compound_list(struct lexer *lexer)
@@ -84,8 +90,8 @@ struct ast_node *compound_list(struct lexer *lexer)
         return NULL;
     }
     ast_append(current, child);
-    while (lexer_peek(lexer).type == TOKEN_SEMICOLON 
-        || lexer_peek(lexer).type == TOKEN_EOL)
+    while (lexer_peek(lexer).type == TOKEN_SEMICOLON
+           || lexer_peek(lexer).type == TOKEN_EOL)
     {
         lexer_pop(lexer);
         while (lexer_peek(lexer).type == TOKEN_EOL)
