@@ -44,7 +44,7 @@ Test(parser, command_with_args)
 
 Test(parser, command_with_lists)
 {
-    struct lexer *lexer = lexer_new("ls -l; echo hello");
+    struct lexer *lexer = lexer_new("ls -l; echo hello;");
     struct ast_node *node = parse(lexer);
     cr_assert_eq(node->type, AST_COMMAND_LIST);
     cr_assert_eq(node->children[0]->type, AST_SIMPLE_COMMAND);
@@ -330,9 +330,9 @@ Test(parser, error3)
 
 Test(parser, error4)
 {
-    struct lexer *lexer = lexer_new("ls -l; if echo hello; then echo world; "
-                                    "elif echo bye; echo world; fi;");
+    struct lexer *lexer = lexer_new("ls -l; if echo hello; then echo world; elif echo bye; echo world; fi;");
     struct ast_node *node = parse(lexer);
+    print_ast(node, 0);
     cr_assert_eq(node, NULL);
     lexer_free(lexer);
     ast_free(node);

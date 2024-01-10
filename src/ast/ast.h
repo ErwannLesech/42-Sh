@@ -11,6 +11,7 @@ enum ast_type
     AST_COMMAND_LIST,
     AST_WORD,
     AST_EMPTY,
+    AST_UNEXPECTED,
 };
 
 struct ast_node

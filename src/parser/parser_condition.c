@@ -23,15 +23,19 @@ struct ast_node *rule_if(struct lexer *lexer)
             goto ERROR;
         ast_append(current, response);
         struct ast_node *else_c = else_clause(lexer);
-        if (else_c != NULL)
+        if (else_c == NULL)
+            goto ERROR;
+        else if (else_c->type != AST_EMPTY)
             ast_append(current, else_c);
+        else
+            ast_free(else_c);
         if (lexer_peek(lexer).type != TOKEN_FI)
             goto ERROR;
         lexer_pop(lexer);
         return current;
     }
 ERROR:
-    free(current);
+    ast_free(current);
     return NULL;
 }
 
@@ -63,11 +67,11 @@ struct ast_node *else_clause(struct lexer *lexer)
             ast_append(current, else_c);
         return current;
     ERROR:
-        free(current);
+        ast_free(current);
         return NULL;
     }
     else
-        return NULL;
+        return ast_node_new(AST_EMPTY);
 }
 
 struct ast_node *compound_list(struct lexer *lexer)
