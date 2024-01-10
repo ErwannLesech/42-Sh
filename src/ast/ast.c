@@ -14,7 +14,6 @@ struct ast_node *ast_node_word(char *value)
     struct ast_node *node = ast_node_new(AST_WORD);
     node->value = value;
     return node;
-
 }
 
 void ast_append(struct ast_node *parent, struct ast_node *child)
@@ -24,12 +23,15 @@ void ast_append(struct ast_node *parent, struct ast_node *child)
         parent->children = malloc(sizeof(struct ast_node *));
     }
     parent->children_count++;
-    parent->children = realloc(parent->children, sizeof(struct ast_node *) * parent->children_count);
+    parent->children = realloc(
+        parent->children, sizeof(struct ast_node *) * parent->children_count);
     parent->children[parent->children_count - 1] = child;
 }
 
 void ast_free(struct ast_node *node)
 {
+    if (node == NULL)
+        return;
     if (node->children != NULL)
     {
         for (int i = 0; i < node->children_count; i++)
@@ -53,10 +55,11 @@ char *ast_type_to_string(enum ast_type type)
         return "AST_COMMAND_LIST";
     case AST_WORD:
         return "AST_WORD";
+    case AST_EMPTY:
+        return "AST_EMPTY";
     default:
         return "UNKNOWN";
     }
-
 }
 
 void print_ast(struct ast_node *node, int depth)

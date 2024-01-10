@@ -1,4 +1,4 @@
-#include "parser_condition.h"
+#include "parser.h"
 
 struct ast_node *shell_command(struct lexer *lexer)
 {
@@ -30,9 +30,9 @@ struct ast_node *rule_if(struct lexer *lexer)
         lexer_pop(lexer);
         return current;
     }
-    ERROR:
-        free(current);
-        return NULL;
+ERROR:
+    free(current);
+    return NULL;
 }
 
 struct ast_node *else_clause(struct lexer *lexer)
@@ -62,9 +62,9 @@ struct ast_node *else_clause(struct lexer *lexer)
         if (else_c != NULL)
             ast_append(current, else_c);
         return current;
-        ERROR:
-            free(current);
-            return NULL;
+    ERROR:
+        free(current);
+        return NULL;
     }
     else
         return NULL;
@@ -84,8 +84,8 @@ struct ast_node *compound_list(struct lexer *lexer)
         return NULL;
     }
     ast_append(current, child);
-    while (lexer_peek(lexer).type == TOKEN_SEMICOLON 
-        || lexer_peek(lexer).type == TOKEN_EOL)
+    while (lexer_peek(lexer).type == TOKEN_SEMICOLON
+           || lexer_peek(lexer).type == TOKEN_EOL)
     {
         lexer_pop(lexer);
         while (lexer_peek(lexer).type == TOKEN_EOL)
