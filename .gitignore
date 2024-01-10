@@ -13,6 +13,7 @@ autom4te.cache
 config.status
 *.dirstamp
 *.deps
-Makefile
+**/Makefile
+!**/Makefile.am
 
 .vscode
