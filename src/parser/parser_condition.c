@@ -84,7 +84,7 @@ struct ast_node *compound_list(struct lexer *lexer)
         parser_pop(lexer);
     }
     struct ast_node *child = and_or(lexer);
-    if (current == NULL)
+    if (child == NULL)
     {
         ast_free(current);
         return NULL;
