@@ -24,6 +24,15 @@ Test(io_backend, io_backend_direct_multiple)
     free(input);
 }
 
+Test(io_backend, io_backend_direct_backslash)
+{
+    char *argv[] = {"./42sh", "echo test \\"};
+    char *input = io_backend(2, argv);
+
+    cr_assert_str_eq(input, "echo test \\", "wrong input: %s", input);
+    free(input);
+}
+
 Test(io_backend, io_backend_file)
 {
     char *argv[] = {"./42sh", "-c", "tests/test.txt"};
@@ -41,8 +50,6 @@ Test(io_backend, io_backend_stdin)
 
     if (pid == 0)
     {
-        cr_redirect_stdout();
-        cr_redirect_stderr();
         cr_redirect_stdin();
         char *input = io_backend(1, argv);
         cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
@@ -52,8 +59,8 @@ Test(io_backend, io_backend_stdin)
     else
     {
         char *input = "echo test";
-        write(1, input, strlen(input));
-        write(1, "\n", 1);
+        write(0, input, strlen(input));
+        write(0, "\n", 1);
     }    
 }
 
@@ -65,8 +72,6 @@ Test(io_backend, io_backend_stdin_eof)
 
     if (pid == 0)
     {
-        cr_redirect_stdout();
-        cr_redirect_stderr();
         cr_redirect_stdin();
         char *input = io_backend(1, argv);
         cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
@@ -76,6 +81,6 @@ Test(io_backend, io_backend_stdin_eof)
     else
     {
         char *input = "echo test";
-        write(1, input, strlen(input));
+        write(0, input, strlen(input));
     }    
 }
