@@ -25,7 +25,11 @@ AC_PROG_RANLIB
 # List Makefile in subdirectories
 AC_CONFIG_FILES([
                     Makefile
+                    src/Makefile
                     src/lexer/Makefile
+                    src/io_backend/Makefile
+                    src/parser/Makefile
+                    src/ast/Makefile
                     tests/Makefile
                 ])
                 
