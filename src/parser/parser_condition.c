@@ -45,6 +45,8 @@ struct ast_node *else_clause(struct lexer *lexer)
     {
         lexer_pop(lexer);
         struct ast_node *current = compound_list(lexer);
+        if (current == NULL)
+            goto ERROR;
         return current;
     }
     else if (lexer_peek(lexer).type == TOKEN_ELIF)

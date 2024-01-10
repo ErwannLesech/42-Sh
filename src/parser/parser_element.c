@@ -41,8 +41,6 @@ struct ast_node *list(struct lexer *lexer)
             }
             ast_append(current, child);
         }
-        if (lexer_peek(lexer).type == TOKEN_SEMICOLON)
-            lexer_pop(lexer);
         return current;
     }
     ast_free(current);
