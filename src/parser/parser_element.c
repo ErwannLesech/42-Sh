@@ -31,8 +31,7 @@ struct ast_node *list(struct lexer *lexer)
             child = and_or(lexer);
             if (child == NULL)
             {
-                free(current);
-                return NULL;
+                return current;
             }
             ast_append(current, child);
         }
