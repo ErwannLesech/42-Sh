@@ -1,30 +1,42 @@
 #include "io_backend.h"
 
-
 /**
  * \brief Read from stdin
 */
 char *io_backend_stdin(void)
 {
     char *res = NULL;
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t read;
     size_t totalSize = 0;
+    ssize_t bytesRead;
     char *buff = NULL;
+    size_t bufferSize = 256;
 
-    while ((read = getline(&line, &len, stdin)) != -1)
+    buff = malloc(bufferSize);
+
+    while ((bytesRead = read(STDIN_FILENO, buff + totalSize, bufferSize - totalSize)) > 0)
     {
-        buff = realloc(buff, totalSize + read + 1);
-        memcpy(buff + totalSize, line, read);
-        totalSize += read;
+        totalSize += bytesRead;
+        if (totalSize >= bufferSize)
+        {
+            bufferSize *= 2;
+            buff = realloc(buff, bufferSize);
+            if (buff == NULL)
+            {
+                perror("Memory allocation error");
+                return NULL;
+            }
+        }
     }
 
-    buff = realloc(buff, totalSize + 1);
-    buff[totalSize] = '\0';
+    if (bytesRead == -1)
+    {
+        perror("Error reading from stdin");
+        free(buff);
+        return NULL;
+    }
 
-    free(line);
-    res = buff;
+    res = realloc(buff, totalSize + 1);
+    res[totalSize] = '\0';
 
     return res;
 }
@@ -36,33 +48,47 @@ char *io_backend_file(char **argv)
 {
     char *res = NULL;
 
-    FILE *fp;
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t read;
-    size_t totalSize = 0;
-    char *buff = NULL;
-
-    fp = fopen(argv[2], "r");
-    if (fp == NULL)
+    int fd = open(argv[2], O_RDONLY);
+    if (fd == -1)
     {
-        printf("Error: file not found\n");
+        perror("Error opening file");
         return NULL;
     }
 
-    while ((read = getline(&line, &len, fp)) != -1)
+    size_t totalSize = 0;
+    ssize_t bytesRead;
+    char *buff = NULL;
+    size_t bufferSize = 256;
+
+    buff = malloc(bufferSize);
+
+    while ((bytesRead = read(fd, buff + totalSize, bufferSize - totalSize)) > 0)
     {
-        buff = realloc(buff, totalSize + read + 1);
-        memcpy(buff + totalSize, line, read);
-        totalSize += read;
+        totalSize += bytesRead;
+        if (totalSize >= bufferSize)
+        {
+            bufferSize *= 2;
+            buff = realloc(buff, bufferSize);
+            if (buff == NULL)
+            {
+                perror("Memory allocation error");
+                close(fd);
+                return NULL;
+            }
+        }
     }
 
-    buff = realloc(buff, totalSize + 1);
-    buff[totalSize] = '\0';
+    if (bytesRead == -1)
+    {
+        perror("Error reading from file");
+        free(buff);
+        close(fd);
+        return NULL;
+    }
 
-    free(line);
-    fclose(fp);
-    res = buff;
+    res = realloc(buff, totalSize + 1);
+    res[totalSize] = '\0';
+    close(fd);
 
     return res;
 }
@@ -81,4 +107,16 @@ char *io_backend(int argc, char **argv)
     char *input = strdup(argv[1]);
 
     return input;
+}
+
+int main(int argc, char *argv[])
+{
+    char *result = io_backend(argc, argv);
+    if (result != NULL)
+    {
+        printf("%s\n", result);
+        free(result);
+    }
+
+    return 0;
 }
