@@ -32,6 +32,8 @@ void ast_free(struct ast_node *node)
 {
     if (node == NULL)
         return;
+    if (node->type == AST_WORD)
+        free(node->value);
     if (node->children != NULL)
     {
         for (int i = 0; i < node->children_count; i++)

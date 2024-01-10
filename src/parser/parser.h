@@ -17,5 +17,7 @@ struct ast_node *pipeline(struct lexer *lexer);
 struct ast_node *command(struct lexer *lexer);
 struct ast_node *simple_command(struct lexer *lexer);
 struct ast_node *element(struct lexer *lexer);
+enum ast_type parser_peek(struct lexer *lexer);
+enum ast_type parser_pop(struct lexer *lexer);
 
 #endif /* ! PARSER_H*/

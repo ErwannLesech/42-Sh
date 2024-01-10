@@ -2,17 +2,17 @@
 
 struct ast_node *input(struct lexer *lexer)
 {
-    if (lexer_peek(lexer).type == TOKEN_EOL)
+    if (parser_peek(lexer) == TOKEN_EOL)
     {
-        lexer_pop(lexer);
+        parser_pop(lexer);
         return ast_node_new(AST_EMPTY);
     }
-    if (lexer_peek(lexer).type == TOKEN_EOF)
+    if (parser_peek(lexer) == TOKEN_EOF)
         return ast_node_new(AST_EMPTY);
     struct ast_node *node = list(lexer);
-    if (lexer_peek(lexer).type == TOKEN_EOL
-        || lexer_peek(lexer).type == TOKEN_EOF
-        || lexer_peek(lexer).type == TOKEN_SEMICOLON)
+    if (parser_peek(lexer) == TOKEN_EOL
+        || parser_peek(lexer) == TOKEN_EOF
+        || parser_peek(lexer) == TOKEN_SEMICOLON)
     {
         return node;
     }
@@ -26,11 +26,11 @@ struct ast_node *list(struct lexer *lexer)
     if (child != NULL)
     {
         ast_append(current, child);
-        while (lexer_peek(lexer).type == TOKEN_SEMICOLON)
+        while (parser_peek(lexer) == TOKEN_SEMICOLON)
         {
-            lexer_pop(lexer);
-            if (lexer_peek(lexer).type == TOKEN_EOL 
-            || lexer_peek(lexer).type == TOKEN_EOF)
+            parser_pop(lexer);
+            if (parser_peek(lexer) == TOKEN_EOL 
+            || parser_peek(lexer) == TOKEN_EOF)
                 return current;
             child = and_or(lexer);
             //CHECK IF END OR ERROR
@@ -71,10 +71,10 @@ struct ast_node *command(struct lexer *lexer)
 struct ast_node *simple_command(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_SIMPLE_COMMAND);
-    if (lexer_peek(lexer).type == TOKEN_WORD)
+    if (parser_peek(lexer) == TOKEN_WORD)
     {
         struct ast_node *new = ast_node_word(lexer_peek(lexer).data);
-        lexer_pop(lexer);
+        parser_pop(lexer);
         ast_append(current, new);
         struct ast_node *curr = element(lexer);
         while (curr != NULL)
@@ -90,10 +90,10 @@ struct ast_node *simple_command(struct lexer *lexer)
 
 struct ast_node *element(struct lexer *lexer)
 {
-    if (lexer_peek(lexer).type == TOKEN_WORD)
+    if (parser_peek(lexer) == TOKEN_WORD)
     {
         struct ast_node *curr = ast_node_word(lexer_peek(lexer).data);
-        lexer_pop(lexer);
+        parser_pop(lexer);
         return curr;
     }
     return NULL;
