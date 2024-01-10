@@ -85,6 +85,22 @@ bool handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word, 
     return true;
 }
 
+bool handle_comment(struct lexer *lexer, char *word, unsigned word_index)
+{
+    while (lexer->data[lexer->index] != '\n')
+    {
+        if (lexer->data[lexer->index] == '\0')
+        {
+            word[word_index - 1] = '\0';
+            return false;
+        }
+        ++lexer->index;
+    }
+    word[word_index - 1] = lexer->data[lexer->index];
+    ++lexer->index;
+    return true;
+}
+
 char *get_word(struct lexer *lexer, bool *is_diactivated)
 {
     char *word = malloc(sizeof(char) * 2);
@@ -124,10 +140,17 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
             }
             lexer->index += 1;
         }
+            
+        else if (lexer->data[lexer->index - 1] == '#')
+        {
+            if(!handle_comment(lexer, word, word_index))
+            {
+                return word;
+            }
+        }
     }
 
     word[word_index] = '\0';
-
     while (lexer->data[lexer->index] == ' ')
     {
         ++lexer->index;

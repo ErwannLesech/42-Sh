@@ -340,6 +340,80 @@ Test(Lexer, lexer_backslash_n)
     lexer_free(lexer);
 }
 
+Test(Lexer, simple_comment)
+{
+    struct lexer *lexer = lexer_new("echo # Ceci est un commentaire");
+    struct token token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_WORD, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "echo", "token.data = %s", token.data);
+    cr_assert_eq(lexer->index, 5, "lexer->index = %lu", lexer->index);
+
+    token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_EOF);
+    cr_assert_str_eq(token.data, "\0");
+    cr_assert_eq(lexer->index, 30);
+
+    lexer_free(lexer);
+}
+
+Test(Lexer, comment_with_semicolon)
+{
+    struct lexer *lexer = lexer_new("echo # Ceci est un commentaire; echo");
+    struct token token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_WORD, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "echo", "token.data = %s", token.data);
+    cr_assert_eq(lexer->index, 5, "lexer->index = %lu", lexer->index);
+
+    token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_EOF, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "\0");
+    cr_assert_eq(lexer->index, 36, "lexer->index = %lu", lexer->index);
+
+    lexer_free(lexer);
+}
+
+Test(Lexer, comment_with_backslash_n)
+{
+    struct lexer *lexer = lexer_new("echo # Ceci est un commentaire\n echo");
+    struct token token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_WORD, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "echo", "token.data = %s", token.data);
+    cr_assert_eq(lexer->index, 5, "lexer->index = %lu", lexer->index);
+
+    token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_EOL, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "\n", "token.data = %s", token.data);
+    cr_assert_eq(lexer->index, 32, "lexer->index = %lu", lexer->index);
+
+    token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_WORD, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "echo", "token.data = %s", token.data);
+    cr_assert_eq(lexer->index, 36, "lexer->index = %lu", lexer->index);
+
+    token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_EOF, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "\0");
+    cr_assert_eq(lexer->index, 37, "lexer->index = %lu", lexer->index);
+
+    lexer_free(lexer);
+}
+
+Test(Lexer, comment_with_back_slash2)
+{
+    struct lexer *lexer = lexer_new("echo # Ceci est un commentaire\\n echo");
+    struct token token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_WORD, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "echo", "token.data = %s", token.data);
+    cr_assert_eq(lexer->index, 5, "lexer->index = %lu", lexer->index);
+
+    token = lexer_pop(lexer);
+    cr_assert_eq(token.type, TOKEN_EOF, "token.type = %d", token.type);
+    cr_assert_str_eq(token.data, "\0");
+    cr_assert_eq(lexer->index, 37, "lexer->index = %lu", lexer->index);
+
+    lexer_free(lexer);
+}
+
 /* ERROR CASES */
 
 Test(Lexer, only_one_single_quote)
