@@ -1,9 +1,7 @@
-#include <stdio.h>
+#include "io_backend/io_backend.h"
 
 int main(int argc, char **argv)
 {
-	if (argc != 1 || !argv)
-		return 1;
-	printf("Hello World!\n");
+	printf("%s\n", io_backend(argc, argv));
 	return 0;
 }
