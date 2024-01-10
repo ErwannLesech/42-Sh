@@ -73,7 +73,7 @@ struct ast_node *simple_command(struct lexer *lexer)
             curr = element(lexer);
         }
         return current;
-        
+        //simple comment
     }
     ast_free(current);
     return NULL; 
