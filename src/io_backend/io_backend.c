@@ -104,19 +104,9 @@ char *io_backend(int argc, char **argv)
         return io_backend_file(argv);
     }
 
-    char *input = strdup(argv[1]);
+    char *input = malloc(strlen(argv[1]) + 1);
+
+    strcpy(input, argv[1]);
 
     return input;
-}
-
-int main(int argc, char *argv[])
-{
-    char *result = io_backend(argc, argv);
-    if (result != NULL)
-    {
-        printf("%s\n", result);
-        free(result);
-    }
-
-    return 0;
 }
