@@ -5,6 +5,8 @@
 #include "execute/ast_eval.h"
 #include "options/options.h"
 
+#include <err.h>
+
 bool logger_enabled = false;
 
 #define LOGGER(...) \
@@ -20,6 +22,10 @@ int main(int argc, char **argv)
 	bool pretty_print_enabled = check_pretty_print(&argc, argv);
 
 	char *input = io_backend(argc, argv);
+	if (input == NULL)
+	{
+		errx(1, "Error while reading input");
+	}
 
 	LOGGER("input: %s\n", input);
 	
@@ -30,10 +36,10 @@ int main(int argc, char **argv)
 	if (pretty_print_enabled)
 		print_ast(ast, 0);
 
-	match_ast(ast);
+	int val = match_ast(ast);
 
 	ast_free(ast);
 	lexer_free(lexer);
 	free(input);
-	return 0;
+	return val;
 }
