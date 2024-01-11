@@ -11,8 +11,8 @@ TestSuite(exec, .timeout = 1);
 
 Test(exec, test_exec_simple_command)
 {
-    char *argv[] = {"./42sh", "echo test", NULL};
-    int argc = 2;
+    char *argv[] = {"./42sh", "-c", "echo test", NULL};
+    int argc = 3;
 
     char *input = io_backend(argc, argv);
 
@@ -23,8 +23,8 @@ Test(exec, test_exec_simple_command)
     cr_redirect_stdout();
 
     match_ast(ast);
-
-    cr_assert_stdout_eq_str("test");
+    fflush(stdout);
+    cr_assert_stdout_eq_str("test\n");
 
     lexer_free(lexer);
     ast_free(ast);
