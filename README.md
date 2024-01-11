@@ -20,8 +20,35 @@ make
 
 ## Usage
 
+There are 3 ways to run 42sh program :
+
 ```sh
-Usage: ./42sh [OPTIONS] [SCRIPT] [ARGUMENTS ...]
+Usage: ./42sh {OPTIONS} [SCRIPT] [ARGUMENTS ...]
+```
+
+- Read from an shell script 
+```sh
+$ ./42sh <shell script path>
+```
+
+- Read from a string, with option `-c`
+```sh
+$ ./42sh -c "<string>"
+```
+
+- Read from standard input
+```sh
+$ ./42sh < <shell script path>
+$ cat <shell script path> | ./42sh
+```
+
+### OPTIONS
+
+There are 2 more options that can be activated by inserting these flags into arguments.
+
+```sh
+$ ./42sh --logger # Print some informations during process
+$ ./42sh --pretty-print # Print the parser AST
 ```
 
 ## Contributing

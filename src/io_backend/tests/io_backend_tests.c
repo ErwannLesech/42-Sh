@@ -8,8 +8,8 @@ TestSuite(io_backend, .timeout = 1);
 
 Test(io_backend, io_backend_direct)
 {
-    char *argv[] = {"./42sh", "echo test"};
-    char *input = io_backend(2, argv);
+    char *argv[] = {"./42sh", "-c", "echo test"};
+    char *input = io_backend(3, argv);
 
     cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
     free(input);
@@ -17,8 +17,8 @@ Test(io_backend, io_backend_direct)
 
 Test(io_backend, io_backend_direct_multiple)
 {
-    char *argv[] = {"./42sh", "echo test ; echo test2"};
-    char *input = io_backend(2, argv);
+    char *argv[] = {"./42sh", "-c", "echo test ; echo test2"};
+    char *input = io_backend(3, argv);
 
     cr_assert_str_eq(input, "echo test ; echo test2", "wrong input: %s", input);
     free(input);
@@ -26,8 +26,8 @@ Test(io_backend, io_backend_direct_multiple)
 
 Test(io_backend, io_backend_direct_backslash)
 {
-    char *argv[] = {"./42sh", "echo test \\"};
-    char *input = io_backend(2, argv);
+    char *argv[] = {"./42sh", "-c", "echo test \\"};
+    char *input = io_backend(3, argv);
 
     cr_assert_str_eq(input, "echo test \\", "wrong input: %s", input);
     free(input);
@@ -35,14 +35,14 @@ Test(io_backend, io_backend_direct_backslash)
 
 Test(io_backend, io_backend_file)
 {
-    char *argv[] = {"./42sh", "-c", "tests/test.txt"};
-    char *input = io_backend(3, argv);
+    char *argv[] = {"./42sh", "../src/io_backend/tests/test.txt"};
+    char *input = io_backend(2, argv);
 
     cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
     free(input);
 }
 
-/*Test(io_backend, io_backend_stdin)
+Test(io_backend, io_backend_stdin)
 {
     char *argv[] = {"./42sh"};
     
@@ -62,8 +62,8 @@ Test(io_backend, io_backend_file)
         write(0, input, strlen(input));
         write(0, "\n", 1);
     }    
-}*/
-/*
+}
+
 Test(io_backend, io_backend_stdin_eof)
 {
     char *argv[] = {"./42sh"};
@@ -83,4 +83,4 @@ Test(io_backend, io_backend_stdin_eof)
         char *input = "echo test";
         write(0, input, strlen(input));
     }    
-}*/
+}
