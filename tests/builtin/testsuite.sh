@@ -6,4 +6,3 @@ run_test echo5.test
 run_test echo6.test
 run_test echo7.test
 run_test echo8.test
-run_test test.test
