@@ -16,7 +16,11 @@ int false_fun(struct ast_node *node)
 
 int echo_fun(struct ast_node *node)
 {
-    for (int i = 1; i < node->children_count; i++)
+    if (node->children_count >= 2)
+    {
+        printf("%s", node->children[1]->value);
+    }
+    for (int i = 2; i < node->children_count; i++)
     {
         printf("%s ", node->children[i]->value);
     }
