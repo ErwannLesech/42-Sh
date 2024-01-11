@@ -30,6 +30,7 @@ AC_CONFIG_FILES([
                     src/io_backend/Makefile
                     src/parser/Makefile
                     src/ast/Makefile
+                    src/execute/Makefile
                     tests/Makefile
                 ])
                 
