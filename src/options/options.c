@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "options.h"
+
 bool check_logger(int *argc, char **argv)
 {
     bool logger_enabled = false;
@@ -37,3 +39,27 @@ bool check_pretty_print(int *argc, char **argv)
     }
     return pretty_print_enabled;
 }
+
+void logger(char *str, enum logger_step step, bool logger_enabled)
+{
+    if(!str || !logger_enabled)
+        return;
+
+    switch (step)
+    {
+    case LOGGER_INPUT:
+        printf("Input: %s\n", str);
+        break;
+
+    case LOGGER_PARSER:
+        printf("Word_value: %s\n", str);
+        break;
+
+    case LOGGER_EXEC:
+        printf("%s ", str);
+        break;
+
+    default:
+        break;
+    }
+}   

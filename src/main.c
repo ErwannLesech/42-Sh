@@ -7,18 +7,10 @@
 
 #include <err.h>
 
-bool logger_enabled = false;
-
-#define LOGGER(...) \
-	do { \
-		if (logger_enabled) \
-			fprintf(stderr, __VA_ARGS__); \
-	} while (0)
-
 int main(int argc, char **argv)
 {
 	// Options handling
-	logger_enabled = check_logger(&argc, argv);
+	bool logger_enabled = check_logger(&argc, argv);
 	bool pretty_print_enabled = check_pretty_print(&argc, argv);
 
 	char *input = io_backend(argc, argv);
@@ -27,7 +19,7 @@ int main(int argc, char **argv)
 		errx(1, "Error while reading input");
 	}
 
-	LOGGER("input: %s\n", input);
+	logger(input, LOGGER_INPUT, logger_enabled);
 	
 	struct lexer *lexer = lexer_new(input);
 
@@ -39,9 +31,9 @@ int main(int argc, char **argv)
 		{
 			printf("Ast is empty\n");
 		}
-		print_ast(ast, 0);
+		print_ast(ast, 0, logger_enabled);
 	}
-	int val = match_ast(ast);
+	int val = match_ast(ast, logger_enabled);
 
 	ast_free(ast);
 	lexer_free(lexer);
