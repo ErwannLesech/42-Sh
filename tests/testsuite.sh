@@ -27,7 +27,7 @@ run_test()
     bash --posix "$1" > "$ref_file_out" 2> "$ref_file_err"
     REF_CODE=$?
 
-    "$PWD/$ex" -c "$1" > "$my_file_out" 2> "$my_file_err"
+    "$PWD/$ex" "$1" > "$my_file_out" 2> "$my_file_err"
     MY_CODE=$?
 
     diff -u "$ref_file_out" "$my_file_out" > $1.diff

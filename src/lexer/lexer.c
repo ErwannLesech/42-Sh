@@ -142,7 +142,6 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 return word;
             }
         }
-
         else if (lexer->data[lexer->index - 1] == '\'')
         {
             word = handle_simple_quote(lexer, is_diactivated, word, &word_index);
@@ -152,7 +151,6 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
             }
             lexer->index += 1;
         }
-            
         else if (lexer->data[lexer->index - 1] == '#')
         {
             if(!handle_comment(lexer, word, word_index))

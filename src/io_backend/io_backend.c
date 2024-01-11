@@ -51,7 +51,6 @@ char *io_backend_file(char **argv)
     int fd = open(argv[1], O_RDONLY);
     if (fd == -1)
     {
-        perror("Error opening file");
         return NULL;
     }
 
