@@ -332,7 +332,7 @@ Test(parser, error4)
 {
     struct lexer *lexer = lexer_new("ls -l; if echo hello; then echo world; elif echo bye; echo world; fi;");
     struct ast_node *node = parse(lexer);
-    print_ast(node, 0);
+    print_ast(node, 0, false);
     cr_assert_eq(node, NULL);
     lexer_free(lexer);
     ast_free(node);

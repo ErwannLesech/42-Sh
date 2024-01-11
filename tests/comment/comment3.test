@@ -1,5 +1,5 @@
 if true; then
     echo 'Install' # this Install
 else
-    false
+    false;
 fi

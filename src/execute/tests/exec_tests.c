@@ -22,7 +22,7 @@ Test(exec, test_exec_simple_command)
 
     cr_redirect_stdout();
 
-    match_ast(ast);
+    match_ast(ast, false);
     fflush(stdout);
     cr_assert_stdout_eq_str("test\n");
 
