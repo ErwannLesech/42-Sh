@@ -48,7 +48,7 @@ char *io_backend_file(char **argv)
 {
     char *res = NULL;
 
-    int fd = open(argv[2], O_RDONLY);
+    int fd = open(argv[1], O_RDONLY);
     if (fd == -1)
     {
         perror("Error opening file");
@@ -96,17 +96,22 @@ char *io_backend_file(char **argv)
 char *io_backend(int argc, char **argv)
 {
     if (argc < 2)
-    {
+    {   
         return io_backend_stdin();
     }
     else if (argc == 3 && strcmp(argv[1], "-c") == 0)
     {
+        char *input = malloc(strlen(argv[2]) + 1);
+
+        strcpy(input, argv[2]);
+
+        return input;
+    }
+    else if(argc == 2)
+    {
         return io_backend_file(argv);
     }
-
-    char *input = malloc(strlen(argv[1]) + 1);
-
-    strcpy(input, argv[1]);
-
-    return input;
+    
+    return NULL;
+    
 }
