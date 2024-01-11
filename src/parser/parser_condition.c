@@ -41,10 +41,12 @@ ERROR:
 
 struct ast_node *else_clause(struct lexer *lexer)
 {
+    struct ast_node *current = NULL;
+
     if (parser_peek(lexer) == TOKEN_ELSE)
     {
         parser_pop(lexer);
-        struct ast_node *current = compound_list(lexer);
+        current = compound_list(lexer);
         if (current == NULL)
             goto ERROR;
         return current;
@@ -52,7 +54,7 @@ struct ast_node *else_clause(struct lexer *lexer)
     else if (parser_peek(lexer) == TOKEN_ELIF)
     {
         parser_pop(lexer);
-        struct ast_node *current = ast_node_new(AST_CONDITION);
+        current = ast_node_new(AST_CONDITION);
         struct ast_node *condition = compound_list(lexer);
         if (condition == NULL)
             goto ERROR;
