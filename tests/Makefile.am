@@ -20,5 +20,5 @@ all: check-local
 
 check-local: criterion
 		./criterion
-		./testsuite.sh $(top_builddir)/42sh
+		./testsuite.sh
 		
