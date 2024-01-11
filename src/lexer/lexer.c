@@ -91,7 +91,7 @@ char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
     return word;
 }
 
-void handle_comment(struct lexer *lexer, char *word, unsigned word_index)
+char *handle_comment(struct lexer *lexer, char *word, unsigned word_index)
 {
     // Skip the comment
     ++lexer->index;
@@ -114,6 +114,7 @@ void handle_comment(struct lexer *lexer, char *word, unsigned word_index)
     {
         ++lexer->index;
     }
+    return word;
 }
 
 char *get_word(struct lexer *lexer, bool *is_diactivated)
@@ -139,8 +140,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
     }
     if (lexer->data[lexer->index] == '#')
     {
-        handle_comment(lexer, word, 0);
-        return word;
+        return handle_comment(lexer, word, 0);
     }
     while (lexer->data[lexer->index] != ' ' && lexer->data[lexer->index] != '\0' && lexer->data[lexer->index] != ';' && lexer->data[lexer->index] != '\n')
     {
