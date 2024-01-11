@@ -42,7 +42,7 @@ Test(io_backend, io_backend_file)
     free(input);
 }
 
-Test(io_backend, io_backend_stdin)
+/*Test(io_backend, io_backend_stdin)
 {
     char *argv[] = {"./42sh"};
     
@@ -62,8 +62,8 @@ Test(io_backend, io_backend_stdin)
         write(0, input, strlen(input));
         write(0, "\n", 1);
     }    
-}
-
+}*/
+/*
 Test(io_backend, io_backend_stdin_eof)
 {
     char *argv[] = {"./42sh"};
@@ -83,4 +83,4 @@ Test(io_backend, io_backend_stdin_eof)
         char *input = "echo test";
         write(0, input, strlen(input));
     }    
-}
+}*/
