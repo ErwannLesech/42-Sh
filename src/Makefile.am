@@ -19,4 +19,3 @@ bin_PROGRAMS = 42sh
        io_backend/libio.a \
        execute/libexecute.a \
        options/liboptions.a
-

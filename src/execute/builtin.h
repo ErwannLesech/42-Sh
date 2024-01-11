@@ -3,10 +3,19 @@
 
 #include "ast_eval.h"
 
+/**
+ * \brief Echo builtin function and returns the exit status.
+ */
 int echo_fun(struct ast_node *node);
 
+/**
+ * \brief True builtin function and returns the exit status.
+ */
 int true_fun(struct ast_node *node);
 
+/**
+ * \brief False builtin function and returns the exit status.
+ */
 int false_fun(struct ast_node *node);
 
 

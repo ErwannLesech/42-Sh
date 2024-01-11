@@ -122,4 +122,3 @@ int match_ast(struct ast_node *node)
         return -1;
     }
 }
-

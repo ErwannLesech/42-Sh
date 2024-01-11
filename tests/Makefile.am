@@ -21,4 +21,3 @@ all: check-local
 check-local: criterion
 		./criterion
 		./testsuite.sh
-		

@@ -7,6 +7,9 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+/**
+ * \brief Manage the input.
+*/
 char *io_backend(int argc, char **argv);
 
 #endif /* ! IO_BACKEND_H  */

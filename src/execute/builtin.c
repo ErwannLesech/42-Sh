@@ -18,6 +18,7 @@ int false_fun(struct ast_node *node)
     return 1;
 }
 
+// TO REDUCE
 int echo_fun(struct ast_node *node)
 {
     int no_newline = 0;
