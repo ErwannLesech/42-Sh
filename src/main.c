@@ -8,13 +8,13 @@ int main(int argc, char **argv)
 {
 	char *input = io_backend(argc, argv);
 
-	// printf("%s\n", input);
+	//printf("%s\n", input);
 	
 	struct lexer *lexer = lexer_new(input);
 
 	struct ast_node *ast = parse(lexer);
 
-	// print_ast(ast, 0);
+	//print_ast(ast, 0);
 
 	match_ast(ast);
 
