@@ -1,0 +1,1 @@
+echo tata # this is a comment; it will be ignored by the shell

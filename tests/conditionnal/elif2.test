@@ -1,0 +1,5 @@
+if false; then
+    echo 'toto'
+elif true; false; then
+    echo 'titi'
+fi

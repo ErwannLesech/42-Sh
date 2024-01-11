@@ -34,8 +34,13 @@ int main(int argc, char **argv)
 	struct ast_node *ast = parse(lexer);
 
 	if (pretty_print_enabled)
+	{
+		if (ast == NULL)
+		{
+			printf("Ast is empty\n");
+		}
 		print_ast(ast, 0);
-
+	}
 	int val = match_ast(ast);
 
 	ast_free(ast);

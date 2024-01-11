@@ -1,4 +1,4 @@
-run_test echo.test
+run_test echo1.test
 run_test echo2.test
 run_test echo3.test
 run_test echo4.test

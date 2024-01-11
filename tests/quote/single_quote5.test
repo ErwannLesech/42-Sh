@@ -1,0 +1,1 @@
+'echo' 'ls' ; ls '-l' ; 'echo' 'baka'

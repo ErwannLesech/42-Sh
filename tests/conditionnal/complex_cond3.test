@@ -1,0 +1,25 @@
+if false; then
+    echo "Skipping tests1"
+else
+    if false; then
+        echo "Skipping tests2"
+    elif true; then
+        if false; then
+            echo "Skipping tests3"
+        else
+            if false; then
+                if true; then
+                    if false; then
+                        echo "Skipping tests4"
+                    else
+                        if true; then
+                            echo "Running tests5"
+                        fi
+                    fi
+                fi
+            else
+                echo "Skipping tests6"
+            fi
+        fi
+    fi
+fi
