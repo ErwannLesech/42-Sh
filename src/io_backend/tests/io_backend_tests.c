@@ -59,8 +59,10 @@ Test(io_backend, io_backend_stdin)
     else
     {
         char *input = "echo test";
-        write(0, input, strlen(input));
-        write(0, "\n", 1);
+        if(write(0, input, strlen(input)) == 0)
+            cr_assert_fail("write failed");
+        if (write(0, "\n", 1) == 0)
+            cr_assert_fail("write failed");
     }    
 }
 
@@ -81,6 +83,7 @@ Test(io_backend, io_backend_stdin_eof)
     else
     {
         char *input = "echo test";
-        write(0, input, strlen(input));
+        if(write(0, input, strlen(input)) == 0)
+            cr_assert_fail("write failed");
     }    
 }

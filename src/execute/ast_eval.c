@@ -36,6 +36,7 @@ int exec_cmd(struct ast_node *node)
         args[node->children_count] = NULL;
         if (execvp(node->children[0]->value, args)  == -1)
         {
+            free(args);
             return 127;
         }
     }
