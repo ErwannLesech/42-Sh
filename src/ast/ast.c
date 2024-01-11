@@ -1,4 +1,5 @@
 #include "ast.h"
+#include "../options/options.h"
 
 struct ast_node *ast_node_new(enum ast_type type)
 {
@@ -64,13 +65,14 @@ char *ast_type_to_string(enum ast_type type)
     }
 }
 
-void print_ast(struct ast_node *node, int depth)
+void print_ast(struct ast_node *node, int depth, bool logger_enabled)
 {
     if (node == NULL)
         return;
     for (int i = 0; i < depth; i++)
         printf("  ");
     printf("%s\n", ast_type_to_string(node->type));
+    logger(node->value, LOGGER_PARSER, logger_enabled);
     for (int i = 0; i < node->children_count; i++)
-        print_ast(node->children[i], depth + 1);
+        print_ast(node->children[i], depth + 1, logger_enabled);
 }

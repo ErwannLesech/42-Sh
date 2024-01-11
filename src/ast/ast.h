@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "../options/options.h"
 
 enum ast_type
 {
@@ -30,6 +31,6 @@ void ast_free(struct ast_node *node);
 
 struct ast_node *ast_node_word(char *value);
 
-void print_ast(struct ast_node *node, int depth);
+void print_ast(struct ast_node *node, int depth, bool logger_enabled);
 
 #endif /* ! AST_H  */
