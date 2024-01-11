@@ -91,20 +91,30 @@ char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
     return word;
 }
 
-bool handle_comment(struct lexer *lexer, char *word, unsigned word_index)
+char *handle_comment(struct lexer *lexer, char *word, unsigned word_index)
 {
-    while (lexer->data[lexer->index] != '\n')
+    // Skip the comment
+    ++lexer->index;
+
+    // Find the end of the comment
+    while (lexer->data[lexer->index] != '\n' && lexer->data[lexer->index] != '\0')
     {
-        if (lexer->data[lexer->index] == '\0')
-        {
-            word[word_index - 1] = '\0';
-            return false;
-        }
         ++lexer->index;
     }
-    word[word_index - 1] = lexer->data[lexer->index];
+    word[word_index] = lexer->data[lexer->index];
     ++lexer->index;
-    return true;
+    // If the comment isn't the last thing in the string, we need to add a '\0' at the end of the word.
+    if (word[word_index] != '\0')
+    {
+        word[word_index + 1] = '\0';
+    }
+
+    // Skip the spaces after the comment
+    while (lexer->data[lexer->index] == ' ')
+    {
+        ++lexer->index;
+    }
+    return word;
 }
 
 char *get_word(struct lexer *lexer, bool *is_diactivated)
@@ -128,7 +138,10 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
         }
         return word;
     }
-
+    if (lexer->data[lexer->index] == '#')
+    {
+        return handle_comment(lexer, word, 0);
+    }
     while (lexer->data[lexer->index] != ' ' && lexer->data[lexer->index] != '\0' && lexer->data[lexer->index] != ';' && lexer->data[lexer->index] != '\n')
     {
         word = realloc(word, sizeof(char) * (word_index + 1));
@@ -151,13 +164,6 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
             }
             lexer->index += 1;
         }
-        else if (lexer->data[lexer->index - 1] == '#')
-        {
-            if(!handle_comment(lexer, word, word_index))
-            {
-                return word;
-            }
-        }
     }
     word = realloc(word, sizeof(char) * (word_index + 1));
     word[word_index] = '\0';
@@ -175,6 +181,11 @@ struct token parse_input_for_tok(struct lexer *lexer)
     struct token token;
 
     bool is_diactivated = false;
+
+    while (lexer->data[lexer->index] == ' ')
+    {
+        ++lexer->index;
+    }
 
     char *word = get_word(lexer, &is_diactivated);
 
