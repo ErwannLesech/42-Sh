@@ -5,7 +5,7 @@ SUBDIRS = lexer \
 
 bin_PROGRAMS = 42sh
 
-42sh_SOURCES = 42sh.c
+42sh_SOURCES = main.c
 
 42sh_CPPFLAGS = -I%D%
 
