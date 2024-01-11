@@ -5,7 +5,7 @@ AC_INIT([42sh], [1.0], [erwann.lesech@epita.fr])
 AM_INIT_AUTOMAKE([subdir-objects] [foreign])
 
 # Pretty display of makefile rules
-AM_SILENT_RULES([yes])
+AM_SILENT_RULES([no])
 
 # Check if a compiler is available for c
 AC_PROG_CC

@@ -11,3 +11,6 @@ done
 
 find . -name "Makefile" -type f -delete
 find . -name "Makefile.in" -type f -delete
+find . -name "*.a" -type f -delete
+find . -name "*.o" -type f -delete
+

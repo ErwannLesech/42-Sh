@@ -1,3 +1,8 @@
+SUBDIRS = lexer \
+        ast \
+        parser \
+        io_backend
+
 bin_PROGRAMS = 42sh
 
 42sh_SOURCES = 42sh.c
@@ -11,7 +16,3 @@ bin_PROGRAMS = 42sh
        parser/libparser.a \
        io_backend/libio.a
 
-SUBDIRS = lexer \
-        ast \
-        parser \
-        io_backend
