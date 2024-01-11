@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 
 	struct ast_node *ast = parse(lexer);
 
-	// print_ast(ast, 0);
+	 //print_ast(ast, 0);
 
 	match_ast(ast);
 
