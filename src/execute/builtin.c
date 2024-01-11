@@ -76,6 +76,8 @@ int echo_fun(struct ast_node *node)
                 putchar((node->children[i]->value)[k]);
             }
         }
+        if (i != node->children_count - 1)
+            putchar(' ');
     }
     if (!no_newline)
         putchar('\n');
