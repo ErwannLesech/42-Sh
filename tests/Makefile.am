@@ -3,7 +3,7 @@ check_PROGRAMS = criterion
 criterion_SOURCES = $(top_builddir)/src/lexer/tests/lexer_tests.c \
 					$(top_builddir)/src/io_backend/tests/io_backend_tests.c \
 					$(top_builddir)/src/parser/tests/parser_tests.c \
-					$(top_builddir)/src/execute/tests/test_exec.c
+					$(top_builddir)/src/execute/tests/exec_tests.c
 
 criterion_CPPFLAGS = -I$(top_srcdir)/src
 
@@ -18,5 +18,5 @@ all: check-local
 
 check-local: criterion
 		./criterion
-		./test.sh $(top_builddir)/42sh
+		./testsuite.sh $(top_builddir)/42sh
 		
