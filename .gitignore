@@ -1,3 +1,5 @@
+src/42sh
+
 # Autoconf / Automake
 *.m4
 ar-lib
