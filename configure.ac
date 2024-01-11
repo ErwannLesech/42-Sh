@@ -31,6 +31,7 @@ AC_CONFIG_FILES([
                     src/parser/Makefile
                     src/ast/Makefile
                     src/execute/Makefile
+                    src/options/Makefile
                     tests/Makefile
                 ])
                 
