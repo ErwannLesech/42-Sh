@@ -22,7 +22,7 @@ int echo_fun(struct ast_node *node)
     }
     for (int i = 2; i < node->children_count; i++)
     {
-        printf("%s ", node->children[i]->value);
+        printf(" %s", node->children[i]->value);
     }
     printf("\n");
     return 0;
