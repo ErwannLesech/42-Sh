@@ -65,7 +65,10 @@ run_test()
 
 run_module()
 {
-    echo "$1"
+    echo -e "$TURQUOISE=============================="
+    printf " $WHITE%-36s $TURQUOISE%s\n" "$1"
+    echo -e "$TURQUOISE==============================$WHITE"
+
     cd "$1"
     source ./testsuite.sh
     cd - > /dev/null
@@ -115,7 +118,7 @@ run_testsuite()
 
     echo -e "$BLUE=============================="
     echo -e "$WHITE    42Sh Moulinette: $([ $PERCENT_SUCCESS -eq 100 ] && echo -e "$GREEN" || echo "$RED") $PERCENT_SUCCESS%"
-    echo -e "$BLUE=============================="
+    echo -e "$BLUE==============================$WHITE"
 }
 
 main()
