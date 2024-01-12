@@ -16,6 +16,9 @@
 
 /**
  * \brief Evaluates the given AST and returns the exit status of the last command.
+ * \param node The AST to evaluate.
+ * \param logger_enabled Whether the logger is enabled or not.
+ * \return The exit status of the last command.
  */
 int match_ast(struct ast_node *node, bool logger_enabled);
 

@@ -13,16 +13,22 @@
 
 /**
  * \brief Echo builtin function and returns the exit status.
+ * \param node The AST node.
+ * \return The exit status.
  */
 int echo_fun(struct ast_node *node);
 
 /**
  * \brief True builtin function and returns the exit status.
+ * \param node The AST node.
+ * \return The exit status.
  */
 int true_fun(struct ast_node *node);
 
 /**
  * \brief False builtin function and returns the exit status.
+ * \param node The AST node.
+ * \return The exit status.
  */
 int false_fun(struct ast_node *node);
 

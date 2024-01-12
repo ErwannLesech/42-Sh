@@ -32,11 +32,17 @@ bool check_logger(int *argc, char **argv);
 
 /**
  * \brief Check if the pretty print option is asked in args.
+ * \param argc The number of args.
+ * \param argv The args.
+ * \return True if the pretty print option is inside of args, false otherwise.
 */
 bool check_pretty_print(int *argc, char **argv);
 
 /**
  * \brief Pretty printf of string.
+ * \param str The string to print.
+ * \param step The step of the logger.
+ * \param logger_enabled True if the logger is enabled, false otherwise.
 */
 void logger(char *str, enum logger_step step, bool logger_enabled);
 
