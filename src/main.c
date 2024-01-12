@@ -39,6 +39,10 @@ int main(int argc, char **argv)
     struct lexer *lexer = lexer_new(input);
 
     int val = parser_loop(lexer, logger_enabled, pretty_print_enabled);
+	if (val == 2)
+	{
+		fprintf(stderr, "Error while parsing\n");
+	}
     lexer_free(lexer);
     free(input);
     return val;
