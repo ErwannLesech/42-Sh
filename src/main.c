@@ -1,3 +1,11 @@
+/**
+ * \file main.c
+ * \brief Main file of the project (entry point)
+ * \authors Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+*/
+
 #include "io_backend/io_backend.h"
 #include "parser/parser.h"
 #include "ast/ast.h"
@@ -7,6 +15,13 @@
 
 #include <err.h>
 
+/**
+ * \fn int main(int argc, char **argv)
+ * \brief Entry point of the program
+ * \param argc Number of arguments
+ * \param argv Arguments
+ * \return the exit code of the program
+*/
 int main(int argc, char **argv)
 {
 	// Options handling
