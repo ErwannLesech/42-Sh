@@ -1,0 +1,2 @@
+run_test command_list_error1.test
+run_test command_list_error2.test

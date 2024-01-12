@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	char *input = io_backend(argc, argv);
 	if (input == NULL)
 	{
-		errx(1, "Error while reading input");
+		errx(127, "Error while reading input");
 	}
 
 	logger(input, LOGGER_INPUT, logger_enabled);
@@ -24,7 +24,10 @@ int main(int argc, char **argv)
 	struct lexer *lexer = lexer_new(input);
 
 	int val = parser_loop(lexer, logger_enabled, pretty_print_enabled);
-
+	if (val == 2)
+	{
+		fprintf(stderr, "Error while parsing\n");
+	}
 	lexer_free(lexer);
 	free(input);
 	return val;

@@ -35,14 +35,16 @@ element = WORD ;
 enum token_type parser_peek(struct lexer *lexer)
 {
     struct token tok = lexer_peek(lexer);
-    free(tok.data);
+    if (tok.type != TOKEN_ERROR)
+        free(tok.data);
     return tok.type;
 }
 
 enum token_type parser_pop(struct lexer *lexer)
 {
     struct token tok = lexer_pop(lexer);
-    free(tok.data);
+    if (tok.type != TOKEN_ERROR)
+        free(tok.data);
     return tok.type;
 }
 
@@ -70,6 +72,12 @@ int parser_loop(struct lexer *lexer, bool logger_enabled, bool pretty_print_enab
             print_ast(ast, 0, logger_enabled);
         }
         return_value = match_ast(ast, logger_enabled);
+        if (return_value != 0 && return_value != 1)
+        {
+            fprintf(stderr, "Error while executing\n");
+            ast_free(ast);
+            return return_value;
+        }
         ast_free(ast);
     }
 

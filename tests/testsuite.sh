@@ -18,7 +18,7 @@ ref_file_err="/tmp/.ref_file_err"
 my_file_out="/tmp/.my_file_out"
 my_file_err="/tmp/.my_file_err"
 
-ex=../../src/42sh
+ex=../../../src/42sh
 
 run_test()
 {
@@ -36,7 +36,7 @@ run_test()
 
     diff -u "$ref_file_out" "$my_file_out" > $1.diff
     DIFF_CODE=$?
-    
+
     if [ $REF_CODE -ne $MY_CODE ]; then
         echo -ne "$RED RETURNS $WHITE"
         success=false
@@ -65,6 +65,7 @@ run_test()
 
 run_module()
 {
+    echo "$1"
     cd "$1"
     source ./testsuite.sh
     cd - > /dev/null
@@ -86,14 +87,19 @@ run_module()
 run_testsuite() 
 {
     for module in $@; do
-        
+
         [ ${module} = "." ] && continue
         
         echo -e "$TURQUOISE=============================="
         printf " $WHITE%-36s $TURQUOISE%s\n" "$module"
         echo -e "$TURQUOISE==============================$WHITE"
 
-        run_module "$module"
+        for submodule in $(find $module -type d); do
+            if [ $submodule = "$module" ]; then
+                continue
+            fi
+            run_module "$submodule"
+        done
     done
 
     if [ $TOTAL_FAIL -eq 0 ]; then
@@ -115,7 +121,7 @@ run_testsuite()
 main()
 {
     if [ $# -eq 0 ]; then
-        run_testsuite $(find . -type d)
+        run_testsuite $(find . -maxdepth 1 -type d)
     else
         if [ $1 = "--help" ]; then
             echo -e "${TURQUOISE}Usage: ./testsuite.sh [MODULE]$WHITE"
