@@ -15,8 +15,6 @@ criterion_LDADD = -lcriterion \
 				  $(top_builddir)/src/parser/libparser.a \
 				  $(top_builddir)/src/execute/libexecute.a \
 				  $(top_builddir)/src/options/liboptions.a
-				  
-all: check-local
 
 check-local: criterion
 		./criterion
