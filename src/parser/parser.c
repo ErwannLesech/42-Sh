@@ -4,9 +4,10 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #include "parser.h"
+
 #include "../execute/ast_eval.h"
 
 /*
@@ -63,8 +64,9 @@ struct ast_node *parse(struct lexer *lexer)
 
 /**
  * \brief Parse loop line by line and execute it
-*/
-int parser_loop(struct lexer *lexer, bool logger_enabled, bool pretty_print_enabled)
+ */
+int parser_loop(struct lexer *lexer, bool logger_enabled,
+                bool pretty_print_enabled)
 {
     int return_value = 0;
 

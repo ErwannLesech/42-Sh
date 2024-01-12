@@ -4,7 +4,7 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #include "builtin.h"
 
@@ -76,9 +76,10 @@ int echo_fun(struct ast_node *node)
     {
         if (node->children[i]->value[0] == '-')
         {
-            if (strspn(node->children[i]->value, "-neE") != strlen(node->children[i]->value))
+            if (strspn(node->children[i]->value, "-neE")
+                != strlen(node->children[i]->value))
             {
-               goto DEFAULT;
+                goto DEFAULT;
             }
             for (size_t k = 1; k < strlen(node->children[i]->value); k++)
             {
@@ -98,7 +99,7 @@ int echo_fun(struct ast_node *node)
         else
             break;
     }
-    DEFAULT:
+DEFAULT:
     print_echo(node, enable_escapes, j);
     if (!no_newline)
         putchar('\n');

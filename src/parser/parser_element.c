@@ -4,7 +4,7 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #include "parser.h"
 
@@ -18,8 +18,7 @@ struct ast_node *input(struct lexer *lexer)
     if (parser_peek(lexer) == TOKEN_EOF)
         return ast_node_new(AST_EMPTY);
     struct ast_node *node = list(lexer);
-    if (parser_peek(lexer) == TOKEN_EOL
-        || parser_peek(lexer) == TOKEN_EOF
+    if (parser_peek(lexer) == TOKEN_EOL || parser_peek(lexer) == TOKEN_EOF
         || parser_peek(lexer) == TOKEN_SEMICOLON)
     {
         return node;
@@ -38,11 +37,11 @@ struct ast_node *list(struct lexer *lexer)
         while (parser_peek(lexer) == TOKEN_SEMICOLON)
         {
             parser_pop(lexer);
-            if (parser_peek(lexer) == TOKEN_EOL 
-            || parser_peek(lexer) == TOKEN_EOF)
+            if (parser_peek(lexer) == TOKEN_EOL
+                || parser_peek(lexer) == TOKEN_EOF)
                 return current;
             child = and_or(lexer);
-            //CHECK IF END OR ERROR
+            // CHECK IF END OR ERROR
             if (child == NULL)
             {
                 ast_free(current);
@@ -99,8 +98,9 @@ struct ast_node *simple_command(struct lexer *lexer)
 
 struct ast_node *element(struct lexer *lexer)
 {
-    if (parser_peek(lexer) == TOKEN_WORD || parser_peek(lexer) == TOKEN_IF || parser_peek(lexer) == TOKEN_THEN
-        || parser_peek(lexer) == TOKEN_ELSE || parser_peek(lexer) == TOKEN_ELIF || parser_peek(lexer) == TOKEN_FI)
+    if (parser_peek(lexer) == TOKEN_WORD || parser_peek(lexer) == TOKEN_IF
+        || parser_peek(lexer) == TOKEN_THEN || parser_peek(lexer) == TOKEN_ELSE
+        || parser_peek(lexer) == TOKEN_ELIF || parser_peek(lexer) == TOKEN_FI)
     {
         struct ast_node *curr = ast_node_word(lexer_peek(lexer).data);
         parser_pop(lexer);

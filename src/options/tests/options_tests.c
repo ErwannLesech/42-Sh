@@ -4,7 +4,7 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
@@ -16,7 +16,7 @@ TestSuite(options, .timeout = 1);
 
 Test(options, last_arg_logger)
 {
-    char *argv[] = {"./42sh", "echo test", "--logger"};
+    char *argv[] = { "./42sh", "echo test", "--logger" };
     int argc = 3;
 
     bool logger_enabled = check_logger(&argc, argv);
@@ -28,7 +28,7 @@ Test(options, last_arg_logger)
 
 Test(options, middle_arg_logger)
 {
-    char *argv[] = {"./42sh", "--logger", "echo test"};
+    char *argv[] = { "./42sh", "--logger", "echo test" };
     int argc = 3;
 
     bool logger_enabled = check_logger(&argc, argv);
@@ -40,7 +40,7 @@ Test(options, middle_arg_logger)
 
 Test(options, last_arg_pretty_print)
 {
-    char *argv[] = {"./42sh", "echo test", "--pretty-print"};
+    char *argv[] = { "./42sh", "echo test", "--pretty-print" };
     int argc = 3;
 
     bool pretty_print_enabled = check_pretty_print(&argc, argv);
@@ -52,7 +52,7 @@ Test(options, last_arg_pretty_print)
 
 Test(options, middle_arg_pretty_print)
 {
-    char *argv[] = {"./42sh", "--pretty-print", "echo test"};
+    char *argv[] = { "./42sh", "--pretty-print", "echo test" };
     int argc = 3;
 
     bool pretty_print_enabled = check_pretty_print(&argc, argv);
@@ -66,7 +66,7 @@ Test(options, middle_arg_pretty_print)
 
 Test(options, both_last_args)
 {
-    char *argv[] = {"./42sh", "echo test", "--logger", "--pretty-print"};
+    char *argv[] = { "./42sh", "echo test", "--logger", "--pretty-print" };
     int argc = 4;
 
     bool logger_enabled = check_logger(&argc, argv);
@@ -80,7 +80,7 @@ Test(options, both_last_args)
 
 Test(options, both_middle_args)
 {
-    char *argv[] = {"./42sh", "--logger", "--pretty-print", "echo test"};
+    char *argv[] = { "./42sh", "--logger", "--pretty-print", "echo test" };
     int argc = 4;
 
     bool logger_enabled = check_logger(&argc, argv);
@@ -94,7 +94,7 @@ Test(options, both_middle_args)
 
 Test(options, separated_args)
 {
-    char *argv[] = {"./42sh", "--logger", "echo test", "--pretty-print"};
+    char *argv[] = { "./42sh", "--logger", "echo test", "--pretty-print" };
     int argc = 4;
 
     bool logger_enabled = check_logger(&argc, argv);
@@ -110,7 +110,7 @@ Test(options, separated_args)
 
 Test(options, no_options)
 {
-    char *argv[] = {"./42sh", "echo test"};
+    char *argv[] = { "./42sh", "echo test" };
     int argc = 2;
 
     bool logger_enabled = check_logger(&argc, argv);

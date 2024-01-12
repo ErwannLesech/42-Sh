@@ -4,9 +4,10 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #include "ast.h"
+
 #include "../options/options.h"
 
 struct ast_node *ast_node_new(enum ast_type type)

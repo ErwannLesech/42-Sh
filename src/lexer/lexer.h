@@ -1,23 +1,23 @@
 /**
- * \file lexer.h    
+ * \file lexer.h
  * \brief Header of the lexer
  * \authors Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #ifndef LEXER_H
 #define LEXER_H
 
-#include "token.h"
-
-#include <stddef.h>
 #include <stdbool.h>
+#include <stddef.h>
+
+#include "token.h"
 
 /**
  * \struct lexer
  * \brief Structure representing a lexer
-*/
+ */
 struct lexer
 {
     const char *data;
@@ -28,19 +28,18 @@ struct lexer
 /**
  * \struct lex_match
  * \brief Structure representing a match between a string and a token type
-*/
+ */
 struct lex_match
 {
     const char *str;
     enum token_type type;
 };
 
-
 /**
  * \brief Create a new lexer from the given input string.
  * \param input The input string.
  * \return A pointer to the lexer.
-*/
+ */
 struct lexer *lexer_new(const char *input);
 
 /**
@@ -79,8 +78,8 @@ struct token lexer_pop(struct lexer *lexer);
 /**
  * \brief Returns the next word in the input string.
  * \param lexer The lexer.
- * \param is_diactivated A pointer to a boolean that will be set to true if the word is diactivated.
- * \return The next word.
+ * \param is_diactivated A pointer to a boolean that will be set to true if the
+ * word is diactivated. \return The next word.
  */
 char *get_word(struct lexer *lexer, bool *is_diactivated);
 

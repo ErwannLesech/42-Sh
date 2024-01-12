@@ -4,18 +4,18 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
-#include "../parser/parser.h"
 #include "ast_eval.h"
-#include "builtin.h"
 
-#include <unistd.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 #include "../options/options.h"
+#include "../parser/parser.h"
+#include "builtin.h"
 
 // true = 0
 // false = 1
@@ -23,25 +23,23 @@
 
 /**
  * \brief Structure representing a builtin function.
-*/
+ */
 struct builtin_function
 {
     char *name;
     int (*fun)(struct ast_node *);
 };
 
-struct builtin_function builtin[] = {
-    {.name = "echo", .fun = echo_fun},
-    {.name = "true", .fun = true_fun},
-    {.name = "false", .fun = false_fun}
-};
+struct builtin_function builtin[] = { { .name = "echo", .fun = echo_fun },
+                                      { .name = "true", .fun = true_fun },
+                                      { .name = "false", .fun = false_fun } };
 
 int exec_cmd(struct ast_node *node, bool logger_enabled)
 {
     int pid = fork();
     if (pid == 0)
     {
-        char ** args = malloc(sizeof(char *) * (node->children_count + 1));
+        char **args = malloc(sizeof(char *) * (node->children_count + 1));
         logger("cmd: ", LOGGER_EXEC, logger_enabled);
         for (int i = 0; i < node->children_count; i++)
         {
@@ -50,7 +48,7 @@ int exec_cmd(struct ast_node *node, bool logger_enabled)
         }
         logger("\n", LOGGER_EXEC, logger_enabled);
         args[node->children_count] = NULL;
-        if (execvp(node->children[0]->value, args)  == -1)
+        if (execvp(node->children[0]->value, args) == -1)
         {
             free(args);
             return 127;

@@ -4,13 +4,14 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #ifndef AST_H
 #define AST_H
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "../options/options.h"
 
 /**
