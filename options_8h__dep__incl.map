@@ -1,0 +1,18 @@
+<map id="src/options/options.h" name="src/options/options.h">
+<area shape="rect" id="node1" title="Header for options functions." alt="" coords="1283,5,1441,32"/>
+<area shape="rect" id="node2" href="$ast_8c.html" title="Represent a node of the AST." alt="" coords="1224,169,1324,196"/>
+<area shape="rect" id="node3" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="1006,87,1107,114"/>
+<area shape="rect" id="node4" href="$ast__eval_8h.html" title="Evaluate the AST." alt="" coords="1033,169,1200,196"/>
+<area shape="rect" id="node5" href="$ast__eval_8c.html" title="Evaluate the AST." alt="" coords="1108,333,1275,360"/>
+<area shape="rect" id="node9" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="1064,251,1153,278"/>
+<area shape="rect" id="node15" href="$options_8c.html" title="Options functions." alt="" coords="1459,87,1615,114"/>
+<area shape="rect" id="node16" href="$options__tests_8c.html" title="Tests the options functions." alt="" coords="1639,80,1821,121"/>
+<area shape="rect" id="node11" href="$parser_8h.html" title="Header for the parser." alt="" coords="652,169,795,196"/>
+<area shape="rect" id="node14" href="$parser__tests_8c.html" title="Tests the parser functions." alt="" coords="5,244,172,285"/>
+<area shape="rect" id="node6" href="$builtin_8h.html" title="Builtin functions." alt="" coords="1229,251,1383,278"/>
+<area shape="rect" id="node8" href="$exec__tests_8c.html" title="Tests the exec function." alt="" coords="873,244,1040,285"/>
+<area shape="rect" id="node10" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="707,251,849,278"/>
+<area shape="rect" id="node7" href="$builtin_8c.html" title="Builtin functions." alt="" coords="1299,333,1451,360"/>
+<area shape="rect" id="node12" href="$parser__condition_8c.html" title="Parse the condition rule." alt="" coords="196,251,405,278"/>
+<area shape="rect" id="node13" href="$parser__element_8c.html" title="Parse the element rule." alt="" coords="430,251,633,278"/>
+</map>
