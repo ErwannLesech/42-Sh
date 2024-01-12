@@ -5,6 +5,7 @@
 #include "../lexer/lexer.h"
 #include "../lexer/token.h"
 
+int parser_loop(struct lexer *lexer, bool logger_enabled, bool pretty_print_enabled);
 struct ast_node *parse(struct lexer *lexer);
 struct ast_node *shell_command(struct lexer *lexer);
 struct ast_node *rule_if(struct lexer *lexer);
