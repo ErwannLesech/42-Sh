@@ -10,6 +10,9 @@ WHITE='\e[0m'
 TOTAL_RUN=0
 TOTAL_FAIL=0
 
+MODULE_RUN=0
+MODULE_FAIL=0
+
 ref_file_out="/tmp/.ref_file_out"
 ref_file_err="/tmp/.ref_file_err"
 my_file_out="/tmp/.my_file_out"
@@ -21,6 +24,7 @@ run_test()
 {
     [ -e "$1" ] || echo "Missing test file $1" 1>&2
     success=true
+    MODULE_RUN=$((MODULE_RUN+1))
     TOTAL_RUN=$((TOTAL_RUN+1))
     
     echo -ne "$BLUE-->> ${WHITE}$1...$WHITE"
@@ -55,6 +59,7 @@ run_test()
         [ -s "$(realpath $1.diff)" ] && echo -ne "$RED (cat $(realpath $1.diff)) $WHITE"
         echo 
         TOTAL_FAIL=$((TOTAL_FAIL+1))
+        MODULE_FAIL=$((MODULE_FAIL+1))
     fi
 }
 
@@ -63,6 +68,19 @@ run_module()
     cd "$1"
     source ./testsuite.sh
     cd - > /dev/null
+
+    if [ $MODULE_FAIL -eq 0 ]; then
+        echo -e "$GREEN=============================="
+        printf " $WHITE Test accuracy $GREEN%s$WHITE/$GREEN%s\n" "$((MODULE_RUN-MODULE_FAIL))" "$MODULE_RUN"
+        echo -e "$GREEN==============================$WHITE"
+    else
+        echo -e "$RED=============================="
+        printf " $WHITE Test accuracy $RED%s$WHITE/$RED%s\n" "$((MODULE_RUN-MODULE_FAIL))" "$MODULE_RUN"
+        echo -e "$RED==============================$WHITE"
+    fi
+
+    MODULE_RUN=0
+    MODULE_FAIL=0
 }
 
 run_testsuite() 
@@ -71,12 +89,27 @@ run_testsuite()
         
         [ ${module} = "." ] && continue
         
-        echo -e "$TURQUOISE===================="
+        echo -e "$TURQUOISE=============================="
         printf " $WHITE%-36s $TURQUOISE%s\n" "$module"
-        echo -e "$TURQUOISE====================$WHITE"
+        echo -e "$TURQUOISE==============================$WHITE"
 
         run_module "$module"
     done
+
+    if [ $TOTAL_FAIL -eq 0 ]; then
+        echo -e "$GREEN=============================="
+        printf " $WHITE Overall test accuracy $GREEN%s$WHITE/$GREEN%s\n" "$((TOTAL_RUN-TOTAL_FAIL))" "$TOTAL_RUN"
+        echo -e "$GREEN==============================$WHITE"
+    else
+        echo -e "$RED=============================="
+        printf " $WHITE Overall test accuracy $RED%s$WHITE/$RED%s\n" "$((TOTAL_RUN-TOTAL_FAIL))" "$TOTAL_RUN"
+        echo -e "$RED==============================$WHITE"
+    fi
+    PERCENT_SUCCESS=$(((TOTAL_RUN-TOTAL_FAIL)*100/TOTAL_RUN))
+
+    echo -e "$BLUE========================="
+    echo -e "$WHITE RECAP: $([ $PERCENT_SUCCESS -eq 100 ] && echo -e "$GREEN" || echo "$RED") $PERCENT_SUCCESS%"
+    echo -e "$BLUE========================="
 }
 
 main()
@@ -88,15 +121,15 @@ main()
             echo -e "${TURQUOISE}Usage: ./testsuite.sh [MODULE]$WHITE"
             echo "Run all tests from the specified MODULE"
             echo "If no MODULE is specified, run all testsuites"
-            echo -e "$RED===================="
+            echo -e "$RED=============================="
             echo -e "${TURQUOISE}Usage: ./testsuite.sh -clean$WHITE"
             echo "Remove all .diff files"
             exit 0
         else
             if [ $1 = "-clean" ]; then
-                echo -e "$TURQUOISE====================$WHITE"
+                echo -e "$TURQUOISE===================================$WHITE"
                 printf " $WHITE%-36s $TURQUOISE%s\n" "Removing all .diff files"
-                echo -e "$TURQUOISE===================="
+                echo -e "$TURQUOISE==================================="
                 
                 for module in $(find . -type d); do
                     rm -f $module/*.diff
@@ -104,9 +137,9 @@ main()
 
                 exit 0
             else       
-                echo -e "$TURQUOISE===================="
+                echo -e "$TURQUOISE==================================="
                 printf " $WHITE%-36s $TURQUOISE%s\n" "$1"
-                echo -e "$TURQUOISE====================$WHITE"
+                echo -e "$TURQUOISE===================================$WHITE"
 
                 run_module "$1"
             fi
@@ -116,11 +149,5 @@ main()
 }
 
 main $@
-
-PERCENT_SUCCESS=$(((TOTAL_RUN-TOTAL_FAIL)*100/TOTAL_RUN))
-
-echo -e "$BLUE===================="
-echo -e "$WHITE RECAP: $([ $PERCENT_SUCCESS -eq 100 ] && echo -e "$GREEN" || echo "$RED") $PERCENT_SUCCESS%"
-echo -e "$BLUE===================="
 
 rm -f "$ref_file_out" "$ref_file_err" "$my_file_out" "$my_file_err"
