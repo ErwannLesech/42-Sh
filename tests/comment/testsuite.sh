@@ -7,3 +7,4 @@ run_test comment6.test
 run_test comment7.test
 run_test comment8.test
 run_test comment9.test
+run_test comment10.test
