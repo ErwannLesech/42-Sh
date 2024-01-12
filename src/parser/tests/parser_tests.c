@@ -4,7 +4,7 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
@@ -338,7 +338,8 @@ Test(parser, error3)
 
 Test(parser, error4)
 {
-    struct lexer *lexer = lexer_new("ls -l; if echo hello; then echo world; elif echo bye; echo world; fi;");
+    struct lexer *lexer = lexer_new("ls -l; if echo hello; then echo world; "
+                                    "elif echo bye; echo world; fi;");
     struct ast_node *node = parse(lexer);
     print_ast(node, 0, false);
     cr_assert_eq(node, NULL);

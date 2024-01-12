@@ -4,13 +4,13 @@
  * \authors Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #include "io_backend.h"
 
 /**
  * \brief Read from stdin
-*/
+ */
 char *io_backend_stdin(void)
 {
     char *res = NULL;
@@ -21,7 +21,9 @@ char *io_backend_stdin(void)
 
     buff = malloc(bufferSize);
 
-    while ((bytesRead = read(STDIN_FILENO, buff + totalSize, bufferSize - totalSize)) > 0)
+    while ((bytesRead =
+                read(STDIN_FILENO, buff + totalSize, bufferSize - totalSize))
+           > 0)
     {
         totalSize += bytesRead;
         if (totalSize >= bufferSize)
@@ -51,7 +53,7 @@ char *io_backend_stdin(void)
 
 /**
  * \brief Read from a file
-*/
+ */
 char *io_backend_file(char **argv)
 {
     char *res = NULL;
@@ -103,7 +105,7 @@ char *io_backend_file(char **argv)
 char *io_backend(int argc, char **argv)
 {
     if (argc < 2)
-    {   
+    {
         return io_backend_stdin();
     }
     else if (argc == 3 && strcmp(argv[1], "-c") == 0)
@@ -114,11 +116,10 @@ char *io_backend(int argc, char **argv)
 
         return input;
     }
-    else if(argc == 2)
+    else if (argc == 2)
     {
         return io_backend_file(argv);
     }
-    
+
     return NULL;
-    
 }

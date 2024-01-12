@@ -4,7 +4,7 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #ifndef BUILTIN_H
 #define BUILTIN_H
@@ -31,6 +31,5 @@ int true_fun(struct ast_node *node);
  * \return The exit status.
  */
 int false_fun(struct ast_node *node);
-
 
 #endif /* BUILTIN_H */

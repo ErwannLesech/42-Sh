@@ -4,29 +4,23 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #include "lexer.h"
 
 #include <err.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include <stdbool.h>
-
 struct lex_match lex_match[8] = {
-    {"if", TOKEN_IF},
-    {"then", TOKEN_THEN},
-    {"elif", TOKEN_ELIF},
-    {"else", TOKEN_ELSE},
-    {"fi", TOKEN_FI},
-    {";", TOKEN_SEMICOLON},
-    {"\n", TOKEN_EOL},
-    {"\0", TOKEN_EOF}
+    { "if", TOKEN_IF },     { "then", TOKEN_THEN }, { "elif", TOKEN_ELIF },
+    { "else", TOKEN_ELSE }, { "fi", TOKEN_FI },     { ";", TOKEN_SEMICOLON },
+    { "\n", TOKEN_EOL },    { "\0", TOKEN_EOF }
 };
 
-struct lexer *lexer_new(const char *input) 
+struct lexer *lexer_new(const char *input)
 {
     struct lexer *lexer = malloc(sizeof(struct lexer));
 
@@ -41,7 +35,7 @@ struct lexer *lexer_new(const char *input)
     return lexer;
 }
 
-void lexer_free(struct lexer *lexer) 
+void lexer_free(struct lexer *lexer)
 {
     free(lexer);
 }
@@ -53,10 +47,11 @@ void token_free(struct token token)
 
 /**
  * \brief Handle the backslash character.
- * 
+ *
  * \return false if it's the end of the string, true otherwise.
-*/
-bool handle_backslash(struct lexer *lexer, bool *is_diactivated, char *word, unsigned word_index)
+ */
+bool handle_backslash(struct lexer *lexer, bool *is_diactivated, char *word,
+                      unsigned word_index)
 {
     *is_diactivated = true;
     if (lexer->data[lexer->index] != '\0')
@@ -75,10 +70,11 @@ bool handle_backslash(struct lexer *lexer, bool *is_diactivated, char *word, uns
 
 /**
  * \brief Handle the simple quote character.
- * 
+ *
  * \return false if a closing quote was not found, true otherwise.
-*/
-char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word, unsigned *word_index)
+ */
+char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
+                          unsigned *word_index)
 {
     *is_diactivated = true;
     *word_index -= 1;
@@ -105,13 +101,15 @@ char *handle_comment(struct lexer *lexer, char *word, unsigned word_index)
     ++lexer->index;
 
     // Find the end of the comment
-    while (lexer->data[lexer->index] != '\n' && lexer->data[lexer->index] != '\0')
+    while (lexer->data[lexer->index] != '\n'
+           && lexer->data[lexer->index] != '\0')
     {
         ++lexer->index;
     }
     word[word_index] = lexer->data[lexer->index];
     ++lexer->index;
-    // If the comment isn't the last thing in the string, we need to add a '\0' at the end of the word.
+    // If the comment isn't the last thing in the string, we need to add a '\0'
+    // at the end of the word.
     if (word[word_index] != '\0')
     {
         word[word_index + 1] = '\0';
@@ -150,7 +148,9 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
     {
         return handle_comment(lexer, word, 0);
     }
-    while (lexer->data[lexer->index] != ' ' && lexer->data[lexer->index] != '\0' && lexer->data[lexer->index] != ';' && lexer->data[lexer->index] != '\n')
+    while (lexer->data[lexer->index] != ' ' && lexer->data[lexer->index] != '\0'
+           && lexer->data[lexer->index] != ';'
+           && lexer->data[lexer->index] != '\n')
     {
         word = realloc(word, sizeof(char) * (word_index + 1));
         word[word_index] = lexer->data[lexer->index];
@@ -165,7 +165,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
         }
         else if (lexer->data[lexer->index - 1] == '\'')
         {
-            word = handle_simple_quote(lexer, is_diactivated, word, &word_index);
+            word =
+                handle_simple_quote(lexer, is_diactivated, word, &word_index);
             if (!word)
             {
                 return NULL;
@@ -175,7 +176,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
     }
     word = realloc(word, sizeof(char) * (word_index + 1));
     word[word_index] = '\0';
-    
+
     while (lexer->data[lexer->index] == ' ')
     {
         ++lexer->index;
@@ -184,7 +185,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
     return word;
 }
 
-struct token parse_input_for_tok(struct lexer *lexer) 
+struct token parse_input_for_tok(struct lexer *lexer)
 {
     struct token token;
 
@@ -203,7 +204,7 @@ struct token parse_input_for_tok(struct lexer *lexer)
         token.data = "get_word - Missing closing quote.";
         return token;
     }
-    
+
     for (unsigned i = 0; i < sizeof(lex_match) / sizeof(*lex_match); ++i)
     {
         if (!strcmp(word, lex_match[i].str) && !is_diactivated)
@@ -219,7 +220,7 @@ struct token parse_input_for_tok(struct lexer *lexer)
     return token;
 }
 
-struct token lexer_peek(struct lexer *lexer) 
+struct token lexer_peek(struct lexer *lexer)
 {
     size_t save_index = lexer->index;
     if (lexer->curr_tok.type == TOKEN_EOF)
@@ -234,7 +235,7 @@ struct token lexer_peek(struct lexer *lexer)
     return token;
 }
 
-struct token lexer_pop(struct lexer *lexer) 
+struct token lexer_pop(struct lexer *lexer)
 {
     if (lexer->curr_tok.type == TOKEN_EOF)
     {

@@ -4,13 +4,13 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
-
-#include <stdio.h>
-#include <stdbool.h>
-#include <string.h>
+ */
 
 #include "options.h"
+
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
 
 bool check_logger(int *argc, char **argv)
 {
@@ -50,7 +50,7 @@ bool check_pretty_print(int *argc, char **argv)
 
 void logger(char *str, enum logger_step step, bool logger_enabled)
 {
-    if(!str || !logger_enabled)
+    if (!str || !logger_enabled)
         return;
 
     switch (step)
@@ -70,4 +70,4 @@ void logger(char *str, enum logger_step step, bool logger_enabled)
     default:
         break;
     }
-}   
+}

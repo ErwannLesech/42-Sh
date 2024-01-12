@@ -4,7 +4,7 @@
  * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
-*/
+ */
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
@@ -16,7 +16,7 @@ TestSuite(io_backend, .timeout = 1);
 
 Test(io_backend, io_backend_direct)
 {
-    char *argv[] = {"./42sh", "-c", "echo test"};
+    char *argv[] = { "./42sh", "-c", "echo test" };
     char *input = io_backend(3, argv);
 
     cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
@@ -25,7 +25,7 @@ Test(io_backend, io_backend_direct)
 
 Test(io_backend, io_backend_direct_multiple)
 {
-    char *argv[] = {"./42sh", "-c", "echo test ; echo test2"};
+    char *argv[] = { "./42sh", "-c", "echo test ; echo test2" };
     char *input = io_backend(3, argv);
 
     cr_assert_str_eq(input, "echo test ; echo test2", "wrong input: %s", input);
@@ -34,7 +34,7 @@ Test(io_backend, io_backend_direct_multiple)
 
 Test(io_backend, io_backend_direct_backslash)
 {
-    char *argv[] = {"./42sh", "-c", "echo test \\"};
+    char *argv[] = { "./42sh", "-c", "echo test \\" };
     char *input = io_backend(3, argv);
 
     cr_assert_str_eq(input, "echo test \\", "wrong input: %s", input);
@@ -43,7 +43,7 @@ Test(io_backend, io_backend_direct_backslash)
 
 Test(io_backend, io_backend_file)
 {
-    char *argv[] = {"./42sh", "../src/io_backend/tests/test.txt"};
+    char *argv[] = { "./42sh", "../src/io_backend/tests/test.txt" };
     char *input = io_backend(2, argv);
 
     cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
@@ -52,8 +52,8 @@ Test(io_backend, io_backend_file)
 
 Test(io_backend, io_backend_stdin)
 {
-    char *argv[] = {"./42sh"};
-    
+    char *argv[] = { "./42sh" };
+
     pid_t pid = fork();
 
     if (pid == 0)
@@ -67,17 +67,17 @@ Test(io_backend, io_backend_stdin)
     else
     {
         char *input = "echo test";
-        if(write(0, input, strlen(input)) == 0)
+        if (write(0, input, strlen(input)) == 0)
             cr_assert_fail("write failed");
         if (write(0, "\n", 1) == 0)
             cr_assert_fail("write failed");
-    }    
+    }
 }
 
 Test(io_backend, io_backend_stdin_eof)
 {
-    char *argv[] = {"./42sh"};
-    
+    char *argv[] = { "./42sh" };
+
     pid_t pid = fork();
 
     if (pid == 0)
@@ -91,7 +91,7 @@ Test(io_backend, io_backend_stdin_eof)
     else
     {
         char *input = "echo test";
-        if(write(0, input, strlen(input)) == 0)
+        if (write(0, input, strlen(input)) == 0)
             cr_assert_fail("write failed");
-    }    
+    }
 }
