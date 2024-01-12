@@ -21,6 +21,9 @@
 // false = 1
 // error else
 
+/**
+ * \brief Structure representing a builtin function.
+*/
 struct builtin_function
 {
     char *name;

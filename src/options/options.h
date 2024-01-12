@@ -24,6 +24,9 @@ enum logger_step
 
 /**
  * \brief Check if the logger option is asked in args.
+ * \param argc The number of args.
+ * \param argv The args.
+ * \return True if the logger option is inside of args, false otherwise.
 */
 bool check_logger(int *argc, char **argv);
 

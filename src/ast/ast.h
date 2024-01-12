@@ -29,7 +29,7 @@ enum ast_type
 
 /**
  * \struct ast_node
- * \brief Represent a node of the AST.
+ * \brief Structure representing a node of the AST.
  */
 struct ast_node
 {
