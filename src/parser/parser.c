@@ -1,4 +1,5 @@
 #include "parser.h"
+#include "../execute/ast_eval.h"
 
 /*
 input =
@@ -48,4 +49,29 @@ enum token_type parser_pop(struct lexer *lexer)
 struct ast_node *parse(struct lexer *lexer)
 {
     return input(lexer);
+}
+
+/**
+ * \brief Parse loop line by line and execute it
+*/
+int parser_loop(struct lexer *lexer, bool logger_enabled, bool pretty_print_enabled)
+{
+    int return_value = 0;
+
+    while (parser_peek(lexer) != TOKEN_EOF)
+    {
+        struct ast_node *ast = parse(lexer);
+        if (ast == NULL)
+        {
+            return 2;
+        }
+        if (pretty_print_enabled)
+        {
+            print_ast(ast, 0, logger_enabled);
+        }
+        return_value = match_ast(ast, logger_enabled);
+        ast_free(ast);
+    }
+
+    return return_value;
 }

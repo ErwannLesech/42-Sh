@@ -23,19 +23,8 @@ int main(int argc, char **argv)
 	
 	struct lexer *lexer = lexer_new(input);
 
-	struct ast_node *ast = parse(lexer);
+	int val = parser_loop(lexer, logger_enabled, pretty_print_enabled);
 
-	if (pretty_print_enabled)
-	{
-		if (ast == NULL)
-		{
-			printf("Ast is empty\n");
-		}
-		print_ast(ast, 0, logger_enabled);
-	}
-	int val = match_ast(ast, logger_enabled);
-
-	ast_free(ast);
 	lexer_free(lexer);
 	free(input);
 	return val;
