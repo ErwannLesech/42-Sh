@@ -51,9 +51,10 @@ int exec_cmd(struct ast_node *node, bool logger_enabled)
         if (execvp(node->children[0]->value, args) == -1)
         {
             free(args);
-            return 127;
+            exit(127);
         }
         free(args);
+        exit(0);
     }
     else
     {
