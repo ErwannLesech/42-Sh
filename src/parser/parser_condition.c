@@ -1,3 +1,11 @@
+/**
+ * \file parser_condition.c
+ * \brief Parse the condition rule.
+ * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+*/
+
 #include "parser.h"
 
 struct ast_node *shell_command(struct lexer *lexer)

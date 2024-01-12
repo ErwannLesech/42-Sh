@@ -1,3 +1,11 @@
+/**
+ * \file parser.c
+ * \brief Parse the input and build the AST.
+ * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+*/
+
 #include "parser.h"
 
 /*

@@ -1,3 +1,11 @@
+/**
+ * \file parser_element.c
+ * \brief Parse the element rule.
+ * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+*/
+
 #include "parser.h"
 
 struct ast_node *input(struct lexer *lexer)

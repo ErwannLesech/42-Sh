@@ -1,3 +1,11 @@
+/**
+ * \file io_backend.c
+ * \brief Input/Output backend
+ * \authors Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+*/
+
 #include "io_backend.h"
 
 /**

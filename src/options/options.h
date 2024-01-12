@@ -1,9 +1,20 @@
+/**
+ * \file options.h
+ * \brief Header for options functions.
+ * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+*/
+
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
 #include <stdio.h>
 #include <stdbool.h>
 
+/**
+ * \brief Enum for the different logger steps.
+*/
 enum logger_step
 {
     LOGGER_INPUT,

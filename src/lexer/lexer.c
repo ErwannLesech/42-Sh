@@ -1,3 +1,11 @@
+/**
+ * \file lexer.c
+ * \brief Lex the input.
+ * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+*/
+
 #include "lexer.h"
 
 #include <err.h>
