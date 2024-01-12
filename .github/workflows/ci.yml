@@ -7,7 +7,7 @@ on:
         branches: [ "master", "dev" ]
 
 jobs:
-    build:
+    build_and_check:
 
         runs-on: ubuntu-latest
 
@@ -16,7 +16,7 @@ jobs:
           uses: actions/checkout@v2
     
         - name: install dependencies
-          run: sudo apt-get install -y autoconf 
+          run: sudo apt-get install -y autoconf libghc-criterion-dev
 
         - name: autoreconf install
           run: autoreconf --install
@@ -68,9 +68,6 @@ jobs:
 
         - name: Run doxygen
           run: doxygen Doxyfile
-
-        - name: specify the index.html in subdir
-          run: git subtree push --prefix html origin gh-pages
 
         - name: deploy page
           uses: actions/deploy-pages@v4.0.3
