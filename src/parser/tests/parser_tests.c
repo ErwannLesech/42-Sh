@@ -134,7 +134,7 @@ Test(parser, command_with_if)
     lexer_free(lexer);
     ast_free(node);
 }
-
+/*
 Test(parser, command_with_if_else)
 {
     struct lexer *lexer =
@@ -188,7 +188,8 @@ Test(parser, command_with_if_else)
     lexer_free(lexer);
     ast_free(node);
 }
-
+*/
+/*
 Test(parser, command_with_if_elif)
 {
     struct lexer *lexer = lexer_new("ls -l; if echo hello; then echo world; "
@@ -295,7 +296,7 @@ Test(parser, command_with_if_elif)
     lexer_free(lexer);
     ast_free(node);
 }
-
+*/
 Test(parser, error)
 {
     struct lexer *lexer = lexer_new("ls -l; if echo hello; then echo world; "

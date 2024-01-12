@@ -69,7 +69,6 @@ int parser_loop(struct lexer *lexer, bool logger_enabled,
                 bool pretty_print_enabled)
 {
     int return_value = 0;
-
     while (parser_peek(lexer) != TOKEN_EOF)
     {
         struct ast_node *ast = parse(lexer);

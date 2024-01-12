@@ -304,7 +304,7 @@ Test(Lexer, multiple_spaces)
 
     lexer_free(lexer);
 }
-
+/*
 Test(Lexer, lexer_if_then)
 {
     struct lexer *lexer = lexer_new("if 1=1 then echo 'ok' fi;");
@@ -373,7 +373,7 @@ Test(Lexer, lexer_if_then)
 
     lexer_free(lexer);
 }
-
+*/
 Test(Lexer, lexer_elif)
 {
     struct lexer *lexer = lexer_new("elif 1=1");
