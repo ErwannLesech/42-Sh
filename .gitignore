@@ -24,3 +24,9 @@ config.status
 */criterion
 
 *.diff
+
+# Doxygen
+Doxyfile.bak
+html
+latex
+
