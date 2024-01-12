@@ -55,6 +55,7 @@ int exec_cmd(struct ast_node *node, bool logger_enabled)
             free(args);
             return 127;
         }
+        free(args);
     }
     else
     {

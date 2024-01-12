@@ -1,0 +1,3 @@
+run_test single_quote_error1.test
+run_test single_quote_error2.test
+run_test single_quote_error3.test

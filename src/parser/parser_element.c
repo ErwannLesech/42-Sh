@@ -24,6 +24,7 @@ struct ast_node *input(struct lexer *lexer)
     {
         return node;
     }
+    ast_free(node);
     return NULL;
 }
 

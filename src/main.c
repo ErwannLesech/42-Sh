@@ -31,26 +31,18 @@ int main(int argc, char **argv)
 	char *input = io_backend(argc, argv);
 	if (input == NULL)
 	{
-		errx(1, "Error while reading input");
+		errx(127, "Error while reading input");
 	}
 
 	logger(input, LOGGER_INPUT, logger_enabled);
 	
 	struct lexer *lexer = lexer_new(input);
 
-	struct ast_node *ast = parse(lexer);
-
-	if (pretty_print_enabled)
+	int val = parser_loop(lexer, logger_enabled, pretty_print_enabled);
+	if (val == 2)
 	{
-		if (ast == NULL)
-		{
-			printf("Ast is empty\n");
-		}
-		print_ast(ast, 0, logger_enabled);
+		fprintf(stderr, "Error while parsing\n");
 	}
-	int val = match_ast(ast, logger_enabled);
-
-	ast_free(ast);
 	lexer_free(lexer);
 	free(input);
 	return val;
