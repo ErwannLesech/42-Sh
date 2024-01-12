@@ -107,9 +107,9 @@ run_testsuite()
     fi
     PERCENT_SUCCESS=$(((TOTAL_RUN-TOTAL_FAIL)*100/TOTAL_RUN))
 
-    echo -e "$BLUE========================="
-    echo -e "$WHITE RECAP: $([ $PERCENT_SUCCESS -eq 100 ] && echo -e "$GREEN" || echo "$RED") $PERCENT_SUCCESS%"
-    echo -e "$BLUE========================="
+    echo -e "$BLUE=============================="
+    echo -e "$WHITE    42Sh Moulinette: $([ $PERCENT_SUCCESS -eq 100 ] && echo -e "$GREEN" || echo "$RED") $PERCENT_SUCCESS%"
+    echo -e "$BLUE=============================="
 }
 
 main()
