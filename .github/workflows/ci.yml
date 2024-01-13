@@ -67,7 +67,7 @@ jobs:
         run: touch clang_tidy_output.txt clang_tidy_witness.txt
         
       - name: Run clang-tidy script
-        run: ./github/workflows/clang_tidy.sh > clang_tidy_output.txt
+        run: ./.github/workflows/clang_tidy.sh > clang_tidy_output.txt
 
       - name: Check for changes
         run: |
