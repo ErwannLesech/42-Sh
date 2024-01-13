@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 RED='\e[31m'
 GREEN='\e[32m'
@@ -27,7 +27,7 @@ run_test()
     MODULE_RUN=$((MODULE_RUN+1))
     TOTAL_RUN=$((TOTAL_RUN+1))
     
-    echo -ne "$BLUE-->> ${WHITE}$1...$WHITE"
+    printf "%b" "$BLUE-->> ${WHITE}$1...$WHITE"
     bash --posix "$1" > "$ref_file_out" 2> "$ref_file_err"
     REF_CODE=$?
 
@@ -38,25 +38,25 @@ run_test()
     DIFF_CODE=$?
 
     if [ $REF_CODE -ne $MY_CODE ]; then
-        echo -ne "$RED RETURNS $WHITE"
+        printf "%b" "$RED RETURNS $WHITE"
         success=false
     fi
 
     if [ $DIFF_CODE -ne 0 ]; then
-        echo -ne "$RED STDOUT $WHITE"
+        printf "%b" "$RED STDOUT $WHITE"
         success=false
     fi
 
     if { [ -s $ref_file_err ] && [ ! -s $my_file_err ]; } || { [ ! -s $ref_file_err ] && [ -s $my_file_err ]; }; then
-        echo -ne "$RED STDERR $WHITE"
+        printf "%b" "$RED STDERR $WHITE"
         success=false
     fi
 
     if $success; then
-        echo -e "$GREEN OK $WHITE"
+        echo "$GREEN OK $WHITE"
         rm -f $1.diff
     else
-        [ -s "$(realpath $1.diff)" ] && echo -ne "$RED (cat $(realpath $1.diff)) $WHITE"
+        [ -s "$(realpath $1.diff)" ] && printf "%b" "$RED (cat $(realpath $1.diff)) $WHITE"
         echo 
         TOTAL_FAIL=$((TOTAL_FAIL+1))
         MODULE_FAIL=$((MODULE_FAIL+1))
@@ -65,22 +65,22 @@ run_test()
 
 run_module()
 {
-    echo -e "$TURQUOISE=============================="
+    echo "$TURQUOISE=============================="
     printf " $WHITE%-36s $TURQUOISE%s\n" "$1"
-    echo -e "$TURQUOISE==============================$WHITE"
+    echo "$TURQUOISE==============================$WHITE"
 
     cd "$1"
-    source ./testsuite.sh
+    . ./testsuite.sh
     cd - > /dev/null
 
     if [ $MODULE_FAIL -eq 0 ]; then
-        echo -e "$GREEN=============================="
+        echo "$GREEN=============================="
         printf " $WHITE Test accuracy $GREEN%s$WHITE/$GREEN%s\n" "$((MODULE_RUN-MODULE_FAIL))" "$MODULE_RUN"
-        echo -e "$GREEN==============================$WHITE"
+        echo "$GREEN==============================$WHITE"
     else
-        echo -e "$RED=============================="
+        echo "$RED=============================="
         printf " $WHITE Test accuracy $RED%s$WHITE/$RED%s\n" "$((MODULE_RUN-MODULE_FAIL))" "$MODULE_RUN"
-        echo -e "$RED==============================$WHITE"
+        echo "$RED==============================$WHITE"
     fi
 
     MODULE_RUN=0
@@ -93,9 +93,9 @@ run_testsuite()
 
         [ ${module} = "." ] && continue
         
-        echo -e "$TURQUOISE=============================="
+        echo "$TURQUOISE=============================="
         printf " $WHITE%-36s $TURQUOISE%s\n" "$module"
-        echo -e "$TURQUOISE==============================$WHITE"
+        echo "$TURQUOISE==============================$WHITE"
 
         for submodule in $(find $module -type d); do
             if [ $submodule = "$module" ]; then
@@ -106,19 +106,19 @@ run_testsuite()
     done
 
     if [ $TOTAL_FAIL -eq 0 ]; then
-        echo -e "$GREEN=============================="
+        echo "$GREEN=============================="
         printf " $WHITE Overall test accuracy $GREEN%s$WHITE/$GREEN%s\n" "$((TOTAL_RUN-TOTAL_FAIL))" "$TOTAL_RUN"
-        echo -e "$GREEN==============================$WHITE"
+        echo "$GREEN==============================$WHITE"
     else
-        echo -e "$RED=============================="
+        echo "$RED=============================="
         printf " $WHITE Overall test accuracy $RED%s$WHITE/$RED%s\n" "$((TOTAL_RUN-TOTAL_FAIL))" "$TOTAL_RUN"
-        echo -e "$RED==============================$WHITE"
+        echo "$RED==============================$WHITE"
     fi
     PERCENT_SUCCESS=$(((TOTAL_RUN-TOTAL_FAIL)*100/TOTAL_RUN))
 
-    echo -e "$BLUE=============================="
-    echo -e "$WHITE    42Sh Moulinette: $([ $PERCENT_SUCCESS -eq 100 ] && echo -e "$GREEN" || echo "$RED") $PERCENT_SUCCESS%"
-    echo -e "$BLUE==============================$WHITE"
+    echo "$BLUE=============================="
+    echo "$WHITE    42Sh Moulinette: $([ $PERCENT_SUCCESS -eq 100 ] && echo -e "$GREEN" || echo "$RED") $PERCENT_SUCCESS%"
+    echo "$BLUE==============================$WHITE"
 }
 
 main()
@@ -127,18 +127,18 @@ main()
         run_testsuite $(find . -maxdepth 1 -type d)
     else
         if [ $1 = "--help" ]; then
-            echo -e "${TURQUOISE}Usage: ./testsuite.sh [MODULE]$WHITE"
+            echo "${TURQUOISE}Usage: ./testsuite.sh [MODULE]$WHITE"
             echo "Run all tests from the specified MODULE"
             echo "If no MODULE is specified, run all testsuites"
-            echo -e "$RED=============================="
-            echo -e "${TURQUOISE}Usage: ./testsuite.sh -clean$WHITE"
+            echo "$RED=============================="
+            echo "${TURQUOISE}Usage: ./testsuite.sh -clean$WHITE"
             echo "Remove all .diff files"
             exit 0
         else
             if [ $1 = "-clean" ]; then
-                echo -e "$TURQUOISE===================================$WHITE"
+                echo "$TURQUOISE===================================$WHITE"
                 printf " $WHITE%-36s $TURQUOISE%s\n" "Removing all .diff files"
-                echo -e "$TURQUOISE==================================="
+                echo "$TURQUOISE==================================="
                 
                 for module in $(find . -type d); do
                     rm -f $module/*.diff
@@ -146,9 +146,9 @@ main()
 
                 exit 0
             else       
-                echo -e "$TURQUOISE==================================="
+                echo "$TURQUOISE==================================="
                 printf " $WHITE%-36s $TURQUOISE%s\n" "$1"
-                echo -e "$TURQUOISE===================================$WHITE"
+                echo "$TURQUOISE===================================$WHITE"
 
                 run_module "$1"
             fi
