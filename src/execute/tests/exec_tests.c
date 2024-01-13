@@ -22,7 +22,7 @@ Test(exec, test_exec_simple_command)
     char *argv[] = { "./42sh", "-c", "echo test", NULL };
     int argc = 3;
 
-    char *input = io_backend(argc, argv);
+    char *input = io_backend_manager(argc, argv);
 
     struct lexer *lexer = lexer_new(input);
 
