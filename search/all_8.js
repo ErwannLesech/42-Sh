@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['handle_5fbackslash_42',['handle_backslash',['../lexer_8c.html#a4118949af048dc92c3d80124d6d2b311',1,'lexer.c']]],
-  ['handle_5fcomment_43',['handle_comment',['../lexer_8c.html#af32efb4ef90c8afccad1676873af94d0',1,'lexer.c']]],
-  ['handle_5fsimple_5fquote_44',['handle_simple_quote',['../lexer_8c.html#ab085cd91d99547686c269ca0263d4f79',1,'lexer.c']]]
+  ['handle_5fbackslash_46',['handle_backslash',['../lexer_8c.html#a4118949af048dc92c3d80124d6d2b311',1,'lexer.c']]],
+  ['handle_5fcomment_47',['handle_comment',['../lexer_8c.html#af32efb4ef90c8afccad1676873af94d0',1,'lexer.c']]],
+  ['handle_5fsimple_5fquote_48',['handle_simple_quote',['../lexer_8c.html#ab085cd91d99547686c269ca0263d4f79',1,'lexer.c']]]
 ];
