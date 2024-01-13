@@ -1,0 +1,98 @@
+name: Continuous Integration
+
+on:
+    push:
+        branches: [ "master", "dev" ]
+    pull_request:
+        branches: [ "master", "dev" ]
+
+jobs:
+    build_and_check:
+
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+    
+        - name: install dependencies
+          run: sudo apt-get install -y autoconf libghc-criterion-dev libcriterion-dev
+
+        - name: autoreconf install
+          run: autoreconf --install
+    
+        - name: configure
+          run: ./configure
+    
+        - name: make
+          run: make
+    
+        - name: make check
+          run: make check
+    
+        - name: make clean
+          run: make clean
+    
+    clang-format:
+
+        runs-on: ubuntu-latest
+        
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+        
+        - name: Install dependencies
+          run: sudo apt-get install -y clang-format
+
+        - name: Run clang-format
+          run: find $(git rev-parse --show-toplevel) -name "*.h" -o -name "*.c" | xargs clang-format -i
+
+        - name: Check for changes
+          run: |
+            git diff --exit-code
+            if [ $? -eq 1 ]; then
+                echo "Code is not clang-format compliant. Please format your code."
+                exit 1
+            fi
+          
+    clang-tidy:
+
+      runs-on: ubuntu-latest
+        
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: create clang-tidy output file and witness file
+        run: touch clang_tidy_output.txt clang_tidy_witness.txt
+        
+      - name: Run clang-tidy script
+        run: ./.github/workflows/clang_tidy.sh > clang_tidy_output.txt
+
+      - name: Check for changes
+        run: |
+          diff clang_tidy_output.txt clang_tidy_witness.txt
+          if [ $? -eq 1 ]; then
+              echo "Code is not clang-tidy compliant. Please fix your code."
+              exit 1
+          fi
+
+    doxygen:
+
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+
+        - name: Install dependencies
+          run: sudo apt-get install -y doxygen graphviz
+
+        - name: Run doxygen
+          run: doxygen Doxyfile
+
+        - name: Deploy to GitHub Pages
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: html

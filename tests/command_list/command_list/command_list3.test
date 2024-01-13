@@ -1,0 +1,1 @@
+echo 'aaaa ; ls -l' ; ls ;echo;echo 't; ls ;s '; ls

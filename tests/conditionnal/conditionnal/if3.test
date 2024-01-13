@@ -1,0 +1,1 @@
+if echo 'tata'; then echo -ne 'tit' then true;fi

@@ -1,0 +1,32 @@
+src/42sh
+
+# Autoconf / Automake
+*.m4
+ar-lib
+compile
+config.log
+configure
+configure~
+depcomp
+install-sh
+Makefile.in
+missing
+autom4te.cache
+config.status
+*.dirstamp
+*.deps
+**/Makefile
+!**/Makefile.am
+
+.vscode
+*.o
+*.a
+*/criterion
+
+*.diff
+
+# Doxygen
+Doxyfile.bak
+html
+latex
+

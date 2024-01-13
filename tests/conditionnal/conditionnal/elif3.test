@@ -1,0 +1,9 @@
+if false; then
+    echo 'toto'
+elif true; then
+    if false; then
+        echo 'tata'
+    elif true; then
+        echo 'titi'
+    fi
+fi

@@ -1,0 +1,6 @@
+
+   ls    -la    ;   echo 'titi '   ;
+        ls ;      echo '
+        tata
+        ' ;
+        ls

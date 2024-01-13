@@ -1,0 +1,3 @@
+if echo 'tit' ; ls -la; then
+    echo 'tata'; ls
+fi

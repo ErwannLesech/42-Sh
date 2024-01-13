@@ -1,0 +1,10 @@
+run_test comment1.test
+run_test comment2.test
+run_test comment3.test
+run_test comment4.test
+run_test comment5.test
+run_test comment6.test
+run_test comment7.test
+run_test comment8.test
+run_test comment9.test
+run_test comment10.test

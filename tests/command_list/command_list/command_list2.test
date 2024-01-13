@@ -1,0 +1,4 @@
+ls -la; ls; ls;ls;echo 'aaaa    ';
+echo 'aaaaB    ';
+
+ls -la

@@ -1,0 +1,1 @@
+echo '-ne titi' ; ls -la ; echo ; ls
