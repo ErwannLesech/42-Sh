@@ -54,6 +54,28 @@ jobs:
                 echo "Code is not clang-format compliant. Please format your code."
                 exit 1
             fi
+          
+    clang-tidy:
+
+      runs-on: ubuntu-latest
+        
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: create clang-tidy output file and witness file
+        run: touch clang_tidy_output.txt clang_tidy_witness.txt
+        
+      - name: Run clang-tidy script
+        run: ./github/workflows/clang_tidy.sh > clang_tidy_output.txt
+
+      - name: Check for changes
+        run: |
+          diff clang_tidy_output.txt clang_tidy_witness.txt
+          if [ $? -eq 1 ]; then
+              echo "Code is not clang-tidy compliant. Please fix your code."
+              exit 1
+          fi
 
     doxygen:
 

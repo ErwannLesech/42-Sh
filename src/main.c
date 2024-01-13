@@ -28,7 +28,7 @@ int main(int argc, char **argv)
     bool logger_enabled = check_logger(&argc, argv);
     bool pretty_print_enabled = check_pretty_print(&argc, argv);
 
-    char *input = io_backend(argc, argv);
+    char *input = io_backend_manager(argc, argv);
     if (input == NULL)
     {
         errx(127, "Error while reading input");

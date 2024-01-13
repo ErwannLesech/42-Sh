@@ -102,7 +102,7 @@ char *io_backend_file(char **argv)
     return res;
 }
 
-char *io_backend(int argc, char **argv)
+char *io_backend_manager(int argc, char **argv)
 {
     if (argc < 2)
     {
