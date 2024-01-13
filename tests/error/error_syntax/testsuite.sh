@@ -1,3 +1,13 @@
 run_test error_syntax1.test
 run_test error_syntax2.test
 run_test error_syntax3.test
+run_test error_syntax4.test
+run_test error_syntax5.test
+run_test error_syntax6.test
+run_test error_syntax7.test
+run_test error_syntax8.test
+run_test error_syntax9.test
+run_test error_syntax10.test
+run_test error_syntax11.test
+run_test error_syntax12.test
+run_test error_syntax13.test

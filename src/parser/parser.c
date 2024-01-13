@@ -84,8 +84,8 @@ int parser_loop(struct lexer *lexer, bool logger_enabled,
         if (return_value != 0 && return_value != 1)
         {
             fprintf(stderr, "Error while executing\n");
-            ast_free(ast);
-            return return_value;
+           // ast_free(ast);
+           // return return_value;
         }
         ast_free(ast);
     }

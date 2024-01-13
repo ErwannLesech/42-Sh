@@ -191,7 +191,7 @@ struct token parse_input_for_tok(struct lexer *lexer)
 
     bool is_diactivated = false;
 
-    while (lexer->data[lexer->index] == ' ')
+    while (lexer->data[lexer->index] == ' ' || lexer->data[lexer->index] == '\t')
     {
         ++lexer->index;
     }
