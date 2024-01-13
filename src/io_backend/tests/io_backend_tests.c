@@ -17,7 +17,7 @@ TestSuite(io_backend, .timeout = 1);
 Test(io_backend, io_backend_direct)
 {
     char *argv[] = { "./42sh", "-c", "echo test" };
-    char *input = io_backend(3, argv);
+    char *input = io_backend_manager(3, argv);
 
     cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
     free(input);
@@ -26,7 +26,7 @@ Test(io_backend, io_backend_direct)
 Test(io_backend, io_backend_direct_multiple)
 {
     char *argv[] = { "./42sh", "-c", "echo test ; echo test2" };
-    char *input = io_backend(3, argv);
+    char *input = io_backend_manager(3, argv);
 
     cr_assert_str_eq(input, "echo test ; echo test2", "wrong input: %s", input);
     free(input);
@@ -35,7 +35,7 @@ Test(io_backend, io_backend_direct_multiple)
 Test(io_backend, io_backend_direct_backslash)
 {
     char *argv[] = { "./42sh", "-c", "echo test \\" };
-    char *input = io_backend(3, argv);
+    char *input = io_backend_manager(3, argv);
 
     cr_assert_str_eq(input, "echo test \\", "wrong input: %s", input);
     free(input);
@@ -44,7 +44,7 @@ Test(io_backend, io_backend_direct_backslash)
 Test(io_backend, io_backend_file)
 {
     char *argv[] = { "./42sh", "../src/io_backend/tests/test.txt" };
-    char *input = io_backend(2, argv);
+    char *input = io_backend_manager(2, argv);
 
     cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
     free(input);
@@ -59,7 +59,7 @@ Test(io_backend, io_backend_stdin)
     if (pid == 0)
     {
         cr_redirect_stdin();
-        char *input = io_backend(1, argv);
+        char *input = io_backend_manager(1, argv);
         cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
         free(input);
         exit(0);
@@ -83,7 +83,7 @@ Test(io_backend, io_backend_stdin_eof)
     if (pid == 0)
     {
         cr_redirect_stdin();
-        char *input = io_backend(1, argv);
+        char *input = io_backend_manager(1, argv);
         cr_assert_str_eq(input, "echo test", "wrong input: %s", input);
         free(input);
         exit(0);

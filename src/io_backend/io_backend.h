@@ -21,6 +21,6 @@
  * \param argv Arguments
  * \return the input as a string
  */
-char *io_backend(int argc, char **argv);
+char *io_backend_manager(int argc, char **argv);
 
 #endif /* ! IO_BACKEND_H  */
