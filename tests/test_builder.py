@@ -25,6 +25,9 @@ for i in range(number_of_test):
 
     if ref_res.returncode != res.returncode:
         error += 1
+        f = open("test_err.txt", "a")
+        f.write('"' + str + '"\n')
+        f.close()
         # print("=== Error return code ===")
         # print("Input: " + str)
         # print("")
