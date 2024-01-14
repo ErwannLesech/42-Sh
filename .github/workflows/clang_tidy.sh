@@ -19,7 +19,7 @@ for file in $(find "$root_dir/src" -type f -name '*.c'); do
         parameters=$(echo "$line" | sed 's/^[^(]*(//;s/)[^{]*$//;s/,/\n/g' | wc -l)
         
         # Count the number of lines in the function (excluding blank and '{', '}' lines)
-        lines_in_function=$(sed -n "/$function_name/,/^}/p" "$file" | sed '/^$/d' | sed '/^[[:space:]]*{$/d' | sed '/^[[:space:]]*}$/d' | wc -l)
+        lines_in_function=$(sed -n "/$return_type $function_name/,/^}/p" "$file" | sed '/^$/d' | sed '/^[[:space:]]*{$/d' | sed '/^[[:space:]]*}$/d' | wc -l)        lines_in_function=$((lines_in_function-1))
         lines_in_function=$((lines_in_function-1))
 
         if [[ "$parameters" -gt 4 ]]; then
