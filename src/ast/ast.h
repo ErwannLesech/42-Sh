@@ -9,10 +9,9 @@
 #ifndef AST_H
 #define AST_H
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "../options/options.h"
 
 /**
  * \enum ast_type
@@ -66,6 +65,13 @@ void ast_free(struct ast_node *node);
  * \return The new node.
  */
 struct ast_node *ast_node_word(char *value);
+
+/**
+ * \brief Convert an AST type to a string.
+ * \param type The type to convert.
+ * \return The AST type string.
+ */
+char *ast_type_to_string(enum ast_type type);
 
 /**
  * \brief Create a new AST node of type AST_SIMPLE_COMMAND.

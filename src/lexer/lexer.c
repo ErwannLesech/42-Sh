@@ -178,7 +178,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
     word = realloc(word, sizeof(char) * (word_index + 1));
     word[word_index] = '\0';
 
-    while (lexer->data[lexer->index] == ' ')
+    while (lexer->data[lexer->index] == ' '
+           || lexer->data[lexer->index] == '\t')
     {
         ++lexer->index;
     }
