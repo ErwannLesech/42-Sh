@@ -76,6 +76,29 @@ struct token lexer_peek(struct lexer *lexer);
 struct token lexer_pop(struct lexer *lexer);
 
 /**
+ * \brief Handle the backslash character.
+ *
+ * \return false if it's the end of the string, true otherwise.
+ */
+bool handle_backslash(struct lexer *lexer, bool *is_diactivated, char *word,
+                      unsigned word_index);
+
+/**
+ * \brief Handle the simple quote character.
+ *
+ * \return false if a closing quote was not found, true otherwise.
+ */
+char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
+                          unsigned *word_index);
+
+/**
+ * \brief Handle the comment character.
+ *
+ * \return The next word.
+ */
+char *handle_comment(struct lexer *lexer, char *word, unsigned word_index);
+
+/**
  * \brief Returns the next word in the input string.
  * \param lexer The lexer.
  * \param is_diactivated A pointer to a boolean that will be set to true if the

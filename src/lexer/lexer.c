@@ -9,16 +9,38 @@
 #include "lexer.h"
 
 #include <err.h>
+#include <fnmatch.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-struct lex_match lex_match[8] = {
-    { "if", TOKEN_IF },     { "then", TOKEN_THEN }, { "elif", TOKEN_ELIF },
-    { "else", TOKEN_ELSE }, { "fi", TOKEN_FI },     { ";", TOKEN_SEMICOLON },
-    { "\n", TOKEN_EOL },    { "\0", TOKEN_EOF }
-};
+struct lex_match lex_match[25] = { { "if", TOKEN_IF },
+                                   { "then", TOKEN_THEN },
+                                   { "elif", TOKEN_ELIF },
+                                   { "else", TOKEN_ELSE },
+                                   { "fi", TOKEN_FI },
+                                   { ";", TOKEN_SEMICOLON },
+                                   { "\n", TOKEN_EOL },
+                                   { "\0", TOKEN_EOF },
+
+                                   { "&&", TOKEN_AND },
+                                   { "||", TOKEN_OR },
+                                   { "|", TOKEN_PIPE },
+                                   { "!", TOKEN_NEGATE },
+                                   { "[0-9]*<", TOKEN_INPUT_REDIR },
+                                   { "[0-9]*>", TOKEN_OUTPUT_REDIR },
+                                   { "[0-9]*>>", TOKEN_APPEND },
+                                   { "[0-9]*<&", TOKEN_DUP_INPUT },
+                                   { "[0-9]*>&", TOKEN_DUP_INPUT_OUTPUT },
+                                   { "[0-9]*>|", TOKEN_NOCLOBBER },
+                                   { "[0-9]*<>", TOKEN_DUP_INPUT_OUTPUT },
+                                   { "while", TOKEN_WHILE },
+                                   { "until", TOKEN_UNTIL },
+                                   { "for", TOKEN_FOR },
+                                   { "do", TOKEN_DO },
+                                   { "done", TOKEN_DONE },
+                                   { "$*", TOKEN_VARIABLE } };
 
 struct lexer *lexer_new(const char *input)
 {
@@ -43,84 +65,6 @@ void lexer_free(struct lexer *lexer)
 void token_free(struct token token)
 {
     free(token.data);
-}
-
-/**
- * \brief Handle the backslash character.
- *
- * \return false if it's the end of the string, true otherwise.
- */
-bool handle_backslash(struct lexer *lexer, bool *is_diactivated, char *word,
-                      unsigned word_index)
-{
-    *is_diactivated = true;
-    if (lexer->data[lexer->index] != '\0')
-    {
-        word[word_index - 1] = lexer->data[lexer->index];
-        ++lexer->index;
-    }
-    else
-    {
-        word[word_index - 1] = '\0';
-        return false;
-    }
-
-    return true;
-}
-
-/**
- * \brief Handle the simple quote character.
- *
- * \return false if a closing quote was not found, true otherwise.
- */
-char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
-                          unsigned *word_index)
-{
-    *is_diactivated = true;
-    *word_index -= 1;
-    while (lexer->data[lexer->index] != '\'')
-    {
-        if (lexer->data[lexer->index] == '\0')
-        {
-            free(word);
-            word = NULL;
-            return NULL;
-        }
-        word = realloc(word, sizeof(char) * (*word_index + 1));
-        word[*word_index] = lexer->data[lexer->index];
-        *word_index += 1;
-        lexer->index += 1;
-    }
-
-    return word;
-}
-
-char *handle_comment(struct lexer *lexer, char *word, unsigned word_index)
-{
-    // Skip the comment
-    ++lexer->index;
-
-    // Find the end of the comment
-    while (lexer->data[lexer->index] != '\n'
-           && lexer->data[lexer->index] != '\0')
-    {
-        ++lexer->index;
-    }
-    word[word_index] = lexer->data[lexer->index];
-    ++lexer->index;
-    // If the comment isn't the last thing in the string, we need to add a '\0'
-    // at the end of the word.
-    if (word[word_index] != '\0')
-    {
-        word[word_index + 1] = '\0';
-    }
-
-    // Skip the spaces after the comment
-    while (lexer->data[lexer->index] == ' ')
-    {
-        ++lexer->index;
-    }
-    return word;
 }
 
 char *get_word(struct lexer *lexer, bool *is_diactivated)
@@ -210,7 +154,7 @@ struct token parse_input_for_tok(struct lexer *lexer)
 
     for (unsigned i = 0; i < sizeof(lex_match) / sizeof(*lex_match); ++i)
     {
-        if (!strcmp(word, lex_match[i].str) && !is_diactivated)
+        if (fnmatch(lex_match[i].str, word, 0) == 0 && !is_diactivated)
         {
             token.type = lex_match[i].type;
             token.data = word;
