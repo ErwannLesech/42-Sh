@@ -25,6 +25,48 @@ Test(lexer2, token_and)
     lexer_free(lexer);
 }
 
+Test(lexer2, token_and2)
+{
+    struct lexer *lexer = lexer_new("false && true");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "false");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_AND);
+    cr_assert_str_eq(tok.data, "&&");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "true");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+Test(lexer2, token_and_stick)
+{
+    struct lexer *lexer = lexer_new("false&&true");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "false");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_AND);
+    cr_assert_str_eq(tok.data, "&&");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "true");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
 Test(lexer2, token_or)
 {
     struct lexer *lexer = lexer_new("||");
@@ -45,6 +87,42 @@ Test(lexer2, token_pipe)
     lexer_free(lexer);
 }
 
+Test(lexer2, token_pipe2)
+{
+    struct lexer *lexer = lexer_new("echo papa|tr a e");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "papa");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_PIPE);
+    cr_assert_str_eq(tok.data, "|");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "tr");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "a");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "e");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
 Test(lexer2, token_negate)
 {
     struct lexer *lexer = lexer_new("!");
@@ -59,7 +137,7 @@ Test(lexer2, token_input_redir)
 {
     struct lexer *lexer = lexer_new("<");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_INPUT_REDIR);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
     cr_assert_str_eq(tok.data, "<");
     token_free(tok);
     lexer_free(lexer);
@@ -69,7 +147,7 @@ Test(lexer2, token_output_redir)
 {
     struct lexer *lexer = lexer_new(">");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_OUTPUT_REDIR);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
     cr_assert_str_eq(tok.data, ">");
     token_free(tok);
     lexer_free(lexer);
@@ -79,9 +157,7 @@ Test(lexer2, token_append)
 {
     struct lexer *lexer = lexer_new(">>");
     struct token tok = lexer_pop(lexer);
-    printf("%s-\n", tok.data);
-    printf("%d\n", fnmatch("[0-9]*>>", ">>", 0));
-    cr_assert_eq(tok.type, TOKEN_APPEND, "got %d", tok.type);
+    cr_assert_eq(tok.type, TOKEN_REDIR, "got %d", tok.type);
     cr_assert_str_eq(tok.data, ">>");
     token_free(tok);
     lexer_free(lexer);
@@ -91,7 +167,7 @@ Test(lexer2, token_dup_input)
 {
     struct lexer *lexer = lexer_new("<&");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_DUP_INPUT);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
     cr_assert_str_eq(tok.data, "<&");
     token_free(tok);
     lexer_free(lexer);
@@ -101,7 +177,7 @@ Test(lexer2, token_dup_input_output)
 {
     struct lexer *lexer = lexer_new(">&");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_DUP_INPUT_OUTPUT);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
     cr_assert_str_eq(tok.data, ">&");
     token_free(tok);
     lexer_free(lexer);
@@ -111,7 +187,7 @@ Test(lexer2, token_noclobber)
 {
     struct lexer *lexer = lexer_new(">|");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_NOCLOBBER);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
     cr_assert_str_eq(tok.data, ">|");
     token_free(tok);
     lexer_free(lexer);
@@ -121,9 +197,97 @@ Test(lexer2, token_dup_input_output2)
 {
     struct lexer *lexer = lexer_new("<>");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_DUP_INPUT_OUTPUT);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
     cr_assert_str_eq(tok.data, "<>");
     token_free(tok);
+    lexer_free(lexer);
+}
+
+Test(lexer2, token_redir_stick_left)
+{
+    struct lexer *lexer = lexer_new("ls -la 2>file");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "ls");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "-la");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "2");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
+    cr_assert_str_eq(tok.data, ">");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "file");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+Test(lexer2, token_redir_stick_left2)
+{
+    struct lexer *lexer = lexer_new("ls -la 2<>file");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "ls");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "-la");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "2");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
+    cr_assert_str_eq(tok.data, "<>");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "file");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+Test(lexer2, token_redir_stick_left3)
+{
+    struct lexer *lexer = lexer_new("ls -la >| file");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "ls");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "-la");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
+    cr_assert_str_eq(tok.data, ">|");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "file");
+    token_free(tok);
+
     lexer_free(lexer);
 }
 
@@ -131,7 +295,7 @@ Test(lexer2, token_while)
 {
     struct lexer *lexer = lexer_new("while");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_WHILE);
+    cr_assert_eq(tok.type, TOKEN_WORD);
     cr_assert_str_eq(tok.data, "while");
     token_free(tok);
     lexer_free(lexer);
@@ -141,7 +305,7 @@ Test(lexer2, token_until)
 {
     struct lexer *lexer = lexer_new("until");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_UNTIL);
+    cr_assert_eq(tok.type, TOKEN_WORD);
     cr_assert_str_eq(tok.data, "until");
     token_free(tok);
     lexer_free(lexer);
@@ -151,7 +315,7 @@ Test(lexer2, token_for)
 {
     struct lexer *lexer = lexer_new("for");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_FOR);
+    cr_assert_eq(tok.type, TOKEN_WORD);
     cr_assert_str_eq(tok.data, "for");
     token_free(tok);
     lexer_free(lexer);
@@ -161,7 +325,7 @@ Test(lexer2, token_do)
 {
     struct lexer *lexer = lexer_new("do");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_DO);
+    cr_assert_eq(tok.type, TOKEN_WORD);
     cr_assert_str_eq(tok.data, "do");
     token_free(tok);
     lexer_free(lexer);
@@ -171,7 +335,7 @@ Test(lexer2, token_done)
 {
     struct lexer *lexer = lexer_new("done");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_DONE);
+    cr_assert_eq(tok.type, TOKEN_WORD);
     cr_assert_str_eq(tok.data, "done");
     token_free(tok);
     lexer_free(lexer);

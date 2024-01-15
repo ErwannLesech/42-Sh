@@ -42,7 +42,7 @@ char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
     return word;
 }
 
-char *handle_comment(struct lexer *lexer, char *word, unsigned word_index)
+char *handle_comment(struct lexer *lexer, char *word, unsigned *word_index)
 {
     // Skip the comment
     ++lexer->index;
@@ -53,13 +53,11 @@ char *handle_comment(struct lexer *lexer, char *word, unsigned word_index)
     {
         ++lexer->index;
     }
-    word[word_index] = lexer->data[lexer->index];
-    ++lexer->index;
-    // If the comment isn't the last thing in the string, we need to add a '\0'
-    // at the end of the word.
-    if (word[word_index] != '\0')
+    word[*word_index] = lexer->data[lexer->index];
+    *word_index += 1;
+    if (lexer->data[lexer->index] != '\0')
     {
-        word[word_index + 1] = '\0';
+        ++lexer->index;
     }
 
     // Skip the spaces after the comment
@@ -68,4 +66,28 @@ char *handle_comment(struct lexer *lexer, char *word, unsigned word_index)
         ++lexer->index;
     }
     return word;
+}
+
+char *handle_redir(struct lexer *lexer, unsigned *word_index)
+{
+    char *redir = malloc(sizeof(char) * 2);
+    redir[0] = lexer->data[lexer->index];
+    ++lexer->index;
+    *word_index += 1;
+    if (lexer->data[lexer->index] == '>' || lexer->data[lexer->index] == '&'
+        || lexer->data[lexer->index] == '|')
+    {
+        *word_index += 1;
+        redir = realloc(redir, sizeof(char) * 3);
+        if (lexer->data[lexer->index - 1] == '<'
+            && lexer->data[lexer->index] == '|')
+        {
+            free(redir);
+            return NULL;
+        }
+
+        redir[1] = lexer->data[lexer->index];
+        ++lexer->index;
+    }
+    return redir;
 }

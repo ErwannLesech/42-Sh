@@ -15,32 +15,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct lex_match lex_match[25] = { { "if", TOKEN_IF },
-                                   { "then", TOKEN_THEN },
-                                   { "elif", TOKEN_ELIF },
-                                   { "else", TOKEN_ELSE },
-                                   { "fi", TOKEN_FI },
-                                   { ";", TOKEN_SEMICOLON },
-                                   { "\n", TOKEN_EOL },
-                                   { "\0", TOKEN_EOF },
+struct lex_match lex_match[] = {
+    { "if", TOKEN_IF },      { "then", TOKEN_THEN }, { "elif", TOKEN_ELIF },
+    { "else", TOKEN_ELSE },  { "fi", TOKEN_FI },     { ";", TOKEN_SEMICOLON },
+    { "\n", TOKEN_EOL },     { "\0", TOKEN_EOF },
 
-                                   { "&&", TOKEN_AND },
-                                   { "||", TOKEN_OR },
-                                   { "|", TOKEN_PIPE },
-                                   { "!", TOKEN_NEGATE },
-                                   { "[0-9]*<", TOKEN_INPUT_REDIR },
-                                   { "[0-9]*>", TOKEN_OUTPUT_REDIR },
-                                   { "[0-9]*>>", TOKEN_APPEND },
-                                   { "[0-9]*<&", TOKEN_DUP_INPUT },
-                                   { "[0-9]*>&", TOKEN_DUP_INPUT_OUTPUT },
-                                   { "[0-9]*>|", TOKEN_NOCLOBBER },
-                                   { "[0-9]*<>", TOKEN_DUP_INPUT_OUTPUT },
-                                   { "while", TOKEN_WHILE },
-                                   { "until", TOKEN_UNTIL },
-                                   { "for", TOKEN_FOR },
-                                   { "do", TOKEN_DO },
-                                   { "done", TOKEN_DONE },
-                                   { "$*", TOKEN_VARIABLE } };
+    { "&&", TOKEN_AND },     { "||", TOKEN_OR },     { "|", TOKEN_PIPE },
+    { "!", TOKEN_NEGATE },   { "<", TOKEN_REDIR },   { ">", TOKEN_REDIR },
+    { ">>", TOKEN_REDIR },   { "<&", TOKEN_REDIR },  { ">&", TOKEN_REDIR },
+    { ">|", TOKEN_REDIR },   { "<>", TOKEN_REDIR },
+
+    { "$*", TOKEN_VARIABLE }
+};
 
 struct lexer *lexer_new(const char *input)
 {
@@ -71,52 +57,75 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
 {
     char *word = malloc(sizeof(char) * 2);
     unsigned word_index = 0;
-    if (lexer->data[lexer->index] == '\0')
-    {
-        ++lexer->index;
-        word[0] = '\0';
-        return word;
-    }
+
     if (lexer->data[lexer->index] == ';' || lexer->data[lexer->index] == '\n')
     {
         word[0] = lexer->data[lexer->index];
-        word[1] = '\0';
+        word_index = 1;
         ++lexer->index;
         if (lexer->data[lexer->index] == ' ')
         {
             ++lexer->index;
         }
-        return word;
     }
-    if (lexer->data[lexer->index] == '#')
+    else if (lexer->data[lexer->index] == '#')
     {
-        return handle_comment(lexer, word, 0);
+        word = handle_comment(lexer, word, &word_index);
     }
-    while (lexer->data[lexer->index] != ' ' && lexer->data[lexer->index] != '\0'
-           && lexer->data[lexer->index] != ';'
-           && lexer->data[lexer->index] != '\n'
-           && lexer->data[lexer->index] != '\t')
+    else if (lexer->data[lexer->index] == '>'
+             || lexer->data[lexer->index] == '<')
     {
-        word = realloc(word, sizeof(char) * (word_index + 1));
-        word[word_index] = lexer->data[lexer->index];
-        ++word_index;
+        word = handle_redir(lexer, &word_index);
+    }
+    else if (lexer->data[lexer->index] == '|'
+             || lexer->data[lexer->index] == '&')
+    {
+        word[0] = lexer->data[lexer->index];
+        word_index = 1;
         ++lexer->index;
-        if (lexer->data[lexer->index - 1] == '\\')
+
+        if (lexer->data[lexer->index] == '|'
+            || lexer->data[lexer->index] == '&')
         {
-            if (!handle_backslash(lexer, is_diactivated, word, word_index))
-            {
-                return word;
-            }
+            word = realloc(word, sizeof(char) * (word_index + 1));
+            word[word_index] = lexer->data[lexer->index];
+            word_index = 2;
+            ++lexer->index;
         }
-        else if (lexer->data[lexer->index - 1] == '\'')
+    }
+    else
+    {
+        while (lexer->data[lexer->index] != ' '
+               && lexer->data[lexer->index] != '\0'
+               && lexer->data[lexer->index] != ';'
+               && lexer->data[lexer->index] != '\n'
+               && lexer->data[lexer->index] != '\t'
+               && lexer->data[lexer->index] != '>'
+               && lexer->data[lexer->index] != '<'
+               && lexer->data[lexer->index] != '|'
+               && lexer->data[lexer->index] != '&')
         {
-            word =
-                handle_simple_quote(lexer, is_diactivated, word, &word_index);
-            if (!word)
+            word = realloc(word, sizeof(char) * (word_index + 1));
+            word[word_index] = lexer->data[lexer->index];
+            ++word_index;
+            ++lexer->index;
+            if (lexer->data[lexer->index - 1] == '\\')
             {
-                return NULL;
+                if (!handle_backslash(lexer, is_diactivated, word, word_index))
+                {
+                    return word;
+                }
             }
-            lexer->index += 1;
+            else if (lexer->data[lexer->index - 1] == '\'')
+            {
+                word = handle_simple_quote(lexer, is_diactivated, word,
+                                           &word_index);
+                if (!word)
+                {
+                    return NULL;
+                }
+                lexer->index += 1;
+            }
         }
     }
     word = realloc(word, sizeof(char) * (word_index + 1));
@@ -192,6 +201,9 @@ struct token lexer_pop(struct lexer *lexer)
         return token;
     }
     struct token token = parse_input_for_tok(lexer);
-    lexer->curr_tok = token;
+    if (token.type != TOKEN_EOF)
+    {
+        lexer->curr_tok = token;
+    }
     return token;
 }

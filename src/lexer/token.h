@@ -22,7 +22,6 @@ enum token_type
     TOKEN_ELSE,
     TOKEN_FI,
     TOKEN_SEMICOLON,
-    TOKEN_SIMPLE_QUOTE,
     TOKEN_WORD, // Any word
     TOKEN_EOL, // End of line ('\n')
     TOKEN_EOF, // End of file
@@ -33,19 +32,8 @@ enum token_type
     TOKEN_OR, // ||
     TOKEN_PIPE, // |
     TOKEN_NEGATE, // \!
-    TOKEN_INPUT_REDIR, // <
-    TOKEN_OUTPUT_REDIR, // >
-    TOKEN_APPEND, // >>
-    TOKEN_DUP_INPUT, // <&
-    TOKEN_DUP_OUTPUT, // >&
-    TOKEN_NOCLOBBER, // >|
-    TOKEN_DUP_INPUT_OUTPUT, // <>
-    TOKEN_WHILE, // while
-    TOKEN_UNTIL, // until
-    TOKEN_FOR, // for
-    TOKEN_DO, // do
-    TOKEN_DONE, // done
-    TOKEN_DOUBLE_QUOTE, // "
+    TOKEN_REDIR, // >, <, >>, >&, <&, >|, <>
+
     TOKEN_VARIABLE // $
 };
 

@@ -74,7 +74,7 @@ Test(lexer, lexer_pop_simple)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 17, "index = %lu", lexer->index);
+    cr_assert_eq(lexer->index, 16, "index = %lu", lexer->index);
     token_free(token);
 
     lexer_free(lexer);
@@ -104,7 +104,7 @@ Test(lexer, lexer_pop_with_semicolon)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 10);
+    cr_assert_eq(lexer->index, 9);
     token_free(token);
 
     lexer_free(lexer);
@@ -134,7 +134,7 @@ Test(lexer, lexer_pop_with_backslash_semicolon)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 11);
+    cr_assert_eq(lexer->index, 10);
     token_free(token);
 
     lexer_free(lexer);
@@ -158,7 +158,7 @@ Test(Lexer, lexer_pop_with_backslash_semicolon_in_word)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 10);
+    cr_assert_eq(lexer->index, 9);
     token_free(token);
 
     lexer_free(lexer);
@@ -182,7 +182,7 @@ Test(Lexer, lexer_pop_with_single_quote)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 9);
+    cr_assert_eq(lexer->index, 8);
     token_free(token);
 
     lexer_free(lexer);
@@ -206,7 +206,7 @@ Test(Lexer, lexer_pop_with_backslash_single_quote)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 8);
+    cr_assert_eq(lexer->index, 7);
     token_free(token);
 
     lexer_free(lexer);
@@ -230,7 +230,7 @@ Test(Lexer, lexer_pop_with_backslash_single_quote_2)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 17);
+    cr_assert_eq(lexer->index, 16);
     token_free(token);
 
     lexer_free(lexer);
@@ -254,7 +254,7 @@ Test(Lexer, lexer_pop_with_backslash_diactivate_single_quote)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 19);
+    cr_assert_eq(lexer->index, 18);
     token_free(token);
 
     lexer_free(lexer);
@@ -458,7 +458,7 @@ Test(Lexer, simple_comment)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 31);
+    cr_assert_eq(lexer->index, 30);
     token_free(token);
 
     lexer_free(lexer);
@@ -476,7 +476,7 @@ Test(Lexer, comment_with_semicolon)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF, "token.type = %d", token.type);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 37, "lexer->index = %lu", lexer->index);
+    cr_assert_eq(lexer->index, 36, "lexer->index = %lu", lexer->index);
     token_free(token);
 
     lexer_free(lexer);
@@ -506,7 +506,7 @@ Test(Lexer, comment_with_backslash_n)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF, "token.type = %d", token.type);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 37, "lexer->index = %lu", lexer->index);
+    cr_assert_eq(lexer->index, 36, "lexer->index = %lu", lexer->index);
     token_free(token);
 
     lexer_free(lexer);
@@ -524,7 +524,7 @@ Test(Lexer, comment_with_back_slash2)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF, "token.type = %d", token.type);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 38, "lexer->index = %lu", lexer->index);
+    cr_assert_eq(lexer->index, 37, "lexer->index = %lu", lexer->index);
     token_free(token);
 
     lexer_free(lexer);

@@ -96,7 +96,14 @@ char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
  *
  * \return The next word.
  */
-char *handle_comment(struct lexer *lexer, char *word, unsigned word_index);
+char *handle_comment(struct lexer *lexer, char *word, unsigned *word_index);
+
+/**
+ * \brief Handle the redirection character.
+ * \param lexer The lexer.
+ * \return The next redirection word.
+ */
+char *handle_redir(struct lexer *lexer, unsigned *word_index);
 
 /**
  * \brief Returns the next word in the input string.
