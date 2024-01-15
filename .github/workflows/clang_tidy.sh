@@ -19,23 +19,26 @@ for file in $(find "$root_dir/src" -type f -name '*.c'); do
         fi
         parameters=$(echo "$line" | sed 's/^[^(]*(//;s/)[^{]*$//;s/,/\n/g' | wc -l)
 
+        cpy_function_name="$function_name"
+
         if [[ "${function_name:0:1}" == "*" ]]; then
             function_name="\\$function_name"
         else
             function_name="$function_name"
         fi
+        
 
         # Count the number of lines in the function (excluding blank and '{', '}' lines)
         lines_in_function=$(sed -n "/$return_type $function_name/,/^}/p" "$file" | sed '/^$/d' | sed '/^[[:space:]]*{$/d' | sed '/^[[:space:]]*}$/d' | wc -l)  
         lines_in_function=$((lines_in_function-1))
 
         if [[ "$parameters" -gt 4 ]]; then
-            echo "Too many parameters in function: $function_name"
+            echo "Too many parameters in function: $return_type $cpy_function_name"
             echo "Parameters: $parameters"
         fi
 
         if [[ "$lines_in_function" -gt 40 ]]; then
-            echo "Too many lines in function: $function_name"
+            echo "Too many lines in function: $return_type $cpy_function_name"
             echo "Lines in function: $lines_in_function"
         fi
 
