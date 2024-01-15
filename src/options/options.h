@@ -51,7 +51,6 @@ void logger(char *str, enum logger_step step, bool logger_enabled);
 /**
  * \brief Pretty printf of ast.
  */
-void pretty_print(struct ast_node *ast, bool pretty_print_enabled,
-                           int *depths);
+void pretty_print(struct ast_node *ast, bool pretty_print_enabled, int *depths);
 
 #endif /* ! OPTIONS_H  */

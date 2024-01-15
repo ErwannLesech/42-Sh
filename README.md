@@ -18,7 +18,7 @@
 git clone git@github.com:ErwannLesech/42-Sh.git
 cd 42-Sh
 ./42-install
-cd src
+cd src/
 ```
 
 ## Usage

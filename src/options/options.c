@@ -101,35 +101,49 @@ void pp_node(struct ast_node *ast, int fd, int *number)
 
     char *buff = malloc(sizeof(char) * 1000);
 
-    write(fd, "node", 4);
+    if(write(fd, "node", 4) == -1)
+        return;
     sprintf(buff, "%d", *number);
     buff[strlen(buff)] = '\0';
-    write(fd, buff, count_digits(*number));
-    write(fd, " [label=\"", 9);
-    write(fd, ast_type_to_string(ast->type),
-          strlen(ast_type_to_string(ast->type)));
+    if(write(fd, buff, count_digits(*number)) == -1)
+        return;
+    if (write(fd, " [label=\"", 9) == -1)
+        return;
+    if (write(fd, ast_type_to_string(ast->type),
+          strlen(ast_type_to_string(ast->type))) == -1)
+        return;
     if (ast->value)
     {
-        write(fd, " - ", 3);
-        write(fd, ast->value, strlen(ast->value));
+        if(write(fd, " - ", 3) == -1)
+            return;
+        if (write(fd, ast->value, strlen(ast->value)) == -1)
+            return;
     }
-    write(fd, "\"];\n", 4);
+    if(write(fd, "\"];\n", 4) == -1)
+        return;
 
     int i = 0;
     while (i < ast->children_count && ast->children[i])
     {
-        write(fd, "node", 4);
+        if(write(fd, "node", 4) == -1)
+            return;
         sprintf(buff, "%d", (*number + i + 11));
-        write(fd, buff, count_digits(*number + i + 11));
-        write(fd, " [label=\"", 9);
-        write(fd, ast_type_to_string(ast->children[i]->type),
-              strlen(ast_type_to_string(ast->children[i]->type)));
+        if(write(fd, buff, count_digits(*number + i + 11)) == -1)
+            return;
+        if (write(fd, " [label=\"", 9) == -1)
+            return;
+        if (write(fd, ast_type_to_string(ast->children[i]->type),
+              strlen(ast_type_to_string(ast->children[i]->type))) == -1)
+            return;
         if (ast->children[i]->value)
         {
-            write(fd, " - ", 3);
-            write(fd, ast->children[i]->value, strlen(ast->children[i]->value));
+            if (write(fd, " - ", 3) == -1)
+                return;
+            if (write(fd, ast->children[i]->value, strlen(ast->children[i]->value)) == -1)
+                return;
         }
-        write(fd, "\"];\n", 4);
+        if (write(fd, "\"];\n", 4) == -1)
+            return;
         i++;
     }
 }
@@ -146,14 +160,20 @@ void pp_link(struct ast_node *ast, int fd, int *number)
 
     while (i < ast->children_count && ast->children[i])
     {
-        write(fd, "node", 4);
+        if (write(fd, "node", 4) == -1)
+            return;
         sprintf(buff, "%d", *number);
-        write(fd, buff, count_digits(*number));
-        write(fd, " -> ", 4);
-        write(fd, "node", 4);
+        if (write(fd, buff, count_digits(*number)) == -1)
+            return;
+        if (write(fd, " -> ", 4) == -1)
+            return;
+        if (write(fd, "node", 4) == -1)
+            return;
         sprintf(buff, "%d", (*number + i + 11));
-        write(fd, buff, count_digits(*number + i + 11));
-        write(fd, ";\n", 2);
+        if (write(fd, buff, count_digits(*number + i + 11)) == -1)
+            return;
+        if (write(fd, ";\n", 2) == -1)
+            return;
         i++;
     }
     i = 0;
@@ -175,15 +195,20 @@ void pretty_print(struct ast_node *ast, bool pretty_print_enabled, int *number)
 
     int fd = open("pretty_print.gv", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
-    write(fd, "digraph AST {\n", 14);
+    if (write(fd, "digraph AST {\n", 14) == -1)
+        return;
 
-    write(fd, "graph [rankdir=TB, ranksep=0.8, nodesep=0.4];\n", 46);
-    write(fd, "node [shape=box, color=lightblue, style=filled, fontsize=14];\n",
-          62);
-    write(fd, "edge [color=black, style=solid, arrowhead=vee];\n\n", 48);
+    if (write(fd, "graph [rankdir=TB, ranksep=0.8, nodesep=0.4];\n", 46) == -1)
+        return;
+    if (write(fd, "node [shape=box, color=lightblue, style=filled, fontsize=14];\n",
+          62) == -1)
+        return;
+    if (write(fd, "edge [color=black, style=solid, arrowhead=vee];\n\n", 48) == -1)
+        return;
 
     pp_link(ast, fd, number);
 
-    write(fd, "}\n", 3);
+    if (write(fd, "}\n", 3) == -1)
+        return;
     close(fd);
 }
