@@ -15,17 +15,26 @@
  */
 enum token_type
 {
+    // Step 1
     TOKEN_IF,
     TOKEN_THEN,
     TOKEN_ELIF,
     TOKEN_ELSE,
     TOKEN_FI,
     TOKEN_SEMICOLON,
-    TOKEN_SIMPLE_QUOTE,
     TOKEN_WORD, // Any word
     TOKEN_EOL, // End of line ('\n')
     TOKEN_EOF, // End of file
-    TOKEN_ERROR // Error
+    TOKEN_ERROR, // Error
+
+    // Step 2
+    TOKEN_AND, // &&
+    TOKEN_OR, // ||
+    TOKEN_PIPE, // |
+    TOKEN_NEGATE, // \!
+    TOKEN_REDIR, // >, <, >>, >&, <&, >|, <>
+    TOKEN_DOUBLE_QUOTE, // "
+    TOKEN_WORD_ASSIGNMENT // variable=
 };
 
 /**

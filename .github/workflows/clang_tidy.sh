@@ -30,11 +30,13 @@ for file in $(find "$root_dir/src" -type f -name '*.c'); do
         lines_in_function=$((lines_in_function-1))
 
         if [[ "$parameters" -gt 4 ]]; then
-            echo "Too many parameters in function: $return_type $function_name"
+            echo "Too many parameters in function: $function_name"
+            echo "Parameters: $parameters"
         fi
 
         if [[ "$lines_in_function" -gt 40 ]]; then
-            echo "Too many lines in function: $return_type $function_name"
+            echo "Too many lines in function: $function_name"
+            echo "Lines in function: $lines_in_function"
         fi
 
         # echo "Function: $return_type $function_name"
@@ -47,6 +49,7 @@ for file in $(find "$root_dir/src" -type f -name '*.c'); do
     # echo "Total functions: $function_count"
     if [[ "$function_count" -gt 10 ]]; then
         echo "Too many functions in file: $file"
+        echo "Total functions: $function_count"
     fi
 
     # Check for newline at EOF

@@ -13,9 +13,10 @@
 ## Installation
 
 ```sh
-git clone <path>
-cd <path>
-make
+git clone git@github.com:ErwannLesech/42-Sh.git
+cd 42-Sh
+./42-install.sh
+cd src/
 ```
 
 ## Usage

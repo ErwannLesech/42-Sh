@@ -78,7 +78,9 @@ int parser_loop(struct lexer *lexer, bool logger_enabled,
         }
         if (pretty_print_enabled)
         {
-            print_ast(ast, 0, logger_enabled);
+            // print_ast(ast, 0, logger_enabled);
+            int depths = 0;
+            pretty_print(ast, pretty_print_enabled, &depths);
         }
         return_value = match_ast(ast, logger_enabled);
         if (return_value != 0 && return_value != 1)
