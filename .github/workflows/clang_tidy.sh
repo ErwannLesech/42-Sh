@@ -41,10 +41,13 @@ for file in $(find "$root_dir/src" -type f -name '*.c'); do
         # echo "Parameters: $parameters"
         # echo "Lines in function: $lines_in_function"
         # echo "---------------------"
-    
+
     done
     # echo "Total functions: $function_count"
     if [[ "$function_count" -gt 10 ]]; then
         echo "Too many functions in file: $file"
     fi
+
+    # Check for newline at EOF
+    test "$(tail -c 1 "$file" | wc -l)" -eq 0 && echo "no newline at EOF in file: $file"
 done
