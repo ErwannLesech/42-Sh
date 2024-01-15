@@ -69,6 +69,20 @@ char *ast_type_to_string(enum ast_type type)
         return "AST_WORD";
     case AST_EMPTY:
         return "AST_EMPTY";
+    case AST_FOR:
+        return "AST_FOR";
+    case AST_WHILE:
+        return "AST_WHILE";
+    case AST_UNTIL:
+        return "AST_UNTIL";
+    case AST_AND_OR:
+        return "AST_AND_OR";
+    case AST_NEGATE:
+        return "AST_NEGATE";
+    case AST_PIPELINE:
+        return "AST_PIPELINE";
+    case AST_REDIRECTION:
+        return "AST_REDIRECTION";
     default:
         return "UNKNOWN";
     }
@@ -81,6 +95,10 @@ void print_ast(struct ast_node *node, int depth, bool logger_enabled)
     for (int i = 0; i < depth; i++)
         printf("  ");
     printf("%s\n", ast_type_to_string(node->type));
+    if (node->type == AST_WORD)
+    {
+        printf("%s:\n", node->value);
+    }
     logger(node->value, LOGGER_PARSER, logger_enabled);
     for (int i = 0; i < node->children_count; i++)
         print_ast(node->children[i], depth + 1, logger_enabled);
