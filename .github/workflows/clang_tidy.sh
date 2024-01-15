@@ -2,6 +2,7 @@
 
 root_dir=$(git rev-parse --show-toplevel)
 
+# C files check
 for file in $(find "$root_dir/src" -type f -name '*.c'); do
     function_count=$(grep -E '^(bool|int|char|double|void|float|struct [a-zA-Z][a-zA-Z_]*|unsigned|long)[[:space:]]+[*]*[a-zA-Z_][a-zA-Z0-9_]*[[:space:]]*\([^)]*\)[[:space:]]*' "$file" | wc -l)
     # echo "Processing file: $file"
@@ -50,4 +51,22 @@ for file in $(find "$root_dir/src" -type f -name '*.c'); do
 
     # Check for newline at EOF
     test "$(tail -c 1 "$file" | wc -l)" -eq 0 && echo "no newline at EOF in file: $file"
+done
+
+# Header files check
+for header_file in $(find "$root_dir/src" -type f -name '*.h'); do
+    # Get the header name without the path and extension
+    header_name=$(basename "$header_file" .h)
+
+    #put the header name in uppercase
+    header_name=$(echo "$header_name" | tr '[:lower:]' '[:upper:]')
+    header_name="${header_name}_H"
+
+    # Check if the header file begins and ends correctly
+    if ! grep -qE "#ifndef[[:space:]]*$header_name" "$header_file" || ! grep -qE "#define[[:space:]]*$header_name[[:space:]]*$" "$header_file" || ! grep -qE "#endif[[:space:]]*/\*.*$header_name.*\*/" "$header_file"; then
+        echo "Header file $header_file is not correctly formatted."
+        tail -n +9 "$header_file" | head -n 3   
+        tail -n 1 "$header_file"
+    fi
+
 done
