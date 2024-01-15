@@ -74,15 +74,13 @@ Table of Contents</h1>
 <ul>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage">Usage</a></li>
-<li><a href="#features">Features</a></li>
 <li><a href="#contributing">Contributing</a></li>
-<li><a href="#continuous-integration">Contious Integration</a></li>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Installation</h1>
 <div class="fragment"><div class="line">git clone git@github.com:ErwannLesech/42-Sh.git</div>
 <div class="line">cd 42-Sh</div>
-<div class="line">./42-install</div>
+<div class="line">./42-install.sh</div>
 <div class="line">cd src/</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Usage</h1>
@@ -102,51 +100,21 @@ OPTIONS</h2>
 <p>There are 2 more options that can be activated by inserting these flags into arguments.</p>
 <div class="fragment"><div class="line">$ ./42sh --logger # Print some informations during process</div>
 <div class="line">$ ./42sh --pretty-print # Print the parser AST</div>
-</div><!-- fragment --><p>In case of <code>pretty-print</code> option, a <code>.gv</code> file is generated. To convert it to a <code>.png</code> to visualise the ast, here is the line:</p>
-<div class="fragment"><div class="line">dot -Tpng pretty_print.gv -o ast.png</div>
-<div class="line">display ast.png</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
-Features</h1>
-<p>In the 42sh project, our primary objective was to implement a comprehensive set of POSIX features.</p>
-<p>These features include, but are not limited to, what follows :</p>
-<p><em>Each step represents every week working on the project.</em></p>
-<h2><a class="anchor" id="autotoc_md7"></a>
-Step 1</h2>
-<ul>
-<li><b>Conditionnal operators</b> (if, elif, else, fi)</li>
-<li><b>Commands list</b> (echo ; ls)</li>
-<li><b>Single quote strings</b> (echo 'It is an \'exemple\'')</li>
-<li><b>Comments</b> (echo exem# it is a comment)</li>
-<li><b>Simple commands</b> (echo, ls, cat, tr, ...)</li>
-<li><b>Simple builtins</b> (true, false, echo -enE)</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
-Step 2</h2>
-<ul>
-<li><b>Redirections</b> (&gt;, &lt;, &gt;&gt;, &gt;&amp;, &lt;&amp;, &gt;|, &lt;&gt;)</li>
-<li><b>Pipes</b> (echo dad | tr a e)</li>
-<li><b>Negation</b> (! true)</li>
-<li><b>Basic loops</b> (while, until)</li>
-<li><b>Operators</b> (&amp;&amp;, ||)</li>
-<li><b>Double quote strings</b> (echo "This variable $a is an amount in \$")</li>
-<li><b>Variables</b> (a=2, $a, $#, $*, $RANDOM, $UID, $IFS, ...)</li>
-<li><b>For loops</b></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md9"></a>
 Contributing</h1>
 <p>All contributions are done by doing a merge request when you are done working on your own branch</p>
 <p>Please, follow these conventions for the repository property :</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Branch name</h2>
 <div class="fragment"><div class="line">^(&lt;type&gt;/&lt;name&gt;)$</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 Commit name</h2>
 <div class="fragment"><div class="line">^(&lt;type&gt;(&lt;scope&gt;): &lt;description&gt;</div>
 <div class="line">&lt;BLANK LINE&gt;</div>
 <div class="line">&lt;body&gt;)$</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
 Naming Convention</h1>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Types</h2>
 <p>The <code>type</code> refers to the purpose or nature of the commit. It is <b>mandatory</b>.</p><ul>
 <li><code>feat</code> Commits, that adds or remove a new feature</li>
@@ -162,38 +130,27 @@ Types</h2>
 <li><code>ops</code> Commits, that affect operational components like infrastructure, deployment, backup, recovery, ...</li>
 <li><code>chore</code> Miscellaneous commits e.g. modifying <code>.gitignore</code></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Scopes</h2>
 <p>The <code>scope</code> refers to the module, component, or area of the project that your commit affects. It is <b>optional</b>.</p>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Description</h2>
 <p>The <code>description</code> contains a concise description of the change. It is <b>mandatory</b>.</p><ul>
 <li>Use the imperative, present tense: "change" not "changed" nor "changes"</li>
 <li>Don't capitalize the first letter</li>
 <li>No dot (.) at the end</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Body</h2>
 <p>The <code>body</code> provides a more in-depth explanation of the changes made in the commit. It is <b>optional</b> but highly recommended.</p><ul>
 <li>Use the imperative, present tense: "change" not "changed" nor "changes"</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Exemples</h2>
 <div class="fragment"><div class="line">fix(http_parser): use the correct HTTP response code for wrong version</div>
 <div class="line"> </div>
 <div class="line">Use the HTTP error 405 instead of 400 if the request contains an unsupported HTTP version.</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md18"></a>
-Continuous Integration</h1>
-<p>Powered by LESECH Erwann.</p>
-<p>At every <code>push/pull_request</code> to <code>master</code> and <code>dev</code>, the CI is executed to check some rules and deploy the result to gh-pages.</p>
-<p>Here are main rules to respect in order to check the CI program:</p>
-<ul>
-<li><code>configure.ac</code> and <code>Makefile.am</code> are used to compile and run the testsuite of 42Sh.</li>
-<li><code>.clang-format</code> is used to diff the whole project and check if it's clang-format compliant.</li>
-<li><code>github/workflows/clang_tidy.sh</code> is a shell script that verify if the 42Sh is clang-tidy compliant.</li>
-<li><code>Doxyfile</code> must be pushed to be used with <code>doxygen</code> in order to generate the documentation. </li>
-</ul>
-</div></div><!-- contents -->
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
