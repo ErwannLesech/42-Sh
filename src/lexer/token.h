@@ -33,8 +33,8 @@ enum token_type
     TOKEN_PIPE, // |
     TOKEN_NEGATE, // \!
     TOKEN_REDIR, // >, <, >>, >&, <&, >|, <>
-
-    TOKEN_VARIABLE // $
+    TOKEN_DOUBLE_QUOTE, // "
+    TOKEN_WORD_ASSIGNMENT // variable=
 };
 
 /**

@@ -23,9 +23,7 @@ struct lex_match lex_match[] = {
     { "&&", TOKEN_AND },     { "||", TOKEN_OR },     { "|", TOKEN_PIPE },
     { "!", TOKEN_NEGATE },   { "<", TOKEN_REDIR },   { ">", TOKEN_REDIR },
     { ">>", TOKEN_REDIR },   { "<&", TOKEN_REDIR },  { ">&", TOKEN_REDIR },
-    { ">|", TOKEN_REDIR },   { "<>", TOKEN_REDIR },
-
-    { "$*", TOKEN_VARIABLE }
+    { ">|", TOKEN_REDIR },   { "<>", TOKEN_REDIR }
 };
 
 struct lexer *lexer_new(const char *input)
@@ -105,16 +103,37 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                && lexer->data[lexer->index] != '|'
                && lexer->data[lexer->index] != '&')
         {
+            if (lexer->data[lexer->index] == '=' && word_index > 0 && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE)
+            {
+                printf("word1: %s\n", word);
+                lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;
+                lexer->index += 1;
+                break;
+            }
             word = realloc(word, sizeof(char) * (word_index + 1));
             word[word_index] = lexer->data[lexer->index];
             ++word_index;
             ++lexer->index;
-            if (lexer->data[lexer->index - 1] == '\\')
+            if (lexer->data[lexer->index - 1] == '\"'
+                || lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE)
             {
-                if (!handle_backslash(lexer, is_diactivated, word, word_index))
+                if (lexer->data[lexer->index - 1] == '\"')
                 {
-                    return word;
+                    word_index -= 1;
+                    lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
                 }
+                word = handle_double_quote(lexer, is_diactivated, word,
+                                           &word_index);
+                if (!word)
+                {
+                    return NULL;
+                }
+                word[word_index] = '\0';
+                return word;
+            }
+            else if (lexer->data[lexer->index - 1] == '\\')
+            {
+                handle_backslash(lexer, is_diactivated, word, word_index);
             }
             else if (lexer->data[lexer->index - 1] == '\'')
             {
@@ -161,6 +180,15 @@ struct token parse_input_for_tok(struct lexer *lexer)
         return token;
     }
 
+    if (lexer->curr_tok.type == TOKEN_WORD_ASSIGNMENT)
+    {
+        token.type = TOKEN_WORD_ASSIGNMENT;
+        token.data = word;
+        lexer->curr_tok.type = TOKEN_EOL;
+        printf("word: %s\n", word);
+        return token;
+    }
+
     for (unsigned i = 0; i < sizeof(lex_match) / sizeof(*lex_match); ++i)
     {
         if (fnmatch(lex_match[i].str, word, 0) == 0 && !is_diactivated)
@@ -170,7 +198,7 @@ struct token parse_input_for_tok(struct lexer *lexer)
             return token;
         }
     }
-
+    
     token.type = TOKEN_WORD;
     token.data = word;
     return token;
@@ -201,7 +229,7 @@ struct token lexer_pop(struct lexer *lexer)
         return token;
     }
     struct token token = parse_input_for_tok(lexer);
-    if (token.type != TOKEN_EOF)
+    if (token.type == TOKEN_EOF)
     {
         lexer->curr_tok = token;
     }

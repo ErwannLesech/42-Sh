@@ -307,7 +307,7 @@ Test(Lexer, multiple_spaces)
 
 Test(Lexer, lexer_if_then)
 {
-    struct lexer *lexer = lexer_new("if 1=1 then echo 'ok' fi;");
+    struct lexer *lexer = lexer_new("if true then echo 'ok' fi;");
     struct token token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_IF, "token.type = %d", token.type,
                  "token.type = %d", token.type);
@@ -320,9 +320,9 @@ Test(Lexer, lexer_if_then)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_WORD, "token.type = %d", token.type,
                  "token.type = %d", token.type);
-    cr_assert_str_eq(token.data, "1=1", "token.data = %s", token.data,
+    cr_assert_str_eq(token.data, "true", "token.data = %s", token.data,
                      "token.data = %s", token.data);
-    cr_assert_eq(lexer->index, 7, "lexer->index = %lu", lexer->index,
+    cr_assert_eq(lexer->index, 8, "lexer->index = %lu", lexer->index,
                  "lexer->index = %lu", lexer->index);
     token_free(token);
 
@@ -331,7 +331,7 @@ Test(Lexer, lexer_if_then)
                  "token.type = %d", token.type);
     cr_assert_str_eq(token.data, "then", "token.data = %s", token.data,
                      "token.data = %s", token.data);
-    cr_assert_eq(lexer->index, 12, "lexer->index = %lu", lexer->index,
+    cr_assert_eq(lexer->index, 13, "lexer->index = %lu", lexer->index,
                  "lexer->index = %lu", lexer->index);
     token_free(token);
 
@@ -340,7 +340,7 @@ Test(Lexer, lexer_if_then)
                  "token.type = %d", token.type);
     cr_assert_str_eq(token.data, "echo", "token.data = %s", token.data,
                      "token.data = %s", token.data);
-    cr_assert_eq(lexer->index, 17, "lexer->index = %lu", lexer->index,
+    cr_assert_eq(lexer->index, 18, "lexer->index = %lu", lexer->index,
                  "lexer->index = %lu", lexer->index);
     token_free(token);
 
@@ -349,7 +349,7 @@ Test(Lexer, lexer_if_then)
                  "token.type = %d", token.type);
     cr_assert_str_eq(token.data, "ok", "token.data = %s", token.data,
                      "token.data = %s", token.data);
-    cr_assert_eq(lexer->index, 22, "lexer->index = %lu", lexer->index,
+    cr_assert_eq(lexer->index, 23, "lexer->index = %lu", lexer->index,
                  "lexer->index = %lu", lexer->index);
     token_free(token);
 
@@ -358,7 +358,7 @@ Test(Lexer, lexer_if_then)
                  "token.type = %d", token.type);
     cr_assert_str_eq(token.data, "fi", "token.data = %s", token.data,
                      "token.data = %s", token.data);
-    cr_assert_eq(lexer->index, 24, "lexer->index = %lu", lexer->index,
+    cr_assert_eq(lexer->index, 25, "lexer->index = %lu", lexer->index,
                  "lexer->index = %lu", lexer->index);
     token_free(token);
 
@@ -367,7 +367,7 @@ Test(Lexer, lexer_if_then)
                  "token.type = %d", token.type);
     cr_assert_str_eq(token.data, ";", "token.data = %s", token.data,
                      "token.data = %s", token.data);
-    cr_assert_eq(lexer->index, 25, "lexer->index = %lu", lexer->index,
+    cr_assert_eq(lexer->index, 26, "lexer->index = %lu", lexer->index,
                  "lexer->index = %lu", lexer->index);
     token_free(token);
 
