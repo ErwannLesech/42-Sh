@@ -1,12 +1,11 @@
 <map id="src/parser/parser_condition.c" name="src/parser/parser_condition.c">
-<area shape="rect" id="node1" title="Parse the condition rule." alt="" coords="272,5,481,32"/>
-<area shape="rect" id="node2" href="$parser_8h.html" title="Header for the parser." alt="" coords="339,80,414,107"/>
-<area shape="rect" id="node3" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="79,155,170,181"/>
-<area shape="rect" id="node8" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="320,155,433,181"/>
-<area shape="rect" id="node10" href="$token_8h.html" title="Header of the token structure." alt="" coords="439,229,509,256"/>
-<area shape="rect" id="node4" title=" " alt="" coords="61,304,127,331"/>
-<area shape="rect" id="node5" title=" " alt="" coords="23,229,93,256"/>
-<area shape="rect" id="node6" href="$options_8h.html" title="Header for options functions." alt="" coords="118,229,265,256"/>
-<area shape="rect" id="node7" title=" " alt="" coords="205,304,287,331"/>
-<area shape="rect" id="node9" title=" " alt="" coords="339,229,414,256"/>
+<area shape="rect" id="node1" title="Parse the condition rule." alt="" coords="231,5,441,32"/>
+<area shape="rect" id="node2" href="$parser_8h.html" title="Header for the parser." alt="" coords="299,80,373,107"/>
+<area shape="rect" id="node3" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="125,155,216,181"/>
+<area shape="rect" id="node7" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="279,155,393,181"/>
+<area shape="rect" id="node9" href="$token_8h.html" title="Header of the token structure." alt="" coords="398,229,469,256"/>
+<area shape="rect" id="node4" title=" " alt="" coords="192,229,275,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,229,72,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="97,229,167,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="299,229,373,256"/>
 </map>

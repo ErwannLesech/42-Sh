@@ -1,14 +1,16 @@
 <map id="src/lexer/token.h" name="src/lexer/token.h">
-<area shape="rect" id="node1" title="Header of the token structure." alt="" coords="892,5,1021,32"/>
-<area shape="rect" id="node2" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="980,80,1104,107"/>
-<area shape="rect" id="node7" href="$parser_8h.html" title="Header for the parser." alt="" coords="744,162,887,189"/>
+<area shape="rect" id="node1" title="Header of the token structure." alt="" coords="755,5,884,32"/>
+<area shape="rect" id="node2" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="936,80,1060,107"/>
+<area shape="rect" id="node9" href="$parser_8h.html" title="Header for the parser." alt="" coords="481,162,624,189"/>
 <area shape="rect" id="node3" href="$exec__tests_8c.html" title="Tests the exec function." alt="" coords="1015,244,1181,285"/>
-<area shape="rect" id="node4" href="$lexer_8c.html" title="Lex the input." alt="" coords="1186,162,1309,189"/>
-<area shape="rect" id="node5" href="$lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="911,155,1061,196"/>
-<area shape="rect" id="node6" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="1205,251,1295,278"/>
-<area shape="rect" id="node8" href="$ast__eval_8c.html" title="Evaluate the AST." alt="" coords="196,251,363,278"/>
-<area shape="rect" id="node9" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="387,251,529,278"/>
-<area shape="rect" id="node10" href="$parser__condition_8c.html" title="Parse the condition rule." alt="" coords="553,251,763,278"/>
-<area shape="rect" id="node11" href="$parser__element_8c.html" title="Parse the element rule." alt="" coords="787,251,990,278"/>
-<area shape="rect" id="node12" href="$parser__tests_8c.html" title="Tests the parser functions." alt="" coords="5,244,172,285"/>
+<area shape="rect" id="node4" href="$lexer_8c.html" title="Lex the input." alt="" coords="1287,162,1410,189"/>
+<area shape="rect" id="node5" href="$lexer__utils_8c.html" title=" " alt="" coords="648,162,807,189"/>
+<area shape="rect" id="node6" href="$lexer2__tests_8c.html" title="Tests the lexer functions." alt="" coords="831,155,989,196"/>
+<area shape="rect" id="node7" href="$lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="1013,155,1162,196"/>
+<area shape="rect" id="node8" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="1205,251,1295,278"/>
+<area shape="rect" id="node10" href="$ast__eval_8c.html" title="Evaluate the AST." alt="" coords="196,251,363,278"/>
+<area shape="rect" id="node11" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="387,251,529,278"/>
+<area shape="rect" id="node12" href="$parser__condition_8c.html" title="Parse the condition rule." alt="" coords="553,251,763,278"/>
+<area shape="rect" id="node13" href="$parser__element_8c.html" title="Parse the element rule." alt="" coords="787,251,990,278"/>
+<area shape="rect" id="node14" href="$parser__tests_8c.html" title="Tests the parser functions." alt="" coords="5,244,172,285"/>
 </map>

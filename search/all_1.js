@@ -18,7 +18,7 @@ var searchData=
   ['ast_5fnode_5fword_16',['ast_node_word',['../ast_8c.html#a3f7827e3c5c598593d99955c75d54513',1,'ast_node_word(char *value):&#160;ast.c'],['../ast_8h.html#a3f7827e3c5c598593d99955c75d54513',1,'ast_node_word(char *value):&#160;ast.c']]],
   ['ast_5fsimple_5fcommand_17',['AST_SIMPLE_COMMAND',['../ast_8h.html#a77091c187ac9a89404fac2e8226daef3ae740a949d7caafe9f395b724bb9cb53d',1,'ast.h']]],
   ['ast_5ftype_18',['ast_type',['../ast_8h.html#a77091c187ac9a89404fac2e8226daef3',1,'ast.h']]],
-  ['ast_5ftype_5fto_5fstring_19',['ast_type_to_string',['../ast_8c.html#a5eb4462732c15324ad8ce20770eff5fd',1,'ast.c']]],
+  ['ast_5ftype_5fto_5fstring_19',['ast_type_to_string',['../ast_8c.html#a5eb4462732c15324ad8ce20770eff5fd',1,'ast_type_to_string(enum ast_type type):&#160;ast.c'],['../ast_8h.html#a5eb4462732c15324ad8ce20770eff5fd',1,'ast_type_to_string(enum ast_type type):&#160;ast.c']]],
   ['ast_5funexpected_20',['AST_UNEXPECTED',['../ast_8h.html#a77091c187ac9a89404fac2e8226daef3a5dc395e35638efc969c20add46356741',1,'ast.h']]],
   ['ast_5fword_21',['AST_WORD',['../ast_8h.html#a77091c187ac9a89404fac2e8226daef3aa5bcbfccc5cc55a4c0ff7a0a41ec1a42',1,'ast.h']]]
 ];

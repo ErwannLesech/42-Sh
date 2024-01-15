@@ -1,0 +1,11 @@
+<map id="src/lexer/tests/lexer2_tests.c" name="src/lexer/tests/lexer2_tests.c">
+<area shape="rect" id="node1" title="Tests the lexer functions." alt="" coords="309,5,467,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,152,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="177,95,319,121"/>
+<area shape="rect" id="node4" title=" " alt="" coords="344,95,432,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="457,95,527,121"/>
+<area shape="rect" id="node6" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="552,95,629,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="447,169,529,196"/>
+<area shape="rect" id="node8" title=" " alt="" coords="553,169,628,196"/>
+<area shape="rect" id="node9" href="$token_8h.html" title="Header of the token structure." alt="" coords="653,169,723,196"/>
+</map>

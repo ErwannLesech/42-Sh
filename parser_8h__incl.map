@@ -1,11 +1,10 @@
 <map id="src/parser/parser.h" name="src/parser/parser.h">
-<area shape="rect" id="node1" title="Header for the parser." alt="" coords="305,5,448,32"/>
-<area shape="rect" id="node2" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="79,80,170,107"/>
-<area shape="rect" id="node7" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="320,80,433,107"/>
-<area shape="rect" id="node9" href="$token_8h.html" title="Header of the token structure." alt="" coords="439,155,509,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="61,229,127,256"/>
-<area shape="rect" id="node4" title=" " alt="" coords="23,155,93,181"/>
-<area shape="rect" id="node5" href="$options_8h.html" title="Header for options functions." alt="" coords="118,155,265,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="205,229,287,256"/>
-<area shape="rect" id="node8" title=" " alt="" coords="339,155,414,181"/>
+<area shape="rect" id="node1" title="Header for the parser." alt="" coords="265,5,407,32"/>
+<area shape="rect" id="node2" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="125,80,216,107"/>
+<area shape="rect" id="node6" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="279,80,393,107"/>
+<area shape="rect" id="node8" href="$token_8h.html" title="Header of the token structure." alt="" coords="398,155,469,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="192,155,275,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,155,72,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="97,155,167,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="299,155,373,181"/>
 </map>

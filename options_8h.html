@@ -78,14 +78,17 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="ast_8h_source.html">../ast/ast.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for options.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="options_8h__incl.png" border="0" usemap="#asrc_2options_2options_8h" alt=""/></div>
 <map name="asrc_2options_2options_8h" id="asrc_2options_2options_8h">
-<area shape="rect" title="Header for options functions." alt="" coords="17,5,175,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,88,107"/>
-<area shape="rect" title=" " alt="" coords="112,80,179,107"/>
+<area shape="rect" title="Header for options functions." alt="" coords="69,5,227,32"/>
+<area shape="rect" title=" " alt="" coords="5,155,88,181"/>
+<area shape="rect" title=" " alt="" coords="208,155,275,181"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="103,80,193,107"/>
+<area shape="rect" title=" " alt="" coords="113,155,183,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -93,22 +96,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="options_8h__dep__incl.png" border="0" usemap="#asrc_2options_2options_8hdep" alt=""/></div>
 <map name="asrc_2options_2options_8hdep" id="asrc_2options_2options_8hdep">
-<area shape="rect" title="Header for options functions." alt="" coords="1283,5,1441,32"/>
-<area shape="rect" href="ast_8c.html" title="Represent a node of the AST." alt="" coords="1224,169,1324,196"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="1006,87,1107,114"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="1033,169,1200,196"/>
-<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="1108,333,1275,360"/>
-<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="1064,251,1153,278"/>
-<area shape="rect" href="options_8c.html" title="Options functions." alt="" coords="1459,87,1615,114"/>
-<area shape="rect" href="options__tests_8c.html" title="Tests the options functions." alt="" coords="1639,80,1821,121"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="652,169,795,196"/>
-<area shape="rect" href="parser__tests_8c.html" title="Tests the parser functions." alt="" coords="5,244,172,285"/>
-<area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="1229,251,1383,278"/>
-<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="873,244,1040,285"/>
-<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="707,251,849,278"/>
-<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="1299,333,1451,360"/>
-<area shape="rect" href="parser__condition_8c.html" title="Parse the condition rule." alt="" coords="196,251,405,278"/>
-<area shape="rect" href="parser__element_8c.html" title="Parse the element rule." alt="" coords="430,251,633,278"/>
+<area shape="rect" title="Header for options functions." alt="" coords="382,5,539,32"/>
+<area shape="rect" href="ast_8c.html" title="Represent a node of the AST." alt="" coords="5,87,105,114"/>
+<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="85,259,252,285"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="317,87,484,114"/>
+<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="767,177,856,203"/>
+<area shape="rect" href="options_8c.html" title="Options functions." alt="" coords="560,87,716,114"/>
+<area shape="rect" href="options__tests_8c.html" title="Tests the options functions." alt="" coords="741,80,922,121"/>
+<area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="232,177,385,203"/>
+<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="409,169,576,211"/>
+<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="601,177,742,203"/>
+<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="277,259,429,285"/>
 </map>
 </div>
 </div>
@@ -134,6 +132,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a29e31e199043bc9de5269d287ddc9947"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8h.html#a29e31e199043bc9de5269d287ddc9947">logger</a> (char *str, enum <a class="el" href="options_8h.html#aff01805671af6c510c0b3636c68b81b3">logger_step</a> step, bool logger_enabled)</td></tr>
 <tr class="memdesc:a29e31e199043bc9de5269d287ddc9947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pretty printf of string.  <a href="options_8h.html#a29e31e199043bc9de5269d287ddc9947">More...</a><br /></td></tr>
 <tr class="separator:a29e31e199043bc9de5269d287ddc9947"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3dc4d66f5979aeeae9b2d8bb03b8f79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8h.html#ae3dc4d66f5979aeeae9b2d8bb03b8f79">pretty_print</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, bool pretty_print_enabled, int *depths)</td></tr>
+<tr class="memdesc:ae3dc4d66f5979aeeae9b2d8bb03b8f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pretty printf of ast.  <a href="options_8h.html#ae3dc4d66f5979aeeae9b2d8bb03b8f79">More...</a><br /></td></tr>
+<tr class="separator:ae3dc4d66f5979aeeae9b2d8bb03b8f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header for options functions. </p>
@@ -280,6 +281,42 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ae3dc4d66f5979aeeae9b2d8bb03b8f79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3dc4d66f5979aeeae9b2d8bb03b8f79">&#9670;&nbsp;</a></span>pretty_print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pretty_print </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
+          <td class="paramname"><em>ast</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>pretty_print_enabled</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>depths</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pretty printf of ast. </p>
 
 </div>
 </div>

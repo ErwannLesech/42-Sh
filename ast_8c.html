@@ -82,12 +82,12 @@ Include dependency graph for ast.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ast_8c__incl.png" border="0" usemap="#asrc_2ast_2ast_8c" alt=""/></div>
 <map name="asrc_2ast_2ast_8c" id="asrc_2ast_2ast_8c">
-<area shape="rect" title="Represent a node of the AST." alt="" coords="73,5,173,32"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="64,80,118,107"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="118,155,264,181"/>
-<area shape="rect" title=" " alt="" coords="6,229,72,256"/>
-<area shape="rect" title=" " alt="" coords="22,155,93,181"/>
-<area shape="rect" title=" " alt="" coords="150,229,232,256"/>
+<area shape="rect" title="Represent a node of the AST." alt="" coords="99,5,199,32"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="89,155,144,181"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="131,80,278,107"/>
+<area shape="rect" title=" " alt="" coords="191,229,274,256"/>
+<area shape="rect" title=" " alt="" coords="101,229,167,256"/>
+<area shape="rect" title=" " alt="" coords="5,229,76,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -106,6 +106,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a84dfe2902c8517ae70e81142f444d913"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free an AST node.  <a href="ast_8c.html#a84dfe2902c8517ae70e81142f444d913">More...</a><br /></td></tr>
 <tr class="separator:a84dfe2902c8517ae70e81142f444d913"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5eb4462732c15324ad8ce20770eff5fd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8c.html#a5eb4462732c15324ad8ce20770eff5fd">ast_type_to_string</a> (enum <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3">ast_type</a> type)</td></tr>
+<tr class="memdesc:a5eb4462732c15324ad8ce20770eff5fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an AST type to a string.  <a href="ast_8c.html#a5eb4462732c15324ad8ce20770eff5fd">More...</a><br /></td></tr>
 <tr class="separator:a5eb4462732c15324ad8ce20770eff5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7214a740ce637e8ce698392c29d21699"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8c.html#a7214a740ce637e8ce698392c29d21699">print_ast</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int depth, bool logger_enabled)</td></tr>
 <tr class="memdesc:a7214a740ce637e8ce698392c29d21699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new AST node of type AST_SIMPLE_COMMAND.  <a href="ast_8c.html#a7214a740ce637e8ce698392c29d21699">More...</a><br /></td></tr>
@@ -249,6 +250,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Convert an AST type to a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The AST type string. </dd></dl>
 
 </div>
 </div>

@@ -77,19 +77,18 @@ $(function() {
 
 <p>Represent a node of the AST.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="options_8h_source.html">../options/options.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ast.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ast_8h__incl.png" border="0" usemap="#asrc_2ast_2ast_8h" alt=""/></div>
 <map name="asrc_2ast_2ast_8h" id="asrc_2ast_2ast_8h">
-<area shape="rect" title="Represent a node of the AST." alt="" coords="7,5,108,32"/>
-<area shape="rect" title=" " alt="" coords="5,155,72,181"/>
-<area shape="rect" title=" " alt="" coords="22,80,93,107"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="117,80,264,107"/>
-<area shape="rect" title=" " alt="" coords="149,155,232,181"/>
+<area shape="rect" title="Represent a node of the AST." alt="" coords="95,5,196,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,88,107"/>
+<area shape="rect" title=" " alt="" coords="112,80,179,107"/>
+<area shape="rect" title=" " alt="" coords="203,80,274,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -97,19 +96,22 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ast_8h__dep__incl.png" border="0" usemap="#asrc_2ast_2ast_8hdep" alt=""/></div>
 <map name="asrc_2ast_2ast_8hdep" id="asrc_2ast_2ast_8hdep">
-<area shape="rect" title="Represent a node of the AST." alt="" coords="399,5,500,32"/>
-<area shape="rect" href="ast_8c.html" title="Represent a node of the AST." alt="" coords="190,80,290,107"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="366,80,533,107"/>
-<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="269,162,358,189"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="626,80,769,107"/>
-<area shape="rect" href="parser__tests_8c.html" title="Tests the parser functions." alt="" coords="1251,155,1418,196"/>
-<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="182,244,349,271"/>
-<area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="39,162,193,189"/>
-<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="382,155,549,196"/>
-<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="573,162,715,189"/>
-<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="5,244,157,271"/>
-<area shape="rect" href="parser__condition_8c.html" title="Parse the condition rule." alt="" coords="790,162,999,189"/>
-<area shape="rect" href="parser__element_8c.html" title="Parse the element rule." alt="" coords="1024,162,1227,189"/>
+<area shape="rect" title="Represent a node of the AST." alt="" coords="329,5,430,32"/>
+<area shape="rect" href="ast_8c.html" title="Represent a node of the AST." alt="" coords="36,162,136,189"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="648,162,815,189"/>
+<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="392,251,482,278"/>
+<area shape="rect" href="options_8c.html" title="Options functions." alt="" coords="160,162,316,189"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="301,80,458,107"/>
+<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="1026,162,1168,189"/>
+<area shape="rect" href="parser__tests_8c.html" title="Tests the parser functions." alt="" coords="1604,244,1771,285"/>
+<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="614,333,780,360"/>
+<area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="506,251,659,278"/>
+<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="735,244,902,285"/>
+<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="926,251,1068,278"/>
+<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="437,333,589,360"/>
+<area shape="rect" href="options__tests_8c.html" title="Tests the options functions." alt="" coords="442,155,624,196"/>
+<area shape="rect" href="parser__condition_8c.html" title="Parse the condition rule." alt="" coords="1092,251,1302,278"/>
+<area shape="rect" href="parser__element_8c.html" title="Parse the element rule." alt="" coords="1326,251,1529,278"/>
 </map>
 </div>
 </div>
@@ -150,6 +152,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a3f7827e3c5c598593d99955c75d54513"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a3f7827e3c5c598593d99955c75d54513">ast_node_word</a> (char *value)</td></tr>
 <tr class="memdesc:a3f7827e3c5c598593d99955c75d54513"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new AST node of type AST_WORD.  <a href="ast_8h.html#a3f7827e3c5c598593d99955c75d54513">More...</a><br /></td></tr>
 <tr class="separator:a3f7827e3c5c598593d99955c75d54513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eb4462732c15324ad8ce20770eff5fd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a5eb4462732c15324ad8ce20770eff5fd">ast_type_to_string</a> (enum <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3">ast_type</a> type)</td></tr>
+<tr class="memdesc:a5eb4462732c15324ad8ce20770eff5fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an AST type to a string.  <a href="ast_8h.html#a5eb4462732c15324ad8ce20770eff5fd">More...</a><br /></td></tr>
+<tr class="separator:a5eb4462732c15324ad8ce20770eff5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7214a740ce637e8ce698392c29d21699"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8h.html#a7214a740ce637e8ce698392c29d21699">print_ast</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int depth, bool logger_enabled)</td></tr>
 <tr class="memdesc:a7214a740ce637e8ce698392c29d21699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new AST node of type AST_SIMPLE_COMMAND.  <a href="ast_8h.html#a7214a740ce637e8ce698392c29d21699">More...</a><br /></td></tr>
 <tr class="separator:a7214a740ce637e8ce698392c29d21699"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -299,6 +304,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The new node. </dd></dl>
+
+</div>
+</div>
+<a id="a5eb4462732c15324ad8ce20770eff5fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eb4462732c15324ad8ce20770eff5fd">&#9670;&nbsp;</a></span>ast_type_to_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* ast_type_to_string </td>
+          <td>(</td>
+          <td class="paramtype">enum <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3">ast_type</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert an AST type to a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The AST type string. </dd></dl>
 
 </div>
 </div>

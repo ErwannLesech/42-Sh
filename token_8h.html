@@ -81,12 +81,14 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="token_8h__dep__incl.png" border="0" usemap="#asrc_2lexer_2token_8hdep" alt=""/></div>
 <map name="asrc_2lexer_2token_8hdep" id="asrc_2lexer_2token_8hdep">
-<area shape="rect" title="Header of the token structure." alt="" coords="892,5,1021,32"/>
-<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="980,80,1104,107"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="744,162,887,189"/>
+<area shape="rect" title="Header of the token structure." alt="" coords="755,5,884,32"/>
+<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="936,80,1060,107"/>
+<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="481,162,624,189"/>
 <area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="1015,244,1181,285"/>
-<area shape="rect" href="lexer_8c.html" title="Lex the input." alt="" coords="1186,162,1309,189"/>
-<area shape="rect" href="lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="911,155,1061,196"/>
+<area shape="rect" href="lexer_8c.html" title="Lex the input." alt="" coords="1287,162,1410,189"/>
+<area shape="rect" href="lexer__utils_8c.html" title=" " alt="" coords="648,162,807,189"/>
+<area shape="rect" href="lexer2__tests_8c.html" title="Tests the lexer functions." alt="" coords="831,155,989,196"/>
+<area shape="rect" href="lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="1013,155,1162,196"/>
 <area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="1205,251,1295,278"/>
 <area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="196,251,363,278"/>
 <area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="387,251,529,278"/>
@@ -114,12 +116,20 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0dabca10a6c8a5a8dd0eab9469f138a03aa">TOKEN_FI</a>
 , <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0dac8c74b281e178c87923363a90f6ff371">TOKEN_SEMICOLON</a>
-, <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0da355a849d046345d76349b9a42f2d46c6">TOKEN_SIMPLE_QUOTE</a>
 , <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0da28b529bc6cf86659d134593d58a27be5">TOKEN_WORD</a>
+, <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0da6b0ab7cf8c0d1203475022b3d5600f85">TOKEN_EOL</a>
 , <br />
-&#160;&#160;<a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0da6b0ab7cf8c0d1203475022b3d5600f85">TOKEN_EOL</a>
-, <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0daa130df27256cd45f5781fc74deeb50dc">TOKEN_EOF</a>
+&#160;&#160;<a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0daa130df27256cd45f5781fc74deeb50dc">TOKEN_EOF</a>
 , <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0dabbfc577192f2423b39a5f693e260b615">TOKEN_ERROR</a>
+, <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0da7203710f75ffd67d36a92024eca9b4ab">TOKEN_AND</a>
+, <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0daf82eae34ce15da4d9e334b9a2e3b5675">TOKEN_OR</a>
+, <br />
+&#160;&#160;<a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0da93000ce4e0f00f6f294a98192f705910">TOKEN_PIPE</a>
+, <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0daaa10cc7452e34ef64712e5f20b0d8dc9">TOKEN_NEGATE</a>
+, <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0da04632b4b770793e58e3f00fd641aef0a">TOKEN_REDIR</a>
+, <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0da03b849fa95864c7f19ee6876f079f769">TOKEN_DOUBLE_QUOTE</a>
+, <br />
+&#160;&#160;<a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0daa33235952496d8c123daf2e9b3f9db70">TOKEN_WORD_ASSIGNMENT</a>
 <br />
  }</td></tr>
 <tr class="memdesc:afe5ef662303b6b710ea6ee1a944bad0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum of all the possible token types.  <a href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d">More...</a><br /></td></tr>
@@ -151,11 +161,17 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0daf1444e318c1d452a3c6dbb924a7e932a"></a>TOKEN_ELSE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0dabca10a6c8a5a8dd0eab9469f138a03aa"></a>TOKEN_FI&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0dac8c74b281e178c87923363a90f6ff371"></a>TOKEN_SEMICOLON&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0da355a849d046345d76349b9a42f2d46c6"></a>TOKEN_SIMPLE_QUOTE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0da28b529bc6cf86659d134593d58a27be5"></a>TOKEN_WORD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0da6b0ab7cf8c0d1203475022b3d5600f85"></a>TOKEN_EOL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0daa130df27256cd45f5781fc74deeb50dc"></a>TOKEN_EOF&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0dabbfc577192f2423b39a5f693e260b615"></a>TOKEN_ERROR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0da7203710f75ffd67d36a92024eca9b4ab"></a>TOKEN_AND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0daf82eae34ce15da4d9e334b9a2e3b5675"></a>TOKEN_OR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0da93000ce4e0f00f6f294a98192f705910"></a>TOKEN_PIPE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0daaa10cc7452e34ef64712e5f20b0d8dc9"></a>TOKEN_NEGATE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0da04632b4b770793e58e3f00fd641aef0a"></a>TOKEN_REDIR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0da03b849fa95864c7f19ee6876f079f769"></a>TOKEN_DOUBLE_QUOTE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="afe5ef662303b6b710ea6ee1a944bad0daa33235952496d8c123daf2e9b3f9db70"></a>TOKEN_WORD_ASSIGNMENT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

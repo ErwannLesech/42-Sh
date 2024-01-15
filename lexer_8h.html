@@ -95,10 +95,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="lexer_8h__dep__incl.png" border="0" usemap="#asrc_2lexer_2lexer_8hdep" alt=""/></div>
 <map name="asrc_2lexer_2lexer_8hdep" id="asrc_2lexer_2lexer_8hdep">
-<area shape="rect" title="Header of the lexer." alt="" coords="319,5,443,32"/>
+<area shape="rect" title="Header of the lexer." alt="" coords="476,5,600,32"/>
 <area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="5,169,172,211"/>
 <area shape="rect" href="lexer_8c.html" title="Lex the input." alt="" coords="477,87,599,114"/>
-<area shape="rect" href="lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="623,80,773,121"/>
+<area shape="rect" href="lexer__utils_8c.html" title=" " alt="" coords="624,87,783,114"/>
+<area shape="rect" href="lexer2__tests_8c.html" title="Tests the lexer functions." alt="" coords="807,80,965,121"/>
+<area shape="rect" href="lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="989,80,1138,121"/>
 <area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="196,177,285,203"/>
 <area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="309,87,452,114"/>
 <area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="1128,177,1295,203"/>
@@ -140,6 +142,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a2a07e5555074b7f75d11fe49d8167bbb"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtoken.html">token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a2a07e5555074b7f75d11fe49d8167bbb">lexer_pop</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="memdesc:a2a07e5555074b7f75d11fe49d8167bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next token, and removes it from the stream.  <a href="lexer_8h.html#a2a07e5555074b7f75d11fe49d8167bbb">More...</a><br /></td></tr>
 <tr class="separator:a2a07e5555074b7f75d11fe49d8167bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaede71d34748b28c1bb93b4bddf5bce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#acaede71d34748b28c1bb93b4bddf5bce">handle_backslash</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool *is_diactivated, char *word, unsigned word_index)</td></tr>
+<tr class="memdesc:acaede71d34748b28c1bb93b4bddf5bce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the backslash character.  <a href="lexer_8h.html#acaede71d34748b28c1bb93b4bddf5bce">More...</a><br /></td></tr>
+<tr class="separator:acaede71d34748b28c1bb93b4bddf5bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab085cd91d99547686c269ca0263d4f79"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#ab085cd91d99547686c269ca0263d4f79">handle_simple_quote</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool *is_diactivated, char *word, unsigned *word_index)</td></tr>
+<tr class="memdesc:ab085cd91d99547686c269ca0263d4f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the simple quote character.  <a href="lexer_8h.html#ab085cd91d99547686c269ca0263d4f79">More...</a><br /></td></tr>
+<tr class="separator:ab085cd91d99547686c269ca0263d4f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abad30285f619d840c2bca50ba5ce6647"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#abad30285f619d840c2bca50ba5ce6647">handle_double_quote</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool *is_diactivated, char *word, unsigned *word_index)</td></tr>
+<tr class="memdesc:abad30285f619d840c2bca50ba5ce6647"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the double quote character.  <a href="lexer_8h.html#abad30285f619d840c2bca50ba5ce6647">More...</a><br /></td></tr>
+<tr class="separator:abad30285f619d840c2bca50ba5ce6647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9edb757e00a9af1c93a67f25edb69f2"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#ab9edb757e00a9af1c93a67f25edb69f2">handle_comment</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char *word, unsigned *word_index)</td></tr>
+<tr class="memdesc:ab9edb757e00a9af1c93a67f25edb69f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the comment character.  <a href="lexer_8h.html#ab9edb757e00a9af1c93a67f25edb69f2">More...</a><br /></td></tr>
+<tr class="separator:ab9edb757e00a9af1c93a67f25edb69f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af434c41dd8cd364cf5e5770bfca1f406"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#af434c41dd8cd364cf5e5770bfca1f406">handle_redir</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, unsigned *word_index)</td></tr>
+<tr class="memdesc:af434c41dd8cd364cf5e5770bfca1f406"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the redirection character.  <a href="lexer_8h.html#af434c41dd8cd364cf5e5770bfca1f406">More...</a><br /></td></tr>
+<tr class="separator:af434c41dd8cd364cf5e5770bfca1f406"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45a6eab5fba2f945d03becf77985b64a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a45a6eab5fba2f945d03becf77985b64a">get_word</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool *is_diactivated)</td></tr>
 <tr class="memdesc:a45a6eab5fba2f945d03becf77985b64a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next word in the input string.  <a href="lexer_8h.html#a45a6eab5fba2f945d03becf77985b64a">More...</a><br /></td></tr>
 <tr class="separator:a45a6eab5fba2f945d03becf77985b64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -185,6 +202,215 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The next word. </dd></dl>
+
+</div>
+</div>
+<a id="acaede71d34748b28c1bb93b4bddf5bce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaede71d34748b28c1bb93b4bddf5bce">&#9670;&nbsp;</a></span>handle_backslash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handle_backslash </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>is_diactivated</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>word_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handle the backslash character. </p>
+<dl class="section return"><dt>Returns</dt><dd>false if it's the end of the string, true otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ab9edb757e00a9af1c93a67f25edb69f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9edb757e00a9af1c93a67f25edb69f2">&#9670;&nbsp;</a></span>handle_comment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* handle_comment </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>word_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handle the comment character. </p>
+<dl class="section return"><dt>Returns</dt><dd>The next word. </dd></dl>
+
+</div>
+</div>
+<a id="abad30285f619d840c2bca50ba5ce6647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abad30285f619d840c2bca50ba5ce6647">&#9670;&nbsp;</a></span>handle_double_quote()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* handle_double_quote </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>is_diactivated</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>word_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handle the double quote character. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lexer</td><td>The lexer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The next word. </dd></dl>
+
+</div>
+</div>
+<a id="af434c41dd8cd364cf5e5770bfca1f406"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af434c41dd8cd364cf5e5770bfca1f406">&#9670;&nbsp;</a></span>handle_redir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* handle_redir </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>word_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handle the redirection character. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lexer</td><td>The lexer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The next redirection word. </dd></dl>
+
+</div>
+</div>
+<a id="ab085cd91d99547686c269ca0263d4f79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab085cd91d99547686c269ca0263d4f79">&#9670;&nbsp;</a></span>handle_simple_quote()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* handle_simple_quote </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>is_diactivated</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>word_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handle the simple quote character. </p>
+<dl class="section return"><dt>Returns</dt><dd>false if a closing quote was not found, true otherwise. </dd></dl>
 
 </div>
 </div>
