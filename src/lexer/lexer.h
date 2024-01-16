@@ -111,7 +111,7 @@ bool check_variable_assignement(char *word);
  * 
  * \return if the word is a variable name.
  */
-bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index);
+bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index, bool *is_in_braces);
 
 /**
  * \brief Handle the dollar character.
@@ -119,7 +119,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index)
  * \return The next word.
  */
 bool handle_dollar(struct lexer *lexer, char **word,
-                          unsigned *word_index);
+                          unsigned *word_index, bool *is_in_braces);
 
 /**
  * \brief Handle the double quote character.

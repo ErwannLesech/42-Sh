@@ -840,3 +840,107 @@ Test(lexer2, variable_distinction_access)
     cr_assert_str_eq(tok.data, "$a");
     token_free(tok);
 }
+
+Test(lexer2, variable_distinction_access_double_quote)
+{
+    struct lexer *lexer = lexer_new("echo \"${a_123as}\"");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_VARIABLE);
+    cr_assert_str_eq(tok.data, "$a_123as");
+    token_free(tok);
+}
+
+Test(lexer2, variable_distinction_access_double_quote_with_string)
+{
+    struct lexer *lexer = lexer_new("echo \"variable:${a_123as}\n\"");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "variable:");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_VARIABLE);
+    cr_assert_str_eq(tok.data, "$a_123as");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_EOL);
+    cr_assert_str_eq(tok.data, "\n");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+Test(lexer2, variable_distinction_access_with_string)
+{
+    struct lexer *lexer = lexer_new("echo variable:${a_123as}\n");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "variable:");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_VARIABLE);
+    cr_assert_str_eq(tok.data, "$a_123as");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_EOL);
+    cr_assert_str_eq(tok.data, "\n");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+Test(lexer2, variable_distinction_access_deactivate_dollar)
+{
+    struct lexer *lexer = lexer_new("echo variable:\\${a_123as}\n");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "variable:${a_123as}");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+}
+
+Test(lexer2, variable_distinction_access_deactivate_brace)
+{
+    struct lexer *lexer = lexer_new("echo variable:$\\{a_123as}\n");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "variable:");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "${a_123as}");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+}
+

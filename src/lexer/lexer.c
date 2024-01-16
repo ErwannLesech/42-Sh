@@ -117,11 +117,17 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 {
                     break;
                 }
-                if (handle_dollar(lexer, &word, &word_index))
+                bool is_in_braces = false;
+                if (handle_dollar(lexer, &word, &word_index, &is_in_braces))
                 {
                     word = realloc(word, sizeof(char) * (word_index + 1));
                     word[word_index] = '\0';
                     return word;
+                }
+                else if (is_in_braces)
+                {
+                    free(word);
+                    return NULL;
                 }
             }
             // Handle the word assignement if it's contain '=' and it's not the first character
