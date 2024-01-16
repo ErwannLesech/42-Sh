@@ -13,46 +13,55 @@ int pipeline_eval(struct ast_node *node, bool logger_enabled)
         printf("pipeline\n");
     }
     int start = 0;
+    int stat = 0;
     if (node->children_count > 0 && node->children[0]->type == AST_NEGATE)
     {
         start = 1;
     }
-    int *pipes = malloc(sizeof(int) * (node->children_count));
-    if (pipe(pipes) == -1)
-    {
-        perror("pipe");
-        return -1;
-    }
-    int stat = 0;
+    int input_fd = STDIN_FILENO;
     for (int i = start; i < node->children_count; i++)
     {
-        int pid = fork();
+        int pipes[2];
+        if (i != node->children_count)
+        {
+            if (pipe(pipes) == -1)
+            {
+                return -1;
+            }
+        }
+        pid_t pid = fork();
         if (pid == 0)
         {
             if (i != start)
             {
-                dup2(pipes[i - 1], STDIN_FILENO);
+                dup2(input_fd, STDIN_FILENO);
+                close(input_fd);
             }
             if (i != node->children_count - 1)
             {
-                dup2(pipes[i], STDOUT_FILENO);
+                dup2(pipes[1], STDOUT_FILENO);
+                close(pipes[0]);
+                close(pipes[1]);
             }
-            close(pipes[i]);
-            int status = match_ast(node->children[i], logger_enabled);
-            exit(status);
+            stat = match_ast(node->children[i], logger_enabled);
+            exit(stat);
         }
-        else
+        if (i != start)
+            close(input_fd);
+        if (i != node->children_count)
         {
-            close(pipes[i]);
-            int status;
-            waitpid(pid, &status, 0);
-            stat = WEXITSTATUS(status);
+            close(pipes[1]);
+            input_fd = pipes[0];
         }
+        int status;
+        waitpid(pid, &status, 0);
+        stat = WEXITSTATUS(status);
     }
     if (start == 1)
     {
         stat = !stat;
     }
+
     return stat;
 }
 
