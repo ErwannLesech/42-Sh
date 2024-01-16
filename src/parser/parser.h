@@ -90,6 +90,7 @@ struct ast_node *pipeline(struct lexer *lexer);
 
 /**
  * \brief command = simple_command | shell_command ;
+ *  \brief IMPORTANT !!! AST_COMMAND CAN HANDLE REDIRECTION !!
  * \param lexer The lexer to parse.
  * \return A pointer to the AST.
  */

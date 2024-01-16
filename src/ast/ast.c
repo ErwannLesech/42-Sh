@@ -83,6 +83,12 @@ char *ast_type_to_string(enum ast_type type)
         return "AST_PIPELINE";
     case AST_REDIRECTION:
         return "AST_REDIRECTION";
+    case AST_AND:
+        return "AST_AND";
+    case AST_OR:
+        return "AST_OR";
+    case AST_COMMAND:
+        return "AST_COMMAND";
     default:
         return "UNKNOWN";
     }

@@ -70,13 +70,12 @@ int ast_and_or(struct ast_node *node, bool logger_enabled)
     int status = 0;
     for (int i = 0; i < node->children_count; i++)
     {
-        if (node->children[i]->type == AST_WORD 
-        && strcmp(node->children[i]->value, "&&") == 0 && status == 1)
+        if (node->children[i]->type == AST_AND && status == 1)
         {
+            printf("and\n");
            i++;
         }
-        else if (node->children[i]->type == AST_WORD 
-        && strcmp(node->children[i]->value, "||") == 0 && status == 0)
+        else if (node->children[i]->type == AST_OR && status == 0)
         {
             i++;
         }

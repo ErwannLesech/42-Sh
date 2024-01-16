@@ -3,6 +3,13 @@
 
 struct ast_node *prefix(struct lexer *lexer)
 {
+    if (parser_peek(lexer) == TOKEN_WORD_ASSIGNMENT)
+    {
+        struct ast_node *current = ast_node_new(AST_WORD_ASSIGNMENT);
+        current->value = lexer_peek(lexer).data;
+        parser_pop(lexer);
+        return current;
+    }
     return redirection(lexer);
 }
 

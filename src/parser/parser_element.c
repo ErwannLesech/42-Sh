@@ -65,9 +65,9 @@ struct ast_node *and_or(struct lexer *lexer)
         while (parser_peek(lexer) == TOKEN_AND || parser_peek(lexer) == TOKEN_OR)
         {
             if (parser_peek(lexer) == TOKEN_AND)
-                ast_append(current, ast_node_word("&&"));
+                ast_append(current, ast_node_new(AST_AND));
             else
-                ast_append(current, ast_node_word("||"));
+                ast_append(current, ast_node_new(AST_OR));
             parser_pop(lexer);
             while (parser_peek(lexer) == TOKEN_EOL)
                 parser_pop(lexer);
@@ -77,6 +77,7 @@ struct ast_node *and_or(struct lexer *lexer)
                 ast_free(current);
                 return NULL;
             }
+            //parser_pop(lexer);
             ast_append(current, child);
         }
         return current;
@@ -111,18 +112,24 @@ struct ast_node *pipeline(struct lexer *lexer)
         }
         return current;
     }
-    return command(lexer);
+    ast_free(current);
+    return NULL;
 }
 
 struct ast_node *command(struct lexer *lexer)
 {
-    struct ast_node *current = simple_command(lexer);
-    if (current != NULL)
-        return current;
-    current = shell_command(lexer);
-    if (current != NULL)
+    struct ast_node *current = ast_node_new(AST_COMMAND);
+    struct ast_node *child = simple_command(lexer);
+    if (child != NULL)
     {
-        struct ast_node *child = redirection(lexer);
+        ast_append(current, child);
+        return current;
+    }
+    child = shell_command(lexer);
+    if (child != NULL)
+    {
+        ast_append(current, child);
+        child = redirection(lexer);
         while (child != NULL)
         {
             ast_append(current, child);
@@ -146,7 +153,7 @@ struct ast_node *simple_command(struct lexer *lexer)
             ast_append(current, child2);
             child2 = prefix(lexer);
         }
-    }
+    }   
     if (parser_peek(lexer) == TOKEN_WORD)
     {
         char *value = lexer_peek(lexer).data;

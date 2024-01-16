@@ -31,7 +31,11 @@ enum ast_type
     AST_UNTIL,
     AST_FOR,
     AST_AND_OR,
-    AST_NEGATE
+    AST_NEGATE,
+    AST_AND,
+    AST_OR,
+    AST_COMMAND,
+    AST_WORD_ASSIGNMENT
 };
 
 /**
