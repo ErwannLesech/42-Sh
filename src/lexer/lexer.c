@@ -105,7 +105,6 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
         {
             if (lexer->data[lexer->index] == '=' && word_index > 0 && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE)
             {
-                printf("word1: %s\n", word);
                 lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;
                 lexer->index += 1;
                 break;
@@ -185,7 +184,6 @@ struct token parse_input_for_tok(struct lexer *lexer)
         token.type = TOKEN_WORD_ASSIGNMENT;
         token.data = word;
         lexer->curr_tok.type = TOKEN_EOL;
-        printf("word: %s\n", word);
         return token;
     }
 
