@@ -826,3 +826,17 @@ Test(lexer2, variable_find4)
 
     lexer_free(lexer);
 }
+
+Test(lexer2, variable_distinction_access)
+{
+    struct lexer *lexer = lexer_new("echo ${a}");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_VARIABLE);
+    cr_assert_str_eq(tok.data, "$a");
+    token_free(tok);
+}
