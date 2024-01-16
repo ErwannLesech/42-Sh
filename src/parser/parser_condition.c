@@ -133,6 +133,8 @@ struct ast_node *compound_list(struct lexer *lexer)
 struct ast_node *rule_while(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_WHILE);
+    if (parser_peek(lexer) == TOKEN_WORD)
+    {
     char *value = lexer_peek(lexer).data;
     if (strcmp(value, "while") == 0)
     {
@@ -163,6 +165,7 @@ struct ast_node *rule_while(struct lexer *lexer)
         }
     }
     free(value);
+    }
     ERROR:
     ast_free(current);
     return NULL;
@@ -171,6 +174,8 @@ struct ast_node *rule_while(struct lexer *lexer)
 struct ast_node *rule_until(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_UNTIL);
+    if (parser_peek(lexer) == TOKEN_WORD)
+    {
     char *value = lexer_peek(lexer).data;
     if (strcmp(value, "until") == 0)
     {
@@ -201,6 +206,7 @@ struct ast_node *rule_until(struct lexer *lexer)
         }
     }
     free(value);
+    }
     ERROR:
     ast_free(current);
     return NULL;
@@ -209,6 +215,8 @@ struct ast_node *rule_until(struct lexer *lexer)
 struct ast_node *rule_for(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_FOR);
+    if (parser_peek(lexer) == TOKEN_WORD)
+    {
     char *value = lexer_peek(lexer).data;
     if (strcmp(value, "for") == 0)
     {
@@ -245,6 +253,7 @@ struct ast_node *rule_for(struct lexer *lexer)
         }
     }
     free(value);
+    }
     ERROR:
     ast_free(current);
     return NULL;
