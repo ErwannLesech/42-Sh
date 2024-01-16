@@ -96,22 +96,25 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ast_8h__dep__incl.png" border="0" usemap="#asrc_2ast_2ast_8hdep" alt=""/></div>
 <map name="asrc_2ast_2ast_8hdep" id="asrc_2ast_2ast_8hdep">
-<area shape="rect" title="Represent a node of the AST." alt="" coords="329,5,430,32"/>
-<area shape="rect" href="ast_8c.html" title="Represent a node of the AST." alt="" coords="36,162,136,189"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="648,162,815,189"/>
-<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="392,251,482,278"/>
-<area shape="rect" href="options_8c.html" title="Options functions." alt="" coords="160,162,316,189"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="301,80,458,107"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="1026,162,1168,189"/>
-<area shape="rect" href="parser__tests_8c.html" title="Tests the parser functions." alt="" coords="1604,244,1771,285"/>
-<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="614,333,780,360"/>
-<area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="506,251,659,278"/>
-<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="735,244,902,285"/>
-<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="926,251,1068,278"/>
-<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="437,333,589,360"/>
-<area shape="rect" href="options__tests_8c.html" title="Tests the options functions." alt="" coords="442,155,624,196"/>
-<area shape="rect" href="parser__condition_8c.html" title="Parse the condition rule." alt="" coords="1092,251,1302,278"/>
-<area shape="rect" href="parser__element_8c.html" title="Parse the element rule." alt="" coords="1326,251,1529,278"/>
+<area shape="rect" title="Represent a node of the AST." alt="" coords="572,5,673,32"/>
+<area shape="rect" href="ast_8c.html" title="Represent a node of the AST." alt="" coords="269,162,369,189"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="393,162,559,189"/>
+<area shape="rect" href="loop_8c.html" title=" " alt="" coords="5,251,144,278"/>
+<area shape="rect" href="pipeline_8c.html" title=" " alt="" coords="168,251,331,278"/>
+<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="635,251,725,278"/>
+<area shape="rect" href="options_8c.html" title="Options functions." alt="" coords="891,162,1047,189"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="544,80,701,107"/>
+<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="1139,162,1282,189"/>
+<area shape="rect" href="parser__tests_8c.html" title="Tests the parser functions." alt="" coords="1865,244,2031,285"/>
+<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="514,333,681,360"/>
+<area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="355,251,509,278"/>
+<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="915,244,1082,285"/>
+<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="749,251,891,278"/>
+<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="337,333,489,360"/>
+<area shape="rect" href="options__tests_8c.html" title="Tests the options functions." alt="" coords="685,155,867,196"/>
+<area shape="rect" href="parser__condition_8c.html" title="Parse the condition rule." alt="" coords="1106,251,1315,278"/>
+<area shape="rect" href="parser__element_8c.html" title="Parse the element rule." alt="" coords="1340,251,1543,278"/>
+<area shape="rect" href="parser__functionnal_8c.html" title=" " alt="" coords="1567,251,1790,278"/>
 </map>
 </div>
 </div>
@@ -133,6 +136,20 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a277798c4b7c404219347a45a1561423c">AST_EMPTY</a>
 , <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a5dc395e35638efc969c20add46356741">AST_UNEXPECTED</a>
+, <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a5597ccb3c97b40e41af06c4418a8756d">AST_REDIRECTION</a>
+, <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a8131a0719e69f068da024895ed7773ff">AST_PIPELINE</a>
+, <br />
+&#160;&#160;<a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a352a757026c6cc6c3b094c9159f552c6">AST_WHILE</a>
+, <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a16ea50951e6930fc3ebdf0bd9e7e1fca">AST_UNTIL</a>
+, <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a039f359e216b4b75772f595ed9ed0bd4">AST_FOR</a>
+, <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a3a97c6f3df8b929e453d5f438948837c">AST_AND_OR</a>
+, <br />
+&#160;&#160;<a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3adb085811048276900ad956a7fc5519aa">AST_NEGATE</a>
+, <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a4dc746267911db63c359d53d4393e3c5">AST_AND</a>
+, <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a85f84b8ef5ddee418fe56edebc181db8">AST_OR</a>
+, <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a6946e048141960f4a9f229d94fd497e5">AST_COMMAND</a>
+, <br />
+&#160;&#160;<a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a1ede9e5a1a5ad1673ac67c0381b69711">AST_WORD_ASSIGNMENT</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a77091c187ac9a89404fac2e8226daef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerate the different types of AST nodes.  <a href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3">More...</a><br /></td></tr>
@@ -185,6 +202,17 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3aa5bcbfccc5cc55a4c0ff7a0a41ec1a42"></a>AST_WORD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a277798c4b7c404219347a45a1561423c"></a>AST_EMPTY&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a5dc395e35638efc969c20add46356741"></a>AST_UNEXPECTED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a5597ccb3c97b40e41af06c4418a8756d"></a>AST_REDIRECTION&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a8131a0719e69f068da024895ed7773ff"></a>AST_PIPELINE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a352a757026c6cc6c3b094c9159f552c6"></a>AST_WHILE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a16ea50951e6930fc3ebdf0bd9e7e1fca"></a>AST_UNTIL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a039f359e216b4b75772f595ed9ed0bd4"></a>AST_FOR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a3a97c6f3df8b929e453d5f438948837c"></a>AST_AND_OR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3adb085811048276900ad956a7fc5519aa"></a>AST_NEGATE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a4dc746267911db63c359d53d4393e3c5"></a>AST_AND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a85f84b8ef5ddee418fe56edebc181db8"></a>AST_OR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a6946e048141960f4a9f229d94fd497e5"></a>AST_COMMAND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a1ede9e5a1a5ad1673ac67c0381b69711"></a>AST_WORD_ASSIGNMENT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
