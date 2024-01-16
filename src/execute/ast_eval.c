@@ -77,6 +77,12 @@ int exec_cmd(struct ast_node *node, bool logger_enabled)
     return 0;
 }
 
+// TO IMPLEMENT REDIR
+int ast_command(struct ast_node *node, bool logger_enabled)
+{
+    return match_ast(node->children[0], logger_enabled);
+}
+
 int ast_eval_simple_command(struct ast_node *node, bool logger_enabled)
 {
     char *command = node->children[0]->value;
@@ -144,6 +150,8 @@ int match_ast(struct ast_node *node, bool logger_enabled)
         return ast_and_or(node, logger_enabled);
     case AST_PIPELINE:
         return pipeline_eval(node, logger_enabled);
+    case AST_COMMAND:
+        return ast_command(node, logger_enabled);
     default:
         return -1;
     }
