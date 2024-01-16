@@ -28,6 +28,7 @@ enum token_type
     TOKEN_ERROR, // Error
 
     // Step 2
+    TOKEN_DONE, // done
     TOKEN_AND, // &&
     TOKEN_OR, // ||
     TOKEN_PIPE, // |
