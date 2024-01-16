@@ -458,7 +458,7 @@ Test(Lexer, simple_comment)
     token = lexer_pop(lexer);
     cr_assert_eq(token.type, TOKEN_EOF);
     cr_assert_str_eq(token.data, "\0");
-    cr_assert_eq(lexer->index, 30);
+    cr_assert_eq(lexer->index, 30, "lexer->index = %lu", lexer->index);
     token_free(token);
 
     lexer_free(lexer);

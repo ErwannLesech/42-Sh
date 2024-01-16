@@ -75,10 +75,10 @@ bool check_variable_assignement(char *word)
     return true;
 }
 
-bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index)
+bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index, bool *is_in_braces)
 {
     char *curr_word = *word;
-
+    *is_in_braces = false;
     // Handle variable in double quote
     if (lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE)
     {
@@ -118,6 +118,12 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index)
         return true;
     }
 
+    else if (lexer->data[lexer->index] == '{')
+    {
+        lexer->index += 1;
+        *is_in_braces = true;
+    }
+
     // Classic variable name
     else if (lexer->data[lexer->index] == '_'
              || lexer->data[lexer->index] == '-'
@@ -155,12 +161,21 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index)
         *word_index += 1;
         lexer->index += 1;
     }
+
+    if (*is_in_braces)
+    {
+        if (lexer->data[lexer->index] == '}')
+        {
+            lexer->index += 1;
+            *is_in_braces = false;
+        }
+    }
     *word = curr_word;
     return true;
 }
 
 bool handle_dollar(struct lexer *lexer, char **word,
-                          unsigned *word_index)
+                          unsigned *word_index, bool *is_in_braces)
 {
     char *curr_word = *word;
     // Add the dollar to the word
@@ -171,21 +186,28 @@ bool handle_dollar(struct lexer *lexer, char **word,
     *word = curr_word;
 
     // Check if the name of the variable is correct
-    return check_variable_name(lexer, word, word_index);
+    return check_variable_name(lexer, word, word_index, is_in_braces);
+
 }
 
 char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
                           unsigned *word_index)
 {
     *is_diactivated = true;
+    bool is_in_braces = false;
     // Check if a the first word is a variable
     if (lexer->data[lexer->index] == '$')
     {
-        if (handle_dollar(lexer, &word, word_index))
+        if (handle_dollar(lexer, &word, word_index, &is_in_braces))
         {
             word = realloc(word, sizeof(char) * (*word_index + 1));
             word[*word_index] = '\0';
             return word;
+        }
+        else if (is_in_braces)
+        {
+            free(word);
+            return NULL;
         }
     }
 
@@ -254,7 +276,10 @@ char *handle_comment(struct lexer *lexer, char *word, unsigned *word_index)
     {
         ++lexer->index;
     }
-
+    else
+    {
+        return word;
+    }
     // Skip the spaces after the comment
     while (lexer->data[lexer->index] == ' ')
     {
