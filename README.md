@@ -17,7 +17,7 @@
 ```sh
 git clone git@github.com:ErwannLesech/42-Sh.git
 cd 42-Sh
-./42-install
+./42-install.sh
 cd src/
 ```
 
