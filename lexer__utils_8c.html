@@ -103,12 +103,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a505cc26b68d141b3e6a8308efc904b3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils_8c.html#a505cc26b68d141b3e6a8308efc904b3f">check_variable_assignement</a> (char *word)</td></tr>
 <tr class="memdesc:a505cc26b68d141b3e6a8308efc904b3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the word is a variable assignement.  <a href="lexer__utils_8c.html#a505cc26b68d141b3e6a8308efc904b3f">More...</a><br /></td></tr>
 <tr class="separator:a505cc26b68d141b3e6a8308efc904b3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0642eae064177a73e775669bdac674d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils_8c.html#a0642eae064177a73e775669bdac674d8">check_variable_name</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char **word, unsigned *word_index)</td></tr>
-<tr class="memdesc:a0642eae064177a73e775669bdac674d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given word is a variable name.  <a href="lexer__utils_8c.html#a0642eae064177a73e775669bdac674d8">More...</a><br /></td></tr>
-<tr class="separator:a0642eae064177a73e775669bdac674d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98b5a91dbe935671f1a2385d7addb0c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils_8c.html#a98b5a91dbe935671f1a2385d7addb0c8">handle_dollar</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char **word, unsigned *word_index)</td></tr>
-<tr class="memdesc:a98b5a91dbe935671f1a2385d7addb0c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the dollar character.  <a href="lexer__utils_8c.html#a98b5a91dbe935671f1a2385d7addb0c8">More...</a><br /></td></tr>
-<tr class="separator:a98b5a91dbe935671f1a2385d7addb0c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5675daffe624a157fd2da664787b8920"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils_8c.html#a5675daffe624a157fd2da664787b8920">check_variable_name</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char **word, unsigned *word_index, bool *is_in_braces)</td></tr>
+<tr class="memdesc:a5675daffe624a157fd2da664787b8920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given word is a variable name.  <a href="lexer__utils_8c.html#a5675daffe624a157fd2da664787b8920">More...</a><br /></td></tr>
+<tr class="separator:a5675daffe624a157fd2da664787b8920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6defa0c92359cf1f5fb0cbbacb7ca204"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils_8c.html#a6defa0c92359cf1f5fb0cbbacb7ca204">handle_dollar</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char **word, unsigned *word_index, bool *is_in_braces)</td></tr>
+<tr class="memdesc:a6defa0c92359cf1f5fb0cbbacb7ca204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the dollar character.  <a href="lexer__utils_8c.html#a6defa0c92359cf1f5fb0cbbacb7ca204">More...</a><br /></td></tr>
+<tr class="separator:a6defa0c92359cf1f5fb0cbbacb7ca204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abad30285f619d840c2bca50ba5ce6647"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils_8c.html#abad30285f619d840c2bca50ba5ce6647">handle_double_quote</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool *is_diactivated, char *word, unsigned *word_index)</td></tr>
 <tr class="memdesc:abad30285f619d840c2bca50ba5ce6647"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the double quote character.  <a href="lexer__utils_8c.html#abad30285f619d840c2bca50ba5ce6647">More...</a><br /></td></tr>
 <tr class="separator:abad30285f619d840c2bca50ba5ce6647"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,8 +149,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0642eae064177a73e775669bdac674d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0642eae064177a73e775669bdac674d8">&#9670;&nbsp;</a></span>check_variable_name()</h2>
+<a id="a5675daffe624a157fd2da664787b8920"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5675daffe624a157fd2da664787b8920">&#9670;&nbsp;</a></span>check_variable_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,7 +171,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned *&#160;</td>
-          <td class="paramname"><em>word_index</em>&#160;</td>
+          <td class="paramname"><em>word_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>is_in_braces</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -274,8 +280,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a98b5a91dbe935671f1a2385d7addb0c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98b5a91dbe935671f1a2385d7addb0c8">&#9670;&nbsp;</a></span>handle_dollar()</h2>
+<a id="a6defa0c92359cf1f5fb0cbbacb7ca204"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6defa0c92359cf1f5fb0cbbacb7ca204">&#9670;&nbsp;</a></span>handle_dollar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -296,7 +302,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned *&#160;</td>
-          <td class="paramname"><em>word_index</em>&#160;</td>
+          <td class="paramname"><em>word_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>is_in_braces</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
