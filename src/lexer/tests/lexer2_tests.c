@@ -356,7 +356,7 @@ Test(lexer2, token_done)
 {
     struct lexer *lexer = lexer_new("done");
     struct token tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_eq(tok.type, TOKEN_DONE);
     cr_assert_str_eq(tok.data, "done");
     token_free(tok);
     lexer_free(lexer);
