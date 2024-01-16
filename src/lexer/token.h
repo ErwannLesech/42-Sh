@@ -34,7 +34,12 @@ enum token_type
     TOKEN_NEGATE, // \!
     TOKEN_REDIR, // >, <, >>, >&, <&, >|, <>
     TOKEN_DOUBLE_QUOTE, // "
-    TOKEN_WORD_ASSIGNMENT // variable=
+    TOKEN_WORD_ASSIGNMENT, // variable=
+    TOKEN_VARIABLE, // $variable
+
+    // Internal values for lexer
+    TOKEN_VARIABLE_VALUE, // =value
+    TOKEN_VARIABLE_AND_DOUBLE_QUOTE // $variable"
 };
 
 /**

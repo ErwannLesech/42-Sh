@@ -91,6 +91,36 @@ void handle_backslash(struct lexer *lexer, bool *is_diactivated, char *word,
 char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
                           unsigned *word_index);
 
+
+/**
+ * \brief Check if the word is a variable assignement.
+ * 
+ * \param lexer The lexer.
+ * \param word The word to check.
+ * \param word_index The index of the word.
+ * 
+ * \return if the word is a variable assignement.
+ */
+bool check_variable_assignement(char *word);
+
+/**
+ * \brief Check if the given word is a variable name.
+ * \param lexer The lexer.
+ * \param word The word to check.
+ * \param word_index The index of the word.
+ * 
+ * \return if the word is a variable name.
+ */
+bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index);
+
+/**
+ * \brief Handle the dollar character.
+ * \param lexer The lexer.
+ * \return The next word.
+ */
+bool handle_dollar(struct lexer *lexer, char **word,
+                          unsigned *word_index);
+
 /**
  * \brief Handle the double quote character.
  * \param lexer The lexer.
