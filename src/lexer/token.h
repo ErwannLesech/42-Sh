@@ -28,6 +28,7 @@ enum token_type
     TOKEN_ERROR, // Error
 
     // Step 2
+    TOKEN_DONE, // done
     TOKEN_AND, // &&
     TOKEN_OR, // ||
     TOKEN_PIPE, // |
@@ -35,7 +36,11 @@ enum token_type
     TOKEN_REDIR, // >, <, >>, >&, <&, >|, <>
     TOKEN_DOUBLE_QUOTE, // "
     TOKEN_WORD_ASSIGNMENT, // variable=
-    TOKEN_DONE
+    TOKEN_VARIABLE, // $variable
+
+    // Internal values for lexer
+    TOKEN_VARIABLE_VALUE, // =value
+    TOKEN_VARIABLE_AND_DOUBLE_QUOTE // $variable"
 };
 
 /**
