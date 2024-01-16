@@ -134,6 +134,16 @@ int match_ast(struct ast_node *node, bool logger_enabled)
         return ast_eval_command_list(node, logger_enabled);
     case AST_EMPTY:
         return 0;
+    case AST_WHILE:
+        return while_loop(node, logger_enabled);
+    case AST_UNTIL:
+        return until_loop(node, logger_enabled);
+    case AST_FOR:
+        return for_loop(node, logger_enabled);
+    case AST_AND_OR:
+        return ast_and_or(node, logger_enabled);
+    case AST_PIPELINE:
+        return pipeline_eval(node, logger_enabled);
     default:
         return -1;
     }
