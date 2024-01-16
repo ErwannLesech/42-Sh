@@ -276,7 +276,10 @@ char *handle_comment(struct lexer *lexer, char *word, unsigned *word_index)
     {
         ++lexer->index;
     }
-
+    else
+    {
+        return word;
+    }
     // Skip the spaces after the comment
     while (lexer->data[lexer->index] == ' ')
     {
