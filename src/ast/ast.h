@@ -25,6 +25,17 @@ enum ast_type
     AST_WORD,
     AST_EMPTY,
     AST_UNEXPECTED,
+    AST_REDIRECTION,
+    AST_PIPELINE,
+    AST_WHILE,
+    AST_UNTIL,
+    AST_FOR,
+    AST_AND_OR,
+    AST_NEGATE,
+    AST_AND,
+    AST_OR,
+    AST_COMMAND,
+    AST_WORD_ASSIGNMENT
 };
 
 /**

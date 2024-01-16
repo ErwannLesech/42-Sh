@@ -23,6 +23,7 @@ struct lex_match lex_match[] = {
     { "&&", TOKEN_AND },     { "||", TOKEN_OR },     { "|", TOKEN_PIPE },
     { "!", TOKEN_NEGATE },   { "<", TOKEN_REDIR },   { ">", TOKEN_REDIR },
     { ">>", TOKEN_REDIR },   { "<&", TOKEN_REDIR },  { ">&", TOKEN_REDIR },
+    { "done", TOKEN_DONE},
     { ">|", TOKEN_REDIR },   { "<>", TOKEN_REDIR }
 };
 

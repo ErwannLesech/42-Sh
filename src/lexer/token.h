@@ -34,7 +34,8 @@ enum token_type
     TOKEN_NEGATE, // \!
     TOKEN_REDIR, // >, <, >>, >&, <&, >|, <>
     TOKEN_DOUBLE_QUOTE, // "
-    TOKEN_WORD_ASSIGNMENT // variable=
+    TOKEN_WORD_ASSIGNMENT, // variable=
+    TOKEN_DONE
 };
 
 /**

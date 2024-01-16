@@ -1,6 +1,6 @@
 lib_LIBRARIES = libexecute.a
 
-libexecute_a_SOURCES = ast_eval.c ast_eval.h ../parser/parser.h \
+libexecute_a_SOURCES = pipeline.c loop.c ast_eval.c ast_eval.h ../parser/parser.h \
                     builtin.c builtin.h \
                     ../ast/ast.h 
                 
