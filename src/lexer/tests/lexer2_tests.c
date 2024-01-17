@@ -572,11 +572,7 @@ Test(lexer2, token_word_assignment_name1)
     struct lexer *lexer = lexer_new("1_t11oto=2");
     struct token tok = lexer_pop(lexer);
     cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
-    token_free(tok);
-
-    tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
-    cr_assert_str_eq(tok.data, "2");
+    cr_assert_str_eq(tok.data, "1_t11oto=2");
     token_free(tok);
 
     lexer_free(lexer);
@@ -973,3 +969,4 @@ Test(lexer2, variable_distinction_access_all_deactivated2)
 
     tok = lexer_pop(lexer);
 }
+
