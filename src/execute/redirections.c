@@ -1,4 +1,4 @@
-#include "../ast/ast.h"
+#include "ast/ast.h"
 #include "ast_eval.h"
 
 #include <unistd.h>

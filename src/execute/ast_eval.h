@@ -11,8 +11,8 @@
 
 #include <stdbool.h>
 
-#include "../ast/ast.h"
-#include "../options/options.h"
+#include "ast/ast.h"
+#include "options/options.h"
 
 /**
  * \brief Evaluates the given AST and returns the exit status of the last

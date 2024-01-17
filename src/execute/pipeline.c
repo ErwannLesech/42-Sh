@@ -3,7 +3,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#include "../ast/ast.h"
+#include "ast/ast.h"
 #include "ast_eval.h"
 
 int pipeline_eval(struct ast_node *node, bool logger_enabled)

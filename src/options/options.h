@@ -12,7 +12,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "../ast/ast.h"
+#include "ast/ast.h"
 
 /**
  * \brief Enum for the different logger steps.

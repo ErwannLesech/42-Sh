@@ -10,10 +10,10 @@
 #include <criterion/redirect.h>
 #include <string.h>
 
-#include "../../io_backend/io_backend.h"
-#include "../../lexer/lexer.h"
-#include "../../parser/parser.h"
-#include "../ast_eval.h"
+#include "io_backend/io_backend.h"
+#include "lexer/lexer.h"
+#include "parser/parser.h"
+#include "execute/ast_eval.h"
 
 TestSuite(exec, .timeout = 1);
 

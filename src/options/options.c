@@ -15,8 +15,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "../ast/ast.h"
-
 int is_number(char *str)
 {
     int i = 0;

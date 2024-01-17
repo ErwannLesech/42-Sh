@@ -1,6 +1,6 @@
 #include "ast_eval.h"
 #include "hash_map/hash_map.h"
-#include "../parser/parser.h"
+#include "parser/parser.h"
 
 struct hash_map *variables = NULL;
 

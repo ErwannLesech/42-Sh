@@ -8,7 +8,7 @@
 
 #include "ast.h"
 
-#include "../options/options.h"
+#include "options/options.h"
 
 struct ast_node *ast_node_new(enum ast_type type)
 {

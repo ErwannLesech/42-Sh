@@ -10,7 +10,7 @@
 #include <criterion/redirect.h>
 #include <string.h>
 
-#include "../options.h"
+#include "options/options.h"
 
 TestSuite(options, .timeout = 1);
 

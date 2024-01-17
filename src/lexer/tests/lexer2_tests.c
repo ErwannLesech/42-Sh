@@ -11,7 +11,7 @@
 #include <fnmatch.h>
 #include <string.h>
 
-#include "../lexer.h"
+#include "lexer/lexer.h"
 
 TestSuite(lexer2, .timeout = 1);
 
