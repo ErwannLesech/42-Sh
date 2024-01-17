@@ -11,7 +11,7 @@ bin_PROGRAMS = 42sh
 
 42sh_CPPFLAGS = -I%D%
 
-42sh_CFLAGS = -std=c99 -Werror -Wall -Wextra -Wvla -pedantic
+42sh_CFLAGS = -Wall -Wextra -Werror -Wvla -pedantic -std=c99
 
 42sh_LDADD =  lexer/liblexer.a \
        ast/libast.a \
