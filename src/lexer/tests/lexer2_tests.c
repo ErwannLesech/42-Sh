@@ -416,7 +416,7 @@ Test(lexer2, token_double_quote_newline)
 
 Test(lexer2, token_double_quote_escaped)
 {
-    struct lexer *lexer = lexer_new("echo -e \"tata \\\n toto\"");
+    struct lexer *lexer = lexer_new("echo -e \"tata\\\ntoto\"");
     struct token tok = lexer_pop(lexer);
     cr_assert_eq(tok.type, TOKEN_WORD);
     cr_assert_str_eq(tok.data, "echo");
@@ -429,7 +429,7 @@ Test(lexer2, token_double_quote_escaped)
 
     tok = lexer_pop(lexer);
     cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
-    cr_assert_str_eq(tok.data, "tata \n toto");
+    cr_assert_str_eq(tok.data, "tatatoto");
     token_free(tok);
 
     lexer_free(lexer);
@@ -462,6 +462,22 @@ Test(lexer2, token_double_quote_variable_escaped)
     tok = lexer_pop(lexer);
     cr_assert_eq(tok.type, TOKEN_WORD);
     cr_assert_str_eq(tok.data, "$test");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+Test(lexer2, token_double_quote_newline_escaped)
+{
+    struct lexer *lexer = lexer_new("echo \"tata \\\n toto\"");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "tata  toto");
     token_free(tok);
 
     lexer_free(lexer);
