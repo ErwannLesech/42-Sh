@@ -54,8 +54,8 @@ int ast_eval_assignment(struct ast_node *node, bool logger_enabled)
     }
     char *key = node->children[0]->value;
     char *value = node->children[1]->value;
-    printf("key: %s\n", key);
-    printf("value: %s\n", value);
+    //printf("key: %s\n", key);
+    //printf("value: %s\n", value);
     set_variable(key, value);
     return 0;
 }
