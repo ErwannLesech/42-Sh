@@ -76,11 +76,11 @@ int parser_loop(struct lexer *lexer, bool logger_enabled,
         {
             return 2;
         }
-        //  print_ast(ast, 0, logger_enabled);
+        // print_ast(ast, 0, logger_enabled);
         // printf("\n");
         if (pretty_print_enabled)
         {
-            // print_ast(ast, 0, logger_enabled);
+            print_ast(ast, 0, logger_enabled);
             int depths = 0;
             pretty_print(ast, pretty_print_enabled, &depths);
         }

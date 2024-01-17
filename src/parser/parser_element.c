@@ -93,6 +93,7 @@ struct ast_node *pipeline(struct lexer *lexer)
     if (parser_peek(lexer) == TOKEN_NEGATE)
     {
         ast_append(current, ast_node_new(AST_NEGATE));
+        parser_pop(lexer);
     }
     struct ast_node *child = command(lexer);
     if (child != NULL)
@@ -138,6 +139,7 @@ struct ast_node *command(struct lexer *lexer)
         }
         return current;
     }
+    ast_free(current);
     return NULL;
 }
 
@@ -195,5 +197,6 @@ struct ast_node *element(struct lexer *lexer)
         parser_pop(lexer);
         return curr;
     }
+    ast_free(current);
     return NULL;
 }

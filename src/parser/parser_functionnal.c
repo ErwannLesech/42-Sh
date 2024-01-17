@@ -29,11 +29,19 @@ int is_number(char *str)
 struct ast_node *redirection(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_REDIRECTION);
-    char *value = lexer_peek(lexer).data;
-    if (is_number(value))
+    if (parser_peek(lexer) == TOKEN_WORD)
     {
-        ast_append(current, ast_node_word(value));
+        char *value = lexer_peek(lexer).data;
+        if (is_number(value))
+        {
+            ast_append(current, ast_node_word(value));
+        }
+        else
+        {
+            free(value);
+        }
     }
+
     if (parser_peek(lexer) == TOKEN_REDIR)
     {
         current->value = lexer_peek(lexer).data;
