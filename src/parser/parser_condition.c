@@ -135,38 +135,38 @@ struct ast_node *rule_while(struct lexer *lexer)
     struct ast_node *current = ast_node_new(AST_WHILE);
     if (parser_peek(lexer) == TOKEN_WORD)
     {
-    char *value = lexer_peek(lexer).data;
-    if (strcmp(value, "while") == 0)
-    {
-        free(value);
-        parser_pop(lexer);
-        struct ast_node *condition = compound_list(lexer);
-        if (condition == NULL)
-        {
-            goto ERROR;
-        }
-        ast_append(current, condition);
-        value = lexer_peek(lexer).data;
-        if (strcmp(value, "do") == 0)
+        char *value = lexer_peek(lexer).data;
+        if (strcmp(value, "while") == 0)
         {
             free(value);
             parser_pop(lexer);
-            struct ast_node *response = compound_list(lexer);
-            if (response == NULL)
+            struct ast_node *condition = compound_list(lexer);
+            if (condition == NULL)
+            {
                 goto ERROR;
-            ast_append(current, response);
+            }
+            ast_append(current, condition);
             value = lexer_peek(lexer).data;
-            if (strcmp(value, "done") == 0)
+            if (strcmp(value, "do") == 0)
             {
                 free(value);
                 parser_pop(lexer);
-                return current;
+                struct ast_node *response = compound_list(lexer);
+                if (response == NULL)
+                    goto ERROR;
+                ast_append(current, response);
+                value = lexer_peek(lexer).data;
+                if (strcmp(value, "done") == 0)
+                {
+                    free(value);
+                    parser_pop(lexer);
+                    return current;
+                }
             }
         }
+        free(value);
     }
-    free(value);
-    }
-    ERROR:
+ERROR:
     ast_free(current);
     return NULL;
 }
@@ -176,38 +176,38 @@ struct ast_node *rule_until(struct lexer *lexer)
     struct ast_node *current = ast_node_new(AST_UNTIL);
     if (parser_peek(lexer) == TOKEN_WORD)
     {
-    char *value = lexer_peek(lexer).data;
-    if (strcmp(value, "until") == 0)
-    {
-        free(value);
-        parser_pop(lexer);
-        struct ast_node *condition = compound_list(lexer);
-        if (condition == NULL)
-        {
-            goto ERROR;
-        }
-        ast_append(current, condition);
-        value = lexer_peek(lexer).data;
-        if (strcmp(value, "do") == 0)
+        char *value = lexer_peek(lexer).data;
+        if (strcmp(value, "until") == 0)
         {
             free(value);
             parser_pop(lexer);
-            struct ast_node *response = compound_list(lexer);
-            if (response == NULL)
+            struct ast_node *condition = compound_list(lexer);
+            if (condition == NULL)
+            {
                 goto ERROR;
-            ast_append(current, response);
+            }
+            ast_append(current, condition);
             value = lexer_peek(lexer).data;
-            if (strcmp(value, "done") == 0)
+            if (strcmp(value, "do") == 0)
             {
                 free(value);
                 parser_pop(lexer);
-                return current;
+                struct ast_node *response = compound_list(lexer);
+                if (response == NULL)
+                    goto ERROR;
+                ast_append(current, response);
+                value = lexer_peek(lexer).data;
+                if (strcmp(value, "done") == 0)
+                {
+                    free(value);
+                    parser_pop(lexer);
+                    return current;
+                }
             }
         }
+        free(value);
     }
-    free(value);
-    }
-    ERROR:
+ERROR:
     ast_free(current);
     return NULL;
 }
@@ -217,44 +217,44 @@ struct ast_node *rule_for(struct lexer *lexer)
     struct ast_node *current = ast_node_new(AST_FOR);
     if (parser_peek(lexer) == TOKEN_WORD)
     {
-    char *value = lexer_peek(lexer).data;
-    if (strcmp(value, "for") == 0)
-    {
-        free(value);
-        parser_pop(lexer);
-        if (parser_peek(lexer) != TOKEN_WORD)
-            goto ERROR;
-        if (parser_peek(lexer) == TOKEN_SEMICOLON)
-        {
-            goto END;
-        }
-
-        END:
-        while (parser_peek(lexer) == TOKEN_EOL)
-        {
-            parser_pop(lexer);
-        }
-        value = lexer_peek(lexer).data;
-        if (strcmp(value, "do") == 0)
+        char *value = lexer_peek(lexer).data;
+        if (strcmp(value, "for") == 0)
         {
             free(value);
             parser_pop(lexer);
-            struct ast_node *response = compound_list(lexer);
-            if (response == NULL)
+            if (parser_peek(lexer) != TOKEN_WORD)
                 goto ERROR;
-            ast_append(current, response);
+            if (parser_peek(lexer) == TOKEN_SEMICOLON)
+            {
+                goto END;
+            }
+
+        END:
+            while (parser_peek(lexer) == TOKEN_EOL)
+            {
+                parser_pop(lexer);
+            }
             value = lexer_peek(lexer).data;
-            if (strcmp(value, "done") == 0)
+            if (strcmp(value, "do") == 0)
             {
                 free(value);
                 parser_pop(lexer);
-                return current;
+                struct ast_node *response = compound_list(lexer);
+                if (response == NULL)
+                    goto ERROR;
+                ast_append(current, response);
+                value = lexer_peek(lexer).data;
+                if (strcmp(value, "done") == 0)
+                {
+                    free(value);
+                    parser_pop(lexer);
+                    return current;
+                }
             }
         }
+        free(value);
     }
-    free(value);
-    }
-    ERROR:
+ERROR:
     ast_free(current);
     return NULL;
 }

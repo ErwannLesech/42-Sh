@@ -1,6 +1,6 @@
 #include <fnmatch.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "lexer.h"
 
@@ -44,7 +44,8 @@ char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
 bool check_variable_assignement(char *word)
 {
     size_t i = 0;
-    if (word[i] == '_' || word[i] == '-' || (word[i] >= 'a' && word[i] <= 'z') || (word[i] >= 'A' && word[i] <= 'Z'))
+    if (word[i] == '_' || word[i] == '-' || (word[i] >= 'a' && word[i] <= 'z')
+        || (word[i] >= 'A' && word[i] <= 'Z'))
     {
         i++;
     }
@@ -52,17 +53,13 @@ bool check_variable_assignement(char *word)
     {
         return false;
     }
-    while (word[i] != ' ' && word[i] != '\t'
-           && word[i] != '\n'
+    while (word[i] != ' ' && word[i] != '\t' && word[i] != '\n'
            && word[i] != '\0')
     {
         if (word[i] == '_' || word[i] == '-'
-            || (word[i] >= 'a'
-                && word[i] <= 'z')
-            || (word[i] >= 'A'
-                && word[i] <= 'Z')
-            || (word[i] >= '0'
-                && word[i] <= '9'))
+            || (word[i] >= 'a' && word[i] <= 'z')
+            || (word[i] >= 'A' && word[i] <= 'Z')
+            || (word[i] >= '0' && word[i] <= '9'))
         {
             i++;
         }
@@ -75,7 +72,8 @@ bool check_variable_assignement(char *word)
     return true;
 }
 
-bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index, bool *is_in_braces)
+bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
+                         bool *is_in_braces)
 {
     char *curr_word = *word;
     *is_in_braces = false;
@@ -149,12 +147,12 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
 
     // Check the rest of the variable name break
     while (lexer->data[lexer->index] == '_' || lexer->data[lexer->index] == '-'
-            || (lexer->data[lexer->index] >= 'a'
-                && lexer->data[lexer->index] <= 'z')
-            || (lexer->data[lexer->index] >= 'A'
-                && lexer->data[lexer->index] <= 'Z')
-            || (lexer->data[lexer->index] >= '0'
-                && lexer->data[lexer->index] <= '9'))
+           || (lexer->data[lexer->index] >= 'a'
+               && lexer->data[lexer->index] <= 'z')
+           || (lexer->data[lexer->index] >= 'A'
+               && lexer->data[lexer->index] <= 'Z')
+           || (lexer->data[lexer->index] >= '0'
+               && lexer->data[lexer->index] <= '9'))
     {
         curr_word = realloc(curr_word, sizeof(char) * (*word_index + 1));
         curr_word[*word_index] = lexer->data[lexer->index];
@@ -174,8 +172,8 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
     return true;
 }
 
-bool handle_dollar(struct lexer *lexer, char **word,
-                          unsigned *word_index, bool *is_in_braces)
+bool handle_dollar(struct lexer *lexer, char **word, unsigned *word_index,
+                   bool *is_in_braces)
 {
     char *curr_word = *word;
     // Add the dollar to the word
@@ -187,7 +185,6 @@ bool handle_dollar(struct lexer *lexer, char **word,
 
     // Check if the name of the variable is correct
     return check_variable_name(lexer, word, word_index, is_in_braces);
-
 }
 
 char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
@@ -212,7 +209,8 @@ char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
     }
 
     // While it's different from a double quote or a variable
-    while (lexer->data[lexer->index] != '\"' && lexer->data[lexer->index] != '$')
+    while (lexer->data[lexer->index] != '\"'
+           && lexer->data[lexer->index] != '$')
     {
         // Missing closing double quote
         if (lexer->data[lexer->index] == '\0')
@@ -221,7 +219,8 @@ char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
             word = NULL;
             return NULL;
         }
-        // Handle the backslash if the back slash is alone we need to add it to the word
+        // Handle the backslash if the back slash is alone we need to add it to
+        // the word
         else if (lexer->data[lexer->index] == '\\')
         {
             lexer->index += 1;
@@ -250,7 +249,7 @@ char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
         }
     }
 
-    // If 
+    // If
     if (lexer->data[lexer->index] == '\"')
     {
         lexer->curr_tok.type = TOKEN_EOL;

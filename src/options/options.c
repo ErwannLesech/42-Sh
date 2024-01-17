@@ -94,95 +94,66 @@ int count_digits(int number)
     return count;
 }
 
-void pp_node(struct ast_node *ast, int fd, int *number)
+void pp_node(struct ast_node *ast, int fd, int *node_count)
 {
-    if (!ast)
-        return;
+    char *buff = malloc(sizeof(char) * 100000);
 
-    char *buff = malloc(sizeof(char) * 1000);
-
-    if(write(fd, "node", 4) == -1)
+    if (write(fd, "node", 4) == -1)
         return;
-    sprintf(buff, "%d", *number);
+    sprintf(buff, "%d", (*node_count));
     buff[strlen(buff)] = '\0';
-    if(write(fd, buff, count_digits(*number)) == -1)
+    if (write(fd, buff, count_digits(*node_count)) == -1)
         return;
     if (write(fd, " [label=\"", 9) == -1)
         return;
     if (write(fd, ast_type_to_string(ast->type),
-          strlen(ast_type_to_string(ast->type))) == -1)
+              strlen(ast_type_to_string(ast->type)))
+        == -1)
         return;
     if (ast->value)
     {
-        if(write(fd, " - ", 3) == -1)
+        if (write(fd, " - ", 3) == -1)
             return;
         if (write(fd, ast->value, strlen(ast->value)) == -1)
             return;
     }
-    if(write(fd, "\"];\n", 4) == -1)
+
+    if (write(fd, "\"];\n", 3) == -1)
         return;
 
-    int i = 0;
-    while (i < ast->children_count && ast->children[i])
-    {
-        if(write(fd, "node", 4) == -1)
-            return;
-        sprintf(buff, "%d", (*number + i + 11));
-        if(write(fd, buff, count_digits(*number + i + 11)) == -1)
-            return;
-        if (write(fd, " [label=\"", 9) == -1)
-            return;
-        if (write(fd, ast_type_to_string(ast->children[i]->type),
-              strlen(ast_type_to_string(ast->children[i]->type))) == -1)
-            return;
-        if (ast->children[i]->value)
-        {
-            if (write(fd, " - ", 3) == -1)
-                return;
-            if (write(fd, ast->children[i]->value, strlen(ast->children[i]->value)) == -1)
-                return;
-        }
-        if (write(fd, "\"];\n", 4) == -1)
-            return;
-        i++;
-    }
+    free(buff);
 }
 
-void pp_link(struct ast_node *ast, int fd, int *number)
+void pp_link(struct ast_node *ast, int fd, int *node_count, int parent_id)
 {
-    if (!ast->children)
-        return;
+    char *buff = malloc(sizeof(char) * 100000);
 
-    pp_node(ast, fd, number);
+    pp_node(ast, fd, node_count);
 
-    char *buff = malloc(sizeof(char) * 1000);
-    int i = 0;
-
-    while (i < ast->children_count && ast->children[i])
+    if (parent_id != -1)
     {
         if (write(fd, "node", 4) == -1)
             return;
-        sprintf(buff, "%d", *number);
-        if (write(fd, buff, count_digits(*number)) == -1)
+        sprintf(buff, "%d", parent_id);
+        if (write(fd, buff, count_digits(parent_id)) == -1)
             return;
         if (write(fd, " -> ", 4) == -1)
             return;
         if (write(fd, "node", 4) == -1)
             return;
-        sprintf(buff, "%d", (*number + i + 11));
-        if (write(fd, buff, count_digits(*number + i + 11)) == -1)
+        sprintf(buff, "%d", (*node_count));
+        if (write(fd, buff, count_digits(*node_count)) == -1)
             return;
         if (write(fd, ";\n", 2) == -1)
             return;
-        i++;
     }
-    i = 0;
 
-    while (i < ast->children_count)
+    parent_id = (*node_count);
+
+    for (int i = 0; i < ast->children_count && ast->children[i]; i++)
     {
-        int new = (*number + i + 11);
-        pp_link(ast->children[i], fd, &new);
-        i++;
+        (*node_count)++;
+        pp_link(ast->children[i], fd, node_count, parent_id);
     }
 
     free(buff);
@@ -200,13 +171,16 @@ void pretty_print(struct ast_node *ast, bool pretty_print_enabled, int *number)
 
     if (write(fd, "graph [rankdir=TB, ranksep=0.8, nodesep=0.4];\n", 46) == -1)
         return;
-    if (write(fd, "node [shape=box, color=lightblue, style=filled, fontsize=14];\n",
-          62) == -1)
+    if (write(fd,
+              "node [shape=box, color=lightblue, style=filled, fontsize=14];\n",
+              62)
+        == -1)
         return;
-    if (write(fd, "edge [color=black, style=solid, arrowhead=vee];\n\n", 48) == -1)
+    if (write(fd, "edge [color=black, style=solid, arrowhead=vee];\n\n", 48)
+        == -1)
         return;
 
-    pp_link(ast, fd, number);
+    pp_link(ast, fd, number, -1);
 
     if (write(fd, "}\n", 3) == -1)
         return;
