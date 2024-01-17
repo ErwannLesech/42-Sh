@@ -230,7 +230,14 @@ char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
                 || lexer->data[lexer->index] == '\\'
                 || lexer->data[lexer->index] == '\n')
             {
-                word[*word_index] = lexer->data[lexer->index];
+                if (lexer->data[lexer->index] != '\n')
+                {
+                    word[*word_index] = lexer->data[lexer->index];
+                }
+                else
+                {
+                   *word_index -= 1;
+                }
                 lexer->index += 1;
             }
             else

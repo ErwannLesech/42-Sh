@@ -109,6 +109,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                && lexer->data[lexer->index] != '|'
                && lexer->data[lexer->index] != '&')
         {
+            word = realloc(word, sizeof(char) * (word_index + 1));
+            word[word_index] = '\0';
             // Handle the variable
             if (lexer->data[lexer->index] == '$')
             {
@@ -131,17 +133,21 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
             }
             // Handle the word assignement if it's contain '=' and it's not the
             // first character
+            
             else if (lexer->data[lexer->index] == '=' && word_index > 0
                      && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE
-                     && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE)
+                     && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE && check_variable_assignement(word))
             {
-                lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;
-                lexer->index += 1;
+                lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;                
                 break;
             }
 
+            else if (lexer->data[lexer->index] == '=' && word_index == 0 && lexer->curr_tok.type == TOKEN_VARIABLE_VALUE)
+            {
+                lexer->index += 1;
+            }
+
             // Take next char and put it in the word
-            word = realloc(word, sizeof(char) * (word_index + 1));
             word[word_index] = lexer->data[lexer->index];
             ++word_index;
             ++lexer->index;

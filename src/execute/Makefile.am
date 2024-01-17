@@ -5,5 +5,5 @@ libexecute_a_SOURCES = pipeline.c loop.c ast_eval.c ast_eval.h ../parser/parser.
                     ../ast/ast.h hash_map/hash_map.c hash_map/hash_map.h hash_map/hash.c ast_variable.c
                 
 
-libexecute_a_CFLAGS = -Wall -Wextra -Werror -std=c99 -pedantic 
+libexecute_a_CFLAGS = -Wall -Wextra -Werror -Wvla -pedantic -std=c99
 libexecute_a_CPPFLAGS =-I$(top_srcdir)
