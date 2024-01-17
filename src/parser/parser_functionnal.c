@@ -1,5 +1,3 @@
-#include <ctype.h>
-
 #include "parser.h"
 
 struct ast_node *prefix(struct lexer *lexer)
@@ -12,18 +10,6 @@ struct ast_node *prefix(struct lexer *lexer)
         return current;
     }
     return redirection(lexer);
-}
-
-int is_number(char *str)
-{
-    int i = 0;
-    while (str[i])
-    {
-        if (!isdigit(str[i]))
-            return 0;
-        i++;
-    }
-    return 1;
 }
 
 struct ast_node *redirection(struct lexer *lexer)

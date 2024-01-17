@@ -8,6 +8,7 @@
 
 #include "options.h"
 
+#include <ctype.h>
 #include <fcntl.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -15,6 +16,18 @@
 #include <unistd.h>
 
 #include "../ast/ast.h"
+
+int is_number(char *str)
+{
+    int i = 0;
+    while (str[i])
+    {
+        if (!isdigit(str[i]))
+            return 0;
+        i++;
+    }
+    return 1;
+}
 
 bool check_logger(int *argc, char **argv)
 {

@@ -203,6 +203,12 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
     word = realloc(word, sizeof(char) * (word_index + 1));
     word[word_index] = '\0';
 
+    if (is_number(word) && (lexer->data[lexer->index] == '>'
+            || lexer->data[lexer->index] == '<' ))
+    {
+        lexer->curr_tok.type = TOKEN_IONUMBER;
+    }
+
     // Skip spaces and tabs
     while (lexer->data[lexer->index] == ' '
            || lexer->data[lexer->index] == '\t')
@@ -247,6 +253,14 @@ struct token parse_input_for_tok(struct lexer *lexer)
         token.data = word;
         // Usefull to have the next word token
         lexer->curr_tok.type = TOKEN_VARIABLE_VALUE;
+        return token;
+    }
+
+    if (lexer->curr_tok.type == TOKEN_IONUMBER)
+    {
+        token.type = TOKEN_IONUMBER;
+        token.data = word;
+        lexer->curr_tok.type = TOKEN_EOL;
         return token;
     }
 

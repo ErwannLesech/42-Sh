@@ -13,6 +13,7 @@
 #include <stddef.h>
 
 #include "token.h"
+#include "../options/options.h"
 
 /**
  * \struct lexer
