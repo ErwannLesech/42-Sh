@@ -43,7 +43,7 @@ int exec_cmd(struct ast_node *node, bool logger_enabled)
         logger("cmd: ", LOGGER_EXEC, logger_enabled);
         for (int i = 0; i < node->children_count; i++)
         {
-            args[i] = node->children[i]->value;
+            args[i] = handle_word(node->children[i]);
             //printf("%s ", args[i]);
             logger(args[i], LOGGER_EXEC, logger_enabled);
         }

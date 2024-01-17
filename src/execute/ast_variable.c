@@ -8,7 +8,6 @@ void init_variables()
 {
     if (variables == NULL)
     {
-        printf("init_variables\n");
         variables = hash_map_init(100);
     }
 }
@@ -28,22 +27,28 @@ void set_variable(char *key, char *value)
 
 char *get_variable(char *key)
 {
+    key++;
+    //gerer les variables envirovment
     init_variables();
     if (variables == NULL)
+    {
         return NULL;
+    }
     size_t index = hash(key) % variables->size;
     if (variables->data[index] == NULL)
-        return NULL;
+        return "";
     struct pair_list *ind = variables->data[index];
     if (strcmp(ind->key, key) == 0)
+    {
         return ind->value;
+    }
     while (ind->next != NULL)
     {
         if (strcmp(ind->key, key) == 0)
             return ind->value;
         ind = ind->next;
     }
-    return "\n";
+    return "";
 }
 
 int ast_eval_assignment(struct ast_node *node, bool logger_enabled)
@@ -54,8 +59,6 @@ int ast_eval_assignment(struct ast_node *node, bool logger_enabled)
     }
     char *key = node->children[0]->value;
     char *value = node->children[1]->value;
-    //printf("key: %s\n", key);
-    //printf("value: %s\n", value);
     set_variable(key, value);
     return 0;
 }
