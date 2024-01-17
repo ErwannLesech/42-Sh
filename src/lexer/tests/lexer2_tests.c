@@ -970,3 +970,70 @@ Test(lexer2, variable_distinction_access_all_deactivated2)
     tok = lexer_pop(lexer);
 }
 
+Test (lexer2, personalized_variable)
+{
+    struct lexer *lexer = lexer_new("echo a=4; echo $b");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    // has to be a word 
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD_ASSIGNMENT, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "a");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "4");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_SEMICOLON);
+    cr_assert_str_eq(tok.data, ";");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_VARIABLE);
+    cr_assert_str_eq(tok.data, "$b");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+Test (lexer2, personalized_variable2)
+{
+    struct lexer *lexer = lexer_new("a=4; echo $a");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD_ASSIGNMENT);
+    cr_assert_str_eq(tok.data, "a");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "4");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_SEMICOLON);
+    cr_assert_str_eq(tok.data, ";");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_VARIABLE);
+    cr_assert_str_eq(tok.data, "$a");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
