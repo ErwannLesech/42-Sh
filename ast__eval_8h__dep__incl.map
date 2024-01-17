@@ -1,13 +1,12 @@
 <map id="src/execute/ast_eval.h" name="src/execute/ast_eval.h">
-<area shape="rect" id="node1" title="Evaluate the AST." alt="" coords="607,5,773,32"/>
+<area shape="rect" id="node1" title="Evaluate the AST." alt="" coords="519,5,685,32"/>
 <area shape="rect" id="node2" href="$ast__eval_8c.html" title="Evaluate the AST." alt="" coords="5,169,172,196"/>
 <area shape="rect" id="node3" href="$ast__variable_8c.html" title=" " alt="" coords="53,87,244,114"/>
 <area shape="rect" id="node4" href="$builtin_8h.html" title="Builtin functions." alt="" coords="268,87,421,114"/>
 <area shape="rect" id="node6" href="$loop_8c.html" title=" " alt="" coords="446,87,585,114"/>
 <area shape="rect" id="node7" href="$pipeline_8c.html" title=" " alt="" coords="609,87,771,114"/>
-<area shape="rect" id="node8" href="$redirections_8c.html" title=" " alt="" coords="796,87,984,114"/>
-<area shape="rect" id="node9" href="$exec__tests_8c.html" title="Tests the exec function." alt="" coords="1008,80,1175,121"/>
-<area shape="rect" id="node10" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="1199,87,1288,114"/>
-<area shape="rect" id="node11" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="1313,87,1454,114"/>
+<area shape="rect" id="node8" href="$exec__tests_8c.html" title="Tests the exec function." alt="" coords="796,80,963,121"/>
+<area shape="rect" id="node9" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="987,87,1076,114"/>
+<area shape="rect" id="node10" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="1101,87,1242,114"/>
 <area shape="rect" id="node5" href="$builtin_8c.html" title="Builtin functions." alt="" coords="269,169,421,196"/>
 </map>

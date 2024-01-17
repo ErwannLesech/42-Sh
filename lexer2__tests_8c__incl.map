@@ -5,11 +5,7 @@
 <area shape="rect" id="node4" title=" " alt="" coords="344,95,432,121"/>
 <area shape="rect" id="node5" title=" " alt="" coords="457,95,527,121"/>
 <area shape="rect" id="node6" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="552,95,629,121"/>
-<area shape="rect" id="node7" title=" " alt="" coords="511,319,593,345"/>
-<area shape="rect" id="node8" title=" " alt="" coords="504,169,579,196"/>
-<area shape="rect" id="node9" href="$token_8h.html" title="Header of the token structure." alt="" coords="603,169,674,196"/>
-<area shape="rect" id="node10" href="$options_8h.html" title="Header for options functions." alt="" coords="333,169,480,196"/>
-<area shape="rect" id="node11" title=" " alt="" coords="324,319,391,345"/>
-<area shape="rect" id="node12" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="403,244,493,271"/>
-<area shape="rect" id="node13" title=" " alt="" coords="415,319,486,345"/>
+<area shape="rect" id="node7" title=" " alt="" coords="447,169,529,196"/>
+<area shape="rect" id="node8" title=" " alt="" coords="553,169,628,196"/>
+<area shape="rect" id="node9" href="$token_8h.html" title="Header of the token structure." alt="" coords="653,169,723,196"/>
 </map>

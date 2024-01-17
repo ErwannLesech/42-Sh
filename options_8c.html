@@ -76,7 +76,6 @@ $(function() {
 <p>Options functions.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="options_8h_source.html">options.h</a>&quot;</code><br />
-<code>#include &lt;ctype.h&gt;</code><br />
 <code>#include &lt;fcntl.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
@@ -88,24 +87,20 @@ Include dependency graph for options.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="options_8c__incl.png" border="0" usemap="#asrc_2options_2options_8c" alt=""/></div>
 <map name="asrc_2options_2options_8c" id="asrc_2options_2options_8c">
-<area shape="rect" title="Options functions." alt="" coords="223,5,379,32"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="145,80,228,107"/>
+<area shape="rect" title="Options functions." alt="" coords="187,5,343,32"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="92,80,175,107"/>
 <area shape="rect" title=" " alt="" coords="192,229,275,256"/>
 <area shape="rect" title=" " alt="" coords="5,229,72,256"/>
 <area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="87,155,177,181"/>
-<area shape="rect" title=" " alt="" coords="303,80,374,107"/>
-<area shape="rect" title=" " alt="" coords="398,80,461,107"/>
-<area shape="rect" title=" " alt="" coords="485,80,555,107"/>
-<area shape="rect" title=" " alt="" coords="580,80,655,107"/>
+<area shape="rect" title=" " alt="" coords="303,80,366,107"/>
+<area shape="rect" title=" " alt="" coords="390,80,461,107"/>
+<area shape="rect" title=" " alt="" coords="485,80,560,107"/>
 <area shape="rect" title=" " alt="" coords="97,229,167,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa5dda8dfb7843e3379779c346c3c905d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#aa5dda8dfb7843e3379779c346c3c905d">is_number</a> (char *str)</td></tr>
-<tr class="memdesc:aa5dda8dfb7843e3379779c346c3c905d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given string is a number.  <a href="options_8c.html#aa5dda8dfb7843e3379779c346c3c905d">More...</a><br /></td></tr>
-<tr class="separator:aa5dda8dfb7843e3379779c346c3c905d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d8b5c5dddbafebebc76c887119020ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a9d8b5c5dddbafebebc76c887119020ff">check_logger</a> (int *argc, char **argv)</td></tr>
 <tr class="memdesc:a9d8b5c5dddbafebebc76c887119020ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the logger option is asked in args.  <a href="options_8c.html#a9d8b5c5dddbafebebc76c887119020ff">More...</a><br /></td></tr>
 <tr class="separator:a9d8b5c5dddbafebebc76c887119020ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -232,33 +227,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of digits </dd></dl>
-
-</div>
-</div>
-<a id="aa5dda8dfb7843e3379779c346c3c905d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5dda8dfb7843e3379779c346c3c905d">&#9670;&nbsp;</a></span>is_number()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_number </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check if the given string is a number. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">str</td><td>The string to check. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the string is a number, false otherwise. </dd></dl>
 
 </div>
 </div>
