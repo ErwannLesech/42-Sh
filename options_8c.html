@@ -113,10 +113,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a7ec218f8df437f3ffd65cd8b895e8278"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a7ec218f8df437f3ffd65cd8b895e8278">count_digits</a> (int number)</td></tr>
 <tr class="memdesc:a7ec218f8df437f3ffd65cd8b895e8278"><td class="mdescLeft">&#160;</td><td class="mdescRight">digit counter  <a href="options_8c.html#a7ec218f8df437f3ffd65cd8b895e8278">More...</a><br /></td></tr>
 <tr class="separator:a7ec218f8df437f3ffd65cd8b895e8278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a536d0a8591488f3614e3dda3454e1c3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a536d0a8591488f3614e3dda3454e1c3b">pp_node</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, int fd, int *number)</td></tr>
-<tr class="separator:a536d0a8591488f3614e3dda3454e1c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66b305350b17a32037ca98bbb337a4f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a66b305350b17a32037ca98bbb337a4f9">pp_link</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, int fd, int *number)</td></tr>
-<tr class="separator:a66b305350b17a32037ca98bbb337a4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84c0e33d048aa27e3a116e9f546b8548"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a84c0e33d048aa27e3a116e9f546b8548">pp_node</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, int fd, int *node_count)</td></tr>
+<tr class="separator:a84c0e33d048aa27e3a116e9f546b8548"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa309b791ef1a83c486eea1c9e5aae5e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#aa309b791ef1a83c486eea1c9e5aae5e5">pp_link</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, int fd, int *node_count, int parent_id)</td></tr>
+<tr class="separator:aa309b791ef1a83c486eea1c9e5aae5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7961eecdd55d5d804014b84ed5ebbb8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a7961eecdd55d5d804014b84ed5ebbb8d">pretty_print</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, bool pretty_print_enabled, int *number)</td></tr>
 <tr class="memdesc:a7961eecdd55d5d804014b84ed5ebbb8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pretty printf of ast.  <a href="options_8c.html#a7961eecdd55d5d804014b84ed5ebbb8d">More...</a><br /></td></tr>
 <tr class="separator:a7961eecdd55d5d804014b84ed5ebbb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -274,8 +274,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a66b305350b17a32037ca98bbb337a4f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66b305350b17a32037ca98bbb337a4f9">&#9670;&nbsp;</a></span>pp_link()</h2>
+<a id="aa309b791ef1a83c486eea1c9e5aae5e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa309b791ef1a83c486eea1c9e5aae5e5">&#9670;&nbsp;</a></span>pp_link()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -296,7 +296,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>number</em>&#160;</td>
+          <td class="paramname"><em>node_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>parent_id</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -308,8 +314,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a536d0a8591488f3614e3dda3454e1c3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a536d0a8591488f3614e3dda3454e1c3b">&#9670;&nbsp;</a></span>pp_node()</h2>
+<a id="a84c0e33d048aa27e3a116e9f546b8548"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84c0e33d048aa27e3a116e9f546b8548">&#9670;&nbsp;</a></span>pp_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -330,7 +336,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>number</em>&#160;</td>
+          <td class="paramname"><em>node_count</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
