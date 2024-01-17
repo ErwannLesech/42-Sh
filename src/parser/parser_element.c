@@ -191,7 +191,7 @@ struct ast_node *element(struct lexer *lexer)
     struct ast_node *variable = parse_variable(lexer);
     if (variable != NULL)
     {
-        ast_append(current, variable);
+        return variable;
     }
     if (parser_peek(lexer) == TOKEN_WORD || parser_peek(lexer) == TOKEN_IF
         || parser_peek(lexer) == TOKEN_THEN || parser_peek(lexer) == TOKEN_ELSE

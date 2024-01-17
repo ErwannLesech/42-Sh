@@ -105,7 +105,7 @@ void print_ast(struct ast_node *node, int depth, bool logger_enabled)
     for (int i = 0; i < depth; i++)
         printf("  ");
     printf("%s\n", ast_type_to_string(node->type));
-    if (node->type == AST_WORD)
+    if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT || node->type == AST_VARIABLE)
     {
         printf("%s:\n", node->value);
     }
