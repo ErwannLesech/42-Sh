@@ -96,25 +96,27 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ast_8h__dep__incl.png" border="0" usemap="#asrc_2ast_2ast_8hdep" alt=""/></div>
 <map name="asrc_2ast_2ast_8hdep" id="asrc_2ast_2ast_8hdep">
-<area shape="rect" title="Represent a node of the AST." alt="" coords="572,5,673,32"/>
-<area shape="rect" href="ast_8c.html" title="Represent a node of the AST." alt="" coords="269,162,369,189"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="393,162,559,189"/>
+<area shape="rect" title="Represent a node of the AST." alt="" coords="803,5,904,32"/>
+<area shape="rect" href="ast_8c.html" title="Represent a node of the AST." alt="" coords="461,162,561,189"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="585,162,751,189"/>
 <area shape="rect" href="loop_8c.html" title=" " alt="" coords="5,251,144,278"/>
 <area shape="rect" href="pipeline_8c.html" title=" " alt="" coords="168,251,331,278"/>
-<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="635,251,725,278"/>
-<area shape="rect" href="options_8c.html" title="Options functions." alt="" coords="891,162,1047,189"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="544,80,701,107"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="1139,162,1282,189"/>
-<area shape="rect" href="parser__tests_8c.html" title="Tests the parser functions." alt="" coords="1865,244,2031,285"/>
-<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="514,333,681,360"/>
+<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="993,251,1082,278"/>
+<area shape="rect" href="options_8c.html" title="Options functions." alt="" coords="1083,162,1239,189"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="775,80,932,107"/>
+<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="1315,162,1458,189"/>
+<area shape="rect" href="parser__tests_8c.html" title="Tests the parser functions." alt="" coords="2309,244,2475,285"/>
+<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="702,333,869,360"/>
+<area shape="rect" href="ast__variable_8c.html" title=" " alt="" coords="1106,251,1297,278"/>
 <area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="355,251,509,278"/>
-<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="915,244,1082,285"/>
-<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="749,251,891,278"/>
-<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="337,333,489,360"/>
-<area shape="rect" href="options__tests_8c.html" title="Tests the options functions." alt="" coords="685,155,867,196"/>
-<area shape="rect" href="parser__condition_8c.html" title="Parse the condition rule." alt="" coords="1106,251,1315,278"/>
-<area shape="rect" href="parser__element_8c.html" title="Parse the element rule." alt="" coords="1340,251,1543,278"/>
-<area shape="rect" href="parser__functionnal_8c.html" title=" " alt="" coords="1567,251,1790,278"/>
+<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="585,244,751,285"/>
+<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="776,251,917,278"/>
+<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="356,333,508,360"/>
+<area shape="rect" href="options__tests_8c.html" title="Tests the options functions." alt="" coords="827,155,1008,196"/>
+<area shape="rect" href="parser__condition_8c.html" title="Parse the condition rule." alt="" coords="1373,251,1582,278"/>
+<area shape="rect" href="parser__element_8c.html" title="Parse the element rule." alt="" coords="1607,251,1809,278"/>
+<area shape="rect" href="parser__functionnal_8c.html" title=" " alt="" coords="1834,251,2057,278"/>
+<area shape="rect" href="parser__variable_8c.html" title=" " alt="" coords="2081,251,2284,278"/>
 </map>
 </div>
 </div>
@@ -150,6 +152,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a6946e048141960f4a9f229d94fd497e5">AST_COMMAND</a>
 , <br />
 &#160;&#160;<a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3a1ede9e5a1a5ad1673ac67c0381b69711">AST_WORD_ASSIGNMENT</a>
+, <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3ad46ebb4f81948b96d20409aa8b800a33">AST_VARIABLE</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a77091c187ac9a89404fac2e8226daef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerate the different types of AST nodes.  <a href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3">More...</a><br /></td></tr>
@@ -213,6 +216,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a85f84b8ef5ddee418fe56edebc181db8"></a>AST_OR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a6946e048141960f4a9f229d94fd497e5"></a>AST_COMMAND&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3a1ede9e5a1a5ad1673ac67c0381b69711"></a>AST_WORD_ASSIGNMENT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a77091c187ac9a89404fac2e8226daef3ad46ebb4f81948b96d20409aa8b800a33"></a>AST_VARIABLE&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['str_293',['str',['../structlex__match.html#a8536766f1bff32d35a1c649012a26997',1,'lex_match::str()'],['../namespacetest__builder.html#ac506ba658baf4c8ba3fe9f2f8cf5c5e0',1,'test_builder.str()']]]
+  ['ref_5fres_340',['ref_res',['../namespacetest__builder.html#aa876a9b79a690bdfe376f12d98266ee3',1,'test_builder']]],
+  ['res_341',['res',['../namespacetest__builder.html#a9f4afddda7a59f824ad4fe600dd3c81a',1,'test_builder']]]
 ];

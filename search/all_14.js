@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['while_5floop_169',['while_loop',['../ast__eval_8h.html#acece98bbeb847388b7d092e142b67697',1,'while_loop(struct ast_node *node, bool logger_enabled):&#160;loop.c'],['../loop_8c.html#acece98bbeb847388b7d092e142b67697',1,'while_loop(struct ast_node *node, bool logger_enabled):&#160;loop.c']]]
+  ['value_193',['value',['../structast__node.html#ab7f3b882b6e9b6d351126d774058c263',1,'ast_node::value()'],['../structpair__list.html#af1d78f9ab4241f4b7d1e339fc1a64e26',1,'pair_list::value()']]],
+  ['variables_194',['variables',['../ast__variable_8c.html#a87db4b0d316863d95378db9f5346ddf2',1,'ast_variable.c']]]
 ];

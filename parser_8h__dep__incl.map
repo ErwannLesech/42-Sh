@@ -1,11 +1,13 @@
 <map id="src/parser/parser.h" name="src/parser/parser.h">
-<area shape="rect" id="node1" title="Header for the parser." alt="" coords="600,5,743,32"/>
+<area shape="rect" id="node1" title="Header for the parser." alt="" coords="815,5,957,32"/>
 <area shape="rect" id="node2" href="$ast__eval_8c.html" title="Evaluate the AST." alt="" coords="5,87,172,114"/>
-<area shape="rect" id="node3" href="$exec__tests_8c.html" title="Tests the exec function." alt="" coords="196,80,363,121"/>
-<area shape="rect" id="node4" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="387,87,476,114"/>
-<area shape="rect" id="node5" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="501,87,642,114"/>
-<area shape="rect" id="node6" href="$parser__condition_8c.html" title="Parse the condition rule." alt="" coords="667,87,876,114"/>
-<area shape="rect" id="node7" href="$parser__element_8c.html" title="Parse the element rule." alt="" coords="901,87,1103,114"/>
-<area shape="rect" id="node8" href="$parser__functionnal_8c.html" title=" " alt="" coords="1128,87,1351,114"/>
-<area shape="rect" id="node9" href="$parser__tests_8c.html" title="Tests the parser functions." alt="" coords="1375,80,1541,121"/>
+<area shape="rect" id="node3" href="$ast__variable_8c.html" title=" " alt="" coords="196,87,387,114"/>
+<area shape="rect" id="node4" href="$exec__tests_8c.html" title="Tests the exec function." alt="" coords="411,80,577,121"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="601,87,691,114"/>
+<area shape="rect" id="node6" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="715,87,857,114"/>
+<area shape="rect" id="node7" href="$parser__condition_8c.html" title="Parse the condition rule." alt="" coords="881,87,1091,114"/>
+<area shape="rect" id="node8" href="$parser__element_8c.html" title="Parse the element rule." alt="" coords="1115,87,1318,114"/>
+<area shape="rect" id="node9" href="$parser__functionnal_8c.html" title=" " alt="" coords="1343,87,1565,114"/>
+<area shape="rect" id="node10" href="$parser__variable_8c.html" title=" " alt="" coords="1590,87,1793,114"/>
+<area shape="rect" id="node11" href="$parser__tests_8c.html" title="Tests the parser functions." alt="" coords="1817,80,1984,121"/>
 </map>

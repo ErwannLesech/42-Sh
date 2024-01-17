@@ -100,15 +100,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="parser_8h__dep__incl.png" border="0" usemap="#asrc_2parser_2parser_8hdep" alt=""/></div>
 <map name="asrc_2parser_2parser_8hdep" id="asrc_2parser_2parser_8hdep">
-<area shape="rect" title="Header for the parser." alt="" coords="600,5,743,32"/>
+<area shape="rect" title="Header for the parser." alt="" coords="815,5,957,32"/>
 <area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="5,87,172,114"/>
-<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="196,80,363,121"/>
-<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="387,87,476,114"/>
-<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="501,87,642,114"/>
-<area shape="rect" href="parser__condition_8c.html" title="Parse the condition rule." alt="" coords="667,87,876,114"/>
-<area shape="rect" href="parser__element_8c.html" title="Parse the element rule." alt="" coords="901,87,1103,114"/>
-<area shape="rect" href="parser__functionnal_8c.html" title=" " alt="" coords="1128,87,1351,114"/>
-<area shape="rect" href="parser__tests_8c.html" title="Tests the parser functions." alt="" coords="1375,80,1541,121"/>
+<area shape="rect" href="ast__variable_8c.html" title=" " alt="" coords="196,87,387,114"/>
+<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="411,80,577,121"/>
+<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="601,87,691,114"/>
+<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="715,87,857,114"/>
+<area shape="rect" href="parser__condition_8c.html" title="Parse the condition rule." alt="" coords="881,87,1091,114"/>
+<area shape="rect" href="parser__element_8c.html" title="Parse the element rule." alt="" coords="1115,87,1318,114"/>
+<area shape="rect" href="parser__functionnal_8c.html" title=" " alt="" coords="1343,87,1565,114"/>
+<area shape="rect" href="parser__variable_8c.html" title=" " alt="" coords="1590,87,1793,114"/>
+<area shape="rect" href="parser__tests_8c.html" title="Tests the parser functions." alt="" coords="1817,80,1984,121"/>
 </map>
 </div>
 </div>
@@ -182,6 +184,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a45c0e41a267a910e62a147285670f06c"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d">token_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#a45c0e41a267a910e62a147285670f06c">parser_pop</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="memdesc:a45c0e41a267a910e62a147285670f06c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next token type and consume it.  <a href="parser_8h.html#a45c0e41a267a910e62a147285670f06c">More...</a><br /></td></tr>
 <tr class="separator:a45c0e41a267a910e62a147285670f06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf859b3a838a67751470a999220b1954"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8h.html#aaf859b3a838a67751470a999220b1954">parse_variable</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="separator:aaf859b3a838a67751470a999220b1954"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header for the parser. </p>
@@ -408,6 +412,24 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the AST. </dd></dl>
+
+</div>
+</div>
+<a id="aaf859b3a838a67751470a999220b1954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf859b3a838a67751470a999220b1954">&#9670;&nbsp;</a></span>parse_variable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structast__node.html">ast_node</a>* parse_variable </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

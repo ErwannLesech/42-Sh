@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['type_294',['type',['../structast__node.html#abc7b267b982b6c5f4e4d6c87189b58e4',1,'ast_node::type()'],['../structlex__match.html#a80f2a084a5a7d097f4a477cb80b38088',1,'lex_match::type()'],['../structtoken.html#ab4178fc4879d84588a44b5ab5360089f',1,'token::type()']]]
+  ['size_342',['size',['../structhash__map.html#abd1a05ebf11245bc6f578c434599faf8',1,'hash_map']]],
+  ['str_343',['str',['../structlex__match.html#a8536766f1bff32d35a1c649012a26997',1,'lex_match::str()'],['../namespacetest__builder.html#ac506ba658baf4c8ba3fe9f2f8cf5c5e0',1,'test_builder.str()']]]
 ];

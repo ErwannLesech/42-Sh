@@ -96,15 +96,16 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ast__eval_8h__dep__incl.png" border="0" usemap="#asrc_2execute_2ast__eval_8hdep" alt=""/></div>
 <map name="asrc_2execute_2ast__eval_8hdep" id="asrc_2execute_2ast__eval_8hdep">
-<area shape="rect" title="Evaluate the AST." alt="" coords="465,5,632,32"/>
+<area shape="rect" title="Evaluate the AST." alt="" coords="519,5,685,32"/>
 <area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="5,169,172,196"/>
-<area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="127,87,280,114"/>
-<area shape="rect" href="loop_8c.html" title=" " alt="" coords="305,87,443,114"/>
-<area shape="rect" href="pipeline_8c.html" title=" " alt="" coords="467,87,630,114"/>
-<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="655,80,821,121"/>
-<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="845,87,935,114"/>
-<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="959,87,1101,114"/>
-<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="197,169,349,196"/>
+<area shape="rect" href="ast__variable_8c.html" title=" " alt="" coords="53,87,244,114"/>
+<area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="268,87,421,114"/>
+<area shape="rect" href="loop_8c.html" title=" " alt="" coords="446,87,585,114"/>
+<area shape="rect" href="pipeline_8c.html" title=" " alt="" coords="609,87,771,114"/>
+<area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="796,80,963,121"/>
+<area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="987,87,1076,114"/>
+<area shape="rect" href="parser_8c.html" title="Parse the input and build the AST." alt="" coords="1101,87,1242,114"/>
+<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="269,169,421,196"/>
 </map>
 </div>
 </div>
@@ -125,6 +126,12 @@ Functions</h2></td></tr>
 <tr class="separator:adb075b3f07a8a64978e5d84de2a9a693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36fd875db1598b0102b810da22ff572b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8h.html#a36fd875db1598b0102b810da22ff572b">ast_and_or</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
 <tr class="separator:a36fd875db1598b0102b810da22ff572b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a668530fd155e7b3892b33d13a89cde24"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8h.html#a668530fd155e7b3892b33d13a89cde24">ast_eval_assignment</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="separator:a668530fd155e7b3892b33d13a89cde24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaaa3796449d145d65af4b625044a6cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8h.html#aeaaa3796449d145d65af4b625044a6cd">ast_command</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="separator:aeaaa3796449d145d65af4b625044a6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d063d68044368c6619829019e3079c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8h.html#a22d063d68044368c6619829019e3079c">handle_word</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
+<tr class="separator:a22d063d68044368c6619829019e3079c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Evaluate the AST. </p>
@@ -140,6 +147,62 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int ast_and_or </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>logger_enabled</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeaaa3796449d145d65af4b625044a6cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaaa3796449d145d65af4b625044a6cd">&#9670;&nbsp;</a></span>ast_command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ast_command </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>logger_enabled</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a668530fd155e7b3892b33d13a89cde24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a668530fd155e7b3892b33d13a89cde24">&#9670;&nbsp;</a></span>ast_eval_assignment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ast_eval_assignment </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
           <td class="paramname"><em>node</em>, </td>
@@ -182,6 +245,24 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a22d063d68044368c6619829019e3079c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22d063d68044368c6619829019e3079c">&#9670;&nbsp;</a></span>handle_word()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* handle_word </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
