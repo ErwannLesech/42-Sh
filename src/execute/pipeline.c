@@ -8,6 +8,10 @@
 
 int pipeline_eval(struct ast_node *node, bool logger_enabled)
 {
+    if (node->children_count == 1)
+    {
+        return match_ast(node->children[0], logger_enabled);
+    }
     if (logger_enabled)
     {
         printf("pipeline\n");
@@ -22,7 +26,7 @@ int pipeline_eval(struct ast_node *node, bool logger_enabled)
     for (int i = start; i < node->children_count; i++)
     {
         int pipes[2];
-        if (i != node->children_count)
+        if (i != node->children_count - 1)
         {
             if (pipe(pipes) == -1)
             {
@@ -44,6 +48,7 @@ int pipeline_eval(struct ast_node *node, bool logger_enabled)
                 close(pipes[1]);
             }
             stat = match_ast(node->children[i], logger_enabled);
+            ast_free(node);
             exit(stat);
         }
         if (i != start)
@@ -61,7 +66,6 @@ int pipeline_eval(struct ast_node *node, bool logger_enabled)
     {
         stat = !stat;
     }
-
     return stat;
 }
 
@@ -72,7 +76,6 @@ int ast_and_or(struct ast_node *node, bool logger_enabled)
     {
         if (node->children[i]->type == AST_AND && status == 1)
         {
-            printf("and\n");
             i++;
         }
         else if (node->children[i]->type == AST_OR && status == 0)

@@ -44,6 +44,7 @@ int exec_cmd(struct ast_node *node, bool logger_enabled)
         for (int i = 0; i < node->children_count; i++)
         {
             args[i] = node->children[i]->value;
+            //printf("%s ", args[i]);
             logger(args[i], LOGGER_EXEC, logger_enabled);
         }
         logger("\n", LOGGER_EXEC, logger_enabled);
@@ -85,6 +86,10 @@ int ast_command(struct ast_node *node, bool logger_enabled)
 
 int ast_eval_simple_command(struct ast_node *node, bool logger_enabled)
 {
+    if (node->children[0]->type == AST_WORD_ASSIGNMENT)
+    {
+        return ast_eval_assignment(node, logger_enabled);
+    }
     char *command = node->children[0]->value;
     for (size_t i = 0; i < 3; i++)
     {
@@ -93,7 +98,6 @@ int ast_eval_simple_command(struct ast_node *node, bool logger_enabled)
             return builtin[i].fun(node);
         }
     }
-
     return exec_cmd(node, logger_enabled);
 }
 

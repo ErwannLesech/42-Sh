@@ -42,9 +42,7 @@ void ast_free(struct ast_node *node)
 {
     if (node == NULL)
         return;
-    if (node->type == AST_WORD)
-        free(node->value);
-    if (node->children != NULL)
+    if (node->children_count != 0)
     {
         for (int i = 0; i < node->children_count; i++)
         {
@@ -52,6 +50,8 @@ void ast_free(struct ast_node *node)
         }
         free(node->children);
     }
+    if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT)
+        free(node->value);
     free(node);
 }
 
@@ -89,6 +89,10 @@ char *ast_type_to_string(enum ast_type type)
         return "AST_OR";
     case AST_COMMAND:
         return "AST_COMMAND";
+    case AST_WORD_ASSIGNMENT:
+        return "AST_WORD_ASSIGNMENT";
+    case AST_VARIABLE:
+        return "AST_VARIABLE";  
     default:
         return "UNKNOWN";
     }
@@ -105,7 +109,7 @@ void print_ast(struct ast_node *node, int depth, bool logger_enabled)
     {
         printf("%s:\n", node->value);
     }
-    logger(node->value, LOGGER_PARSER, logger_enabled);
+    //logger(node->value, LOGGER_PARSER, logger_enabled);
     for (int i = 0; i < node->children_count; i++)
         print_ast(node->children[i], depth + 1, logger_enabled);
 }

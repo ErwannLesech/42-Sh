@@ -37,7 +37,11 @@ int main(int argc, char **argv)
     logger(input, LOGGER_INPUT, logger_enabled);
 
     struct lexer *lexer = lexer_new(input);
-
+   /* while (lexer_peek(lexer).type != TOKEN_EOF)
+    {
+        printf("%d, %s\n", lexer_pop(lexer).type, lexer_peek(lexer).data);
+    }
+    lexer = lexer_new(input);*/
     int val = parser_loop(lexer, logger_enabled, pretty_print_enabled);
     if (val == 2)
     {
