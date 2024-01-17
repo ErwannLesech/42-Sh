@@ -1,0 +1,4 @@
+run_test double_quote1.test
+run_test double_quote2.test
+run_test double_quote3.test
+run_test double_quote4.test
