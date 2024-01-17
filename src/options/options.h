@@ -57,7 +57,7 @@ void pretty_print(struct ast_node *ast, bool pretty_print_enabled, int *depths);
  * \brief Check if the given string is a number.
  * \param str The string to check.
  * \return True if the string is a number, false otherwise.
-*/
+ */
 int is_number(char *str);
 
 #endif /* ! OPTIONS_H  */

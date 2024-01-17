@@ -236,7 +236,7 @@ char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
                 }
                 else
                 {
-                   *word_index -= 1;
+                    *word_index -= 1;
                 }
                 lexer->index += 1;
             }

@@ -28,7 +28,7 @@ void set_variable(char *key, char *value)
 char *get_variable(char *key)
 {
     key++;
-    //gerer les variables envirovment
+    // gerer les variables envirovment
     init_variables();
     if (variables == NULL)
     {
@@ -63,7 +63,8 @@ int ast_eval_assignment(struct ast_node *node, bool logger_enabled)
     return 0;
 }
 
-// Small function for handle variable (just check ast_node type and check the hash table)
+// Small function for handle variable (just check ast_node type and check the
+// hash table)
 char *handle_word(struct ast_node *node)
 {
     if (node->type == AST_WORD)
@@ -74,7 +75,6 @@ char *handle_word(struct ast_node *node)
     {
         return get_variable(node->value);
     }
-    //IMPOSSIBLE
+    // IMPOSSIBLE
     return NULL;
-
 }
