@@ -30,21 +30,21 @@ void print_echo(struct ast_node *node, int enable_escapes, int j)
 {
     for (int i = j; i < node->children_count; i++)
     {
-        for (size_t k = 0; k < strlen(node->children[i]->value); k++)
+        for (size_t k = 0; k < strlen(handle_word(node->children[i])); k++)
         {
-            if (enable_escapes && (node->children[i]->value)[k] == '\\')
+            if (enable_escapes && (handle_word(node->children[i]))[k] == '\\')
             {
-                if ((node->children[i]->value)[k + 1] == 'n')
+                if ((handle_word(node->children[i]))[k + 1] == 'n')
                 {
                     putchar('\n');
                     k++;
                 }
-                else if ((node->children[i]->value)[k + 1] == 't')
+                else if ((handle_word(node->children[i]))[k + 1] == 't')
                 {
                     putchar('\t');
                     k++;
                 }
-                else if ((node->children[i]->value)[k + 1] == '\\')
+                else if ((handle_word(node->children[i]))[k + 1] == '\\')
                 {
                     putchar('\\');
                     k++;
@@ -52,13 +52,13 @@ void print_echo(struct ast_node *node, int enable_escapes, int j)
                 else
                 {
                     putchar('\\');
-                    putchar((node->children[i]->value)[k]);
+                    putchar((handle_word(node->children[i]))[k]);
                     k++;
                 }
             }
             else
             {
-                putchar((node->children[i]->value)[k]);
+                putchar((handle_word(node->children[i]))[k]);
             }
         }
         if (i != node->children_count - 1)
@@ -74,20 +74,20 @@ int echo_fun(struct ast_node *node)
     int j = 1;
     for (int i = 1; i < node->children_count; i++)
     {
-        if (node->children[i]->value[0] == '-')
+        if (strlen(handle_word(node->children[i])) >= 1 && handle_word(node->children[i])[0] == '-')
         {
-            if (strspn(node->children[i]->value, "-neE")
-                != strlen(node->children[i]->value))
+            if (strspn(handle_word(node->children[i]), "-neE")
+                != strlen(handle_word(node->children[i])))
             {
                 goto DEFAULT;
             }
-            for (size_t k = 1; k < strlen(node->children[i]->value); k++)
+            for (size_t k = 1; k < strlen(handle_word(node->children[i])); k++)
             {
-                if (node->children[i]->value[k] == 'n')
+                if (handle_word(node->children[i])[k] == 'n')
                     no_newline = 1;
-                else if (node->children[i]->value[k] == 'e')
+                else if (handle_word(node->children[i])[k] == 'e')
                     enable_escapes = 1;
-                else if (node->children[i]->value[k] == 'E')
+                else if (handle_word(node->children[i])[k] == 'E')
                     enable_escapes = 0;
                 else
                 {
