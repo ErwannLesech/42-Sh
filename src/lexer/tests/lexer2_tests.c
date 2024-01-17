@@ -217,7 +217,7 @@ Test(lexer2, token_redir_stick_left)
     token_free(tok);
 
     tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_eq(tok.type, TOKEN_IONUMBER);
     cr_assert_str_eq(tok.data, "2");
     token_free(tok);
 
@@ -248,7 +248,7 @@ Test(lexer2, token_redir_stick_left2)
     token_free(tok);
 
     tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_eq(tok.type, TOKEN_IONUMBER);
     cr_assert_str_eq(tok.data, "2");
     token_free(tok);
 
@@ -262,6 +262,58 @@ Test(lexer2, token_redir_stick_left2)
     cr_assert_str_eq(tok.data, "file");
     token_free(tok);
 
+    lexer_free(lexer);
+}
+
+Test(lexer2, token_redir_stick_left_alpha)
+{
+    struct lexer *lexer = lexer_new("echo a>file");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "a");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
+    cr_assert_str_eq(tok.data, ">");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "file");
+    token_free(tok);
+    
+    lexer_free(lexer);
+}
+
+Test(lexer2, token_redir_stick_left_alphanum)
+{
+    struct lexer *lexer = lexer_new("echo 13>file");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_IONUMBER);
+    cr_assert_str_eq(tok.data, "13");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_REDIR);
+    cr_assert_str_eq(tok.data, ">");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "file");
+    token_free(tok);
+    
     lexer_free(lexer);
 }
 
@@ -1053,3 +1105,4 @@ Test (lexer2, personalized_variable2)
 
     lexer_free(lexer);
 }
+
