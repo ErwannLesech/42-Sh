@@ -155,4 +155,6 @@ enum token_type parser_peek(struct lexer *lexer);
  */
 enum token_type parser_pop(struct lexer *lexer);
 
+struct ast_node *parse_variable(struct lexer *lexer);
+
 #endif /* ! PARSER_H */

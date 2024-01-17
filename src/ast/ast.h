@@ -35,7 +35,8 @@ enum ast_type
     AST_AND,
     AST_OR,
     AST_COMMAND,
-    AST_WORD_ASSIGNMENT
+    AST_WORD_ASSIGNMENT,
+    AST_VARIABLE
 };
 
 /**
