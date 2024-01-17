@@ -292,6 +292,7 @@ struct token parse_input_for_tok(struct lexer *lexer)
 struct token lexer_peek(struct lexer *lexer)
 {
     size_t save_index = lexer->index;
+    struct token save_token = lexer->curr_tok;
     if (lexer->curr_tok.type == TOKEN_EOF)
     {
         struct token token;
@@ -301,6 +302,7 @@ struct token lexer_peek(struct lexer *lexer)
     }
     struct token token = parse_input_for_tok(lexer);
     lexer->index = save_index;
+    lexer->curr_tok = save_token;
     return token;
 }
 
