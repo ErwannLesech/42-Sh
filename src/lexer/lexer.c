@@ -16,15 +16,14 @@
 #include <string.h>
 
 struct lex_match lex_match[] = {
-    { "if", TOKEN_IF },      { "then", TOKEN_THEN }, { "elif", TOKEN_ELIF },
-    { "else", TOKEN_ELSE },  { "fi", TOKEN_FI },     { ";", TOKEN_SEMICOLON },
-    { "\n", TOKEN_EOL },     { "\0", TOKEN_EOF },
+    { "if", TOKEN_IF },     { "then", TOKEN_THEN }, { "elif", TOKEN_ELIF },
+    { "else", TOKEN_ELSE }, { "fi", TOKEN_FI },     { ";", TOKEN_SEMICOLON },
+    { "\n", TOKEN_EOL },    { "\0", TOKEN_EOF },
 
-    { "&&", TOKEN_AND },     { "||", TOKEN_OR },     { "|", TOKEN_PIPE },
-    { "!", TOKEN_NEGATE },   { "<", TOKEN_REDIR },   { ">", TOKEN_REDIR },
-    { ">>", TOKEN_REDIR },   { "<&", TOKEN_REDIR },  { ">&", TOKEN_REDIR },
-    { "done", TOKEN_DONE},
-    { ">|", TOKEN_REDIR },   { "<>", TOKEN_REDIR }
+    { "&&", TOKEN_AND },    { "||", TOKEN_OR },     { "|", TOKEN_PIPE },
+    { "!", TOKEN_NEGATE },  { "<", TOKEN_REDIR },   { ">", TOKEN_REDIR },
+    { ">>", TOKEN_REDIR },  { "<&", TOKEN_REDIR },  { ">&", TOKEN_REDIR },
+    { "done", TOKEN_DONE }, { ">|", TOKEN_REDIR },  { "<>", TOKEN_REDIR }
 };
 
 struct lexer *lexer_new(const char *input)
@@ -130,8 +129,11 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                     return NULL;
                 }
             }
-            // Handle the word assignement if it's contain '=' and it's not the first character
-            else if (lexer->data[lexer->index] == '=' && word_index > 0 && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE)
+            // Handle the word assignement if it's contain '=' and it's not the
+            // first character
+            else if (lexer->data[lexer->index] == '=' && word_index > 0
+                     && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE
+                     && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE)
             {
                 lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;
                 lexer->index += 1;
@@ -146,7 +148,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
 
             // Handle the double quote
             if (lexer->data[lexer->index - 1] == '\"'
-                || lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+                || lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE
+                || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
             {
                 // Handle the end of the double quote
                 if (lexer->data[lexer->index - 1] == '\"')
@@ -208,7 +211,8 @@ struct token parse_input_for_tok(struct lexer *lexer)
 {
     struct token token;
 
-    // Usefull to diactivate the special meaning of the next character when it's a backslash
+    // Usefull to diactivate the special meaning of the next character when it's
+    // a backslash
     bool is_diactivated = false;
 
     // Skip spaces and tabs at first
@@ -228,8 +232,10 @@ struct token parse_input_for_tok(struct lexer *lexer)
         return token;
     }
 
-    // Check if the word is a word_assignement (contains a '=') and if it's a variable name is valid
-    if (lexer->curr_tok.type == TOKEN_WORD_ASSIGNMENT && check_variable_assignement(word))
+    // Check if the word is a word_assignement (contains a '=') and if it's a
+    // variable name is valid
+    if (lexer->curr_tok.type == TOKEN_WORD_ASSIGNMENT
+        && check_variable_assignement(word))
     {
         token.type = TOKEN_WORD_ASSIGNMENT;
         token.data = word;
@@ -239,7 +245,8 @@ struct token parse_input_for_tok(struct lexer *lexer)
     }
 
     // Check if the word is a variable name
-    if (lexer->curr_tok.type == TOKEN_VARIABLE || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+    if (lexer->curr_tok.type == TOKEN_VARIABLE
+        || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
     {
         token.type = TOKEN_VARIABLE;
         token.data = word;

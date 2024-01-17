@@ -24,7 +24,6 @@ Test(parser, empty_string)
     lexer_free(lexer);
 }
 
-
 /*
 Test(parser, command_with_if_else)
 {

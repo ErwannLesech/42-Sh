@@ -1,10 +1,10 @@
+#include <stdlib.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
 #include "../ast/ast.h"
 #include "ast_eval.h"
-
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <sys/wait.h>
 
 int pipeline_eval(struct ast_node *node, bool logger_enabled)
 {
@@ -73,7 +73,7 @@ int ast_and_or(struct ast_node *node, bool logger_enabled)
         if (node->children[i]->type == AST_AND && status == 1)
         {
             printf("and\n");
-           i++;
+            i++;
         }
         else if (node->children[i]->type == AST_OR && status == 0)
         {

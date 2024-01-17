@@ -62,7 +62,8 @@ struct ast_node *and_or(struct lexer *lexer)
     if (child != NULL)
     {
         ast_append(current, child);
-        while (parser_peek(lexer) == TOKEN_AND || parser_peek(lexer) == TOKEN_OR)
+        while (parser_peek(lexer) == TOKEN_AND
+               || parser_peek(lexer) == TOKEN_OR)
         {
             if (parser_peek(lexer) == TOKEN_AND)
                 ast_append(current, ast_node_new(AST_AND));
@@ -77,7 +78,7 @@ struct ast_node *and_or(struct lexer *lexer)
                 ast_free(current);
                 return NULL;
             }
-            //parser_pop(lexer);
+            // parser_pop(lexer);
             ast_append(current, child);
         }
         return current;
@@ -153,12 +154,12 @@ struct ast_node *simple_command(struct lexer *lexer)
             ast_append(current, child2);
             child2 = prefix(lexer);
         }
-    }   
+    }
     if (parser_peek(lexer) == TOKEN_WORD)
     {
         char *value = lexer_peek(lexer).data;
-        if (strcmp(value, "while") == 0 || strcmp(value, "until") == 0 ||
-            strcmp(value, "for") == 0 || strcmp(value, "do") == 0)
+        if (strcmp(value, "while") == 0 || strcmp(value, "until") == 0
+            || strcmp(value, "for") == 0 || strcmp(value, "do") == 0)
         {
             free(value);
             ast_free(current);
