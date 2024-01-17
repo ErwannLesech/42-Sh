@@ -1,6 +1,10 @@
 <map id="src/lexer/lexer.h" name="src/lexer/lexer.h">
-<area shape="rect" id="node1" title="Header of the lexer." alt="" coords="87,5,211,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,80,88,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="112,80,187,107"/>
-<area shape="rect" id="node4" href="$token_8h.html" title="Header of the token structure." alt="" coords="211,80,282,107"/>
+<area shape="rect" id="node1" title="Header of the lexer." alt="" coords="209,5,333,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="192,229,275,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="185,80,260,107"/>
+<area shape="rect" id="node4" href="$token_8h.html" title="Header of the token structure." alt="" coords="285,80,355,107"/>
+<area shape="rect" id="node5" href="$options_8h.html" title="Header for options functions." alt="" coords="15,80,161,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="5,229,72,256"/>
+<area shape="rect" id="node7" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="84,155,175,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="97,229,167,256"/>
 </map>
