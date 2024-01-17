@@ -72,24 +72,23 @@ $(function() {
 <div class="title">parser_functionnal.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;ctype.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="parser_8h_source.html">parser.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="parser_8h_source.html">parser.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for parser_functionnal.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="parser__functionnal_8c__incl.png" border="0" usemap="#asrc_2parser_2parser__functionnal_8c" alt=""/></div>
 <map name="asrc_2parser_2parser__functionnal_8c" id="asrc_2parser_2parser__functionnal_8c">
-<area shape="rect" title=" " alt="" coords="111,5,334,32"/>
-<area shape="rect" title=" " alt="" coords="139,80,210,107"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="235,80,309,107"/>
-<area shape="rect" title=" " alt="" coords="69,155,139,181"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="164,155,255,181"/>
-<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="279,155,393,181"/>
-<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="398,229,469,256"/>
-<area shape="rect" title=" " alt="" coords="192,229,275,256"/>
-<area shape="rect" title=" " alt="" coords="5,229,72,256"/>
-<area shape="rect" title=" " alt="" coords="97,229,167,256"/>
-<area shape="rect" title=" " alt="" coords="299,229,373,256"/>
+<area shape="rect" title=" " alt="" coords="113,5,336,32"/>
+<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="187,80,262,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,76,181"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="97,304,187,331"/>
+<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="303,155,416,181"/>
+<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="472,229,543,256"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="151,229,298,256"/>
+<area shape="rect" title=" " alt="" coords="270,379,353,405"/>
+<area shape="rect" title=" " alt="" coords="179,379,246,405"/>
+<area shape="rect" title=" " alt="" coords="84,379,155,405"/>
+<area shape="rect" title=" " alt="" coords="322,229,397,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -98,31 +97,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a7ac5fed7feb25ad4a06c8c2f1913ed08"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser__functionnal_8c.html#a7ac5fed7feb25ad4a06c8c2f1913ed08">prefix</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="memdesc:a7ac5fed7feb25ad4a06c8c2f1913ed08"><td class="mdescLeft">&#160;</td><td class="mdescRight">redirection;  <a href="parser__functionnal_8c.html#a7ac5fed7feb25ad4a06c8c2f1913ed08">More...</a><br /></td></tr>
 <tr class="separator:a7ac5fed7feb25ad4a06c8c2f1913ed08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5dda8dfb7843e3379779c346c3c905d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser__functionnal_8c.html#aa5dda8dfb7843e3379779c346c3c905d">is_number</a> (char *str)</td></tr>
-<tr class="separator:aa5dda8dfb7843e3379779c346c3c905d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e4fb2a7d858c13e40e1798e490bf52d"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser__functionnal_8c.html#a7e4fb2a7d858c13e40e1798e490bf52d">redirection</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="memdesc:a7e4fb2a7d858c13e40e1798e490bf52d"><td class="mdescLeft">&#160;</td><td class="mdescRight">redirection = [IONUMBER] ( '&gt;' | '&lt;' | '&gt;&gt;' | '&gt;&amp;' | '&lt;&amp;' | '&gt;|' | '&lt;&gt;' ) WORD ;  <a href="parser__functionnal_8c.html#a7e4fb2a7d858c13e40e1798e490bf52d">More...</a><br /></td></tr>
 <tr class="separator:a7e4fb2a7d858c13e40e1798e490bf52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aa5dda8dfb7843e3379779c346c3c905d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5dda8dfb7843e3379779c346c3c905d">&#9670;&nbsp;</a></span>is_number()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int is_number </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a7ac5fed7feb25ad4a06c8c2f1913ed08"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7ac5fed7feb25ad4a06c8c2f1913ed08">&#9670;&nbsp;</a></span>prefix()</h2>
 
