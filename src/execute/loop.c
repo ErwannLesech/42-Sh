@@ -1,4 +1,4 @@
-#include "../ast/ast.h"
+#include "ast/ast.h"
 #include "ast_eval.h"
 
 int while_loop(struct ast_node *node, bool logger_enabled)

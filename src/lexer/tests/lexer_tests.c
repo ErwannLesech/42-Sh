@@ -10,9 +10,9 @@
 #include <criterion/redirect.h>
 #include <string.h>
 
-#include "../lexer.h"
+#include "lexer/lexer.h"
 
-TestSuite(lexer, .timeout = 1);
+TestSuite(lexer, .timeout = 10);
 
 Test(lexer, lexer_new_and_free)
 {

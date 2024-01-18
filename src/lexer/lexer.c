@@ -133,16 +133,18 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
             }
             // Handle the word assignement if it's contain '=' and it's not the
             // first character
-            
+
             else if (lexer->data[lexer->index] == '=' && word_index > 0
                      && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE
-                     && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE && check_variable_assignement(word))
+                     && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE
+                     && check_variable_assignement(word))
             {
-                lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;                
+                lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;
                 break;
             }
 
-            else if (lexer->data[lexer->index] == '=' && word_index == 0 && lexer->curr_tok.type == TOKEN_VARIABLE_VALUE)
+            else if (lexer->data[lexer->index] == '=' && word_index == 0
+                     && lexer->curr_tok.type == TOKEN_VARIABLE_VALUE)
             {
                 lexer->index += 1;
             }
@@ -203,8 +205,9 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
     word = realloc(word, sizeof(char) * (word_index + 1));
     word[word_index] = '\0';
 
-    if (is_number(word) && (lexer->data[lexer->index] == '>'
-            || lexer->data[lexer->index] == '<' ))
+    if (is_number(word)
+        && (lexer->data[lexer->index] == '>'
+            || lexer->data[lexer->index] == '<'))
     {
         lexer->curr_tok.type = TOKEN_IONUMBER;
     }

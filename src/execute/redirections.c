@@ -1,11 +1,11 @@
-#include "../ast/ast.h"
-#include "ast_eval.h"
-
-#include <unistd.h>
 #include <fcntl.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/wait.h>
+#include <unistd.h>
+
+#include "ast/ast.h"
+#include "ast_eval.h"
 
 int redir_output(struct ast_node *node, bool logger_enabled)
 {

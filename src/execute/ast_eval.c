@@ -13,9 +13,8 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#include "../options/options.h"
-#include "../parser/parser.h"
 #include "builtin.h"
+#include "parser/parser.h"
 
 // true = 0
 // false = 1
@@ -44,7 +43,7 @@ int exec_cmd(struct ast_node *node, bool logger_enabled)
         for (int i = 0; i < node->children_count; i++)
         {
             args[i] = handle_word(node->children[i]);
-            //printf("%s ", args[i]);
+            // printf("%s ", args[i]);
             logger(args[i], LOGGER_EXEC, logger_enabled);
         }
         logger("\n", LOGGER_EXEC, logger_enabled);
