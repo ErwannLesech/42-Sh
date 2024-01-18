@@ -15,7 +15,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "../ast/ast.h"
+#include "ast/ast.h"
 
 /**
  * \brief Check if the given string is a number.

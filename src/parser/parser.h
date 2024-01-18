@@ -11,10 +11,10 @@
 
 #include <string.h>
 
-#include "../ast/ast.h"
-#include "../lexer/lexer.h"
-#include "../lexer/token.h"
-#include "../options/options.h"
+#include "ast/ast.h"
+#include "lexer/lexer.h"
+#include "lexer/token.h"
+#include "options/options.h"
 
 /**
  * \brief Parse loop the given lexer

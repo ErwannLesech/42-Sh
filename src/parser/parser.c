@@ -8,7 +8,7 @@
 
 #include "parser.h"
 
-#include "../execute/ast_eval.h"
+#include "execute/ast_eval.h"
 
 /*
 input =

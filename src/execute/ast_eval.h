@@ -11,8 +11,8 @@
 
 #include <stdbool.h>
 
-#include "../ast/ast.h"
-#include "../options/options.h"
+#include "ast/ast.h"
+#include "options/options.h"
 
 /**
  * \brief Evaluate the given AST

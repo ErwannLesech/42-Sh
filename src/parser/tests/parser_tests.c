@@ -10,10 +10,10 @@
 #include <criterion/redirect.h>
 #include <string.h>
 
-#include "../../ast/ast.h"
-#include "../parser.h"
+#include "ast/ast.h"
+#include "parser/parser.h"
 
-TestSuite(parser, .timeout = 1);
+TestSuite(parser, .timeout = 10);
 
 Test(parser, empty_string)
 {

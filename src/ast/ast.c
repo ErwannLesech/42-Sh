@@ -8,7 +8,7 @@
 
 #include "ast.h"
 
-#include "../options/options.h"
+#include "options/options.h"
 
 struct ast_node *ast_node_new(enum ast_type type)
 {
@@ -92,7 +92,7 @@ char *ast_type_to_string(enum ast_type type)
     case AST_WORD_ASSIGNMENT:
         return "AST_WORD_ASSIGNMENT";
     case AST_VARIABLE:
-        return "AST_VARIABLE";  
+        return "AST_VARIABLE";
     default:
         return "UNKNOWN";
     }
@@ -105,11 +105,12 @@ void print_ast(struct ast_node *node, int depth, bool logger_enabled)
     for (int i = 0; i < depth; i++)
         printf("  ");
     printf("%s\n", ast_type_to_string(node->type));
-    if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT || node->type == AST_VARIABLE)
+    if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT
+        || node->type == AST_VARIABLE)
     {
         printf("%s:\n", node->value);
     }
-    //logger(node->value, LOGGER_PARSER, logger_enabled);
+    // logger(node->value, LOGGER_PARSER, logger_enabled);
     for (int i = 0; i < node->children_count; i++)
         print_ast(node->children[i], depth + 1, logger_enabled);
 }

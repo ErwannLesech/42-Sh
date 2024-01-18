@@ -83,7 +83,8 @@ int echo_fun(struct ast_node *node)
     int j = 1;
     for (int i = 1; i < node->children_count; i++)
     {
-        if (strlen(handle_word(node->children[i])) >= 1 && handle_word(node->children[i])[0] == '-')
+        if (strlen(handle_word(node->children[i])) >= 1
+            && handle_word(node->children[i])[0] == '-')
         {
             if (strspn(handle_word(node->children[i]), "-neE")
                 != strlen(handle_word(node->children[i])))

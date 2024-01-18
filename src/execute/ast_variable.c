@@ -8,7 +8,7 @@
 
 #include "ast_eval.h"
 #include "hash_map/hash_map.h"
-#include "../parser/parser.h"
+#include "parser/parser.h"
 
 struct hash_map *variables = NULL;
 
@@ -52,7 +52,7 @@ void set_variable(char *key, char *value)
 char *get_variable(char *key)
 {
     key++;
-    //gerer les variables envirovment
+    // gerer les variables envirovment
     init_variables();
     if (variables == NULL)
     {
@@ -108,7 +108,6 @@ char *handle_word(struct ast_node *node)
     {
         return get_variable(node->value);
     }
-    //IMPOSSIBLE
+    // IMPOSSIBLE
     return NULL;
-
 }

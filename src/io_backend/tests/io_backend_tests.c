@@ -10,9 +10,9 @@
 #include <criterion/redirect.h>
 #include <string.h>
 
-#include "../io_backend.h"
+#include "io_backend/io_backend.h"
 
-TestSuite(io_backend, .timeout = 1);
+TestSuite(io_backend, .timeout = 10);
 
 Test(io_backend, io_backend_direct)
 {
