@@ -25,6 +25,7 @@ enum ast_type
     AST_WORD,
     AST_EMPTY,
     AST_UNEXPECTED,
+    AST_IONUMBER,
     AST_REDIRECTION,
     AST_PIPELINE,
     AST_WHILE,

@@ -93,6 +93,8 @@ char *ast_type_to_string(enum ast_type type)
         return "AST_WORD_ASSIGNMENT";
     case AST_VARIABLE:
         return "AST_VARIABLE";
+    case AST_IONUMBER:
+        return "AST_IONUMBER";
     default:
         return "UNKNOWN";
     }
