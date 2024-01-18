@@ -1,13 +1,13 @@
 <map id="src/parser/parser_functionnal.c" name="src/parser/parser_functionnal.c">
-<area shape="rect" id="node1" title=" " alt="" coords="108,5,331,32"/>
-<area shape="rect" id="node2" href="$parser_8h.html" title="Header for the parser." alt="" coords="182,80,257,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="113,5,336,32"/>
+<area shape="rect" id="node2" href="$parser_8h.html" title="Header for the parser." alt="" coords="187,80,262,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,155,76,181"/>
-<area shape="rect" id="node4" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="103,304,181,331"/>
-<area shape="rect" id="node8" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="298,155,399,181"/>
-<area shape="rect" id="node10" href="$options_8h.html" title="Header for options functions." alt="" coords="152,229,287,256"/>
-<area shape="rect" id="node11" href="$token_8h.html" title="Header of the token structure." alt="" coords="461,229,532,256"/>
-<area shape="rect" id="node5" title=" " alt="" coords="265,379,347,405"/>
-<area shape="rect" id="node6" title=" " alt="" coords="174,379,241,405"/>
-<area shape="rect" id="node7" title=" " alt="" coords="79,379,149,405"/>
-<area shape="rect" id="node9" title=" " alt="" coords="311,229,386,256"/>
+<area shape="rect" id="node4" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="97,304,187,331"/>
+<area shape="rect" id="node8" href="$lexer_8h.html" title="Header of the lexer." alt="" coords="303,155,416,181"/>
+<area shape="rect" id="node10" href="$token_8h.html" title="Header of the token structure." alt="" coords="472,229,543,256"/>
+<area shape="rect" id="node11" href="$options_8h.html" title="Header for options functions." alt="" coords="151,229,298,256"/>
+<area shape="rect" id="node5" title=" " alt="" coords="270,379,353,405"/>
+<area shape="rect" id="node6" title=" " alt="" coords="179,379,246,405"/>
+<area shape="rect" id="node7" title=" " alt="" coords="84,379,155,405"/>
+<area shape="rect" id="node9" title=" " alt="" coords="322,229,397,256"/>
 </map>

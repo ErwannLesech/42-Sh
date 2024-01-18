@@ -3,9 +3,9 @@
 <area shape="rect" id="node2" title=" " alt="" coords="5,95,152,121"/>
 <area shape="rect" id="node3" title=" " alt="" coords="177,95,319,121"/>
 <area shape="rect" id="node4" title=" " alt="" coords="343,95,414,121"/>
-<area shape="rect" id="node5" href="$options_8h.html" title="Header for options functions." alt="" coords="438,95,573,121"/>
-<area shape="rect" id="node6" title=" " alt="" coords="363,244,445,271"/>
-<area shape="rect" id="node7" title=" " alt="" coords="565,244,632,271"/>
-<area shape="rect" id="node8" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="466,169,545,196"/>
-<area shape="rect" id="node9" title=" " alt="" coords="470,244,541,271"/>
+<area shape="rect" id="node5" href="$options_8h.html" title="Header for options functions." alt="" coords="438,95,533,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="343,244,425,271"/>
+<area shape="rect" id="node7" title=" " alt="" coords="545,244,612,271"/>
+<area shape="rect" id="node8" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="440,169,531,196"/>
+<area shape="rect" id="node9" title=" " alt="" coords="450,244,521,271"/>
 </map>

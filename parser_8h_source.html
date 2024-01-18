@@ -76,10 +76,10 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ast_8h.html">ast/ast.h</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="lexer_8h.html">lexer/lexer.h</a>&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="token_8h.html">lexer/token.h</a>&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="options_8h.html">options/options.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../ast/ast.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;../lexer/lexer.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../lexer/token.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../options/options.h&quot;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">int</span> <a class="code" href="parser_8h.html#ae466fb1cda7814d21404dfeb49f2e830">parser_loop</a>(<span class="keyword">struct</span> <a class="code" href="structlexer.html">lexer</a> *<a class="code" href="structlexer.html">lexer</a>, <span class="keywordtype">bool</span> logger_enabled,</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <span class="keywordtype">bool</span> pretty_print_enabled);</div>
@@ -123,9 +123,6 @@ $(function() {
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">struct </span><a class="code" href="structast__node.html">ast_node</a> *<a class="code" href="parser_8h.html#aaf859b3a838a67751470a999220b1954">parse_variable</a>(<span class="keyword">struct</span> <a class="code" href="structlexer.html">lexer</a> *<a class="code" href="structlexer.html">lexer</a>);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* ! PARSER_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aast_8h_html"><div class="ttname"><a href="ast_8h.html">ast.h</a></div><div class="ttdoc">Represent a node of the AST.</div></div>
-<div class="ttc" id="alexer_8h_html"><div class="ttname"><a href="lexer_8h.html">lexer.h</a></div><div class="ttdoc">Header of the lexer.</div></div>
-<div class="ttc" id="aoptions_8h_html"><div class="ttname"><a href="options_8h.html">options.h</a></div><div class="ttdoc">Header for options functions.</div></div>
 <div class="ttc" id="aparser_8h_html_a0ed637668256d70ed2b5e2579b5968e1"><div class="ttname"><a href="parser_8h.html#a0ed637668256d70ed2b5e2579b5968e1">rule_while</a></div><div class="ttdeci">struct ast_node * rule_while(struct lexer *lexer)</div><div class="ttdoc">rule_while = 'while' compound_list 'do' compound_list 'done' ;</div><div class="ttdef"><b>Definition:</b> parser_condition.c:133</div></div>
 <div class="ttc" id="aparser_8h_html_a0f47a7ffbc83a04a35f94ecdd6daefca"><div class="ttname"><a href="parser_8h.html#a0f47a7ffbc83a04a35f94ecdd6daefca">shell_command</a></div><div class="ttdeci">struct ast_node * shell_command(struct lexer *lexer)</div><div class="ttdoc">shell_command = rule_if ;</div><div class="ttdef"><b>Definition:</b> parser_condition.c:11</div></div>
 <div class="ttc" id="aparser_8h_html_a1bb6cf9bcda4225c9dd652789105475c"><div class="ttname"><a href="parser_8h.html#a1bb6cf9bcda4225c9dd652789105475c">command</a></div><div class="ttdeci">struct ast_node * command(struct lexer *lexer)</div><div class="ttdoc">command = simple_command | shell_command ;</div><div class="ttdef"><b>Definition:</b> parser_element.c:121</div></div>
@@ -149,7 +146,6 @@ $(function() {
 <div class="ttc" id="aparser_8h_html_afc3712523b3f285316928e329da6ba0c"><div class="ttname"><a href="parser_8h.html#afc3712523b3f285316928e329da6ba0c">simple_command</a></div><div class="ttdeci">struct ast_node * simple_command(struct lexer *lexer)</div><div class="ttdoc">simple_command = WORD { element } ;</div><div class="ttdef"><b>Definition:</b> parser_element.c:146</div></div>
 <div class="ttc" id="astructast__node_html"><div class="ttname"><a href="structast__node.html">ast_node</a></div><div class="ttdoc">Structure representing a node of the AST.</div><div class="ttdef"><b>Definition:</b> ast.h:47</div></div>
 <div class="ttc" id="astructlexer_html"><div class="ttname"><a href="structlexer.html">lexer</a></div><div class="ttdoc">Structure representing a lexer.</div><div class="ttdef"><b>Definition:</b> lexer.h:23</div></div>
-<div class="ttc" id="atoken_8h_html"><div class="ttname"><a href="token_8h.html">token.h</a></div><div class="ttdoc">Header of the token structure.</div></div>
 <div class="ttc" id="atoken_8h_html_afe5ef662303b6b710ea6ee1a944bad0d"><div class="ttname"><a href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d">token_type</a></div><div class="ttdeci">token_type</div><div class="ttdoc">Enum of all the possible token types.</div><div class="ttdef"><b>Definition:</b> token.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
