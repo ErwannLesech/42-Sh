@@ -33,7 +33,7 @@ struct builtin_function
 /**
  * \struct builtin_function
  * \brief Structure representing a builtin function.
-*/
+ */
 struct builtin_function builtin[] = { { .name = "echo", .fun = echo_fun },
                                       { .name = "true", .fun = true_fun },
                                       { .name = "false", .fun = false_fun } };
@@ -42,7 +42,7 @@ struct builtin_function builtin[] = { { .name = "echo", .fun = echo_fun },
  * \brief Evaluate the while loop
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
-*/
+ */
 int exec_cmd(struct ast_node *node)
 {
     int pid = fork();
@@ -93,7 +93,7 @@ int ast_command(struct ast_node *node)
  * \brief Evaluate simple command from ast
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
-*/
+ */
 int ast_eval_simple_command(struct ast_node *node)
 {
     if (node->children[0]->type == AST_WORD_ASSIGNMENT)
@@ -115,7 +115,7 @@ int ast_eval_simple_command(struct ast_node *node)
  * \brief Evaluate condition from ast
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
-*/
+ */
 int ast_eval_condition(struct ast_node *node)
 {
     int cond = match_ast(node->children[0]);
@@ -137,7 +137,7 @@ int ast_eval_condition(struct ast_node *node)
  * \brief Evaluate command list from ast
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
-*/
+ */
 int ast_eval_command_list(struct ast_node *node)
 {
     int status = 0;
@@ -150,33 +150,28 @@ int ast_eval_command_list(struct ast_node *node)
 
 int match_ast(struct ast_node *node)
 {
+    struct exec_grammar exec[] = {
+        [AST_SIMPLE_COMMAND] = { .func = ast_eval_simple_command },
+        [AST_CONDITION] = { .func = ast_eval_condition },
+        [AST_COMMAND_LIST] = { .func = ast_eval_command_list },
+        [AST_EMPTY] = { .func = NULL },
+        [AST_WHILE] = { .func = while_loop },
+        [AST_UNTIL] = { .func = until_loop },
+        [AST_FOR] = { .func = for_loop },
+        [AST_AND_OR] = { .func = ast_and_or },
+        [AST_PIPELINE] = { .func = pipeline_eval },
+        [AST_COMMAND] = { .func = ast_command },
+    };
+
     if (node == NULL)
     {
         return -1;
     }
-    switch (node->type)
+
+    if (exec[node->type].func == NULL)
     {
-    case AST_SIMPLE_COMMAND:
-        return ast_eval_simple_command(node);
-    case AST_CONDITION:
-        return ast_eval_condition(node);
-    case AST_COMMAND_LIST:
-        return ast_eval_command_list(node);
-    case AST_EMPTY:
         return 0;
-    case AST_WHILE:
-        return while_loop(node);
-    case AST_UNTIL:
-        return until_loop(node);
-    case AST_FOR:
-        return for_loop(node);
-    case AST_AND_OR:
-        return ast_and_or(node);
-    case AST_PIPELINE:
-        return pipeline_eval(node);
-    case AST_COMMAND:
-        return ast_command(node);
-    default:
-        return -1;
     }
+
+    return exec[node->type].func(node);
 }

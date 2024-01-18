@@ -25,8 +25,8 @@ bool check_pretty_print(int *argc, char **argv);
 /**
  * \brief Pretty printf of ast.
  * \param ast The ast to print.
- * \param pretty_print_enabled True if the pretty print is enabled, false otherwise.
- * \param depths The depths of the ast.
+ * \param pretty_print_enabled True if the pretty print is enabled, false
+ * otherwise. \param depths The depths of the ast.
  */
 void pretty_print(struct ast_node *ast, bool pretty_print_enabled, int *depths);
 

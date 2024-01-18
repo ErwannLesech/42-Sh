@@ -14,7 +14,7 @@ struct hash_map *variables = NULL;
 
 /**
  * \brief Initialize the variables hash map.
-*/
+ */
 void init_variables()
 {
     if (variables == NULL)
@@ -25,7 +25,7 @@ void init_variables()
 
 /**
  * \brief Free the variables hash map.
-*/
+ */
 void free_variables()
 {
     if (variables != NULL)
@@ -36,7 +36,7 @@ void free_variables()
  * \brief Set a variable in the hash map.
  * \param key The key of the variable.
  * \param value The value of the variable.
-*/
+ */
 void set_variable(char *key, char *value)
 {
     init_variables();
@@ -48,7 +48,7 @@ void set_variable(char *key, char *value)
  * \brief Get a variable from the hash map.
  * \param key The key of the variable.
  * \return The value of the variable or NULL if not found.
-*/
+ */
 char *get_variable(char *key)
 {
     key++;
@@ -79,7 +79,7 @@ char *get_variable(char *key)
  * \brief Evaluate a node from the AST.
  * \param node The AST to evaluate.
  * \return The exit status of the last command 0 if success, 1 if error.
-*/
+ */
 int ast_eval_assignment(struct ast_node *node)
 {
     char *key = node->children[0]->value;
@@ -89,10 +89,10 @@ int ast_eval_assignment(struct ast_node *node)
 }
 
 /**
- * \brief Small function for handle variable (just check ast_node type and check the hash table)
- * \param node The AST to evaluate.
- * \return The value of the variable or NULL if not found.
-*/
+ * \brief Small function for handle variable (just check ast_node type and check
+ * the hash table) \param node The AST to evaluate. \return The value of the
+ * variable or NULL if not found.
+ */
 char *handle_word(struct ast_node *node)
 {
     if (node->type == AST_WORD)

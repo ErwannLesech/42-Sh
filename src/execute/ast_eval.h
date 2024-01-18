@@ -15,6 +15,17 @@
 #include "options/options.h"
 
 /**
+ * \struct exec_grammar
+ * \brief Structure representing links between AST types and functions.
+ * \param type The type of the AST node.
+ * \param func The function to call.
+ */
+struct exec_grammar
+{
+    int (*func)(struct ast_node *);
+};
+
+/**
  * \brief Evaluate the given AST
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
@@ -32,21 +43,21 @@ int while_loop(struct ast_node *node);
  * \brief Evaluate the until loop
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
-*/
+ */
 int until_loop(struct ast_node *node);
 
 /**
  * \brief Evaluate the for loop
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
-*/
+ */
 int for_loop(struct ast_node *node);
 
 /**
  * \brief Pipeline evaluation.
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
-*/
+ */
 int pipeline_eval(struct ast_node *node);
 
 /**

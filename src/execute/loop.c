@@ -31,7 +31,6 @@ int until_loop(struct ast_node *node)
 
 int for_loop(struct ast_node *node)
 {
-
     if (node == NULL)
     {
         return -1;

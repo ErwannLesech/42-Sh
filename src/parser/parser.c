@@ -88,7 +88,7 @@ int parser_loop(struct lexer *lexer, bool pretty_print_enabled)
             return_value = match_ast(ast);
         }
         ast_free(ast);
-        
+
         if (return_value != 0 && return_value != 1)
         {
             fprintf(stderr, "Error while executing\n");

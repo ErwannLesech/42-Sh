@@ -46,7 +46,6 @@ int main(int argc, char **argv)
         fprintf(stderr, "Error while parsing\n");
     }
 
-
     lexer_free(lexer);
     free(input);
     return val;

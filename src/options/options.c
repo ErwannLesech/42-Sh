@@ -21,7 +21,7 @@
  * \brief Check if the given string is a number.
  * \param str The string to check.
  * \return 1 if the string is a number, 0 otherwise.
-*/
+ */
 int is_number(char *str)
 {
     int i = 0;
@@ -75,7 +75,7 @@ int count_digits(int number)
  * \param ast The AST to print.
  * \param fd The file descriptor.
  * \param node_count The number of nodes.
-*/
+ */
 void pp_node(struct ast_node *ast, int fd, int *node_count)
 {
     char *buff = malloc(sizeof(char) * 100000);
@@ -112,7 +112,7 @@ void pp_node(struct ast_node *ast, int fd, int *node_count)
  * \param fd The file descriptor.
  * \param node_count The number of nodes.
  * \param parent_id The parent id.
-*/
+ */
 void pp_link(struct ast_node *ast, int fd, int *node_count, int parent_id)
 {
     char *buff = malloc(sizeof(char) * 100000);
