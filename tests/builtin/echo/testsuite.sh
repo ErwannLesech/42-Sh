@@ -14,3 +14,5 @@ run_test echo13.test
 run_test echo14.test
 run_test echo15.test
 run_test echo16.test
+run_test echoMouli1.test
+run_test echoMouli2.test
