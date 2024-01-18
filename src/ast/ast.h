@@ -90,6 +90,6 @@ char *ast_type_to_string(enum ast_type type);
  * \param value The value of the node.
  * \return The new node.
  */
-void print_ast(struct ast_node *node, int depth, bool logger_enabled);
+void print_ast(struct ast_node *node, int depth);
 
 #endif /* ! AST_H  */

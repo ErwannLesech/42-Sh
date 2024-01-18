@@ -98,7 +98,7 @@ char *ast_type_to_string(enum ast_type type)
     }
 }
 
-void print_ast(struct ast_node *node, int depth, bool logger_enabled)
+void print_ast(struct ast_node *node, int depth)
 {
     if (node == NULL)
         return;
@@ -110,7 +110,6 @@ void print_ast(struct ast_node *node, int depth, bool logger_enabled)
     {
         printf("%s:\n", node->value);
     }
-    // logger(node->value, LOGGER_PARSER, logger_enabled);
     for (int i = 0; i < node->children_count; i++)
-        print_ast(node->children[i], depth + 1, logger_enabled);
+        print_ast(node->children[i], depth + 1);
 }
