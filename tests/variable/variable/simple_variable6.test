@@ -1,0 +1,3 @@
+message="Special characters: \$\#\&\`\
+"
+echo $message
