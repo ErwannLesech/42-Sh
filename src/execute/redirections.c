@@ -33,7 +33,27 @@ int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup, bool lo
         file_name = node->children[1]->value;
     }
 
-    int fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    int fd;
+    if (node->value[0] == '>')
+    {
+        if (node->value[1] == '>')
+        {
+            fd = open(file_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
+        }
+        else if ("&")
+        {
+            fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        }
+        else
+        {
+            fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        }
+    }
+    else
+    {
+        fd = open(file_name, O_RDONLY);
+    }
+
     if (fd == -1)
     {
         return -1;

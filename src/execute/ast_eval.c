@@ -157,8 +157,6 @@ int match_ast(struct ast_node *node, bool logger_enabled)
     {
         return -1;
     }
-    printf("match_ast\n");
-    printf("node->type: %s\n", ast_type_to_string(node->type));
     switch (node->type)
     {
     case AST_SIMPLE_COMMAND:
