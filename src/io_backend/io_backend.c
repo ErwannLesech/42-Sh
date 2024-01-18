@@ -10,6 +10,7 @@
 
 /**
  * \brief Read from stdin
+ * \return The input
  */
 char *io_backend_stdin(void)
 {
@@ -53,6 +54,8 @@ char *io_backend_stdin(void)
 
 /**
  * \brief Read from a file
+ * \param argv The arguments
+ * \return The input
  */
 char *io_backend_file(char **argv)
 {

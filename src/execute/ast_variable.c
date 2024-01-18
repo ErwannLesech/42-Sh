@@ -1,9 +1,20 @@
+/**
+ * \file ast_variable.c
+ * \brief Handle variables.
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+ */
+
 #include "ast_eval.h"
 #include "hash_map/hash_map.h"
 #include "parser/parser.h"
 
 struct hash_map *variables = NULL;
 
+/**
+ * \brief Initialize the variables hash map.
+*/
 void init_variables()
 {
     if (variables == NULL)
@@ -12,12 +23,20 @@ void init_variables()
     }
 }
 
+/**
+ * \brief Free the variables hash map.
+*/
 void free_variables()
 {
     if (variables != NULL)
         hash_map_free(variables);
 }
 
+/**
+ * \brief Set a variable in the hash map.
+ * \param key The key of the variable.
+ * \param value The value of the variable.
+*/
 void set_variable(char *key, char *value)
 {
     init_variables();
@@ -25,6 +44,11 @@ void set_variable(char *key, char *value)
     hash_map_insert(variables, key, value, &updated);
 }
 
+/**
+ * \brief Get a variable from the hash map.
+ * \param key The key of the variable.
+ * \return The value of the variable or NULL if not found.
+*/
 char *get_variable(char *key)
 {
     key++;
@@ -51,6 +75,12 @@ char *get_variable(char *key)
     return "";
 }
 
+/**
+ * \brief Evaluate a node from the AST.
+ * \param node The AST to evaluate.
+ * \param logger_enabled Whether the logger is enabled or not.
+ * \return The exit status of the last command 0 if success, 1 if error.
+*/
 int ast_eval_assignment(struct ast_node *node, bool logger_enabled)
 {
     if (logger_enabled)
@@ -63,8 +93,11 @@ int ast_eval_assignment(struct ast_node *node, bool logger_enabled)
     return 0;
 }
 
-// Small function for handle variable (just check ast_node type and check the
-// hash table)
+/**
+ * \brief Small function for handle variable (just check ast_node type and check the hash table)
+ * \param node The AST to evaluate.
+ * \return The value of the variable or NULL if not found.
+*/
 char *handle_word(struct ast_node *node)
 {
     if (node->type == AST_WORD)
