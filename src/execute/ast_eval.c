@@ -1,7 +1,7 @@
 /**
  * \file ast_eval.c
  * \brief Evaluate the AST.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -22,6 +22,7 @@
 // error else
 
 /**
+ * \struct builtin_function
  * \brief Structure representing a builtin function.
  */
 struct builtin_function
@@ -30,10 +31,20 @@ struct builtin_function
     int (*fun)(struct ast_node *);
 };
 
+/**
+ * \struct builtin_function
+ * \brief Structure representing a builtin function.
+*/
 struct builtin_function builtin[] = { { .name = "echo", .fun = echo_fun },
                                       { .name = "true", .fun = true_fun },
                                       { .name = "false", .fun = false_fun } };
 
+/**
+ * \brief Evaluate the while loop
+ * \param node The AST to evaluate.
+ * \param logger_enabled Whether the logger is enabled or not.
+ * \return The exit status of the last command.
+*/
 int exec_cmd(struct ast_node *node, bool logger_enabled)
 {
     int pid = fork();
@@ -84,6 +95,12 @@ int ast_command(struct ast_node *node, bool logger_enabled)
     return match_ast(node->children[0], logger_enabled);
 }
 
+/**
+ * \brief Evaluate simple command from ast
+ * \param node The AST to evaluate.
+ * \param logger_enabled Whether the logger is enabled or not.
+ * \return The exit status of the last command.
+*/
 int ast_eval_simple_command(struct ast_node *node, bool logger_enabled)
 {
     if (node->children[0]->type == AST_WORD_ASSIGNMENT)
@@ -101,6 +118,12 @@ int ast_eval_simple_command(struct ast_node *node, bool logger_enabled)
     return exec_cmd(node, logger_enabled);
 }
 
+/**
+ * \brief Evaluate condition from ast
+ * \param node The AST to evaluate.
+ * \param logger_enabled Whether the logger is enabled or not.
+ * \return The exit status of the last command.
+*/
 int ast_eval_condition(struct ast_node *node, bool logger_enabled)
 {
     int cond = match_ast(node->children[0], logger_enabled);
@@ -118,6 +141,12 @@ int ast_eval_condition(struct ast_node *node, bool logger_enabled)
     }
 }
 
+/**
+ * \brief Evaluate command list from ast
+ * \param node The AST to evaluate.
+ * \param logger_enabled Whether the logger is enabled or not.
+ * \return The exit status of the last command.
+*/
 int ast_eval_command_list(struct ast_node *node, bool logger_enabled)
 {
     int status = 0;

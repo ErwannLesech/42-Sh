@@ -1,7 +1,7 @@
 /**
  * \file options.h
  * \brief Header for options functions.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -50,6 +50,9 @@ void logger(char *str, enum logger_step step, bool logger_enabled);
 
 /**
  * \brief Pretty printf of ast.
+ * \param ast The ast to print.
+ * \param pretty_print_enabled True if the pretty print is enabled, false otherwise.
+ * \param depths The depths of the ast.
  */
 void pretty_print(struct ast_node *ast, bool pretty_print_enabled, int *depths);
 

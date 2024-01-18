@@ -1,3 +1,11 @@
+/**
+ * \file redirections.c
+ * \brief Redirections functions.
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+ */
+
 #include "../ast/ast.h"
 #include "ast_eval.h"
 
@@ -7,6 +15,12 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 
+/**
+ * \brief Redirections manager.
+ * \param ast The AST node.
+ * \param logger_enabled If true, the logger is enabled.
+ * \return The exit status 0 if success, 1 if error.
+*/
 int redir_output(struct ast_node *node, bool logger_enabled)
 {
     if (logger_enabled)
@@ -40,6 +54,12 @@ int redir_output(struct ast_node *node, bool logger_enabled)
     return stat;
 }
 
+/**
+ * \brief Redirections manager.
+ * \param ast The AST node.
+ * \param logger_enabled If true, the logger is enabled.
+ * \return The exit status 0 if success, 1 if error.
+*/
 int redir_manager(struct ast_node *ast, bool logger_enabled)
 {
     if (logger_enabled)

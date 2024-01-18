@@ -1,3 +1,11 @@
+/**
+ * \file loop.c
+ * \brief Loop functions.
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+ */
+
 #include "../ast/ast.h"
 #include "ast_eval.h"
 

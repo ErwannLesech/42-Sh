@@ -1,7 +1,7 @@
 /**
  * \file parser.c
  * \brief Parse the input and build the AST.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -62,9 +62,6 @@ struct ast_node *parse(struct lexer *lexer)
     return input(lexer);
 }
 
-/**
- * \brief Parse loop line by line and execute it
- */
 int parser_loop(struct lexer *lexer, bool logger_enabled,
                 bool pretty_print_enabled)
 {

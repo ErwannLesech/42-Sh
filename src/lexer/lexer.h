@@ -78,7 +78,10 @@ struct token lexer_pop(struct lexer *lexer);
 
 /**
  * \brief Handle the backslash character.
- *
+ * \param lexer The lexer.
+ * \param is_diactivated A pointer to a boolean that will be set to true if the word is diactivated.
+ * \param word The word.
+ * \param word_index The index of the word.
  * \return false if it's the end of the string, true otherwise.
  */
 void handle_backslash(struct lexer *lexer, bool *is_diactivated, char *word,
@@ -86,7 +89,10 @@ void handle_backslash(struct lexer *lexer, bool *is_diactivated, char *word,
 
 /**
  * \brief Handle the simple quote character.
- *
+ * \param lexer The lexer.
+ * \param is_diactivated A pointer to a boolean that will be set to true if the word is diactivated.
+ * \param word The word.
+ * \param word_index The index of the word.
  * \return false if a closing quote was not found, true otherwise.
  */
 char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
@@ -94,11 +100,7 @@ char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
 
 /**
  * \brief Check if the word is a variable assignement.
- *
- * \param lexer The lexer.
  * \param word The word to check.
- * \param word_index The index of the word.
- *
  * \return if the word is a variable assignement.
  */
 bool check_variable_assignement(char *word);
@@ -108,7 +110,7 @@ bool check_variable_assignement(char *word);
  * \param lexer The lexer.
  * \param word The word to check.
  * \param word_index The index of the word.
- *
+ * \param is_in_braces A pointer to a boolean that will be set to true if the word is in braces.
  * \return if the word is a variable name.
  */
 bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
@@ -117,6 +119,9 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
 /**
  * \brief Handle the dollar character.
  * \param lexer The lexer.
+ * \param word The word.
+ * \param word_index The index of the word.
+ * \param is_in_braces A pointer to a boolean that will be set to true if the word is in braces.
  * \return The next word.
  */
 bool handle_dollar(struct lexer *lexer, char **word, unsigned *word_index,
@@ -125,6 +130,9 @@ bool handle_dollar(struct lexer *lexer, char **word, unsigned *word_index,
 /**
  * \brief Handle the double quote character.
  * \param lexer The lexer.
+ * \param is_diactivated A pointer to a boolean that will be set to true if the word is diactivated.
+ * \param word The word.
+ * \param word_index The index of the word.
  * \return The next word.
  */
 char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
@@ -132,7 +140,9 @@ char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
 
 /**
  * \brief Handle the comment character.
- *
+ * \param lexer The lexer.
+ * \param word The word.
+ * \param word_index The index of the word.
  * \return The next word.
  */
 char *handle_comment(struct lexer *lexer, char *word, unsigned *word_index);
@@ -140,6 +150,7 @@ char *handle_comment(struct lexer *lexer, char *word, unsigned *word_index);
 /**
  * \brief Handle the redirection character.
  * \param lexer The lexer.
+ * \param word_index The index of the word.
  * \return The next redirection word.
  */
 char *handle_redir(struct lexer *lexer, unsigned *word_index);
@@ -147,8 +158,8 @@ char *handle_redir(struct lexer *lexer, unsigned *word_index);
 /**
  * \brief Returns the next word in the input string.
  * \param lexer The lexer.
- * \param is_diactivated A pointer to a boolean that will be set to true if the
- * word is diactivated. \return The next word.
+ * \param is_diactivated A pointer to a boolean that will be set to true if the word is diactivated.
+ * \return The next word.
  */
 char *get_word(struct lexer *lexer, bool *is_diactivated);
 

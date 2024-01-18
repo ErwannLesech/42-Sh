@@ -1,3 +1,11 @@
+/**
+ * \file hash.c
+ * \brief Implement the hash function.
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+ */
+
 #include <stddef.h>
 
 #include "hash_map.h"
