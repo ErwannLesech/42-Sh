@@ -19,6 +19,7 @@
  * command. \param node The AST to evaluate. \param logger_enabled Whether the
  * logger is enabled or not. \return The exit status of the last command.
  */
+
 int match_ast(struct ast_node *node, bool logger_enabled);
 int while_loop(struct ast_node *node, bool logger_enabled);
 int until_loop(struct ast_node *node, bool logger_enabled);
@@ -28,4 +29,10 @@ int ast_and_or(struct ast_node *node, bool logger_enabled);
 int ast_eval_assignment(struct ast_node *node, bool logger_enabled);
 int ast_command(struct ast_node *node, bool logger_enabled);
 char *handle_word(struct ast_node *node);
+
+/**
+ * \brief Use for Free Hash Map Variables at the end of the program
+ * 
+*/
+void free_variables();
 #endif /* AST_EVAL_H */

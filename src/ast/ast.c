@@ -50,7 +50,8 @@ void ast_free(struct ast_node *node)
         }
         free(node->children);
     }
-    if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT)
+    if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT
+        || node->type == AST_VARIABLE)
         free(node->value);
     free(node);
 }

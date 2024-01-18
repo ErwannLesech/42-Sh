@@ -102,7 +102,7 @@ void hash_map_dump(struct hash_map *hash_map)
     }
 }
 
-const char *hash_map_get(const struct hash_map *hash_map, const char *key)
+char *hash_map_get(const struct hash_map *hash_map, const char *key)
 {
     if (hash_map == NULL || hash_map->size == 0)
     {

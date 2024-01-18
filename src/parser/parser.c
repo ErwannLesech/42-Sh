@@ -96,6 +96,6 @@ int parser_loop(struct lexer *lexer, bool logger_enabled,
             // return return_value;
         }
     }
-
+    free_variables();
     return return_value;
 }
