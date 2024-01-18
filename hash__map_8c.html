@@ -72,6 +72,9 @@ $(function() {
 <div class="title">hash_map.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implement the hash map.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="hash__map_8h_source.html">hash_map.h</a>&quot;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
@@ -82,8 +85,8 @@ Include dependency graph for hash_map.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="hash__map_8c__incl.png" border="0" usemap="#asrc_2execute_2hash__map_2hash__map_8c" alt=""/></div>
 <map name="asrc_2execute_2hash__map_2hash__map_8c" id="asrc_2execute_2hash__map_2hash__map_8c">
-<area shape="rect" title=" " alt="" coords="159,5,326,47"/>
-<area shape="rect" href="hash__map_8h.html" title=" " alt="" coords="84,95,185,121"/>
+<area shape="rect" title="Implement the hash map." alt="" coords="159,5,326,47"/>
+<area shape="rect" href="hash__map_8h.html" title="Header of the hash map." alt="" coords="84,95,185,121"/>
 <area shape="rect" title=" " alt="" coords="5,169,88,196"/>
 <area shape="rect" title=" " alt="" coords="209,95,276,121"/>
 <area shape="rect" title=" " alt="" coords="301,95,371,121"/>
@@ -95,19 +98,30 @@ Include dependency graph for hash_map.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac390852e11ca32e20a86a859895c3402"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structhash__map.html">hash_map</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#ac390852e11ca32e20a86a859895c3402">hash_map_init</a> (size_t size)</td></tr>
+<tr class="memdesc:ac390852e11ca32e20a86a859895c3402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a hash map.  <a href="hash__map_8c.html#ac390852e11ca32e20a86a859895c3402">More...</a><br /></td></tr>
 <tr class="separator:ac390852e11ca32e20a86a859895c3402"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab535d4ce87c2446e372ee7a34e681ab9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#ab535d4ce87c2446e372ee7a34e681ab9">hash_map_insert</a> (struct <a class="el" href="structhash__map.html">hash_map</a> *<a class="el" href="structhash__map.html">hash_map</a>, const char *key, char *value, bool *updated)</td></tr>
+<tr class="memdesc:ab535d4ce87c2446e372ee7a34e681ab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new pair in the hash map.  <a href="hash__map_8c.html#ab535d4ce87c2446e372ee7a34e681ab9">More...</a><br /></td></tr>
 <tr class="separator:ab535d4ce87c2446e372ee7a34e681ab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c93b2c4b3360618d4e16c2b77474e63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#a4c93b2c4b3360618d4e16c2b77474e63">hash_map_free</a> (struct <a class="el" href="structhash__map.html">hash_map</a> *<a class="el" href="structhash__map.html">hash_map</a>)</td></tr>
+<tr class="memdesc:a4c93b2c4b3360618d4e16c2b77474e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a hash map.  <a href="hash__map_8c.html#a4c93b2c4b3360618d4e16c2b77474e63">More...</a><br /></td></tr>
 <tr class="separator:a4c93b2c4b3360618d4e16c2b77474e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2acb93c18a42445eb92ac51d41927e3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#a2acb93c18a42445eb92ac51d41927e3c">hash_map_dump</a> (struct <a class="el" href="structhash__map.html">hash_map</a> *<a class="el" href="structhash__map.html">hash_map</a>)</td></tr>
+<tr class="memdesc:a2acb93c18a42445eb92ac51d41927e3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump a hash map.  <a href="hash__map_8c.html#a2acb93c18a42445eb92ac51d41927e3c">More...</a><br /></td></tr>
 <tr class="separator:a2acb93c18a42445eb92ac51d41927e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aded36386cd11f8cec09de475b2fb110f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#aded36386cd11f8cec09de475b2fb110f">hash_map_get</a> (const struct <a class="el" href="structhash__map.html">hash_map</a> *<a class="el" href="structhash__map.html">hash_map</a>, const char *key)</td></tr>
+<tr class="memdesc:aded36386cd11f8cec09de475b2fb110f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a value from a hash map.  <a href="hash__map_8c.html#aded36386cd11f8cec09de475b2fb110f">More...</a><br /></td></tr>
 <tr class="separator:aded36386cd11f8cec09de475b2fb110f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1c6e3e1c7528a557ee5c9e47de5cbcf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#ac1c6e3e1c7528a557ee5c9e47de5cbcf">hash_map_remove</a> (struct <a class="el" href="structhash__map.html">hash_map</a> *<a class="el" href="structhash__map.html">hash_map</a>, const char *key)</td></tr>
+<tr class="memdesc:ac1c6e3e1c7528a557ee5c9e47de5cbcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a pair from a hash map.  <a href="hash__map_8c.html#ac1c6e3e1c7528a557ee5c9e47de5cbcf">More...</a><br /></td></tr>
 <tr class="separator:ac1c6e3e1c7528a557ee5c9e47de5cbcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implement the hash map. </p>
+<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a2acb93c18a42445eb92ac51d41927e3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2acb93c18a42445eb92ac51d41927e3c">&#9670;&nbsp;</a></span>hash_map_dump()</h2>
 
@@ -123,6 +137,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Dump a hash map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structhash__map.html" title="Structure representing a hash map.">hash_map</a></td><td>The hash map to dump. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -141,6 +163,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Free a hash map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structhash__map.html" title="Structure representing a hash map.">hash_map</a></td><td>The hash map to free. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -170,6 +200,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get a value from a hash map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structhash__map.html" title="Structure representing a hash map.">hash_map</a></td><td>The hash map. </td></tr>
+    <tr><td class="paramname">key</td><td>The key of the pair. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the pair. </dd></dl>
+
 </div>
 </div>
 <a id="ac390852e11ca32e20a86a859895c3402"></a>
@@ -187,6 +227,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initialize a hash map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The size of the hash map. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The new hash map. </dd></dl>
 
 </div>
 </div>
@@ -228,6 +277,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Insert a new pair in the hash map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structhash__map.html" title="Structure representing a hash map.">hash_map</a></td><td>The hash map. </td></tr>
+    <tr><td class="paramname">key</td><td>The key of the pair. </td></tr>
+    <tr><td class="paramname">value</td><td>The value of the pair. </td></tr>
+    <tr><td class="paramname">updated</td><td>A pointer to a boolean that will be set to true if the value was updated. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the pair was inserted, false otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="ac1c6e3e1c7528a557ee5c9e47de5cbcf"></a>
@@ -255,6 +316,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Remove a pair from a hash map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structhash__map.html" title="Structure representing a hash map.">hash_map</a></td><td>The hash map. </td></tr>
+    <tr><td class="paramname">key</td><td>The key of the pair. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the pair was removed, false otherwise. </dd></dl>
 
 </div>
 </div>

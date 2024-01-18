@@ -72,40 +72,50 @@ $(function() {
 <div class="title">redirections.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;fcntl.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;sys/wait.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ast_8h_source.html">ast/ast.h</a>&quot;</code><br />
+
+<p>Redirections functions.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="ast_8h_source.html">../ast/ast.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ast__eval_8h_source.html">ast_eval.h</a>&quot;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;fcntl.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;sys/wait.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for redirections.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="redirections_8c__incl.png" border="0" usemap="#asrc_2execute_2redirections_8c" alt=""/></div>
 <map name="asrc_2execute_2redirections_8c" id="asrc_2execute_2redirections_8c">
-<area shape="rect" title=" " alt="" coords="145,5,333,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,68,107"/>
-<area shape="rect" title=" " alt="" coords="97,304,168,331"/>
-<area shape="rect" title=" " alt="" coords="308,80,379,107"/>
-<area shape="rect" title=" " alt="" coords="403,80,491,107"/>
-<area shape="rect" title=" " alt="" coords="515,80,590,107"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="144,229,223,256"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="195,80,284,107"/>
-<area shape="rect" title=" " alt="" coords="219,304,302,331"/>
-<area shape="rect" title=" " alt="" coords="327,304,394,331"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="296,155,431,181"/>
+<area shape="rect" title="Redirections functions." alt="" coords="293,5,481,32"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="166,229,256,256"/>
+<area shape="rect" title=" " alt="" coords="264,304,334,331"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="96,80,185,107"/>
+<area shape="rect" title=" " alt="" coords="350,80,424,107"/>
+<area shape="rect" title=" " alt="" coords="449,80,512,107"/>
+<area shape="rect" title=" " alt="" coords="536,80,606,107"/>
+<area shape="rect" title=" " alt="" coords="631,80,719,107"/>
+<area shape="rect" title=" " alt="" coords="36,304,119,331"/>
+<area shape="rect" title=" " alt="" coords="160,304,227,331"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="27,155,174,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac815936328ce3530337cad3c44ff0d4c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="redirections_8c.html#ac815936328ce3530337cad3c44ff0d4c">redir_output</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="memdesc:ac815936328ce3530337cad3c44ff0d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redirections manager.  <a href="redirections_8c.html#ac815936328ce3530337cad3c44ff0d4c">More...</a><br /></td></tr>
 <tr class="separator:ac815936328ce3530337cad3c44ff0d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa8b8c1dc5eb86e09505afee582ed930"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="redirections_8c.html#afa8b8c1dc5eb86e09505afee582ed930">redir_manager</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, bool logger_enabled)</td></tr>
+<tr class="memdesc:afa8b8c1dc5eb86e09505afee582ed930"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redirections manager.  <a href="redirections_8c.html#afa8b8c1dc5eb86e09505afee582ed930">More...</a><br /></td></tr>
 <tr class="separator:afa8b8c1dc5eb86e09505afee582ed930"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Redirections functions. </p>
+<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="afa8b8c1dc5eb86e09505afee582ed930"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa8b8c1dc5eb86e09505afee582ed930">&#9670;&nbsp;</a></span>redir_manager()</h2>
 
@@ -131,6 +141,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Redirections manager. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ast</td><td>The AST node. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>If true, the logger is enabled. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status 0 if success, 1 if error. </dd></dl>
 
 </div>
 </div>
@@ -159,6 +179,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Redirections manager. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ast</td><td>The AST node. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>If true, the logger is enabled. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status 0 if success, 1 if error. </dd></dl>
 
 </div>
 </div>

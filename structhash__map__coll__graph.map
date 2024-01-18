@@ -1,4 +1,4 @@
 <map id="hash_map" name="hash_map">
-<area shape="rect" id="node1" title=" " alt="" coords="5,95,95,121"/>
-<area shape="rect" id="node2" href="$structpair__list.html" title=" " alt="" coords="13,5,87,32"/>
+<area shape="rect" id="node1" title="Structure representing a hash map." alt="" coords="5,95,95,121"/>
+<area shape="rect" id="node2" href="$structpair__list.html" title="Structure representing a pair of key/value." alt="" coords="13,5,87,32"/>
 </map>

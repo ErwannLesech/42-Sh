@@ -1,9 +1,9 @@
 <map id="src/execute/loop.c" name="src/execute/loop.c">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,144,32"/>
-<area shape="rect" id="node2" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="50,229,129,256"/>
-<area shape="rect" id="node6" href="$ast__eval_8h.html" title="Evaluate the AST." alt="" coords="107,80,197,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="232,304,315,331"/>
-<area shape="rect" id="node4" title=" " alt="" coords="141,304,208,331"/>
-<area shape="rect" id="node5" title=" " alt="" coords="46,304,117,331"/>
-<area shape="rect" id="node7" href="$options_8h.html" title="Header for options functions." alt="" coords="122,155,257,181"/>
+<area shape="rect" id="node1" title="Loop functions." alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="45,229,136,256"/>
+<area shape="rect" id="node6" href="$ast__eval_8h.html" title="Evaluate the AST." alt="" coords="110,80,199,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="236,304,319,331"/>
+<area shape="rect" id="node4" title=" " alt="" coords="145,304,212,331"/>
+<area shape="rect" id="node5" title=" " alt="" coords="50,304,121,331"/>
+<area shape="rect" id="node7" href="$options_8h.html" title="Header for options functions." alt="" coords="121,155,268,181"/>
 </map>

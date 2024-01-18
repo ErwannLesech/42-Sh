@@ -82,21 +82,22 @@ $(function() {
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="ast_8h_source.html">../ast/ast.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for options.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="options_8c__incl.png" border="0" usemap="#asrc_2options_2options_8c" alt=""/></div>
 <map name="asrc_2options_2options_8c" id="asrc_2options_2options_8c">
-<area shape="rect" title="Options functions." alt="" coords="271,5,427,32"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="131,80,213,107"/>
-<area shape="rect" title=" " alt="" coords="5,229,88,256"/>
-<area shape="rect" title=" " alt="" coords="208,229,275,256"/>
-<area shape="rect" title=" " alt="" coords="314,80,385,107"/>
-<area shape="rect" title=" " alt="" coords="409,80,471,107"/>
-<area shape="rect" title=" " alt="" coords="495,80,566,107"/>
-<area shape="rect" title=" " alt="" coords="591,80,665,107"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="109,155,187,181"/>
-<area shape="rect" title=" " alt="" coords="113,229,183,256"/>
+<area shape="rect" title="Options functions." alt="" coords="223,5,379,32"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="145,80,228,107"/>
+<area shape="rect" title=" " alt="" coords="192,229,275,256"/>
+<area shape="rect" title=" " alt="" coords="5,229,72,256"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="87,155,177,181"/>
+<area shape="rect" title=" " alt="" coords="303,80,374,107"/>
+<area shape="rect" title=" " alt="" coords="398,80,461,107"/>
+<area shape="rect" title=" " alt="" coords="485,80,555,107"/>
+<area shape="rect" title=" " alt="" coords="580,80,655,107"/>
+<area shape="rect" title=" " alt="" coords="97,229,167,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -118,8 +119,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a7ec218f8df437f3ffd65cd8b895e8278"><td class="mdescLeft">&#160;</td><td class="mdescRight">digit counter  <a href="options_8c.html#a7ec218f8df437f3ffd65cd8b895e8278">More...</a><br /></td></tr>
 <tr class="separator:a7ec218f8df437f3ffd65cd8b895e8278"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84c0e33d048aa27e3a116e9f546b8548"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a84c0e33d048aa27e3a116e9f546b8548">pp_node</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, int fd, int *node_count)</td></tr>
+<tr class="memdesc:a84c0e33d048aa27e3a116e9f546b8548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the AST in a file.  <a href="options_8c.html#a84c0e33d048aa27e3a116e9f546b8548">More...</a><br /></td></tr>
 <tr class="separator:a84c0e33d048aa27e3a116e9f546b8548"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa309b791ef1a83c486eea1c9e5aae5e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#aa309b791ef1a83c486eea1c9e5aae5e5">pp_link</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, int fd, int *node_count, int parent_id)</td></tr>
+<tr class="memdesc:aa309b791ef1a83c486eea1c9e5aae5e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the AST links in a file.  <a href="options_8c.html#aa309b791ef1a83c486eea1c9e5aae5e5">More...</a><br /></td></tr>
 <tr class="separator:aa309b791ef1a83c486eea1c9e5aae5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7961eecdd55d5d804014b84ed5ebbb8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a7961eecdd55d5d804014b84ed5ebbb8d">pretty_print</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, bool pretty_print_enabled, int *number)</td></tr>
 <tr class="memdesc:a7961eecdd55d5d804014b84ed5ebbb8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pretty printf of ast.  <a href="options_8c.html#a7961eecdd55d5d804014b84ed5ebbb8d">More...</a><br /></td></tr>
@@ -127,7 +130,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Options functions. </p>
-<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -257,7 +260,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the string is a number, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if the string is a number, 0 otherwise. </dd></dl>
 
 </div>
 </div>
@@ -343,6 +346,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Print the AST links in a file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ast</td><td>The AST to print. </td></tr>
+    <tr><td class="paramname">fd</td><td>The file descriptor. </td></tr>
+    <tr><td class="paramname">node_count</td><td>The number of nodes. </td></tr>
+    <tr><td class="paramname">parent_id</td><td>The parent id. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a84c0e33d048aa27e3a116e9f546b8548"></a>
@@ -377,6 +391,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Print the AST in a file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ast</td><td>The AST to print. </td></tr>
+    <tr><td class="paramname">fd</td><td>The file descriptor. </td></tr>
+    <tr><td class="paramname">node_count</td><td>The number of nodes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a7961eecdd55d5d804014b84ed5ebbb8d"></a>
@@ -401,7 +425,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>number</em>&#160;</td>
+          <td class="paramname"><em>depths</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -412,6 +436,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Pretty printf of ast. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ast</td><td>The ast to print. </td></tr>
+    <tr><td class="paramname">pretty_print_enabled</td><td>True if the pretty print is enabled, false otherwise. </td></tr>
+    <tr><td class="paramname">depths</td><td>The depths of the ast. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -1,12 +1,12 @@
 <map id="src/execute/pipeline.c" name="src/execute/pipeline.c">
-<area shape="rect" id="node1" title=" " alt="" coords="119,5,282,32"/>
+<area shape="rect" id="node1" title="Pipeline functions." alt="" coords="125,5,287,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,304,76,331"/>
-<area shape="rect" id="node3" title=" " alt="" coords="217,80,288,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="313,80,401,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="425,80,499,107"/>
-<area shape="rect" id="node6" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="52,229,131,256"/>
-<area shape="rect" id="node9" href="$ast__eval_8h.html" title="Evaluate the AST." alt="" coords="104,80,193,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="127,304,210,331"/>
-<area shape="rect" id="node8" title=" " alt="" coords="235,304,302,331"/>
-<area shape="rect" id="node10" href="$options_8h.html" title="Header for options functions." alt="" coords="205,155,340,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="223,80,293,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="318,80,406,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="430,80,505,107"/>
+<area shape="rect" id="node6" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="46,229,137,256"/>
+<area shape="rect" id="node9" href="$ast__eval_8h.html" title="Evaluate the AST." alt="" coords="109,80,199,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="133,304,215,331"/>
+<area shape="rect" id="node8" title=" " alt="" coords="243,304,310,331"/>
+<area shape="rect" id="node10" href="$options_8h.html" title="Header for options functions." alt="" coords="210,155,357,181"/>
 </map>

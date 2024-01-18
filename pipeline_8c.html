@@ -72,38 +72,48 @@ $(function() {
 <div class="title">pipeline.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Pipeline functions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;sys/wait.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ast_8h_source.html">ast/ast.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ast_8h_source.html">../ast/ast.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ast__eval_8h_source.html">ast_eval.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for pipeline.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="pipeline_8c__incl.png" border="0" usemap="#asrc_2execute_2pipeline_8c" alt=""/></div>
 <map name="asrc_2execute_2pipeline_8c" id="asrc_2execute_2pipeline_8c">
-<area shape="rect" title=" " alt="" coords="119,5,282,32"/>
+<area shape="rect" title="Pipeline functions." alt="" coords="125,5,287,32"/>
 <area shape="rect" title=" " alt="" coords="5,304,76,331"/>
-<area shape="rect" title=" " alt="" coords="217,80,288,107"/>
-<area shape="rect" title=" " alt="" coords="313,80,401,107"/>
-<area shape="rect" title=" " alt="" coords="425,80,499,107"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="52,229,131,256"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="104,80,193,107"/>
-<area shape="rect" title=" " alt="" coords="127,304,210,331"/>
-<area shape="rect" title=" " alt="" coords="235,304,302,331"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="205,155,340,181"/>
+<area shape="rect" title=" " alt="" coords="223,80,293,107"/>
+<area shape="rect" title=" " alt="" coords="318,80,406,107"/>
+<area shape="rect" title=" " alt="" coords="430,80,505,107"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="46,229,137,256"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="109,80,199,107"/>
+<area shape="rect" title=" " alt="" coords="133,304,215,331"/>
+<area shape="rect" title=" " alt="" coords="243,304,310,331"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="210,155,357,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:adb075b3f07a8a64978e5d84de2a9a693"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pipeline_8c.html#adb075b3f07a8a64978e5d84de2a9a693">pipeline_eval</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="memdesc:adb075b3f07a8a64978e5d84de2a9a693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pipeline evaluation.  <a href="pipeline_8c.html#adb075b3f07a8a64978e5d84de2a9a693">More...</a><br /></td></tr>
 <tr class="separator:adb075b3f07a8a64978e5d84de2a9a693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36fd875db1598b0102b810da22ff572b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pipeline_8c.html#a36fd875db1598b0102b810da22ff572b">ast_and_or</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="memdesc:a36fd875db1598b0102b810da22ff572b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate and_or.  <a href="pipeline_8c.html#a36fd875db1598b0102b810da22ff572b">More...</a><br /></td></tr>
 <tr class="separator:a36fd875db1598b0102b810da22ff572b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Pipeline functions. </p>
+<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a36fd875db1598b0102b810da22ff572b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36fd875db1598b0102b810da22ff572b">&#9670;&nbsp;</a></span>ast_and_or()</h2>
 
@@ -129,6 +139,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Evaluate and_or. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>Whether the logger is enabled or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command. </dd></dl>
 
 </div>
 </div>
@@ -157,6 +177,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pipeline evaluation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>Whether the logger is enabled or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command. </dd></dl>
 
 </div>
 </div>

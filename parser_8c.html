@@ -76,24 +76,24 @@ $(function() {
 <p>Parse the input and build the AST.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="parser_8h_source.html">parser.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="ast__eval_8h_source.html">execute/ast_eval.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ast__eval_8h_source.html">../execute/ast_eval.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for parser.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="parser_8c__incl.png" border="0" usemap="#asrc_2parser_2parser_8c" alt=""/></div>
 <map name="asrc_2parser_2parser_8c" id="asrc_2parser_2parser_8c">
-<area shape="rect" title="Parse the input and build the AST." alt="" coords="186,5,327,32"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="274,80,349,107"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="78,155,222,181"/>
-<area shape="rect" title=" " alt="" coords="484,155,555,181"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="11,304,89,331"/>
-<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="307,155,409,181"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="165,229,300,256"/>
-<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="475,229,545,256"/>
-<area shape="rect" title=" " alt="" coords="191,379,274,405"/>
-<area shape="rect" title=" " alt="" coords="101,379,167,405"/>
-<area shape="rect" title=" " alt="" coords="5,379,76,405"/>
-<area shape="rect" title=" " alt="" coords="325,229,399,256"/>
+<area shape="rect" title="Parse the input and build the AST." alt="" coords="199,5,340,32"/>
+<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="289,80,364,107"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="79,155,235,181"/>
+<area shape="rect" title=" " alt="" coords="509,155,579,181"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="5,304,96,331"/>
+<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="319,155,433,181"/>
+<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="491,229,562,256"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="171,229,317,256"/>
+<area shape="rect" title=" " alt="" coords="203,379,285,405"/>
+<area shape="rect" title=" " alt="" coords="112,379,179,405"/>
+<area shape="rect" title=" " alt="" coords="15,379,86,405"/>
+<area shape="rect" title=" " alt="" coords="341,229,416,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -109,12 +109,12 @@ Functions</h2></td></tr>
 <tr class="memdesc:aabf9db5cb00c9af78e991a68d61a3bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the given lexer.  <a href="parser_8c.html#aabf9db5cb00c9af78e991a68d61a3bd6">More...</a><br /></td></tr>
 <tr class="separator:aabf9db5cb00c9af78e991a68d61a3bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae466fb1cda7814d21404dfeb49f2e830"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#ae466fb1cda7814d21404dfeb49f2e830">parser_loop</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool logger_enabled, bool pretty_print_enabled)</td></tr>
-<tr class="memdesc:ae466fb1cda7814d21404dfeb49f2e830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse loop line by line and execute it.  <a href="parser_8c.html#ae466fb1cda7814d21404dfeb49f2e830">More...</a><br /></td></tr>
+<tr class="memdesc:ae466fb1cda7814d21404dfeb49f2e830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse loop the given lexer.  <a href="parser_8c.html#ae466fb1cda7814d21404dfeb49f2e830">More...</a><br /></td></tr>
 <tr class="separator:ae466fb1cda7814d21404dfeb49f2e830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parse the input and build the AST. </p>
-<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -177,8 +177,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Parse loop line by line and execute it. </p>
 <p>Parse loop the given lexer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lexer</td><td>The lexer to parse. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>The option logger. </td></tr>
+    <tr><td class="paramname">pretty_print_enabled</td><td>The option pretty_print. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>code of execution 0 if success, 1 if error. </dd></dl>
 
 </div>
 </div>

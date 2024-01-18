@@ -82,28 +82,29 @@ $(function() {
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;sys/wait.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="options_8h_source.html">../options/options.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parser_8h_source.html">../parser/parser.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="builtin_8h_source.html">builtin.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parser_8h_source.html">parser/parser.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ast_eval.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ast__eval_8c__incl.png" border="0" usemap="#asrc_2execute_2ast__eval_8c" alt=""/></div>
 <map name="asrc_2execute_2ast__eval_8c" id="asrc_2execute_2ast__eval_8c">
-<area shape="rect" title="Evaluate the AST." alt="" coords="412,5,579,32"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="55,155,144,181"/>
-<area shape="rect" title=" " alt="" coords="338,379,405,405"/>
-<area shape="rect" title=" " alt="" coords="460,155,531,181"/>
-<area shape="rect" title=" " alt="" coords="606,80,694,107"/>
-<area shape="rect" title=" " alt="" coords="718,80,793,107"/>
-<area shape="rect" href="builtin_8h.html" title="Builtin functions." alt="" coords="83,80,158,107"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="325,80,444,107"/>
-<area shape="rect" title=" " alt="" coords="130,379,213,405"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="243,304,321,331"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="32,229,167,256"/>
-<area shape="rect" title=" " alt="" coords="243,379,313,405"/>
-<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="229,155,330,181"/>
-<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="341,229,412,256"/>
-<area shape="rect" title=" " alt="" coords="242,229,317,256"/>
+<area shape="rect" title="Evaluate the AST." alt="" coords="189,5,355,32"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="105,155,194,181"/>
+<area shape="rect" title=" " alt="" coords="23,379,89,405"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="195,229,341,256"/>
+<area shape="rect" title=" " alt="" coords="613,155,683,181"/>
+<area shape="rect" title=" " alt="" coords="269,80,357,107"/>
+<area shape="rect" title=" " alt="" coords="381,80,456,107"/>
+<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="480,80,611,107"/>
+<area shape="rect" href="builtin_8h.html" title="Header of the builtin functions." alt="" coords="120,80,195,107"/>
+<area shape="rect" title=" " alt="" coords="231,379,313,405"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="144,304,235,331"/>
+<area shape="rect" title=" " alt="" coords="135,379,206,405"/>
+<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="423,155,537,181"/>
+<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="566,229,637,256"/>
+<area shape="rect" title=" " alt="" coords="416,229,491,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -116,17 +117,22 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a6886b58b5a2abf5729c3047d2bb59c7e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8c.html#a6886b58b5a2abf5729c3047d2bb59c7e">exec_cmd</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="memdesc:a6886b58b5a2abf5729c3047d2bb59c7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the while loop.  <a href="ast__eval_8c.html#a6886b58b5a2abf5729c3047d2bb59c7e">More...</a><br /></td></tr>
 <tr class="separator:a6886b58b5a2abf5729c3047d2bb59c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaaa3796449d145d65af4b625044a6cd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8c.html#aeaaa3796449d145d65af4b625044a6cd">ast_command</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="memdesc:aeaaa3796449d145d65af4b625044a6cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate command from ast.  <a href="ast__eval_8c.html#aeaaa3796449d145d65af4b625044a6cd">More...</a><br /></td></tr>
 <tr class="separator:aeaaa3796449d145d65af4b625044a6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14e62f00efb70fe18885f595efc7b1e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8c.html#a14e62f00efb70fe18885f595efc7b1e3">ast_eval_simple_command</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="memdesc:a14e62f00efb70fe18885f595efc7b1e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate simple command from ast.  <a href="ast__eval_8c.html#a14e62f00efb70fe18885f595efc7b1e3">More...</a><br /></td></tr>
 <tr class="separator:a14e62f00efb70fe18885f595efc7b1e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49db8024b07e9421d5fb6517082ba54c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8c.html#a49db8024b07e9421d5fb6517082ba54c">ast_eval_condition</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="memdesc:a49db8024b07e9421d5fb6517082ba54c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate condition from ast.  <a href="ast__eval_8c.html#a49db8024b07e9421d5fb6517082ba54c">More...</a><br /></td></tr>
 <tr class="separator:a49db8024b07e9421d5fb6517082ba54c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73182c5358b285ce49e7aa8d6f64063d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8c.html#a73182c5358b285ce49e7aa8d6f64063d">ast_eval_command_list</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="memdesc:a73182c5358b285ce49e7aa8d6f64063d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate command list from ast.  <a href="ast__eval_8c.html#a73182c5358b285ce49e7aa8d6f64063d">More...</a><br /></td></tr>
 <tr class="separator:a73182c5358b285ce49e7aa8d6f64063d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1c1a3c1361f0ffbcb7702f598886605"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__eval_8c.html#ad1c1a3c1361f0ffbcb7702f598886605">match_ast</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
-<tr class="memdesc:ad1c1a3c1361f0ffbcb7702f598886605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the given AST and returns the exit status of the last command.  <a href="ast__eval_8c.html#ad1c1a3c1361f0ffbcb7702f598886605">More...</a><br /></td></tr>
+<tr class="memdesc:ad1c1a3c1361f0ffbcb7702f598886605"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the given AST.  <a href="ast__eval_8c.html#ad1c1a3c1361f0ffbcb7702f598886605">More...</a><br /></td></tr>
 <tr class="separator:ad1c1a3c1361f0ffbcb7702f598886605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -136,7 +142,7 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Evaluate the AST. </p>
-<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -166,6 +172,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Evaluate command from ast. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>Whether the logger is enabled or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command. </dd></dl>
+
 </div>
 </div>
 <a id="a73182c5358b285ce49e7aa8d6f64063d"></a>
@@ -193,6 +209,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Evaluate command list from ast. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>Whether the logger is enabled or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command. </dd></dl>
 
 </div>
 </div>
@@ -222,6 +248,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Evaluate condition from ast. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>Whether the logger is enabled or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command. </dd></dl>
+
 </div>
 </div>
 <a id="a14e62f00efb70fe18885f595efc7b1e3"></a>
@@ -249,6 +285,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Evaluate simple command from ast. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>Whether the logger is enabled or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command. </dd></dl>
 
 </div>
 </div>
@@ -278,6 +324,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Evaluate the while loop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>Whether the logger is enabled or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command. </dd></dl>
+
 </div>
 </div>
 <a id="ad1c1a3c1361f0ffbcb7702f598886605"></a>
@@ -306,10 +362,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Evaluates the given AST and returns the exit status of the last command. </p>
+<p>Evaluate the given AST. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">node</td><td>The AST to evaluate.</td></tr>
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
     <tr><td class="paramname">logger_enabled</td><td>Whether the logger is enabled or not. </td></tr>
   </table>
   </dd>
@@ -334,7 +390,7 @@ Variables</h2></td></tr>
 <div class="line">                                      { .name = <span class="stringliteral">&quot;true&quot;</span>, .fun = <a class="code" href="builtin_8c.html#ae632901b7062689107e91b8122a63cc6">true_fun</a> },</div>
 <div class="line">                                      { .name = <span class="stringliteral">&quot;false&quot;</span>, .fun = <a class="code" href="builtin_8c.html#a007537cae5d53ffb4477ee3cc305117c">false_fun</a> } }</div>
 <div class="ttc" id="abuiltin_8c_html_a007537cae5d53ffb4477ee3cc305117c"><div class="ttname"><a href="builtin_8c.html#a007537cae5d53ffb4477ee3cc305117c">false_fun</a></div><div class="ttdeci">int false_fun(struct ast_node *node)</div><div class="ttdoc">False builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:21</div></div>
-<div class="ttc" id="abuiltin_8c_html_abffc452d6b9d572f0df8554b1d7351ca"><div class="ttname"><a href="builtin_8c.html#abffc452d6b9d572f0df8554b1d7351ca">echo_fun</a></div><div class="ttdeci">int echo_fun(struct ast_node *node)</div><div class="ttdoc">Echo builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:70</div></div>
+<div class="ttc" id="abuiltin_8c_html_abffc452d6b9d572f0df8554b1d7351ca"><div class="ttname"><a href="builtin_8c.html#abffc452d6b9d572f0df8554b1d7351ca">echo_fun</a></div><div class="ttdeci">int echo_fun(struct ast_node *node)</div><div class="ttdoc">Echo builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:79</div></div>
 <div class="ttc" id="abuiltin_8c_html_ae632901b7062689107e91b8122a63cc6"><div class="ttname"><a href="builtin_8c.html#ae632901b7062689107e91b8122a63cc6">true_fun</a></div><div class="ttdeci">int true_fun(struct ast_node *node)</div><div class="ttdoc">True builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:13</div></div>
 </div><!-- fragment -->
 </div>

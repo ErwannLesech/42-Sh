@@ -73,43 +73,52 @@ $(function() {
 <div class="title">ast_variable.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Handle variables.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ast__eval_8h_source.html">ast_eval.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hash__map_8h_source.html">hash_map/hash_map.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parser_8h_source.html">parser/parser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parser_8h_source.html">../parser/parser.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ast_variable.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="ast__variable_8c__incl.png" border="0" usemap="#asrc_2execute_2ast__variable_8c" alt=""/></div>
 <map name="asrc_2execute_2ast__variable_8c" id="asrc_2execute_2ast__variable_8c">
-<area shape="rect" title=" " alt="" coords="188,5,379,32"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="68,155,157,181"/>
-<area shape="rect" href="hash__map_8h.html" title=" " alt="" coords="505,155,677,181"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="224,80,343,107"/>
-<area shape="rect" title=" " alt="" coords="191,379,274,405"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="5,304,84,331"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="160,229,295,256"/>
-<area shape="rect" title=" " alt="" coords="101,379,167,405"/>
-<area shape="rect" title=" " alt="" coords="5,379,76,405"/>
-<area shape="rect" title=" " alt="" coords="475,229,550,256"/>
-<area shape="rect" title=" " alt="" coords="359,155,429,181"/>
-<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="233,155,334,181"/>
-<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="377,229,448,256"/>
+<area shape="rect" title="Handle variables." alt="" coords="206,5,397,32"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="79,155,169,181"/>
+<area shape="rect" href="hash__map_8h.html" title="Header of the hash map." alt="" coords="529,155,701,181"/>
+<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="236,80,367,107"/>
+<area shape="rect" title=" " alt="" coords="203,379,285,405"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="5,304,96,331"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="171,229,317,256"/>
+<area shape="rect" title=" " alt="" coords="112,379,179,405"/>
+<area shape="rect" title=" " alt="" coords="15,379,86,405"/>
+<area shape="rect" title=" " alt="" coords="499,229,573,256"/>
+<area shape="rect" title=" " alt="" coords="382,155,453,181"/>
+<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="245,155,358,181"/>
+<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="399,229,470,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a9249da0285497dd291f2ea6a9ad37a64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__variable_8c.html#a9249da0285497dd291f2ea6a9ad37a64">init_variables</a> ()</td></tr>
+<tr class="memdesc:a9249da0285497dd291f2ea6a9ad37a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the variables hash map.  <a href="ast__variable_8c.html#a9249da0285497dd291f2ea6a9ad37a64">More...</a><br /></td></tr>
 <tr class="separator:a9249da0285497dd291f2ea6a9ad37a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a030d7992e9b29a7396611a9719b64e84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__variable_8c.html#a030d7992e9b29a7396611a9719b64e84">free_variables</a> ()</td></tr>
+<tr class="memdesc:a030d7992e9b29a7396611a9719b64e84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the variables hash map.  <a href="ast__variable_8c.html#a030d7992e9b29a7396611a9719b64e84">More...</a><br /></td></tr>
 <tr class="separator:a030d7992e9b29a7396611a9719b64e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af666000d4ecb31d958a1ca02cd339f33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__variable_8c.html#af666000d4ecb31d958a1ca02cd339f33">set_variable</a> (char *key, char *value)</td></tr>
+<tr class="memdesc:af666000d4ecb31d958a1ca02cd339f33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a variable in the hash map.  <a href="ast__variable_8c.html#af666000d4ecb31d958a1ca02cd339f33">More...</a><br /></td></tr>
 <tr class="separator:af666000d4ecb31d958a1ca02cd339f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4e3feacd3754c8402b9a37c5fdbb24e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__variable_8c.html#ad4e3feacd3754c8402b9a37c5fdbb24e">get_variable</a> (char *key)</td></tr>
+<tr class="memdesc:ad4e3feacd3754c8402b9a37c5fdbb24e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a variable from the hash map.  <a href="ast__variable_8c.html#ad4e3feacd3754c8402b9a37c5fdbb24e">More...</a><br /></td></tr>
 <tr class="separator:ad4e3feacd3754c8402b9a37c5fdbb24e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a668530fd155e7b3892b33d13a89cde24"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__variable_8c.html#a668530fd155e7b3892b33d13a89cde24">ast_eval_assignment</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, bool logger_enabled)</td></tr>
+<tr class="memdesc:a668530fd155e7b3892b33d13a89cde24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate a node from the AST.  <a href="ast__variable_8c.html#a668530fd155e7b3892b33d13a89cde24">More...</a><br /></td></tr>
 <tr class="separator:a668530fd155e7b3892b33d13a89cde24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22d063d68044368c6619829019e3079c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__variable_8c.html#a22d063d68044368c6619829019e3079c">handle_word</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
+<tr class="memdesc:a22d063d68044368c6619829019e3079c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Small function for handle variable (just check <a class="el" href="structast__node.html" title="Structure representing a node of the AST.">ast_node</a> type and check the hash table)  <a href="ast__variable_8c.html#a22d063d68044368c6619829019e3079c">More...</a><br /></td></tr>
 <tr class="separator:a22d063d68044368c6619829019e3079c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -117,7 +126,12 @@ Variables</h2></td></tr>
 <tr class="memitem:a87db4b0d316863d95378db9f5346ddf2"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structhash__map.html">hash_map</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__variable_8c.html#a87db4b0d316863d95378db9f5346ddf2">variables</a> = NULL</td></tr>
 <tr class="separator:a87db4b0d316863d95378db9f5346ddf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Handle variables. </p>
+<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a668530fd155e7b3892b33d13a89cde24"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a668530fd155e7b3892b33d13a89cde24">&#9670;&nbsp;</a></span>ast_eval_assignment()</h2>
 
@@ -144,6 +158,17 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Evaluate a node from the AST. </p>
+<p>Evaluate the ast assignement.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>Whether the logger is enabled or not. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command 0 if success, 1 if error. </dd></dl>
+
 </div>
 </div>
 <a id="a030d7992e9b29a7396611a9719b64e84"></a>
@@ -160,6 +185,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Free the variables hash map. </p>
 
 </div>
 </div>
@@ -179,6 +206,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get a variable from the hash map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key of the variable. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the variable or NULL if not found. </dd></dl>
+
 </div>
 </div>
 <a id="a22d063d68044368c6619829019e3079c"></a>
@@ -197,6 +233,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Small function for handle variable (just check <a class="el" href="structast__node.html" title="Structure representing a node of the AST.">ast_node</a> type and check the hash table) </p>
+<p>Handle word assignment.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the variable or NULL if not found. </dd></dl>
+
 </div>
 </div>
 <a id="a9249da0285497dd291f2ea6a9ad37a64"></a>
@@ -213,6 +259,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Initialize the variables hash map. </p>
 
 </div>
 </div>
@@ -241,6 +289,15 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set a variable in the hash map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key of the variable. </td></tr>
+    <tr><td class="paramname">value</td><td>The value of the variable. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

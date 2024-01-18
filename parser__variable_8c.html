@@ -72,32 +72,41 @@ $(function() {
 <div class="title">parser_variable.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Parse the variable.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="parser_8h_source.html">parser.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for parser_variable.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="parser__variable_8c__incl.png" border="0" usemap="#asrc_2parser_2parser__variable_8c" alt=""/></div>
 <map name="asrc_2parser_2parser__variable_8c" id="asrc_2parser_2parser__variable_8c">
-<area shape="rect" title=" " alt="" coords="118,5,321,32"/>
-<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="182,80,257,107"/>
+<area shape="rect" title="Parse the variable." alt="" coords="123,5,326,32"/>
+<area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="187,80,262,107"/>
 <area shape="rect" title=" " alt="" coords="5,155,76,181"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="103,304,181,331"/>
-<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="298,155,399,181"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="152,229,287,256"/>
-<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="461,229,532,256"/>
-<area shape="rect" title=" " alt="" coords="265,379,347,405"/>
-<area shape="rect" title=" " alt="" coords="174,379,241,405"/>
-<area shape="rect" title=" " alt="" coords="79,379,149,405"/>
-<area shape="rect" title=" " alt="" coords="311,229,386,256"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="97,304,187,331"/>
+<area shape="rect" href="lexer_8h.html" title="Header of the lexer." alt="" coords="303,155,416,181"/>
+<area shape="rect" href="token_8h.html" title="Header of the token structure." alt="" coords="472,229,543,256"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="151,229,298,256"/>
+<area shape="rect" title=" " alt="" coords="270,379,353,405"/>
+<area shape="rect" title=" " alt="" coords="179,379,246,405"/>
+<area shape="rect" title=" " alt="" coords="84,379,155,405"/>
+<area shape="rect" title=" " alt="" coords="322,229,397,256"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aaf859b3a838a67751470a999220b1954"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser__variable_8c.html#aaf859b3a838a67751470a999220b1954">parse_variable</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="memdesc:aaf859b3a838a67751470a999220b1954"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next token type and consume it if it matches the given.  <a href="parser__variable_8c.html#aaf859b3a838a67751470a999220b1954">More...</a><br /></td></tr>
 <tr class="separator:aaf859b3a838a67751470a999220b1954"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Parse the variable. </p>
+<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="aaf859b3a838a67751470a999220b1954"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaf859b3a838a67751470a999220b1954">&#9670;&nbsp;</a></span>parse_variable()</h2>
 
@@ -113,6 +122,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Return the next token type and consume it if it matches the given. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lexer</td><td>The lexer to parse. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The next token type. </dd></dl>
 
 </div>
 </div>
