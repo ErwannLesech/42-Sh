@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_5fstep_355',['logger_step',['../options_8h.html#aff01805671af6c510c0b3636c68b81b3',1,'options.h']]]
+  ['token_5ftype_345',['token_type',['../token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d',1,'token.h']]]
 ];
