@@ -103,6 +103,8 @@ Include dependency graph for redirections.c:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a222ef6e52aa7afb22fa3f7d80f6376d6"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="redirections_8c.html#a222ef6e52aa7afb22fa3f7d80f6376d6">check_present_child</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, int ionumbers_count)</td></tr>
 <tr class="separator:a222ef6e52aa7afb22fa3f7d80f6376d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2935ec08d8f042ba48ca42dc75963e53"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="redirections_8c.html#a2935ec08d8f042ba48ca42dc75963e53">address_ionumber</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int *fd_ionumber, int *ionumbers_count)</td></tr>
+<tr class="separator:a2935ec08d8f042ba48ca42dc75963e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00ad78e3a8c5dadaca45c97c27e29101"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="redirections_8c.html#a00ad78e3a8c5dadaca45c97c27e29101">redir_handling</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int *fd_ionumber, int *fd_dup)</td></tr>
 <tr class="separator:a00ad78e3a8c5dadaca45c97c27e29101"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53bb46adbf16c7689b6b91ecc5a6afa3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="redirections_8c.html#a53bb46adbf16c7689b6b91ecc5a6afa3">remove_node</a> (struct <a class="el" href="structast__node.html">ast_node</a> *ast, int index)</td></tr>
@@ -112,6 +114,40 @@ Functions</h2></td></tr>
 <tr class="separator:a7f9d242dd08ee9271f0f1e7a9169286e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a2935ec08d8f042ba48ca42dc75963e53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2935ec08d8f042ba48ca42dc75963e53">&#9670;&nbsp;</a></span>address_ionumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* address_ionumber </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>fd_ionumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ionumbers_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a222ef6e52aa7afb22fa3f7d80f6376d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a222ef6e52aa7afb22fa3f7d80f6376d6">&#9670;&nbsp;</a></span>check_present_child()</h2>
 

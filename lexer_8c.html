@@ -114,6 +114,10 @@ Functions</h2></td></tr>
 <tr class="memitem:adc9e77c19b1f601d677092e8ca2bd6d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8c.html#adc9e77c19b1f601d677092e8ca2bd6d9">token_free</a> (struct <a class="el" href="structtoken.html">token</a> <a class="el" href="structtoken.html">token</a>)</td></tr>
 <tr class="memdesc:adc9e77c19b1f601d677092e8ca2bd6d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free the given token.  <a href="lexer_8c.html#adc9e77c19b1f601d677092e8ca2bd6d9">More...</a><br /></td></tr>
 <tr class="separator:adc9e77c19b1f601d677092e8ca2bd6d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27cc42eeb9c7988517dad614e8070013"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8c.html#a27cc42eeb9c7988517dad614e8070013">first_char_check</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char **current_word, unsigned *word_index)</td></tr>
+<tr class="separator:a27cc42eeb9c7988517dad614e8070013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07527b2bd6ac17282d2dbc3eb8f52f4c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8c.html#a07527b2bd6ac17282d2dbc3eb8f52f4c">end_of_get_word</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char *word, unsigned word_index)</td></tr>
+<tr class="separator:a07527b2bd6ac17282d2dbc3eb8f52f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45a6eab5fba2f945d03becf77985b64a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8c.html#a45a6eab5fba2f945d03becf77985b64a">get_word</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool *is_diactivated)</td></tr>
 <tr class="memdesc:a45a6eab5fba2f945d03becf77985b64a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next word in the input string.  <a href="lexer_8c.html#a45a6eab5fba2f945d03becf77985b64a">More...</a><br /></td></tr>
 <tr class="separator:a45a6eab5fba2f945d03becf77985b64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,6 +142,74 @@ Variables</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a07527b2bd6ac17282d2dbc3eb8f52f4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07527b2bd6ac17282d2dbc3eb8f52f4c">&#9670;&nbsp;</a></span>end_of_get_word()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* end_of_get_word </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>word_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27cc42eeb9c7988517dad614e8070013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27cc42eeb9c7988517dad614e8070013">&#9670;&nbsp;</a></span>first_char_check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool first_char_check </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>current_word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>word_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a45a6eab5fba2f945d03becf77985b64a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45a6eab5fba2f945d03becf77985b64a">&#9670;&nbsp;</a></span>get_word()</h2>
 
