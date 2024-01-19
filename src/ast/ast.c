@@ -50,57 +50,41 @@ void ast_free(struct ast_node *node)
         }
         free(node->children);
     }
-    if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT)
+    if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT
+        || node->type == AST_VARIABLE)
         free(node->value);
     free(node);
 }
 
 char *ast_type_to_string(enum ast_type type)
 {
-    switch (type)
-    {
-    case AST_SIMPLE_COMMAND:
-        return "AST_SIMPLE_COMMAND";
-    case AST_CONDITION:
-        return "AST_CONDITION";
-    case AST_COMMAND_LIST:
-        return "AST_COMMAND_LIST";
-    case AST_WORD:
-        return "AST_WORD";
-    case AST_EMPTY:
-        return "AST_EMPTY";
-    case AST_FOR:
-        return "AST_FOR";
-    case AST_WHILE:
-        return "AST_WHILE";
-    case AST_UNTIL:
-        return "AST_UNTIL";
-    case AST_AND_OR:
-        return "AST_AND_OR";
-    case AST_NEGATE:
-        return "AST_NEGATE";
-    case AST_PIPELINE:
-        return "AST_PIPELINE";
-    case AST_REDIRECTION:
-        return "AST_REDIRECTION";
-    case AST_AND:
-        return "AST_AND";
-    case AST_OR:
-        return "AST_OR";
-    case AST_COMMAND:
-        return "AST_COMMAND";
-    case AST_WORD_ASSIGNMENT:
-        return "AST_WORD_ASSIGNMENT";
-    case AST_VARIABLE:
-        return "AST_VARIABLE";
-    case AST_IONUMBER:
-        return "AST_IONUMBER";
-    default:
-        return "UNKNOWN";
-    }
+    char *strings[] = {
+        [AST_SIMPLE_COMMAND] = "AST_SIMPLE_COMMAND",
+        [AST_CONDITION] = "AST_CONDITION",
+        [AST_COMMAND_LIST] = "AST_COMMAND_LIST",
+        [AST_WORD] = "AST_WORD",
+        [AST_EMPTY] = "AST_EMPTY",
+        [AST_FOR] = "AST_FOR",
+        [AST_WHILE] = "AST_WHILE",
+        [AST_UNTIL] = "AST_UNTIL",
+        [AST_AND_OR] = "AST_AND_OR",
+        [AST_NEGATE] = "AST_NEGATE",
+        [AST_PIPELINE] = "AST_PIPELINE",
+        [AST_REDIRECTION] = "AST_REDIRECTION",
+        [AST_AND] = "AST_AND",
+        [AST_OR] = "AST_OR",
+        [AST_COMMAND] = "AST_COMMAND",
+        [AST_WORD_ASSIGNMENT] = "AST_WORD_ASSIGNMENT",
+        [AST_VARIABLE] = "AST_VARIABLE",
+    };
+
+    if (type < 0 || type > AST_VARIABLE)
+        return "AST_UNEXPECTED";
+    
+    return strings[type];
 }
 
-void print_ast(struct ast_node *node, int depth, bool logger_enabled)
+void print_ast(struct ast_node *node, int depth)
 {
     if (node == NULL)
         return;
@@ -112,7 +96,6 @@ void print_ast(struct ast_node *node, int depth, bool logger_enabled)
     {
         printf("%s:\n", node->value);
     }
-    // logger(node->value, LOGGER_PARSER, logger_enabled);
     for (int i = 0; i < node->children_count; i++)
-        print_ast(node->children[i], depth + 1, logger_enabled);
+        print_ast(node->children[i], depth + 1);
 }

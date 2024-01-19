@@ -1,7 +1,7 @@
 /**
  * \file ast.h
  * \brief Represent a node of the AST.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -91,6 +91,6 @@ char *ast_type_to_string(enum ast_type type);
  * \param value The value of the node.
  * \return The new node.
  */
-void print_ast(struct ast_node *node, int depth, bool logger_enabled);
+void print_ast(struct ast_node *node, int depth);
 
 #endif /* ! AST_H  */

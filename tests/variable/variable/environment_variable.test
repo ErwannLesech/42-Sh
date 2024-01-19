@@ -1,0 +1,2 @@
+echo "$UID"
+#marche sans les ""

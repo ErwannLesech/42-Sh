@@ -1,7 +1,7 @@
 /**
  * \file exec_tests.c
  * \brief Tests the exec function.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -30,7 +30,7 @@ Test(exec, test_exec_simple_command)
 
     cr_redirect_stdout();
 
-    match_ast(ast, false);
+    match_ast(ast);
     fflush(stdout);
     cr_assert_stdout_eq_str("test\n");
 

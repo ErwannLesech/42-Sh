@@ -1,7 +1,7 @@
 /**
  * \file options.c
  * \brief Options functions.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -15,6 +15,13 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "ast/ast.h"
+
+/**
+ * \brief Check if the given string is a number.
+ * \param str The string to check.
+ * \return 1 if the string is a number, 0 otherwise.
+ */
 int is_number(char *str)
 {
     int i = 0;
@@ -25,24 +32,6 @@ int is_number(char *str)
         i++;
     }
     return 1;
-}
-
-bool check_logger(int *argc, char **argv)
-{
-    bool logger_enabled = false;
-    for (int i = 0; i < *argc; i++)
-    {
-        if (strcmp(argv[i], "--logger") == 0)
-        {
-            logger_enabled = true;
-            for (int j = i; j < *argc - 1; j++)
-            {
-                argv[j] = argv[j + 1];
-            }
-            (*argc)--;
-        }
-    }
-    return logger_enabled;
 }
 
 bool check_pretty_print(int *argc, char **argv)
@@ -63,30 +52,6 @@ bool check_pretty_print(int *argc, char **argv)
     return pretty_print_enabled;
 }
 
-void logger(char *str, enum logger_step step, bool logger_enabled)
-{
-    if (!str || !logger_enabled)
-        return;
-
-    switch (step)
-    {
-    case LOGGER_INPUT:
-        printf("Input: %s\n", str);
-        break;
-
-    case LOGGER_PARSER:
-        printf("Word_value: %s\n", str);
-        break;
-
-    case LOGGER_EXEC:
-        printf("%s ", str);
-        break;
-
-    default:
-        break;
-    }
-}
-
 /**
  * \brief digit counter
  * \param number the number to count digits
@@ -105,6 +70,12 @@ int count_digits(int number)
     return count;
 }
 
+/**
+ * \brief Print the AST in a file.
+ * \param ast The AST to print.
+ * \param fd The file descriptor.
+ * \param node_count The number of nodes.
+ */
 void pp_node(struct ast_node *ast, int fd, int *node_count)
 {
     char *buff = malloc(sizeof(char) * 100000);
@@ -135,6 +106,13 @@ void pp_node(struct ast_node *ast, int fd, int *node_count)
     free(buff);
 }
 
+/**
+ * \brief Print the AST links in a file.
+ * \param ast The AST to print.
+ * \param fd The file descriptor.
+ * \param node_count The number of nodes.
+ * \param parent_id The parent id.
+ */
 void pp_link(struct ast_node *ast, int fd, int *node_count, int parent_id)
 {
     char *buff = malloc(sizeof(char) * 100000);

@@ -1,3 +1,11 @@
+/**
+ * \file hash_map.c
+ * \brief Implement the hash map.
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
+ * \version 1.0
+ * \date 12/01/2024
+ */
+
 #include "hash_map.h"
 
 #include <stdbool.h>
@@ -102,7 +110,7 @@ void hash_map_dump(struct hash_map *hash_map)
     }
 }
 
-const char *hash_map_get(const struct hash_map *hash_map, const char *key)
+char *hash_map_get(const struct hash_map *hash_map, const char *key)
 {
     if (hash_map == NULL || hash_map->size == 0)
     {
