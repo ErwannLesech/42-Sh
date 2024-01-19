@@ -4,11 +4,13 @@ root_dir=$(git rev-parse --show-toplevel)
 
 # C files check
 for file in $(find "$root_dir/src" -type f -name '*.c'); do
-    function_count=$(grep -E '^(bool|int|char|double|void|float|struct [a-zA-Z][a-zA-Z_]*|unsigned|long)[[:space:]]+[*]*[a-zA-Z_][a-zA-Z0-9_]*[[:space:]]*\([^)]*\)[[:space:]]*' "$file" | wc -l)
+    function_count=$(grep -E '^(bool|int|char|double|void|float|struct [a-zA-Z][a-zA-Z_]*|unsigned|long)[[:space:]]+[*]*[a-zA-Z_][a-zA-Z0-9_]*[[:space:]]*\([^)]*[[:space:]]*' "$file" | wc -l)
+
+    # echo "$function_count"
     # echo "Processing file: $file"
     
     # Extract function prototypes and count parameters and lines
-    grep -E '^(bool|int|char|double|void|float|struct [a-zA-Z][a-zA-Z_]*|unsigned|long)[[:space:]]+[*]*[a-zA-Z_][a-zA-Z0-9_]*[[:space:]]*\([^)]*\)[[:space:]]*' "$file" | while IFS= read -r line; do
+    grep -E '^(bool|int|char|double|void|float|struct [a-zA-Z][a-zA-Z_]*|unsigned|long)[[:space:]]+[*]*[a-zA-Z_][a-zA-Z0-9_]*[[:space:]]*\([^)]*[[:space:]]*' "$file" | while IFS= read -r line; do
         return_type=$(echo "$line" | awk '{print $1}')        
         function_name=$(echo "$line" | awk '{print $2}' | sed 's/([^)]*//g')
 
@@ -29,7 +31,7 @@ for file in $(find "$root_dir/src" -type f -name '*.c'); do
         
 
         # Count the number of lines in the function (excluding blank and '{', '}' lines)
-        lines_in_function=$(sed -n "/$return_type $function_name/,/^}/p" "$file" | sed '/^$/d' | sed '/^[[:space:]]*{$/d' | sed '/^[[:space:]]*}$/d' | wc -l)  
+        lines_in_function=$(sed -n "/$return_type $function_name/,/^}/p" "$file" | sed '/^$/d' | sed -n "/^\s*\/\/.*$/!p" | sed '/^[[:space:]]*{$/d' | sed '/^[[:space:]]*}$/d' | wc -l)  
         lines_in_function=$((lines_in_function-1))
 
         if [[ "$parameters" -gt 4 ]]; then
