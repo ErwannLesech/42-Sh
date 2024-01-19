@@ -9,8 +9,30 @@
 #include "ast_eval.h"
 #include "hash_map/hash_map.h"
 #include "parser/parser.h"
+#include "environment_variable.h"
+
+#include <string.h>
 
 struct hash_map *variables = NULL;
+
+struct environment_function
+{
+    char *name;
+    char *(*fun)();
+};
+
+struct environment_function environment[] = { { .name = "@", .fun = at_fun },
+                                      { .name = "*", .fun = star_fun },
+                                      { .name = "?", .fun = quest_fun },
+                                      { .name = "$", .fun = dollar_fun },
+                                      { .name = "number", .fun = number_fun },
+                                      { .name = "#", .fun = sharp_fun },
+                                      { .name = "RANDOM", .fun = random_fun },
+                                      { .name = "UID", .fun = uid_fun },
+                                      { .name = "OLDWPD", .fun = oldpwd_fun },
+                                      { .name = "PWD", .fun = pwd_fun },
+                                      { .name = ""}
+                                       };
 
 /**
  * \brief Initialize the variables hash map.
@@ -41,7 +63,18 @@ void set_variable(char *key, char *value)
 {
     init_variables();
     bool updated;
-    hash_map_insert(variables, key, value, &updated);
+   // printf("key:%s\n", key);
+   // printf("value:%s\n", value);
+    if (strlen(key) == 0 || strlen(value) == 0)
+    {
+        return;
+    }
+    char *key_dup = malloc(sizeof(char) * strlen(key) + 1);
+    char *value_dup = malloc(sizeof(char) * strlen(value) + 1);
+    strcpy(key_dup, key);
+    strcpy(value_dup, value);
+    hash_map_insert(variables, key_dup, value_dup, &updated);
+    //hash_map_dump(variables);
 }
 
 /**
@@ -53,26 +86,22 @@ char *get_variable(char *key)
 {
     key++;
     // gerer les variables envirovment
-    init_variables();
-    if (variables == NULL)
+    for (int i = 0; environment[i].name[0] != '\0'; i++)
     {
-        return NULL;
+        if (strcmp(key, environment[i].name) == 0)
+        {
+            return environment[i].fun(key);
+        }
     }
-    size_t index = hash(key) % variables->size;
-    if (variables->data[index] == NULL)
+    char *value = hash_map_get(variables, key);
+    if (value == NULL)
+    {
+           // printf("key:%s\n", key);
         return "";
-    struct pair_list *ind = variables->data[index];
-    if (strcmp(ind->key, key) == 0)
-    {
-        return ind->value;
     }
-    while (ind->next != NULL)
-    {
-        if (strcmp(ind->key, key) == 0)
-            return ind->value;
-        ind = ind->next;
-    }
-    return "";
+    //printf("value:%s$\n", value);
+    //printf("key:%s\n", key);
+    return value;
 }
 
 /**
@@ -83,6 +112,11 @@ char *get_variable(char *key)
 int ast_eval_assignment(struct ast_node *node)
 {
     char *key = node->children[0]->value;
+    if (node->children_count == 1)
+    {
+        set_variable(key, "");
+        return 0;
+    }
     char *value = node->children[1]->value;
     set_variable(key, value);
     return 0;

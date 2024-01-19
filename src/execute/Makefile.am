@@ -5,7 +5,8 @@ libexecute_a_SOURCES = ast_eval.c ast_eval.h \
                     utils/builtin.c utils/builtin.h \
                     utils/pipeline.c utils/loop.c \
                     hash_map/hash_map.c hash_map/hash_map.h \
-                    hash_map/hash.c utils/ast_variable.c
+                    hash_map/hash.c utils/ast_variable.c \
+                    utils/environment_variable.c utils/environment_variable.h
                 
 
 libexecute_a_CFLAGS = -Wall -Wextra -Werror -Wvla -pedantic -std=c99
