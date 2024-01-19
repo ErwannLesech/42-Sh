@@ -13,8 +13,8 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#include "utils/builtin.h"
 #include "parser/parser.h"
+#include "utils/builtin.h"
 
 // true = 0
 // false = 1

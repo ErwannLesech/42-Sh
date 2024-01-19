@@ -93,8 +93,8 @@ int redir_manager(struct ast_node *ast, int *save_fd, int *fd_dup);
 
 /**
  * \brief Use for Free Hash Map Variables at the end of the program
- * 
-*/
+ *
+ */
 void free_variables();
 
 #endif /* AST_EVAL_H */

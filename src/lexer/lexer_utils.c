@@ -72,6 +72,26 @@ bool check_variable_assignement(char *word)
     return true;
 }
 
+void append_char_to_word(struct lexer *lexer, char **word, unsigned *word_index)
+{
+    char *curr_word = *word;
+    curr_word = realloc(curr_word, sizeof(char) * (*word_index + 1));
+    curr_word[*word_index] = lexer->data[lexer->index];
+    *word_index += 1;
+    lexer->index += 1;
+    *word = curr_word;
+}
+
+char *append_end_of_word(char *word, unsigned word_index)
+{
+    char *curr_word = word;
+    curr_word = realloc(word, sizeof(char) * (word_index + 1));
+    curr_word[word_index] = '\0';
+    word = curr_word;
+
+    return word;
+}
+
 bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
                          bool *is_in_braces)
 {
@@ -92,10 +112,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
         || lexer->data[lexer->index] == '@' || lexer->data[lexer->index] == '#'
         || lexer->data[lexer->index] == '$')
     {
-        curr_word = realloc(curr_word, sizeof(char) * (*word_index + 1));
-        curr_word[*word_index] = lexer->data[lexer->index];
-        *word_index += 1;
-        lexer->index += 1;
+        append_char_to_word(lexer, &curr_word, word_index);
         *word = curr_word;
         return true;
     }
@@ -107,10 +124,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
         while (lexer->data[lexer->index] >= '0'
                && lexer->data[lexer->index] <= '9')
         {
-            curr_word = realloc(curr_word, sizeof(char) * (*word_index + 1));
-            curr_word[*word_index] = lexer->data[lexer->index];
-            *word_index += 1;
-            lexer->index += 1;
+            append_char_to_word(lexer, &curr_word, word_index);
         }
         *word = curr_word;
         return true;
@@ -130,10 +144,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
              || (lexer->data[lexer->index] >= 'A'
                  && lexer->data[lexer->index] <= 'Z'))
     {
-        curr_word = realloc(curr_word, sizeof(char) * (*word_index + 1));
-        curr_word[*word_index] = lexer->data[lexer->index];
-        *word_index += 1;
-        lexer->index += 1;
+        append_char_to_word(lexer, &curr_word, word_index);
     }
     // Not a valid variable name
     else
@@ -154,10 +165,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
            || (lexer->data[lexer->index] >= '0'
                && lexer->data[lexer->index] <= '9'))
     {
-        curr_word = realloc(curr_word, sizeof(char) * (*word_index + 1));
-        curr_word[*word_index] = lexer->data[lexer->index];
-        *word_index += 1;
-        lexer->index += 1;
+        append_char_to_word(lexer, &curr_word, word_index);
     }
 
     if (*is_in_braces)
@@ -186,7 +194,6 @@ bool handle_dollar(struct lexer *lexer, char **word, unsigned *word_index,
     // Check if the name of the variable is correct
     return check_variable_name(lexer, word, word_index, is_in_braces);
 }
-
 char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
                           unsigned *word_index)
 {
@@ -216,7 +223,6 @@ char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
         if (lexer->data[lexer->index] == '\0')
         {
             free(word);
-            word = NULL;
             return NULL;
         }
         // Handle the backslash if the back slash is alone we need to add it to

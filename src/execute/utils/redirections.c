@@ -17,11 +17,10 @@ char *check_present_child(struct ast_node *ast, int ionumbers_count)
     return NULL;
 }
 
-int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup)
+char *address_ionumber(struct ast_node *node, int *fd_ionumber,
+                       int *ionumbers_count)
 {
     char *file_name = NULL;
-    int ionumbers_count = 0;
-
     if (*fd_ionumber == -1)
     {
         if (node->value[1] == '&')
@@ -36,19 +35,27 @@ int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup)
         {
             *fd_ionumber = STDIN_FILENO;
         }
-        if ((file_name = check_present_child(node, ionumbers_count)) == NULL)
-        {
-            return -2;
-        }
+        return check_present_child(node, *ionumbers_count);
     }
     // There is an ionumber
     else
     {
-        ionumbers_count++;
-        if ((file_name = check_present_child(node, ionumbers_count)) == NULL)
-        {
-            return -2;
-        }
+        *ionumbers_count += 1;
+        return check_present_child(node, *ionumbers_count);
+    }
+
+    return file_name;
+}
+
+int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup)
+{
+    char *file_name = NULL;
+    int ionumbers_count = 0;
+
+    if ((file_name = address_ionumber(node, fd_ionumber, &ionumbers_count))
+        == NULL)
+    {
+        return -2;
     }
 
     int fd;
