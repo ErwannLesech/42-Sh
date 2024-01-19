@@ -14,15 +14,11 @@
 #include "ast/ast.h"
 #include "ast_eval.h"
 
-int pipeline_eval(struct ast_node *node, bool logger_enabled)
+int pipeline_eval(struct ast_node *node)
 {
     if (node->children_count == 1)
     {
-        return match_ast(node->children[0], logger_enabled);
-    }
-    if (logger_enabled)
-    {
-        printf("pipeline\n");
+        return match_ast(node->children[0]);
     }
     int start = 0;
     int stat = 0;
@@ -55,7 +51,7 @@ int pipeline_eval(struct ast_node *node, bool logger_enabled)
                 close(pipes[0]);
                 close(pipes[1]);
             }
-            stat = match_ast(node->children[i], logger_enabled);
+            stat = match_ast(node->children[i]);
             ast_free(node);
             exit(stat);
         }
@@ -77,7 +73,7 @@ int pipeline_eval(struct ast_node *node, bool logger_enabled)
     return stat;
 }
 
-int ast_and_or(struct ast_node *node, bool logger_enabled)
+int ast_and_or(struct ast_node *node)
 {
     int status = 0;
     for (int i = 0; i < node->children_count; i++)
@@ -92,7 +88,7 @@ int ast_and_or(struct ast_node *node, bool logger_enabled)
         }
         else
         {
-            status = match_ast(node->children[i], logger_enabled);
+            status = match_ast(node->children[i]);
         }
     }
     return status;

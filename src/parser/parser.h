@@ -19,12 +19,10 @@
 /**
  * \brief Parse loop the given lexer
  * \param lexer The lexer to parse.
- * \param logger_enabled The option logger.
  * \param pretty_print_enabled The option pretty_print.
  * \return code of execution 0 if success, 1 if error.
  */
-int parser_loop(struct lexer *lexer, bool logger_enabled,
-                bool pretty_print_enabled);
+int parser_loop(struct lexer *lexer, bool pretty_print_enabled);
 
 /**
  * \brief Parse the given lexer.
