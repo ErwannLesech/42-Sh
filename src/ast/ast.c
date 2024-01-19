@@ -80,7 +80,7 @@ char *ast_type_to_string(enum ast_type type)
 
     if (type < 0 || type > AST_VARIABLE)
         return "AST_UNEXPECTED";
-    
+
     return strings[type];
 }
 

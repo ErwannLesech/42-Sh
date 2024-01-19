@@ -1,12 +1,12 @@
 #include "environment_variable.h"
 
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <sys/types.h>
+#include <time.h>
+#include <unistd.h>
 
 char *at_fun()
 {
@@ -69,4 +69,3 @@ char *pwd_fun()
 {
     return "";
 }
-

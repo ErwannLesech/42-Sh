@@ -151,7 +151,7 @@ struct ast_node *simple_command(struct lexer *lexer)
     {
         ast_append(current, child);
         struct ast_node *child2 = prefix(lexer);
-        if (child2!= NULL)
+        if (child2 != NULL)
         {
             while (child2 != NULL)
             {
@@ -195,13 +195,13 @@ struct ast_node *element(struct lexer *lexer)
     struct ast_node *current = redirection(lexer);
     if (current != NULL)
         return current;
-    
+
     struct ast_node *variable = parse_variable(lexer);
     if (variable != NULL)
     {
         return variable;
     }
-    //printf("%s\n", lexer_peek(lexer).data);
+    // printf("%s\n", lexer_peek(lexer).data);
     if (parser_peek(lexer) == TOKEN_WORD || parser_peek(lexer) == TOKEN_IF
         || parser_peek(lexer) == TOKEN_THEN || parser_peek(lexer) == TOKEN_ELSE
         || parser_peek(lexer) == TOKEN_ELIF || parser_peek(lexer) == TOKEN_FI
@@ -215,7 +215,7 @@ struct ast_node *element(struct lexer *lexer)
         return curr;
     }
 
-    //printf("Error: element\n");
+    // printf("Error: element\n");
     ast_free(current);
     return NULL;
 }
