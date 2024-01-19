@@ -23,17 +23,11 @@ struct ast_node *prefix(struct lexer *lexer)
 struct ast_node *redirection(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_REDIRECTION);
-    if (parser_peek(lexer) == TOKEN_WORD)
+    if (parser_peek(lexer) == TOKEN_IONUMBER)
     {
-        char *value = lexer_peek(lexer).data;
-        if (is_number(value))
-        {
-            ast_append(current, ast_node_word(value));
-        }
-        else
-        {
-            free(value);
-        }
+        struct ast_node *io_number = ast_node_new(AST_IONUMBER);
+        io_number->value = lexer_pop(lexer).data;
+        ast_append(current, io_number);
     }
 
     if (parser_peek(lexer) == TOKEN_REDIR)

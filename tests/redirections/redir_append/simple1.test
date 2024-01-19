@@ -1,0 +1,4 @@
+echo hello > file
+echo World >> file
+cat file
+rm file
