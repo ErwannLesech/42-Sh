@@ -29,5 +29,5 @@ int ast_and_or(struct ast_node *node, bool logger_enabled);
 int ast_eval_assignment(struct ast_node *node, bool logger_enabled);
 int ast_command(struct ast_node *node, bool logger_enabled);
 char *handle_word(struct ast_node *node);
-int redir_manager(struct ast_node *ast, int *save_fd, int *fd_dup, bool logger_enabled);
+int redir_manager(struct ast_node *ast, int *save_fd, int *fd_dup);
 #endif /* AST_EVAL_H */

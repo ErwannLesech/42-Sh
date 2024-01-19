@@ -1,0 +1,3 @@
+echo "Hello" >| test
+cat test
+rm test

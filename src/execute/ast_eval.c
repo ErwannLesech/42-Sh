@@ -87,7 +87,12 @@ int ast_eval_simple_command(struct ast_node *node, bool logger_enabled)
 {
     int save_fd = -1;
     int fd_dup = -1;
-    int fd_redir = redir_manager(node, &save_fd, &fd_dup, logger_enabled);
+    int fd_redir = redir_manager(node, &save_fd, &fd_dup);
+    if (fd_redir == -2)
+    {
+        fprintf(stderr, "Wrong file descriptor\n");
+        return 2;
+    }
     if (node->children[0]->type == AST_WORD_ASSIGNMENT)
     {
         int return_val = ast_eval_assignment(node, logger_enabled);

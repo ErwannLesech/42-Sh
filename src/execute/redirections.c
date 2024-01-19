@@ -6,19 +6,29 @@
 
 #include "ast/ast.h"
 #include "ast_eval.h"
+#include "options/options.h"
 
-int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup, bool logger_enabled)
+char *check_present_child(struct ast_node *ast, int ionumbers_count)
 {
-    if (logger_enabled)
+    if (ionumbers_count < ast->children_count)
     {
-        printf("redir_output\n");
+        return ast->children[ionumbers_count]->value;
     }
+    return NULL;
+}
 
+int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup)
+{
     char *file_name = NULL;
+    int ionumbers_count = 0;
 
     if (*fd_ionumber == -1)
     {
-        if (node->value[0] == '>')
+        if (node->value[1] == '&')
+        {
+            *fd_ionumber = STDERR_FILENO;
+        }
+        else if (node->value[0] == '>')
         {
             *fd_ionumber = STDOUT_FILENO;
         }
@@ -26,23 +36,45 @@ int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup, bool lo
         {
             *fd_ionumber = STDIN_FILENO;
         }
-        file_name = node->children[0]->value;
+        if ((file_name = check_present_child(node, ionumbers_count)) == NULL)
+        {
+            return -2;
+        }
     }
+    // There is an ionumber
     else
     {
-        file_name = node->children[1]->value;
+        ionumbers_count++;
+        if ((file_name = check_present_child(node, ionumbers_count)) == NULL)
+        {
+            return -2;
+        }
     }
 
     int fd;
+
     if (node->value[0] == '>')
     {
         if (node->value[1] == '>')
         {
             fd = open(file_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
         }
-        else if ("&")
+        else if (node->value[1] == '&')
         {
-            fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+            if (!is_number(file_name))
+            {
+                fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+            }
+            else
+            {
+                fd = atoi(file_name);
+                int flags = fcntl(fd, F_GETFD);
+                if (flags == -1)
+                {
+                    // Le descripteur n'est pas ouvert.
+                    return -2;
+                }
+            }
         }
         else
         {
@@ -51,7 +83,14 @@ int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup, bool lo
     }
     else
     {
-        fd = open(file_name, O_RDONLY);
+        if (node->value[1] == '>')
+        {
+            fd = open(file_name, O_RDWR | O_CREAT | O_APPEND, 0644);
+        }
+        else
+        {
+            fd = open(file_name, O_RDONLY);
+        }
     }
 
     if (fd == -1)
@@ -62,12 +101,12 @@ int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup, bool lo
     int save_fd = dup(*fd_ionumber);
     if (save_fd == -1)
     {
-        return -1;
+        return -2;
     }
 
     if ((*fd_dup = dup2(fd, *fd_ionumber)) == -1)
     {
-        return -1;
+        return -2;
     }
 
     // mettre à null les nodes redirs et réaranger l'arbre
@@ -83,7 +122,7 @@ int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup, bool lo
  * \brief Remove a node from the ast
  * \param ast The ast
  * \param index The index of the node to remove
-*/
+ */
 void remove_node(struct ast_node *ast, int index)
 {
     free(ast->children[index]->value);
@@ -91,12 +130,8 @@ void remove_node(struct ast_node *ast, int index)
     ast->children[index] = NULL;
 }
 
-int redir_manager(struct ast_node *ast, int *save_fd, int *fd_dup, bool logger_enabled)
+int redir_manager(struct ast_node *ast, int *save_fd, int *fd_dup)
 {
-    if (logger_enabled)
-    {
-        printf("redir_manager\n");
-    }
     int fd_redir = -1;
     int io_number = -1;
     int redirections_count = 0;
@@ -117,9 +152,11 @@ int redir_manager(struct ast_node *ast, int *save_fd, int *fd_dup, bool logger_e
             {
                 io_number = atoi(ast->children[i]->children[0]->value);
             }
-            if ((fd_redir = redir_handling(ast->children[i], &io_number, fd_dup, logger_enabled)) == -1)
+            if ((fd_redir =
+                     redir_handling(ast->children[i], &io_number, fd_dup))
+                == -2)
             {
-                return -1;
+                return -2;
             }
             remove_node(ast, i);
         }

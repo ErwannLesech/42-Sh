@@ -1,0 +1,3 @@
+wrong_command 2>file
+# cat file --> working but not the same stderr message
+rm file

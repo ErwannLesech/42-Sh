@@ -1,0 +1,3 @@
+echo test > file;
+cat file
+rm file
