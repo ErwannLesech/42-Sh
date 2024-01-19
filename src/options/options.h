@@ -15,24 +15,6 @@
 #include "ast/ast.h"
 
 /**
- * \brief Enum for the different logger steps.
- */
-enum logger_step
-{
-    LOGGER_INPUT,
-    LOGGER_PARSER,
-    LOGGER_EXEC,
-};
-
-/**
- * \brief Check if the logger option is asked in args.
- * \param argc The number of args.
- * \param argv The args.
- * \return True if the logger option is inside of args, false otherwise.
- */
-bool check_logger(int *argc, char **argv);
-
-/**
  * \brief Check if the pretty print option is asked in args.
  * \param argc The number of args.
  * \param argv The args.
@@ -41,18 +23,10 @@ bool check_logger(int *argc, char **argv);
 bool check_pretty_print(int *argc, char **argv);
 
 /**
- * \brief Pretty printf of string.
- * \param str The string to print.
- * \param step The step of the logger.
- * \param logger_enabled True if the logger is enabled, false otherwise.
- */
-void logger(char *str, enum logger_step step, bool logger_enabled);
-
-/**
  * \brief Pretty printf of ast.
  * \param ast The ast to print.
- * \param pretty_print_enabled True if the pretty print is enabled, false otherwise.
- * \param depths The depths of the ast.
+ * \param pretty_print_enabled True if the pretty print is enabled, false
+ * otherwise. \param depths The depths of the ast.
  */
 void pretty_print(struct ast_node *ast, bool pretty_print_enabled, int *depths);
 

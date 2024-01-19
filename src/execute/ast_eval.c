@@ -33,7 +33,7 @@ struct builtin_function
 /**
  * \struct builtin_function
  * \brief Structure representing a builtin function.
-*/
+ */
 struct builtin_function builtin[] = { { .name = "echo", .fun = echo_fun },
                                       { .name = "true", .fun = true_fun },
                                       { .name = "false", .fun = false_fun } };
@@ -41,23 +41,18 @@ struct builtin_function builtin[] = { { .name = "echo", .fun = echo_fun },
 /**
  * \brief Evaluate the while loop
  * \param node The AST to evaluate.
- * \param logger_enabled Whether the logger is enabled or not.
  * \return The exit status of the last command.
-*/
-int exec_cmd(struct ast_node *node, bool logger_enabled)
+ */
+int exec_cmd(struct ast_node *node)
 {
     int pid = fork();
     if (pid == 0)
     {
         char **args = malloc(sizeof(char *) * (node->children_count + 1));
-        logger("cmd: ", LOGGER_EXEC, logger_enabled);
         for (int i = 0; i < node->children_count; i++)
         {
             args[i] = handle_word(node->children[i]);
-            // printf("%s ", args[i]);
-            logger(args[i], LOGGER_EXEC, logger_enabled);
         }
-        logger("\n", LOGGER_EXEC, logger_enabled);
         args[node->children_count] = NULL;
         if (execvp(node->children[0]->value, args) == -1)
         {
@@ -89,22 +84,21 @@ int exec_cmd(struct ast_node *node, bool logger_enabled)
 }
 
 // TO IMPLEMENT REDIR
-int ast_command(struct ast_node *node, bool logger_enabled)
+int ast_command(struct ast_node *node)
 {
-    return match_ast(node->children[0], logger_enabled);
+    return match_ast(node->children[0]);
 }
 
 /**
  * \brief Evaluate simple command from ast
  * \param node The AST to evaluate.
- * \param logger_enabled Whether the logger is enabled or not.
  * \return The exit status of the last command.
-*/
-int ast_eval_simple_command(struct ast_node *node, bool logger_enabled)
+ */
+int ast_eval_simple_command(struct ast_node *node)
 {
     if (node->children[0]->type == AST_WORD_ASSIGNMENT)
     {
-        return ast_eval_assignment(node, logger_enabled);
+        return ast_eval_assignment(node);
     }
     char *command = node->children[0]->value;
     for (size_t i = 0; i < 3; i++)
@@ -114,25 +108,24 @@ int ast_eval_simple_command(struct ast_node *node, bool logger_enabled)
             return builtin[i].fun(node);
         }
     }
-    return exec_cmd(node, logger_enabled);
+    return exec_cmd(node);
 }
 
 /**
  * \brief Evaluate condition from ast
  * \param node The AST to evaluate.
- * \param logger_enabled Whether the logger is enabled or not.
  * \return The exit status of the last command.
-*/
-int ast_eval_condition(struct ast_node *node, bool logger_enabled)
+ */
+int ast_eval_condition(struct ast_node *node)
 {
-    int cond = match_ast(node->children[0], logger_enabled);
+    int cond = match_ast(node->children[0]);
     if (cond == 0)
     {
-        return match_ast(node->children[1], logger_enabled);
+        return match_ast(node->children[1]);
     }
     else if (node->children_count == 3)
     {
-        return match_ast(node->children[2], logger_enabled);
+        return match_ast(node->children[2]);
     }
     else
     {
@@ -143,48 +136,42 @@ int ast_eval_condition(struct ast_node *node, bool logger_enabled)
 /**
  * \brief Evaluate command list from ast
  * \param node The AST to evaluate.
- * \param logger_enabled Whether the logger is enabled or not.
  * \return The exit status of the last command.
-*/
-int ast_eval_command_list(struct ast_node *node, bool logger_enabled)
+ */
+int ast_eval_command_list(struct ast_node *node)
 {
     int status = 0;
     for (int i = 0; i < node->children_count; i++)
     {
-        status = match_ast(node->children[i], logger_enabled);
+        status = match_ast(node->children[i]);
     }
     return status;
 }
 
-int match_ast(struct ast_node *node, bool logger_enabled)
+int match_ast(struct ast_node *node)
 {
+    struct exec_grammar exec[] = {
+        [AST_SIMPLE_COMMAND] = { .func = ast_eval_simple_command },
+        [AST_CONDITION] = { .func = ast_eval_condition },
+        [AST_COMMAND_LIST] = { .func = ast_eval_command_list },
+        [AST_EMPTY] = { .func = NULL },
+        [AST_WHILE] = { .func = while_loop },
+        [AST_UNTIL] = { .func = until_loop },
+        [AST_FOR] = { .func = for_loop },
+        [AST_AND_OR] = { .func = ast_and_or },
+        [AST_PIPELINE] = { .func = pipeline_eval },
+        [AST_COMMAND] = { .func = ast_command },
+    };
+
     if (node == NULL)
     {
         return -1;
     }
-    switch (node->type)
+
+    if (exec[node->type].func == NULL)
     {
-    case AST_SIMPLE_COMMAND:
-        return ast_eval_simple_command(node, logger_enabled);
-    case AST_CONDITION:
-        return ast_eval_condition(node, logger_enabled);
-    case AST_COMMAND_LIST:
-        return ast_eval_command_list(node, logger_enabled);
-    case AST_EMPTY:
         return 0;
-    case AST_WHILE:
-        return while_loop(node, logger_enabled);
-    case AST_UNTIL:
-        return until_loop(node, logger_enabled);
-    case AST_FOR:
-        return for_loop(node, logger_enabled);
-    case AST_AND_OR:
-        return ast_and_or(node, logger_enabled);
-    case AST_PIPELINE:
-        return pipeline_eval(node, logger_enabled);
-    case AST_COMMAND:
-        return ast_command(node, logger_enabled);
-    default:
-        return -1;
     }
+
+    return exec[node->type].func(node);
 }

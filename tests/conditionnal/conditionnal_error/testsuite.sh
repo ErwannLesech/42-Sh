@@ -1,4 +1,4 @@
-run_test conditionnal_error1.test
-run_test conditionnal_error2.test
-run_test conditionnal_error3.test
-run_test conditionnal_error4.test
+run_test conditionnal_error_test1.test
+run_test conditionnal_error_test2.test
+run_test conditionnal_error_test3.test
+run_test conditionnal_error_test4.test

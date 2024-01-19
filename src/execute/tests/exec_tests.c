@@ -30,7 +30,7 @@ Test(exec, test_exec_simple_command)
 
     cr_redirect_stdout();
 
-    match_ast(ast, false);
+    match_ast(ast);
     fflush(stdout);
     cr_assert_stdout_eq_str("test\n");
 
