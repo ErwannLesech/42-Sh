@@ -108,13 +108,13 @@ Functions</h2></td></tr>
 <tr class="memitem:aabf9db5cb00c9af78e991a68d61a3bd6"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#aabf9db5cb00c9af78e991a68d61a3bd6">parse</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="memdesc:aabf9db5cb00c9af78e991a68d61a3bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the given lexer.  <a href="parser_8c.html#aabf9db5cb00c9af78e991a68d61a3bd6">More...</a><br /></td></tr>
 <tr class="separator:aabf9db5cb00c9af78e991a68d61a3bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95e725f37777b5210ecd29491df782a2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#a95e725f37777b5210ecd29491df782a2">parser_loop</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool pretty_print_enabled)</td></tr>
-<tr class="memdesc:a95e725f37777b5210ecd29491df782a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse loop line by line and execute it.  <a href="parser_8c.html#a95e725f37777b5210ecd29491df782a2">More...</a><br /></td></tr>
-<tr class="separator:a95e725f37777b5210ecd29491df782a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae466fb1cda7814d21404dfeb49f2e830"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser_8c.html#ae466fb1cda7814d21404dfeb49f2e830">parser_loop</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool logger_enabled, bool pretty_print_enabled)</td></tr>
+<tr class="memdesc:ae466fb1cda7814d21404dfeb49f2e830"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse loop the given lexer.  <a href="parser_8c.html#ae466fb1cda7814d21404dfeb49f2e830">More...</a><br /></td></tr>
+<tr class="separator:ae466fb1cda7814d21404dfeb49f2e830"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parse the input and build the AST. </p>
-<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -145,8 +145,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a95e725f37777b5210ecd29491df782a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95e725f37777b5210ecd29491df782a2">&#9670;&nbsp;</a></span>parser_loop()</h2>
+<a id="ae466fb1cda7814d21404dfeb49f2e830"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae466fb1cda7814d21404dfeb49f2e830">&#9670;&nbsp;</a></span>parser_loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,6 +156,12 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
           <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>logger_enabled</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -171,8 +177,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Parse loop line by line and execute it. </p>
 <p>Parse loop the given lexer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lexer</td><td>The lexer to parse. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>The option logger. </td></tr>
+    <tr><td class="paramname">pretty_print_enabled</td><td>The option pretty_print. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>code of execution 0 if success, 1 if error. </dd></dl>
 
 </div>
 </div>

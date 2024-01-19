@@ -1,12 +1,13 @@
 <map id="src/execute/ast_eval.h" name="src/execute/ast_eval.h">
-<area shape="rect" id="node1" title="Evaluate the AST." alt="" coords="519,5,685,32"/>
-<area shape="rect" id="node2" href="$ast__eval_8c.html" title="Evaluate the AST." alt="" coords="5,169,172,196"/>
-<area shape="rect" id="node3" href="$ast__variable_8c.html" title="Handle variables." alt="" coords="53,87,244,114"/>
-<area shape="rect" id="node4" href="$builtin_8h.html" title="Header of the builtin functions." alt="" coords="268,87,421,114"/>
-<area shape="rect" id="node6" href="$loop_8c.html" title="Loop functions." alt="" coords="446,87,585,114"/>
-<area shape="rect" id="node7" href="$pipeline_8c.html" title="Pipeline functions." alt="" coords="609,87,771,114"/>
-<area shape="rect" id="node8" href="$exec__tests_8c.html" title="Tests the exec function." alt="" coords="796,80,963,121"/>
-<area shape="rect" id="node9" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="987,87,1076,114"/>
-<area shape="rect" id="node10" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="1101,87,1242,114"/>
-<area shape="rect" id="node5" href="$builtin_8c.html" title="Builtin functions." alt="" coords="269,169,421,196"/>
+<area shape="rect" id="node1" title="Evaluate the AST." alt="" coords="606,5,773,32"/>
+<area shape="rect" id="node2" href="$ast__eval_8c.html" title="Evaluate the AST." alt="" coords="54,169,221,196"/>
+<area shape="rect" id="node3" href="$exec__tests_8c.html" title="Tests the exec function." alt="" coords="26,80,193,121"/>
+<area shape="rect" id="node4" href="$ast__variable_8c.html" title="Handle variables." alt="" coords="218,80,370,121"/>
+<area shape="rect" id="node5" href="$builtin_8h.html" title="Header of the builtin functions." alt="" coords="394,87,580,114"/>
+<area shape="rect" id="node7" href="$loop_8c.html" title="Loop functions." alt="" coords="604,87,775,114"/>
+<area shape="rect" id="node8" href="$pipeline_8c.html" title="Pipeline functions." alt="" coords="799,87,994,114"/>
+<area shape="rect" id="node9" href="$redirections_8c.html" title="Redirections functions." alt="" coords="1018,87,1238,114"/>
+<area shape="rect" id="node10" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="1262,87,1352,114"/>
+<area shape="rect" id="node11" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="1376,87,1518,114"/>
+<area shape="rect" id="node6" href="$builtin_8c.html" title="Builtin functions." alt="" coords="395,169,579,196"/>
 </map>

@@ -106,9 +106,15 @@ Functions</h2></td></tr>
 <tr class="memitem:aa5dda8dfb7843e3379779c346c3c905d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#aa5dda8dfb7843e3379779c346c3c905d">is_number</a> (char *str)</td></tr>
 <tr class="memdesc:aa5dda8dfb7843e3379779c346c3c905d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the given string is a number.  <a href="options_8c.html#aa5dda8dfb7843e3379779c346c3c905d">More...</a><br /></td></tr>
 <tr class="separator:aa5dda8dfb7843e3379779c346c3c905d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d8b5c5dddbafebebc76c887119020ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a9d8b5c5dddbafebebc76c887119020ff">check_logger</a> (int *argc, char **argv)</td></tr>
+<tr class="memdesc:a9d8b5c5dddbafebebc76c887119020ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the logger option is asked in args.  <a href="options_8c.html#a9d8b5c5dddbafebebc76c887119020ff">More...</a><br /></td></tr>
+<tr class="separator:a9d8b5c5dddbafebebc76c887119020ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dd098cd8c8379d435b91e8ef5c6382c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a8dd098cd8c8379d435b91e8ef5c6382c">check_pretty_print</a> (int *argc, char **argv)</td></tr>
 <tr class="memdesc:a8dd098cd8c8379d435b91e8ef5c6382c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the pretty print option is asked in args.  <a href="options_8c.html#a8dd098cd8c8379d435b91e8ef5c6382c">More...</a><br /></td></tr>
 <tr class="separator:a8dd098cd8c8379d435b91e8ef5c6382c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29e31e199043bc9de5269d287ddc9947"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a29e31e199043bc9de5269d287ddc9947">logger</a> (char *str, enum <a class="el" href="options_8h.html#aff01805671af6c510c0b3636c68b81b3">logger_step</a> step, bool logger_enabled)</td></tr>
+<tr class="memdesc:a29e31e199043bc9de5269d287ddc9947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pretty printf of string.  <a href="options_8c.html#a29e31e199043bc9de5269d287ddc9947">More...</a><br /></td></tr>
+<tr class="separator:a29e31e199043bc9de5269d287ddc9947"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ec218f8df437f3ffd65cd8b895e8278"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="options_8c.html#a7ec218f8df437f3ffd65cd8b895e8278">count_digits</a> (int number)</td></tr>
 <tr class="memdesc:a7ec218f8df437f3ffd65cd8b895e8278"><td class="mdescLeft">&#160;</td><td class="mdescRight">digit counter  <a href="options_8c.html#a7ec218f8df437f3ffd65cd8b895e8278">More...</a><br /></td></tr>
 <tr class="separator:a7ec218f8df437f3ffd65cd8b895e8278"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,6 +134,44 @@ Functions</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a9d8b5c5dddbafebebc76c887119020ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d8b5c5dddbafebebc76c887119020ff">&#9670;&nbsp;</a></span>check_logger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_logger </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if the logger option is asked in args. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>The number of args. </td></tr>
+    <tr><td class="paramname">argv</td><td>The args. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the logger option is inside of args, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a8dd098cd8c8379d435b91e8ef5c6382c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8dd098cd8c8379d435b91e8ef5c6382c">&#9670;&nbsp;</a></span>check_pretty_print()</h2>
 
@@ -217,6 +261,50 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if the string is a number, 0 otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a29e31e199043bc9de5269d287ddc9947"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29e31e199043bc9de5269d287ddc9947">&#9670;&nbsp;</a></span>logger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void logger </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="options_8h.html#aff01805671af6c510c0b3636c68b81b3">logger_step</a>&#160;</td>
+          <td class="paramname"><em>step</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>logger_enabled</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pretty printf of string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to print. </td></tr>
+    <tr><td class="paramname">step</td><td>The step of the logger. </td></tr>
+    <tr><td class="paramname">logger_enabled</td><td>True if the logger is enabled, false otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -351,7 +439,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ast</td><td>The ast to print. </td></tr>
-    <tr><td class="paramname">pretty_print_enabled</td><td>True if the pretty print is enabled, false otherwise.</td></tr>
+    <tr><td class="paramname">pretty_print_enabled</td><td>True if the pretty print is enabled, false otherwise. </td></tr>
     <tr><td class="paramname">depths</td><td>The depths of the ast. </td></tr>
   </table>
   </dd>

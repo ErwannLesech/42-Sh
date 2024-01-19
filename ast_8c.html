@@ -108,9 +108,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a5eb4462732c15324ad8ce20770eff5fd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8c.html#a5eb4462732c15324ad8ce20770eff5fd">ast_type_to_string</a> (enum <a class="el" href="ast_8h.html#a77091c187ac9a89404fac2e8226daef3">ast_type</a> type)</td></tr>
 <tr class="memdesc:a5eb4462732c15324ad8ce20770eff5fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert an AST type to a string.  <a href="ast_8c.html#a5eb4462732c15324ad8ce20770eff5fd">More...</a><br /></td></tr>
 <tr class="separator:a5eb4462732c15324ad8ce20770eff5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60a2fb119589203c06d80bb3c00de6a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8c.html#a60a2fb119589203c06d80bb3c00de6a4">print_ast</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int depth)</td></tr>
-<tr class="memdesc:a60a2fb119589203c06d80bb3c00de6a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new AST node of type AST_SIMPLE_COMMAND.  <a href="ast_8c.html#a60a2fb119589203c06d80bb3c00de6a4">More...</a><br /></td></tr>
-<tr class="separator:a60a2fb119589203c06d80bb3c00de6a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7214a740ce637e8ce698392c29d21699"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast_8c.html#a7214a740ce637e8ce698392c29d21699">print_ast</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int depth, bool logger_enabled)</td></tr>
+<tr class="memdesc:a7214a740ce637e8ce698392c29d21699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new AST node of type AST_SIMPLE_COMMAND.  <a href="ast_8c.html#a7214a740ce637e8ce698392c29d21699">More...</a><br /></td></tr>
+<tr class="separator:a7214a740ce637e8ce698392c29d21699"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represent a node of the AST. </p>
@@ -262,8 +262,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a60a2fb119589203c06d80bb3c00de6a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60a2fb119589203c06d80bb3c00de6a4">&#9670;&nbsp;</a></span>print_ast()</h2>
+<a id="a7214a740ce637e8ce698392c29d21699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7214a740ce637e8ce698392c29d21699">&#9670;&nbsp;</a></span>print_ast()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -278,7 +278,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>depth</em>&#160;</td>
+          <td class="paramname"><em>depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>logger_enabled</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
