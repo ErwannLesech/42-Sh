@@ -8,11 +8,11 @@
 <area shape="rect" id="node7" href="$main_8c.html" title="Main file of the project (entry point)" alt="" coords="196,177,285,203"/>
 <area shape="rect" id="node8" href="$parser_8h.html" title="Header for the parser." alt="" coords="644,87,787,114"/>
 <area shape="rect" id="node9" href="$ast__eval_8c.html" title="Evaluate the AST." alt="" coords="728,177,895,203"/>
-<area shape="rect" id="node10" href="$ast__variable_8c.html" title="Handle variables." alt="" coords="919,177,1109,203"/>
-<area shape="rect" id="node11" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="1134,177,1275,203"/>
-<area shape="rect" id="node12" href="$parser__condition_8c.html" title="Parse the condition rule." alt="" coords="1300,177,1509,203"/>
-<area shape="rect" id="node13" href="$parser__element_8c.html" title="Parse the element rule." alt="" coords="1534,177,1737,203"/>
-<area shape="rect" id="node14" href="$parser__functionnal_8c.html" title="Parse the functionnal." alt="" coords="1761,177,1984,203"/>
+<area shape="rect" id="node10" href="$ast__variable_8c.html" title="Handle variables." alt="" coords="919,169,1071,211"/>
+<area shape="rect" id="node11" href="$parser_8c.html" title="Parse the input and build the AST." alt="" coords="1095,177,1237,203"/>
+<area shape="rect" id="node12" href="$parser__condition_8c.html" title="Parse the condition rule." alt="" coords="1261,177,1471,203"/>
+<area shape="rect" id="node13" href="$parser__element_8c.html" title="Parse the element rule." alt="" coords="1495,177,1698,203"/>
+<area shape="rect" id="node14" href="$parser__functionnal_8c.html" title="Parse the functionnal." alt="" coords="1723,177,1945,203"/>
 <area shape="rect" id="node15" href="$parser__variable_8c.html" title="Parse the variable." alt="" coords="310,177,513,203"/>
 <area shape="rect" id="node16" href="$parser__tests_8c.html" title="Tests the parser functions." alt="" coords="537,169,704,211"/>
 </map>
