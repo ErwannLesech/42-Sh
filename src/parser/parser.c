@@ -94,6 +94,6 @@ int parser_loop(struct lexer *lexer, bool pretty_print_enabled)
             fprintf(stderr, "Error while executing\n");
         }
     }
-
+    free_variables();
     return return_value;
 }

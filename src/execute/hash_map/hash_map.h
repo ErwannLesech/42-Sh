@@ -77,7 +77,7 @@ void hash_map_dump(struct hash_map *hash_map);
  * \param key The key of the pair.
  * \return The value of the pair.
  */
-const char *hash_map_get(const struct hash_map *hash_map, const char *key);
+char *hash_map_get(const struct hash_map *hash_map, const char *key);
 
 /**
  * \brief Remove a pair from a hash map.

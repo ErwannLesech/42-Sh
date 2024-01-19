@@ -30,6 +30,7 @@ struct exec_grammar
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
  */
+
 int match_ast(struct ast_node *node);
 
 /**
@@ -87,5 +88,11 @@ int ast_command(struct ast_node *node);
  * \return The exit status of the last command.
  */
 char *handle_word(struct ast_node *node);
+
+/**
+ * \brief Use for Free Hash Map Variables at the end of the program
+ * 
+*/
+void free_variables();
 
 #endif /* AST_EVAL_H */
