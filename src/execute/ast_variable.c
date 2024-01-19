@@ -1,9 +1,30 @@
 #include "ast_eval.h"
 #include "hash_map/hash_map.h"
 #include "parser/parser.h"
+#include "environment_variable.h"
+
 #include <string.h>
 
 struct hash_map *variables = NULL;
+
+struct environment_function
+{
+    char *name;
+    char *(*fun)();
+};
+
+struct environment_function environment[] = { { .name = "@", .fun = at_fun },
+                                      { .name = "*", .fun = star_fun },
+                                      { .name = "?", .fun = quest_fun },
+                                      { .name = "$", .fun = dollar_fun },
+                                      { .name = "number", .fun = number_fun },
+                                      { .name = "#", .fun = sharp_fun },
+                                      { .name = "RANDOM", .fun = random_fun },
+                                      { .name = "UID", .fun = uid_fun },
+                                      { .name = "OLDWPD", .fun = oldpwd_fun },
+                                      { .name = "PWD", .fun = pwd_fun },
+                                      { .name = ""}
+                                       };
 
 void init_variables()
 {
@@ -41,6 +62,13 @@ char *get_variable(char *key)
 {
     key++;
     // gerer les variables envirovment
+    for (int i = 0; environment[i].name[0] != '\0'; i++)
+    {
+        if (strcmp(key, environment[i].name) == 0)
+        {
+            return environment[i].fun(key);
+        }
+    }
     char *value = hash_map_get(variables, key);
     if (value == NULL)
     {
