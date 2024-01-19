@@ -1,5 +1,5 @@
-<map id="src/execute/utils/pipeline.c" name="src/execute/utils/pipeline.c">
-<area shape="rect" id="node1" title="Pipeline functions." alt="" coords="103,5,298,32"/>
+<map id="src/execute/pipeline.c" name="src/execute/pipeline.c">
+<area shape="rect" id="node1" title="Pipeline functions." alt="" coords="119,5,282,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,304,76,331"/>
 <area shape="rect" id="node3" title=" " alt="" coords="217,80,288,107"/>
 <area shape="rect" id="node4" title=" " alt="" coords="313,80,401,107"/>

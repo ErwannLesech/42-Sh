@@ -1,5 +1,5 @@
-<map id="src/execute/utils/builtin.c" name="src/execute/utils/builtin.c">
-<area shape="rect" id="node1" title="Builtin functions." alt="" coords="113,5,297,32"/>
+<map id="src/execute/builtin.c" name="src/execute/builtin.c">
+<area shape="rect" id="node1" title="Builtin functions." alt="" coords="129,5,281,32"/>
 <area shape="rect" id="node2" href="$builtin_8h.html" title="Header of the builtin functions." alt="" coords="119,80,194,107"/>
 <area shape="rect" id="node9" title=" " alt="" coords="219,80,289,107"/>
 <area shape="rect" id="node3" href="$ast__eval_8h.html" title="Evaluate the AST." alt="" coords="112,155,201,181"/>
