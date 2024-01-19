@@ -21,7 +21,7 @@
  * \param lexer The lexer to parse.
  * \param logger_enabled The option logger.
  * \param pretty_print_enabled The option pretty_print.
- * \return code of execution.
+ * \return code of execution 0 if success, 1 if error.
  */
 int parser_loop(struct lexer *lexer, bool logger_enabled,
                 bool pretty_print_enabled);
@@ -156,6 +156,11 @@ enum token_type parser_peek(struct lexer *lexer);
  */
 enum token_type parser_pop(struct lexer *lexer);
 
+/**
+ * \brief Return the next token type and consume it if it matches the given
+ * \param lexer The lexer to parse.
+ * \return The next token type.
+ */
 struct ast_node *parse_variable(struct lexer *lexer);
 
 #endif /* ! PARSER_H */

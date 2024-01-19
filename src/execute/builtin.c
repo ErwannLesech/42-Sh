@@ -1,7 +1,7 @@
 /**
  * \file builtin.c
  * \brief Builtin functions.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -26,6 +26,11 @@ int false_fun(struct ast_node *node)
     return 1;
 }
 
+/**
+ * \brief Print the current working directory.
+ * \param node The AST to evaluate.
+ * \return The exit status of the last command 0 if success, 1 if error.
+*/
 void print_echo(struct ast_node *node, int enable_escapes, int j)
 {
     for (int i = j; i < node->children_count; i++)
@@ -66,7 +71,11 @@ void print_echo(struct ast_node *node, int enable_escapes, int j)
     }
 }
 
-// TO REDUCE
+/**
+ * \brief Echo builtin function and returns the exit status.
+ * \param node The AST node.
+ * \return The exit status of the last command 0 if success, 1 if error.
+*/
 int echo_fun(struct ast_node *node)
 {
     int no_newline = 0;
