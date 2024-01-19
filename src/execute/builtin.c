@@ -30,7 +30,7 @@ int false_fun(struct ast_node *node)
  * \brief Print the current working directory.
  * \param node The AST to evaluate.
  * \return The exit status of the last command 0 if success, 1 if error.
-*/
+ */
 void print_echo(struct ast_node *node, int enable_escapes, int j)
 {
     for (int i = j; i < node->children_count; i++)
@@ -75,7 +75,7 @@ void print_echo(struct ast_node *node, int enable_escapes, int j)
  * \brief Echo builtin function and returns the exit status.
  * \param node The AST node.
  * \return The exit status of the last command 0 if success, 1 if error.
-*/
+ */
 int echo_fun(struct ast_node *node)
 {
     int no_newline = 0;

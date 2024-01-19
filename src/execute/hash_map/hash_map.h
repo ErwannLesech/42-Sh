@@ -37,7 +37,7 @@ struct hash_map
  * \brief Hash a string.
  * \param str The string to hash.
  * \return The hash.
-*/
+ */
 size_t hash(const char *str);
 
 /**
