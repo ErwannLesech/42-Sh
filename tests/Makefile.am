@@ -19,4 +19,4 @@ criterion_LDADD = -lcriterion \
 
 check-local: criterion
 		./criterion
-		./testsuite.sh
+		./testsuite.sh 

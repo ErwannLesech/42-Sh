@@ -18,6 +18,8 @@ ref_file_err="/tmp/.ref_file_err"
 my_file_out="/tmp/.my_file_out"
 my_file_err="/tmp/.my_file_err"
 
+verbose=false
+
 ex=../../../src/42sh
 
 run_test()
@@ -26,8 +28,9 @@ run_test()
     success=true
     MODULE_RUN=$((MODULE_RUN+1))
     TOTAL_RUN=$((TOTAL_RUN+1))
-    
-    printf "%b" "$BLUE-->> ${WHITE}$1...$WHITE"
+    if $verbose; then
+        printf "%b" "$BLUE-->> ${WHITE}$1...$WHITE"
+    fi
     bash --posix "$1" > "$ref_file_out" 2> "$ref_file_err"
     REF_CODE=$?
 
@@ -38,22 +41,33 @@ run_test()
     DIFF_CODE=$?
 
     if [ $REF_CODE -ne $MY_CODE ]; then
+        if ! $verbose; then
+            printf "%b" "$BLUE-->> ${WHITE}$1...$WHITE"
+        fi
         printf "%b" "$RED RETURNS $WHITE"
         success=false
     fi
 
     if [ $DIFF_CODE -ne 0 ]; then
+    if ! $verbose; then
+            printf "%b" "$BLUE-->> ${WHITE}$1...$WHITE"
+        fi
         printf "%b" "$RED STDOUT $WHITE"
         success=false
     fi
 
     if { [ -s $ref_file_err ] && [ ! -s $my_file_err ]; } || { [ ! -s $ref_file_err ] && [ -s $my_file_err ]; }; then
+        if ! $verbose; then
+            printf "%b" "$BLUE-->> ${WHITE}$1...$WHITE"
+        fi
         printf "%b" "$RED STDERR $WHITE"
         success=false
     fi
 
     if $success; then
-        echo "$GREEN OK $WHITE"
+        if $verbose; then
+            printf "%b" "$GREEN OK $WHITE\n"
+        fi
         rm -f $1.diff
     else
         [ -s "$(realpath $1.diff)" ] && printf "%b" "$RED (cat $(realpath $1.diff)) $WHITE"
@@ -65,9 +79,11 @@ run_test()
 
 run_module()
 {
-    echo "$TURQUOISE=============================="
-    printf " $WHITE%-36s $TURQUOISE%s\n" "$1"
-    echo "$TURQUOISE==============================$WHITE"
+    if "$verbose"; then
+        echo "$TURQUOISE=============================="
+        printf " $WHITE%-36s $TURQUOISE%s\n" "$1"
+        echo "$TURQUOISE==============================$WHITE"
+    fi
 
     cd "$1"
     . ./testsuite.sh
@@ -92,10 +108,11 @@ run_testsuite()
     for module in $@; do
 
         [ ${module} = "." ] && continue
-        
-        echo "$TURQUOISE=============================="
-        printf " $WHITE%-36s $TURQUOISE%s\n" "$module"
-        echo "$TURQUOISE==============================$WHITE"
+        if "$verbose"; then
+            echo "$TURQUOISE=============================="
+            printf " $WHITE%-36s $TURQUOISE%s\n" "$module"
+            echo "$TURQUOISE==============================$WHITE"
+        fi
 
         for submodule in $(find $module -type d); do
             if [ $submodule = "$module" ]; then
@@ -110,9 +127,11 @@ run_testsuite()
         printf " $WHITE Overall test accuracy $GREEN%s$WHITE/$GREEN%s\n" "$((TOTAL_RUN-TOTAL_FAIL))" "$TOTAL_RUN"
         echo "$GREEN==============================$WHITE"
     else
-        echo "$RED=============================="
-        printf " $WHITE Overall test accuracy $RED%s$WHITE/$RED%s\n" "$((TOTAL_RUN-TOTAL_FAIL))" "$TOTAL_RUN"
-        echo "$RED==============================$WHITE"
+        if $verbose; then
+            echo "$RED=============================="
+            printf " $WHITE Overall test accuracy $RED%s$WHITE/$RED%s\n" "$((TOTAL_RUN-TOTAL_FAIL))" "$TOTAL_RUN"
+            echo "$RED==============================$WHITE"
+        fi
     fi
     PERCENT_SUCCESS=$(((TOTAL_RUN-TOTAL_FAIL)*100/TOTAL_RUN))
 
@@ -134,6 +153,10 @@ main()
             echo "${TURQUOISE}Usage: ./testsuite.sh -clean$WHITE"
             echo "Remove all .diff files"
             exit 0
+        elif [ $1 = "--verbose" ] || [ $1 = "-v" ]; then
+                verbose=true
+                run_testsuite $(find . -maxdepth 1 -type d)
+            
         else
             if [ $1 = "-clean" ]; then
                 echo "$TURQUOISE===================================$WHITE"
