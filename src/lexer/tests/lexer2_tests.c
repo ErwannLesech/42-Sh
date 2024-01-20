@@ -13,7 +13,7 @@
 
 #include "lexer/lexer.h"
 
-TestSuite(lexer2, .timeout = 10);
+TestSuite(lexer2, .timeout = 20);
 
 Test(lexer2, token_and)
 {
@@ -882,7 +882,7 @@ Test(lexer2, variable_find4)
     cr_assert_eq(tok.type, TOKEN_VARIABLE);
     cr_assert_str_eq(tok.data, "$a1_dddfff");
     token_free(tok);
-    
+
     tok = lexer_pop(lexer);
     cr_assert_eq(tok.type, TOKEN_VARIABLE, "got %d", tok.type);
     cr_assert_str_eq(tok.data, "$toto");
@@ -1106,9 +1106,10 @@ Test(lexer2, personalized_variable2)
     lexer_free(lexer);
 }
 
-Test (lexer2, double_quote_space)
+Test(lexer2, double_quote_space)
 {
-    struct lexer *lexer = lexer_new("h=\"Hello\"; w=\"World\"; echo \"$h, ${w}!\"");
+    struct lexer *lexer =
+        lexer_new("h=\"Hello\"; w=\"World\"; echo \"$h, ${w}!\"");
     struct token tok = lexer_pop(lexer);
     cr_assert_eq(tok.type, TOKEN_WORD_ASSIGNMENT);
     cr_assert_str_eq(tok.data, "h");

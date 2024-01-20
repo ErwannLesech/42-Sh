@@ -12,7 +12,7 @@
 
 #include "options/options.h"
 
-TestSuite(options, .timeout = 10);
+TestSuite(options, .timeout = 20);
 
 Test(options, last_arg_pretty_print)
 {

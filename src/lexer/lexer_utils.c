@@ -180,7 +180,8 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
             return false;
         }
     }
-    if (lexer->data[lexer->index] == '\"' && lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+    if (lexer->data[lexer->index] == '\"'
+        && lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
     {
         lexer->index += 1;
         lexer->curr_tok.type = TOKEN_VARIABLE;

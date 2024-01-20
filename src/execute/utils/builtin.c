@@ -67,7 +67,8 @@ void print_echo(struct ast_node *node, int enable_escapes, int j)
             }
         }
         if (i != node->children_count - 1
-            && node->children[i]->type != AST_VARIABLE && node->children[i]->type != AST_WORD_DOUBLE_QUOTE)
+            && node->children[i]->type != AST_VARIABLE
+            && node->children[i]->type != AST_WORD_DOUBLE_QUOTE)
             putchar(' ');
     }
 }
