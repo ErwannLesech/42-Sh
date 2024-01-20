@@ -209,7 +209,6 @@ struct ast_node *element(struct lexer *lexer)
         || parser_peek(lexer) == TOKEN_WORD_ASSIGNMENT
         || parser_peek(lexer) == TOKEN_NEGATE)
     {
-        // printf("value=%s\n", lexer_peek(lexer).data);
         struct ast_node *curr = ast_node_word(lexer_peek(lexer).data);
         parser_pop(lexer);
         return curr;
