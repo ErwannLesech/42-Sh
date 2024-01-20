@@ -130,7 +130,7 @@ int ast_eval_assignment(struct ast_node *node)
  */
 char *handle_word(struct ast_node *node)
 {
-    if (node->type == AST_WORD)
+    if (node->type == AST_WORD || node->type == AST_WORD_DOUBLE_QUOTE)
     {
         return node->value;
     }

@@ -159,12 +159,12 @@ struct ast_node *simple_command(struct lexer *lexer)
                 child2 = prefix(lexer);
             }
         }
-        if (parser_peek(lexer) != TOKEN_WORD)
+        if (parser_peek(lexer) != TOKEN_WORD && parser_peek(lexer) != TOKEN_WORD_DOUBLE_QUOTE)
         {
             return current;
         }
     }
-    if (parser_peek(lexer) == TOKEN_WORD)
+    if (parser_peek(lexer) == TOKEN_WORD || parser_peek(lexer) == TOKEN_WORD_DOUBLE_QUOTE)
     {
         char *value = lexer_peek(lexer).data;
         if (strcmp(value, "while") == 0 || strcmp(value, "until") == 0
@@ -209,8 +209,13 @@ struct ast_node *element(struct lexer *lexer)
         || parser_peek(lexer) == TOKEN_WORD_ASSIGNMENT
         || parser_peek(lexer) == TOKEN_NEGATE)
     {
-        // printf("value=%s\n", lexer_peek(lexer).data);
         struct ast_node *curr = ast_node_word(lexer_peek(lexer).data);
+        parser_pop(lexer);
+        return curr;
+    }
+    else if (parser_peek(lexer) == TOKEN_WORD_DOUBLE_QUOTE)
+    {
+        struct ast_node *curr = ast_node_word_double_quote(lexer_peek(lexer).data);
         parser_pop(lexer);
         return curr;
     }
