@@ -317,7 +317,8 @@ struct token parse_input_for_tok(struct lexer *lexer)
         lexer->curr_tok.type = TOKEN_EOL;
     }
     // Else it's a word
-    token.type = TOKEN_WORD;
+    token.type = lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE ? TOKEN_WORD_DOUBLE_QUOTE
+                                                       : TOKEN_WORD;
     token.data = word;
     return token;
 }

@@ -236,3 +236,22 @@ Test(parser, error4)
     lexer_free(lexer);
     ast_free(node);
 }
+
+Test(parser, custom_double_quote)
+{
+    struct lexer *lexer = lexer_new("echo \"variable=$a\"");
+    printf("LEXER:\n");
+    struct ast_node *node = parse(lexer);
+    printf("AST:\n");
+    print_ast(node, 0);
+    cr_assert_eq(node->type, AST_COMMAND_LIST);
+    cr_assert_eq(node->children[0]->type, AST_SIMPLE_COMMAND);
+    cr_assert_eq(node->children[0]->children[0]->type, AST_WORD);
+    cr_assert_str_eq(node->children[0]->children[0]->value, "echo");
+    cr_assert_eq(node->children[0]->children[1]->type, AST_WORD_DOUBLE_QUOTE);
+    cr_assert_str_eq(node->children[0]->children[1]->value, "variable=");
+    cr_assert_eq(node->children[0]->children[2]->type, AST_VARIABLE);
+    cr_assert_str_eq(node->children[0]->children[2]->value, "$a");
+    lexer_free(lexer);
+    ast_free(node);
+}

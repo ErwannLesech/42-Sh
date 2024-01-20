@@ -37,7 +37,8 @@ enum ast_type
     AST_OR,
     AST_COMMAND,
     AST_WORD_ASSIGNMENT,
-    AST_VARIABLE
+    AST_VARIABLE,
+    AST_WORD_DOUBLE_QUOTE
 };
 
 /**
@@ -78,6 +79,13 @@ void ast_free(struct ast_node *node);
  * \return The new node.
  */
 struct ast_node *ast_node_word(char *value);
+
+/**
+ * \brief Create a new AST node of type AST_WORD_DOUBLE_QUOTE.
+ * \param value The value of the node.
+ * \return The new node.
+ */
+struct ast_node *ast_node_word_double_quote(char *value);
 
 /**
  * \brief Convert an AST type to a string.
