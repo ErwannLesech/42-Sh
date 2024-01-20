@@ -316,12 +316,11 @@ struct token parse_input_for_tok(struct lexer *lexer)
     {
         if (fnmatch(lex_match[i].str, word, 0) == 0 && !is_diactivated)
         {
-            if (lex_match[i].type == TOKEN_EOF && (
-                lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE || 
-                lexer->curr_tok.type == TOKEN_WORD_DOUBLE_QUOTE ||
-                lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE))
+            if (lex_match[i].type == TOKEN_EOF
+                && (lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE
+                    || lexer->curr_tok.type == TOKEN_WORD_DOUBLE_QUOTE
+                    || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE))
             {
-                
                 token.type = TOKEN_ERROR;
                 token.data = "parse_input_for_tok - Missing closing quote.";
                 return token;

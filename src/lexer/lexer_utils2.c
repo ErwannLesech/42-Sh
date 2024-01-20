@@ -2,34 +2,34 @@
 
 void print_token(struct token token)
 {
-    char *tokens[] = {
-        // Step1
-        [TOKEN_IF] = "TOKEN_IF",
-        [TOKEN_THEN] = "TOKEN_THEN",
-        [TOKEN_ELIF] = "TOKEN_ELIF",
-        [TOKEN_ELSE] = "TOKEN_ELSE",
-        [TOKEN_FI] = "TOKEN_FI",
-        [TOKEN_SEMICOLON] = "TOKEN_SEMICOLON",
-        [TOKEN_WORD] = "TOKEN_WORD",
-        [TOKEN_EOL] = "TOKEN_EOL",
-        [TOKEN_EOF] = "TOKEN_EOF",
-        [TOKEN_ERROR] = "TOKEN_ERROR",
-        // Step 2
-        [TOKEN_DONE] = "TOKEN_DONE",
-        [TOKEN_AND] = "TOKEN_AND",
-        [TOKEN_OR] = "TOKEN_OR",
-        [TOKEN_PIPE] = "TOKEN_PIPE",
-        [TOKEN_NEGATE] = "TOKEN_NEGATE",
-        [TOKEN_IONUMBER] = "TOKEN_IONUMBER",
-        [TOKEN_REDIR] = "TOKEN_REDIR",
-        [TOKEN_DOUBLE_QUOTE] = "TOKEN_DOUBLE_QUOTE",
-        [TOKEN_WORD_DOUBLE_QUOTE] = "TOKEN_WORD_DOUBLE_QUOTE",
-        [TOKEN_WORD_ASSIGNMENT] = "TOKEN_WORD_ASSIGNMENT",
-        [TOKEN_VARIABLE] = "TOKEN_VARIABLE",
+    char *tokens[] = { // Step1
+                       [TOKEN_IF] = "TOKEN_IF",
+                       [TOKEN_THEN] = "TOKEN_THEN",
+                       [TOKEN_ELIF] = "TOKEN_ELIF",
+                       [TOKEN_ELSE] = "TOKEN_ELSE",
+                       [TOKEN_FI] = "TOKEN_FI",
+                       [TOKEN_SEMICOLON] = "TOKEN_SEMICOLON",
+                       [TOKEN_WORD] = "TOKEN_WORD",
+                       [TOKEN_EOL] = "TOKEN_EOL",
+                       [TOKEN_EOF] = "TOKEN_EOF",
+                       [TOKEN_ERROR] = "TOKEN_ERROR",
+                       // Step 2
+                       [TOKEN_DONE] = "TOKEN_DONE",
+                       [TOKEN_AND] = "TOKEN_AND",
+                       [TOKEN_OR] = "TOKEN_OR",
+                       [TOKEN_PIPE] = "TOKEN_PIPE",
+                       [TOKEN_NEGATE] = "TOKEN_NEGATE",
+                       [TOKEN_IONUMBER] = "TOKEN_IONUMBER",
+                       [TOKEN_REDIR] = "TOKEN_REDIR",
+                       [TOKEN_DOUBLE_QUOTE] = "TOKEN_DOUBLE_QUOTE",
+                       [TOKEN_WORD_DOUBLE_QUOTE] = "TOKEN_WORD_DOUBLE_QUOTE",
+                       [TOKEN_WORD_ASSIGNMENT] = "TOKEN_WORD_ASSIGNMENT",
+                       [TOKEN_VARIABLE] = "TOKEN_VARIABLE",
 
-        // Internal values for lexer
-        [TOKEN_VARIABLE_VALUE] = "TOKEN_VARIABLE_VALUE",
-        [TOKEN_VARIABLE_AND_DOUBLE_QUOTE] = "TOKEN_VARIABLE_AND_DOUBLE_QUOTE"
+                       // Internal values for lexer
+                       [TOKEN_VARIABLE_VALUE] = "TOKEN_VARIABLE_VALUE",
+                       [TOKEN_VARIABLE_AND_DOUBLE_QUOTE] =
+                           "TOKEN_VARIABLE_AND_DOUBLE_QUOTE"
     };
     printf("Token: %s\n", tokens[token.type]);
 }
@@ -41,16 +41,14 @@ bool check_variable_name_simulated(const char *data, int index)
     index += 1;
 
     // Check if it's a special variable (like $?, $*, $@, $# or $$)
-    if (data[index] == '?' || data[index] == '*'
-        || data[index] == '@' || data[index] == '#'
-        || data[index] == '$')
+    if (data[index] == '?' || data[index] == '*' || data[index] == '@'
+        || data[index] == '#' || data[index] == '$')
     {
         return true;
     }
 
     // Chech if it's a special variable (like $n)
-    else if (data[index] >= '0'
-             && data[index] <= '9')
+    else if (data[index] >= '0' && data[index] <= '9')
     {
         return true;
     }
@@ -62,12 +60,9 @@ bool check_variable_name_simulated(const char *data, int index)
     }
 
     // Classic variable name
-    else if (data[index] == '_'
-             || data[index] == '-'
-             || (data[index] >= 'a'
-                 && data[index] <= 'z')
-             || (data[index] >= 'A'
-                 && data[index] <= 'Z'))
+    else if (data[index] == '_' || data[index] == '-'
+             || (data[index] >= 'a' && data[index] <= 'z')
+             || (data[index] >= 'A' && data[index] <= 'Z'))
     {
         index += 1;
     }
@@ -79,15 +74,12 @@ bool check_variable_name_simulated(const char *data, int index)
 
     // Check the rest of the variable name break
     while (data[index] == '_' || data[index] == '-'
-           || (data[index] >= 'a'
-               && data[index] <= 'z')
-           || (data[index] >= 'A'
-               && data[index] <= 'Z')
-           || (data[index] >= '0'
-               && data[index] <= '9'))
+           || (data[index] >= 'a' && data[index] <= 'z')
+           || (data[index] >= 'A' && data[index] <= 'Z')
+           || (data[index] >= '0' && data[index] <= '9'))
     {
         index += 1;
-    }  
+    }
 
     if (is_in_braces)
     {
@@ -106,10 +98,9 @@ bool check_variable_name_simulated(const char *data, int index)
 }
 
 void handle_back_slash_in_double_quote(struct lexer *lexer, char *word,
-                                  unsigned *word_index)
+                                       unsigned *word_index)
 {
-    if (lexer->data[lexer->index] == '\"'
-        || lexer->data[lexer->index] == '$'
+    if (lexer->data[lexer->index] == '\"' || lexer->data[lexer->index] == '$'
         || lexer->data[lexer->index] == '\\'
         || lexer->data[lexer->index] == '\n'
         || lexer->data[lexer->index] == '`')
