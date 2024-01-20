@@ -1,0 +1,8 @@
+echo '1                              
+3
+2
+7
+0' > input.txt
+sort < input.txt >& sorted_output.txt
+cat sorted_output.txt
+rm input.txt sorted_output.txt

@@ -997,12 +997,7 @@ Test(lexer2, variable_distinction_access_deactivate_brace)
 
     tok = lexer_pop(lexer);
     cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
-    cr_assert_str_eq(tok.data, "variable:");
-    token_free(tok);
-
-    tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_WORD);
-    cr_assert_str_eq(tok.data, "${a_123as}");
+    cr_assert_str_eq(tok.data, "variable:${a_123as}");
     token_free(tok);
 
     tok = lexer_pop(lexer);

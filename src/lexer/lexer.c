@@ -149,7 +149,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
             // Handle the variable
             if (lexer->data[lexer->index] == '$')
             {
-                if (word_index != 0)
+                if (word_index != 0
+                    && check_variable_name_simulated(lexer->data, lexer->index))
                 {
                     break;
                 }
@@ -181,7 +182,6 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
             {
                 lexer->index += 1;
             }
-
             // Take next char and put it in the word
             word[word_index] = lexer->data[lexer->index];
             ++word_index;
@@ -198,6 +198,16 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                     word_index -= 1;
                     lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
                 }
+                else if (word_index > 0
+                         && lexer->data[lexer->index - 1] == '\\')
+                {
+                    word_index -= 1;
+                    handle_back_slash_in_double_quote(lexer, word, &word_index);
+                    if (lexer->data[lexer->index] == '$')
+                    {
+                        break;
+                    }
+                }
 
                 // Handle the double quote
                 word = handle_double_quote(lexer, is_diactivated, word,
@@ -207,8 +217,10 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 {
                     return NULL;
                 }
-                word[word_index] = '\0';
-                return word;
+                if (lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+                {
+                    return word;
+                }
             }
 
             // Handle backslash

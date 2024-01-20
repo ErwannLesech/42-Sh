@@ -56,6 +56,12 @@ void lexer_free(struct lexer *lexer);
 void token_free(struct token token);
 
 /**
+ * \brief Print the given token.
+ * \param token The token to print.
+ */
+void print_token(struct token token);
+
+/**
  * \brief Get the next token from the lexer.
  * \param lexer The lexer.
  * \return The next token.
@@ -120,6 +126,25 @@ bool check_variable_assignement(char *word);
  */
 bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
                          bool *is_in_braces);
+
+/**
+ * \brief Check if the current word is a valid variable name (simulated mode)
+ * meaning that pointers to the lexer and the word won't be modified.
+ * \param data The word to check
+ * \param index The index of the data to check
+ * \return true if it's a valid variable name, false otherwise
+ */
+bool check_variable_name_simulated(const char *data, int index);
+
+/**
+ * \brief Handle the backslash character in a double quote.
+ * \param lexer The lexer.
+ * \param word The word.
+ * \param word_index The index of the word.
+ */
+
+void handle_back_slash_in_double_quote(struct lexer *lexer, char *word,
+                                       unsigned *word_index);
 
 /**
  * \brief Handle the dollar character.

@@ -1,0 +1,5 @@
+echo 'hello' > input.txt
+ls > output.txt 2<&1 < input.txt
+cat output.txt
+cat input.txt
+rm input.txt output.txt
