@@ -198,7 +198,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                     word_index -= 1;
                     lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
                 }
-                
+
                 // Handle the double quote
                 word = handle_double_quote(lexer, is_diactivated, word,
                                            &word_index);
@@ -317,8 +317,9 @@ struct token parse_input_for_tok(struct lexer *lexer)
         lexer->curr_tok.type = TOKEN_EOL;
     }
     // Else it's a word
-    token.type = lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE ? TOKEN_WORD_DOUBLE_QUOTE
-                                                       : TOKEN_WORD;
+    token.type = lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE
+        ? TOKEN_WORD_DOUBLE_QUOTE
+        : TOKEN_WORD;
     token.data = word;
     return token;
 }

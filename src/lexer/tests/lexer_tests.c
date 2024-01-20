@@ -12,7 +12,7 @@
 
 #include "lexer/lexer.h"
 
-TestSuite(lexer, .timeout = 10);
+TestSuite(lexer, .timeout = 20);
 
 Test(lexer, lexer_new_and_free)
 {

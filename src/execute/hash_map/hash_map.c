@@ -87,7 +87,7 @@ void hash_map_free(struct hash_map *hash_map)
                 struct pair_list *to_free = index;
                 index = index->next;
                 free(to_free->key);
-                //printf("free %s\n", to_free->value);
+                // printf("free %s\n", to_free->value);
                 free(to_free->value);
                 free(to_free);
             }

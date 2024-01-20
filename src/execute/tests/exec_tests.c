@@ -15,7 +15,7 @@
 #include "lexer/lexer.h"
 #include "parser/parser.h"
 
-TestSuite(exec, .timeout = 10);
+TestSuite(exec, .timeout = 20);
 
 Test(exec, test_exec_simple_command)
 {

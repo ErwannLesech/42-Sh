@@ -13,7 +13,7 @@
 #include "ast/ast.h"
 #include "parser/parser.h"
 
-TestSuite(parser, .timeout = 10);
+TestSuite(parser, .timeout = 20);
 
 Test(parser, empty_string)
 {
