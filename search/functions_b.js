@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oldpwd_5ffun_333',['oldpwd_fun',['../environment__variable_8c.html#ac98d67c00defe3b999e4200eb0fa984b',1,'oldpwd_fun():&#160;environment_variable.c'],['../environment__variable_8h.html#ac98d67c00defe3b999e4200eb0fa984b',1,'oldpwd_fun():&#160;environment_variable.c']]]
+  ['number_5ffun_343',['number_fun',['../environment__variable_8c.html#acf43a7d9a7d0530a529428fbf36c2fff',1,'number_fun():&#160;environment_variable.c'],['../environment__variable_8h.html#acf43a7d9a7d0530a529428fbf36c2fff',1,'number_fun():&#160;environment_variable.c']]]
 ];
