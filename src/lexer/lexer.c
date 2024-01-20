@@ -198,6 +198,11 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                     word_index -= 1;
                     lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
                 }
+                else if (word_index > 0 && lexer->data[lexer->index -1] == '\\')
+                {
+                    word_index -= 1;
+                    handle_back_slash_in_double_quote(lexer, word, &word_index);
+                }
 
                 // Handle the double quote
                 word = handle_double_quote(lexer, is_diactivated, word,
