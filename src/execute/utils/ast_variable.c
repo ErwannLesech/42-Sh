@@ -6,12 +6,12 @@
  * \date 12/01/2024
  */
 
+#include <string.h>
+
 #include "ast_eval.h"
+#include "environment_variable.h"
 #include "hash_map/hash_map.h"
 #include "parser/parser.h"
-#include "environment_variable.h"
-
-#include <string.h>
 
 struct hash_map *variables = NULL;
 
@@ -21,18 +21,19 @@ struct environment_function
     char *(*fun)();
 };
 
-struct environment_function environment[] = { { .name = "@", .fun = at_fun },
-                                      { .name = "*", .fun = star_fun },
-                                      { .name = "?", .fun = quest_fun },
-                                      { .name = "$", .fun = dollar_fun },
-                                      { .name = "number", .fun = number_fun },
-                                      { .name = "#", .fun = sharp_fun },
-                                      { .name = "RANDOM", .fun = random_fun },
-                                      { .name = "UID", .fun = uid_fun },
-                                      { .name = "OLDWPD", .fun = oldpwd_fun },
-                                      { .name = "PWD", .fun = pwd_fun },
-                                      { .name = ""}
-                                       };
+struct environment_function environment[] = {
+    { .name = "@", .fun = at_fun },
+    { .name = "*", .fun = star_fun },
+    { .name = "?", .fun = quest_fun },
+    { .name = "$", .fun = dollar_fun },
+    { .name = "number", .fun = number_fun },
+    { .name = "#", .fun = sharp_fun },
+    { .name = "RANDOM", .fun = random_fun },
+    { .name = "UID", .fun = uid_fun },
+    { .name = "OLDWPD", .fun = oldpwd_fun },
+    { .name = "PWD", .fun = pwd_fun },
+    { .name = "" }
+};
 
 /**
  * \brief Initialize the variables hash map.
@@ -63,8 +64,8 @@ void set_variable(char *key, char *value)
 {
     init_variables();
     bool updated;
-   // printf("key:%s\n", key);
-   // printf("value:%s\n", value);
+    // printf("key:%s\n", key);
+    // printf("value:%s\n", value);
     if (strlen(key) == 0 || strlen(value) == 0)
     {
         return;
@@ -74,7 +75,7 @@ void set_variable(char *key, char *value)
     strcpy(key_dup, key);
     strcpy(value_dup, value);
     hash_map_insert(variables, key_dup, value_dup, &updated);
-    //hash_map_dump(variables);
+    // hash_map_dump(variables);
 }
 
 /**
@@ -96,11 +97,11 @@ char *get_variable(char *key)
     char *value = hash_map_get(variables, key);
     if (value == NULL)
     {
-           // printf("key:%s\n", key);
+        // printf("key:%s\n", key);
         return "";
     }
-    //printf("value:%s$\n", value);
-    //printf("key:%s\n", key);
+    // printf("value:%s$\n", value);
+    // printf("key:%s\n", key);
     return value;
 }
 
@@ -129,7 +130,7 @@ int ast_eval_assignment(struct ast_node *node)
  */
 char *handle_word(struct ast_node *node)
 {
-    if (node->type == AST_WORD)
+    if (node->type == AST_WORD || node->type == AST_WORD_DOUBLE_QUOTE)
     {
         return node->value;
     }

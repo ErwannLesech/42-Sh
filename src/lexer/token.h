@@ -36,6 +36,7 @@ enum token_type
     TOKEN_IONUMBER, // [0-9]+
     TOKEN_REDIR, // >, <, >>, >&, <&, >|, <>
     TOKEN_DOUBLE_QUOTE, // "
+    TOKEN_WORD_DOUBLE_QUOTE, // "[a-zA-Z0-9_ ]*"
     TOKEN_WORD_ASSIGNMENT, // variable=
     TOKEN_VARIABLE, // $variable
 

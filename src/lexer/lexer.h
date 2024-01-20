@@ -77,6 +77,13 @@ struct token lexer_peek(struct lexer *lexer);
 struct token lexer_pop(struct lexer *lexer);
 
 /**
+ * \brief Realloc and append a null char at the end of the word.
+ * \param word The word.
+ * \param word_index The index of the word.
+ */
+char *append_end_of_word(char *word, unsigned word_index);
+
+/**
  * \brief Handle the backslash character.
  * \param lexer The lexer.
  * \param is_diactivated A pointer to a boolean that will be set to true if the

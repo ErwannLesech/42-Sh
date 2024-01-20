@@ -51,31 +51,29 @@ void token_free(struct token token)
     free(token.data);
 }
 
-char *get_word(struct lexer *lexer, bool *is_diactivated)
+bool first_char_check(struct lexer *lexer, char **current_word,
+                      unsigned *word_index)
 {
-    char *word = malloc(sizeof(char) * 2);
+    char *word = *current_word;
 
-    unsigned word_index = 0;
-
-    // Word start with ; or \n and return its token
     if (lexer->data[lexer->index] == ';' || lexer->data[lexer->index] == '\n')
     {
         word[0] = lexer->data[lexer->index];
-        word_index = 1;
+        *word_index = 1;
         ++lexer->index;
     }
 
     // Handle comments return the next word
     else if (lexer->data[lexer->index] == '#')
     {
-        word = handle_comment(lexer, word, &word_index);
+        word = handle_comment(lexer, word, word_index);
     }
 
     // Handle redirections return the token
     else if (lexer->data[lexer->index] == '>'
              || lexer->data[lexer->index] == '<')
     {
-        word = handle_redir(lexer, &word_index);
+        word = handle_redir(lexer, word_index);
     }
 
     // Handle (||, &&, | and &) return the token
@@ -83,20 +81,58 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
              || lexer->data[lexer->index] == '&')
     {
         word[0] = lexer->data[lexer->index];
-        word_index = 1;
+        *word_index = 1;
         ++lexer->index;
 
         // Handle ||, &&
         if (lexer->data[lexer->index] == '|'
             || lexer->data[lexer->index] == '&')
         {
-            word = realloc(word, sizeof(char) * (word_index + 1));
-            word[word_index] = lexer->data[lexer->index];
-            word_index = 2;
+            word = realloc(word, sizeof(char) * (*word_index + 1));
+            word[*word_index] = lexer->data[lexer->index];
+            *word_index = 2;
             ++lexer->index;
         }
     }
     else
+    {
+        return false;
+    }
+
+    *current_word = word;
+
+    return true;
+}
+
+char *end_of_get_word(struct lexer *lexer, char *word, unsigned word_index)
+{
+    word = append_end_of_word(word, word_index);
+
+    if (is_number(word)
+        && (lexer->data[lexer->index] == '>'
+            || lexer->data[lexer->index] == '<'))
+    {
+        lexer->curr_tok.type = TOKEN_IONUMBER;
+    }
+
+    // Skip spaces and tabs
+    while (lexer->data[lexer->index] == ' '
+           || lexer->data[lexer->index] == '\t')
+    {
+        ++lexer->index;
+    }
+
+    return word;
+}
+
+char *get_word(struct lexer *lexer, bool *is_diactivated)
+{
+    char *word = malloc(sizeof(char) * 2);
+
+    unsigned word_index = 0;
+
+    // Word start with ; or \n and return its token
+    if (!first_char_check(lexer, &word, &word_index))
     {
         // Handle the word
         while (lexer->data[lexer->index] != ' '
@@ -109,8 +145,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                && lexer->data[lexer->index] != '|'
                && lexer->data[lexer->index] != '&')
         {
-            word = realloc(word, sizeof(char) * (word_index + 1));
-            word[word_index] = '\0';
+            word = append_end_of_word(word, word_index);
             // Handle the variable
             if (lexer->data[lexer->index] == '$')
             {
@@ -121,9 +156,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 bool is_in_braces = false;
                 if (handle_dollar(lexer, &word, &word_index, &is_in_braces))
                 {
-                    word = realloc(word, sizeof(char) * (word_index + 1));
-                    word[word_index] = '\0';
-                    return word;
+                    return append_end_of_word(word, word_index);
                 }
                 else if (is_in_braces)
                 {
@@ -202,24 +235,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
     }
 
     // End of the word
-    word = realloc(word, sizeof(char) * (word_index + 1));
-    word[word_index] = '\0';
-
-    if (is_number(word)
-        && (lexer->data[lexer->index] == '>'
-            || lexer->data[lexer->index] == '<'))
-    {
-        lexer->curr_tok.type = TOKEN_IONUMBER;
-    }
-
-    // Skip spaces and tabs
-    while (lexer->data[lexer->index] == ' '
-           || lexer->data[lexer->index] == '\t')
-    {
-        ++lexer->index;
-    }
-
-    return word;
+    return end_of_get_word(lexer, word, word_index);
 }
 
 struct token parse_input_for_tok(struct lexer *lexer)
@@ -301,7 +317,8 @@ struct token parse_input_for_tok(struct lexer *lexer)
         lexer->curr_tok.type = TOKEN_EOL;
     }
     // Else it's a word
-    token.type = TOKEN_WORD;
+    token.type = lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE ? TOKEN_WORD_DOUBLE_QUOTE
+                                                       : TOKEN_WORD;
     token.data = word;
     return token;
 }

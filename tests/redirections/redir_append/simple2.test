@@ -1,0 +1,4 @@
+ls > file;
+ls >> file;
+cat file;
+rm file

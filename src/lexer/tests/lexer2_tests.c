@@ -928,7 +928,7 @@ Test(lexer2, variable_distinction_access_double_quote_with_string)
     token_free(tok);
 
     tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_WORD, "got %d", tok.type);
+    cr_assert_eq(tok.type, TOKEN_WORD_DOUBLE_QUOTE, "got %d", tok.type);
     cr_assert_str_eq(tok.data, "variable:");
     token_free(tok);
 
@@ -1099,8 +1099,69 @@ Test(lexer2, personalized_variable2)
     token_free(tok);
 
     tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_VARIABLE, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "$a", "got %s", tok.data);
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+Test (lexer2, double_quote_space)
+{
+    struct lexer *lexer = lexer_new("h=\"Hello\"; w=\"World\"; echo \"$h, ${w}!\"");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD_ASSIGNMENT);
+    cr_assert_str_eq(tok.data, "h");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "Hello");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_SEMICOLON);
+    cr_assert_str_eq(tok.data, ";");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD_ASSIGNMENT);
+    cr_assert_str_eq(tok.data, "w");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "World");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_SEMICOLON);
+    cr_assert_str_eq(tok.data, ";");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
     cr_assert_eq(tok.type, TOKEN_VARIABLE);
-    cr_assert_str_eq(tok.data, "$a");
+    cr_assert_str_eq(tok.data, "$h");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD_DOUBLE_QUOTE);
+    cr_assert_str_eq(tok.data, ", ");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_VARIABLE);
+    cr_assert_str_eq(tok.data, "$w");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "!");
     token_free(tok);
 
     lexer_free(lexer);

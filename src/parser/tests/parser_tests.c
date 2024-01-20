@@ -236,3 +236,12 @@ Test(parser, error4)
     lexer_free(lexer);
     ast_free(node);
 }
+
+Test(parser, custom_double_quote)
+{
+    struct lexer *lexer = lexer_new("echo \"variable= $a\"");
+    struct ast_node *node = parse(lexer);
+
+    lexer_free(lexer);
+    ast_free(node);
+}

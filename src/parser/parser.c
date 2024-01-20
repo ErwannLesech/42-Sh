@@ -89,7 +89,7 @@ int parser_loop(struct lexer *lexer, bool pretty_print_enabled)
         }
         ast_free(ast);
 
-        if (return_value != 0 && return_value != 1)
+        if (return_value != 0 && return_value != 1 && return_value != 127)
         {
             fprintf(stderr, "Error while executing\n");
         }

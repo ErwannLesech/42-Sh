@@ -26,6 +26,13 @@ struct ast_node *ast_node_word(char *value)
     return node;
 }
 
+struct ast_node *ast_node_word_double_quote(char *value)
+{
+    struct ast_node *node = ast_node_new(AST_WORD_DOUBLE_QUOTE);
+    node->value = value;
+    return node;
+}
+
 void ast_append(struct ast_node *parent, struct ast_node *child)
 {
     if (parent->children == NULL)
@@ -80,7 +87,7 @@ char *ast_type_to_string(enum ast_type type)
 
     if (type < 0 || type > AST_VARIABLE)
         return "AST_UNEXPECTED";
-    
+
     return strings[type];
 }
 

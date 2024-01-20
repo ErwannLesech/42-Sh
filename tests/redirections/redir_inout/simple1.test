@@ -1,0 +1,3 @@
+echo "hello world!" <> file;
+cat file
+rm file
