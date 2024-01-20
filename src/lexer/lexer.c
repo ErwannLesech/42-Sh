@@ -149,8 +149,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
             // Handle the variable
             if (lexer->data[lexer->index] == '$')
             {
-                if (word_index != 0 && check_variable_name_simulated(lexer->data,
-                                                                      lexer->index))
+                if (word_index != 0
+                    && check_variable_name_simulated(lexer->data, lexer->index))
                 {
                     break;
                 }
@@ -198,7 +198,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                     word_index -= 1;
                     lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
                 }
-                else if (word_index > 0 && lexer->data[lexer->index -1] == '\\')
+                else if (word_index > 0
+                         && lexer->data[lexer->index - 1] == '\\')
                 {
                     word_index -= 1;
                     handle_back_slash_in_double_quote(lexer, word, &word_index);
@@ -225,7 +226,6 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
             // Handle backslash
             else if (lexer->data[lexer->index - 1] == '\\')
             {
-                // TODO: check if it's handle backslash in double quote
                 handle_backslash(lexer, is_diactivated, word, word_index);
             }
 
@@ -316,6 +316,16 @@ struct token parse_input_for_tok(struct lexer *lexer)
     {
         if (fnmatch(lex_match[i].str, word, 0) == 0 && !is_diactivated)
         {
+            if (lex_match[i].type == TOKEN_EOF && (
+                lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE || 
+                lexer->curr_tok.type == TOKEN_WORD_DOUBLE_QUOTE ||
+                lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE))
+            {
+                
+                token.type = TOKEN_ERROR;
+                token.data = "parse_input_for_tok - Missing closing quote.";
+                return token;
+            }
             token.type = lex_match[i].type;
             token.data = word;
             return token;
