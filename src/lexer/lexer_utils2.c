@@ -104,3 +104,29 @@ bool check_variable_name_simulated(const char *data, int index)
 
     return true;
 }
+
+void handle_back_slash_in_double_quote(struct lexer *lexer, char *word,
+                                  unsigned *word_index)
+{
+    if (lexer->data[lexer->index] == '\"'
+        || lexer->data[lexer->index] == '$'
+        || lexer->data[lexer->index] == '\\'
+        || lexer->data[lexer->index] == '\n'
+        || lexer->data[lexer->index] == '`')
+    {
+        if (lexer->data[lexer->index] != '\n')
+        {
+            word[*word_index] = lexer->data[lexer->index];
+        }
+        else
+        {
+            *word_index -= 1;
+        }
+        lexer->index += 1;
+    }
+    else
+    {
+        word[*word_index] = '\\';
+    }
+    *word_index += 1;
+}

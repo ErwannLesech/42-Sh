@@ -202,6 +202,10 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 {
                     word_index -= 1;
                     handle_back_slash_in_double_quote(lexer, word, &word_index);
+                    if (lexer->data[lexer->index] == '$')
+                    {
+                        break;
+                    }
                 }
 
                 // Handle the double quote

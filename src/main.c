@@ -39,11 +39,11 @@ int main(int argc, char **argv)
     {
         errx(1, "Error while creating lexer");
     }
-    
-    /*while (lexer_peek(lexer).type != TOKEN_EOF)
+    /*    while (lexer_peek(lexer).type != TOKEN_EOF)
     {
         struct token token = lexer_pop(lexer);
         print_token(token);
+        print_token(lexer->curr_tok);
         printf("value: %s\n", token.data);
     }*/
 
