@@ -1,3 +1,4 @@
 wrong_command 2>file
+if [ -s error.txt ]; then echo tata;fi
 # cat file --> working but not the same stderr message
 rm file

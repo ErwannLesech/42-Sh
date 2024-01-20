@@ -1,5 +1,5 @@
 run_test single_quote_error1.test
 run_test single_quote_error2.test
 run_test single_quote_error3.test
-run_test single_quote_errorMouli1.test
-run_test single_quote_errorMouli2.test
+run_test single_quoteMouli1.test
+run_test single_quoteMouli2.test

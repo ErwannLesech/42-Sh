@@ -1,0 +1,1 @@
+a=1; if $a; then echo atat;fi

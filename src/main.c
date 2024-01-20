@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     {
         errx(1, "Error while creating lexer");
     }
-
+    
     int val = parser_loop(lexer, pretty_print_enabled);
     if (val == 2)
     {
