@@ -25,7 +25,7 @@ struct hash_map *hash_map_init(size_t size)
     return new;
 }
 
-bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
+bool hash_map_insert(struct hash_map *hash_map, char *key, char *value,
                      bool *updated)
 {
     if (hash_map == NULL || hash_map->size == 0)
@@ -45,6 +45,8 @@ bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
         struct pair_list *ind = hash_map->data[index];
         if (strcmp(ind->key, key) == 0)
         {
+            free(key);
+            free(ind->value);
             ind->value = value;
             *updated = true;
             return true;
@@ -84,6 +86,9 @@ void hash_map_free(struct hash_map *hash_map)
             {
                 struct pair_list *to_free = index;
                 index = index->next;
+                free(to_free->key);
+                //printf("free %s\n", to_free->value);
+                free(to_free->value);
                 free(to_free);
             }
         }
@@ -110,7 +115,7 @@ void hash_map_dump(struct hash_map *hash_map)
     }
 }
 
-char *hash_map_get(const struct hash_map *hash_map, const char *key)
+char *hash_map_get(const struct hash_map *hash_map, char *key)
 {
     if (hash_map == NULL || hash_map->size == 0)
     {
@@ -129,7 +134,7 @@ char *hash_map_get(const struct hash_map *hash_map, const char *key)
     return NULL;
 }
 
-bool hash_map_remove(struct hash_map *hash_map, const char *key)
+bool hash_map_remove(struct hash_map *hash_map, char *key)
 {
     if (hash_map == NULL || hash_map->size == 0)
     {

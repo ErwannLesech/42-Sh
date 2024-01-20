@@ -1,0 +1,5 @@
+start=1
+end=5
+for i in {$start..$end}; do
+    echo $i
+done

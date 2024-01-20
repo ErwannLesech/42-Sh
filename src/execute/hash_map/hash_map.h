@@ -18,7 +18,7 @@
  */
 struct pair_list
 {
-    const char *key;
+    char *key;
     char *value;
     struct pair_list *next;
 };
@@ -56,7 +56,7 @@ struct hash_map *hash_map_init(size_t size);
  * was updated.
  * \return True if the pair was inserted, false otherwise.
  */
-bool hash_map_insert(struct hash_map *hash_map, const char *key, char *value,
+bool hash_map_insert(struct hash_map *hash_map, char *key, char *value,
                      bool *updated);
 
 /**
@@ -77,7 +77,7 @@ void hash_map_dump(struct hash_map *hash_map);
  * \param key The key of the pair.
  * \return The value of the pair.
  */
-char *hash_map_get(const struct hash_map *hash_map, const char *key);
+char *hash_map_get(const struct hash_map *hash_map, char *key);
 
 /**
  * \brief Remove a pair from a hash map.
@@ -85,6 +85,6 @@ char *hash_map_get(const struct hash_map *hash_map, const char *key);
  * \param key The key of the pair.
  * \return True if the pair was removed, false otherwise.
  */
-bool hash_map_remove(struct hash_map *hash_map, const char *key);
+bool hash_map_remove(struct hash_map *hash_map, char *key);
 
 #endif /* ! HASH_MAP_H */

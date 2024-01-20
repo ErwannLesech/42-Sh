@@ -92,6 +92,14 @@ char *handle_word(struct ast_node *node);
 int redir_manager(struct ast_node *ast, int *save_fd, int *fd_dup);
 
 /**
+ * \brief Set variable
+ * \param key The key of the variable.
+ * \param value The value of the variable.
+ */ 
+
+void set_variable(char *key, char *value);
+
+/**
  * \brief Use for Free Hash Map Variables at the end of the program
  *
  */
