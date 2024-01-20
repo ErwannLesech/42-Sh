@@ -98,7 +98,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
     char *curr_word = *word;
     *is_in_braces = false;
     // Handle variable in double quote
-    if (lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE)
+    if (lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
     {
         lexer->curr_tok.type = TOKEN_VARIABLE_AND_DOUBLE_QUOTE;
     }
@@ -149,7 +149,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
     // Not a valid variable name
     else
     {
-        if (lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE)
+        if (lexer->curr_tok.type != TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
         {
             lexer->curr_tok.type = TOKEN_WORD;
         }
@@ -204,6 +204,7 @@ bool handle_dollar(struct lexer *lexer, char **word, unsigned *word_index,
     // Check if the name of the variable is correct
     return check_variable_name(lexer, word, word_index, is_in_braces);
 }
+
 char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
                           unsigned *word_index)
 {
@@ -241,27 +242,7 @@ char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
         {
             lexer->index += 1;
             word = realloc(word, sizeof(char) * (*word_index + 1));
-            if (lexer->data[lexer->index] == '\"'
-                || lexer->data[lexer->index] == '$'
-                || lexer->data[lexer->index] == '\\'
-                || lexer->data[lexer->index] == '\n'
-                || lexer->data[lexer->index] == '`')
-            {
-                if (lexer->data[lexer->index] != '\n')
-                {
-                    word[*word_index] = lexer->data[lexer->index];
-                }
-                else
-                {
-                    *word_index -= 1;
-                }
-                lexer->index += 1;
-            }
-            else
-            {
-                word[*word_index] = '\\';
-            }
-            *word_index += 1;
+            handle_back_slash_in_double_quote(lexer, word, word_index);
         }
         else
         {
