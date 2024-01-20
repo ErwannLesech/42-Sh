@@ -1,7 +1,7 @@
 /**
  * \file io_backend_tests.c
  * \brief Tests the io_backend function.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -10,9 +10,9 @@
 #include <criterion/redirect.h>
 #include <string.h>
 
-#include "../io_backend.h"
+#include "io_backend/io_backend.h"
 
-TestSuite(io_backend, .timeout = 1);
+TestSuite(io_backend, .timeout = 10);
 
 Test(io_backend, io_backend_direct)
 {

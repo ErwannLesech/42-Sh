@@ -12,6 +12,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+#include "options/options.h"
 #include "token.h"
 
 /**
@@ -74,6 +75,89 @@ struct token lexer_peek(struct lexer *lexer);
  * \return The next token.
  */
 struct token lexer_pop(struct lexer *lexer);
+
+/**
+ * \brief Realloc and append a null char at the end of the word.
+ * \param word The word.
+ * \param word_index The index of the word.
+ */
+char *append_end_of_word(char *word, unsigned word_index);
+
+/**
+ * \brief Handle the backslash character.
+ * \param lexer The lexer.
+ * \param is_diactivated A pointer to a boolean that will be set to true if the
+ * word is diactivated. \param word The word. \param word_index The index of the
+ * word. \return false if it's the end of the string, true otherwise.
+ */
+void handle_backslash(struct lexer *lexer, bool *is_diactivated, char *word,
+                      unsigned word_index);
+
+/**
+ * \brief Handle the simple quote character.
+ * \param lexer The lexer.
+ * \param is_diactivated A pointer to a boolean that will be set to true if the
+ * word is diactivated. \param word The word. \param word_index The index of the
+ * word. \return false if a closing quote was not found, true otherwise.
+ */
+char *handle_simple_quote(struct lexer *lexer, bool *is_diactivated, char *word,
+                          unsigned *word_index);
+
+/**
+ * \brief Check if the word is a variable assignement.
+ * \param word The word to check.
+ * \return if the word is a variable assignement.
+ */
+bool check_variable_assignement(char *word);
+
+/**
+ * \brief Check if the given word is a variable name.
+ * \param lexer The lexer.
+ * \param word The word to check.
+ * \param word_index The index of the word.
+ * \param is_in_braces A pointer to a boolean that will be set to true if the
+ * word is in braces. \return if the word is a variable name.
+ */
+bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
+                         bool *is_in_braces);
+
+/**
+ * \brief Handle the dollar character.
+ * \param lexer The lexer.
+ * \param word The word.
+ * \param word_index The index of the word.
+ * \param is_in_braces A pointer to a boolean that will be set to true if the
+ * word is in braces. \return The next word.
+ */
+bool handle_dollar(struct lexer *lexer, char **word, unsigned *word_index,
+                   bool *is_in_braces);
+
+/**
+ * \brief Handle the double quote character.
+ * \param lexer The lexer.
+ * \param is_diactivated A pointer to a boolean that will be set to true if the
+ * word is diactivated. \param word The word. \param word_index The index of the
+ * word. \return The next word.
+ */
+char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
+                          unsigned *word_index);
+
+/**
+ * \brief Handle the comment character.
+ * \param lexer The lexer.
+ * \param word The word.
+ * \param word_index The index of the word.
+ * \return The next word.
+ */
+char *handle_comment(struct lexer *lexer, char *word, unsigned *word_index);
+
+/**
+ * \brief Handle the redirection character.
+ * \param lexer The lexer.
+ * \param word_index The index of the word.
+ * \return The next redirection word.
+ */
+char *handle_redir(struct lexer *lexer, unsigned *word_index);
 
 /**
  * \brief Returns the next word in the input string.

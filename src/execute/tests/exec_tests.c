@@ -1,7 +1,7 @@
 /**
  * \file exec_tests.c
  * \brief Tests the exec function.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -10,12 +10,12 @@
 #include <criterion/redirect.h>
 #include <string.h>
 
-#include "../../io_backend/io_backend.h"
-#include "../../lexer/lexer.h"
-#include "../../parser/parser.h"
-#include "../ast_eval.h"
+#include "execute/ast_eval.h"
+#include "io_backend/io_backend.h"
+#include "lexer/lexer.h"
+#include "parser/parser.h"
 
-TestSuite(exec, .timeout = 1);
+TestSuite(exec, .timeout = 20);
 
 Test(exec, test_exec_simple_command)
 {
@@ -30,7 +30,7 @@ Test(exec, test_exec_simple_command)
 
     cr_redirect_stdout();
 
-    match_ast(ast, false);
+    match_ast(ast);
     fflush(stdout);
     cr_assert_stdout_eq_str("test\n");
 

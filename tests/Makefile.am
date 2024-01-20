@@ -1,6 +1,7 @@
 check_PROGRAMS = criterion
 
 criterion_SOURCES = $(top_builddir)/src/lexer/tests/lexer_tests.c \
+					$(top_builddir)/src/lexer/tests/lexer2_tests.c \
 					$(top_builddir)/src/io_backend/tests/io_backend_tests.c \
 					$(top_builddir)/src/parser/tests/parser_tests.c \
 					$(top_builddir)/src/execute/tests/exec_tests.c \
@@ -18,4 +19,4 @@ criterion_LDADD = -lcriterion \
 
 check-local: criterion
 		./criterion
-		./testsuite.sh
+		./testsuite.sh -v

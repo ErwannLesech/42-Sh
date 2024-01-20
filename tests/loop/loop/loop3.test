@@ -1,0 +1,1 @@
+for i in Monday Tuesday Wednesday; do echo $i ;done

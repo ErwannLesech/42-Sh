@@ -25,24 +25,27 @@
 int main(int argc, char **argv)
 {
     // Options handling
-    bool logger_enabled = check_logger(&argc, argv);
     bool pretty_print_enabled = check_pretty_print(&argc, argv);
 
     char *input = io_backend_manager(argc, argv);
     if (input == NULL)
     {
+        // are you sure you want to exit with 127?
         errx(127, "Error while reading input");
     }
 
-    logger(input, LOGGER_INPUT, logger_enabled);
-
     struct lexer *lexer = lexer_new(input);
+    if (lexer == NULL)
+    {
+        errx(1, "Error while creating lexer");
+    }
 
-    int val = parser_loop(lexer, logger_enabled, pretty_print_enabled);
+    int val = parser_loop(lexer, pretty_print_enabled);
     if (val == 2)
     {
         fprintf(stderr, "Error while parsing\n");
     }
+
     lexer_free(lexer);
     free(input);
     return val;

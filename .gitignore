@@ -25,6 +25,9 @@ config.status
 
 *.diff
 
+*.gv
+*.png
+
 # Doxygen
 Doxyfile.bak
 html

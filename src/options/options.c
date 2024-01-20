@@ -1,33 +1,37 @@
 /**
  * \file options.c
  * \brief Options functions.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
 
 #include "options.h"
 
+#include <ctype.h>
+#include <fcntl.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
-bool check_logger(int *argc, char **argv)
+#include "ast/ast.h"
+
+/**
+ * \brief Check if the given string is a number.
+ * \param str The string to check.
+ * \return 1 if the string is a number, 0 otherwise.
+ */
+int is_number(char *str)
 {
-    bool logger_enabled = false;
-    for (int i = 0; i < *argc; i++)
+    int i = 0;
+    while (str[i])
     {
-        if (strcmp(argv[i], "--logger") == 0)
-        {
-            logger_enabled = true;
-            for (int j = i; j < *argc - 1; j++)
-            {
-                argv[j] = argv[j + 1];
-            }
-            (*argc)--;
-        }
+        if (!isdigit(str[i]))
+            return 0;
+        i++;
     }
-    return logger_enabled;
+    return 1;
 }
 
 bool check_pretty_print(int *argc, char **argv)
@@ -48,26 +52,126 @@ bool check_pretty_print(int *argc, char **argv)
     return pretty_print_enabled;
 }
 
-void logger(char *str, enum logger_step step, bool logger_enabled)
+/**
+ * \brief digit counter
+ * \param number the number to count digits
+ * \return the number of digits
+ */
+int count_digits(int number)
 {
-    if (!str || !logger_enabled)
+    if (number == 0)
+        return 1;
+    int count = 0;
+    while (number != 0)
+    {
+        number /= 10;
+        ++count;
+    }
+    return count;
+}
+
+/**
+ * \brief Print the AST in a file.
+ * \param ast The AST to print.
+ * \param fd The file descriptor.
+ * \param node_count The number of nodes.
+ */
+void pp_node(struct ast_node *ast, int fd, int *node_count)
+{
+    char *buff = malloc(sizeof(char) * 100000);
+
+    if (write(fd, "node", 4) == -1)
+        return;
+    sprintf(buff, "%d", (*node_count));
+    buff[strlen(buff)] = '\0';
+    if (write(fd, buff, count_digits(*node_count)) == -1)
+        return;
+    if (write(fd, " [label=\"", 9) == -1)
+        return;
+    if (write(fd, ast_type_to_string(ast->type),
+              strlen(ast_type_to_string(ast->type)))
+        == -1)
+        return;
+    if (ast->value)
+    {
+        if (write(fd, " - ", 3) == -1)
+            return;
+        if (write(fd, ast->value, strlen(ast->value)) == -1)
+            return;
+    }
+
+    if (write(fd, "\"];\n", 3) == -1)
         return;
 
-    switch (step)
+    free(buff);
+}
+
+/**
+ * \brief Print the AST links in a file.
+ * \param ast The AST to print.
+ * \param fd The file descriptor.
+ * \param node_count The number of nodes.
+ * \param parent_id The parent id.
+ */
+void pp_link(struct ast_node *ast, int fd, int *node_count, int parent_id)
+{
+    char *buff = malloc(sizeof(char) * 100000);
+
+    pp_node(ast, fd, node_count);
+
+    if (parent_id != -1)
     {
-    case LOGGER_INPUT:
-        printf("Input: %s\n", str);
-        break;
-
-    case LOGGER_PARSER:
-        printf("Word_value: %s\n", str);
-        break;
-
-    case LOGGER_EXEC:
-        printf("%s ", str);
-        break;
-
-    default:
-        break;
+        if (write(fd, "node", 4) == -1)
+            return;
+        sprintf(buff, "%d", parent_id);
+        if (write(fd, buff, count_digits(parent_id)) == -1)
+            return;
+        if (write(fd, " -> ", 4) == -1)
+            return;
+        if (write(fd, "node", 4) == -1)
+            return;
+        sprintf(buff, "%d", (*node_count));
+        if (write(fd, buff, count_digits(*node_count)) == -1)
+            return;
+        if (write(fd, ";\n", 2) == -1)
+            return;
     }
+
+    parent_id = (*node_count);
+
+    for (int i = 0; i < ast->children_count && ast->children[i]; i++)
+    {
+        (*node_count)++;
+        pp_link(ast->children[i], fd, node_count, parent_id);
+    }
+
+    free(buff);
+}
+
+void pretty_print(struct ast_node *ast, bool pretty_print_enabled, int *number)
+{
+    if (!ast || !pretty_print_enabled)
+        return;
+
+    int fd = open("pretty_print.gv", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+
+    if (write(fd, "digraph AST {\n", 14) == -1)
+        return;
+
+    if (write(fd, "graph [rankdir=TB, ranksep=0.8, nodesep=0.4];\n", 46) == -1)
+        return;
+    if (write(fd,
+              "node [shape=box, color=lightblue, style=filled, fontsize=14];\n",
+              62)
+        == -1)
+        return;
+    if (write(fd, "edge [color=black, style=solid, arrowhead=vee];\n\n", 48)
+        == -1)
+        return;
+
+    pp_link(ast, fd, number, -1);
+
+    if (write(fd, "}\n", 3) == -1)
+        return;
+    close(fd);
 }

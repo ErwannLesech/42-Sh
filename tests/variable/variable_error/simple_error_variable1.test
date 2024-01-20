@@ -1,0 +1,2 @@
+1var="wrong"
+echo $1var

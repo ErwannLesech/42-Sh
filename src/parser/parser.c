@@ -8,7 +8,7 @@
 
 #include "parser.h"
 
-#include "../execute/ast_eval.h"
+#include "execute/ast_eval.h"
 
 /*
 input =
@@ -65,8 +65,7 @@ struct ast_node *parse(struct lexer *lexer)
 /**
  * \brief Parse loop line by line and execute it
  */
-int parser_loop(struct lexer *lexer, bool logger_enabled,
-                bool pretty_print_enabled)
+int parser_loop(struct lexer *lexer, bool pretty_print_enabled)
 {
     int return_value = 0;
     while (parser_peek(lexer) != TOKEN_EOF)
@@ -76,19 +75,25 @@ int parser_loop(struct lexer *lexer, bool logger_enabled,
         {
             return 2;
         }
+        // print_ast(ast, 0);
         if (pretty_print_enabled)
         {
-            print_ast(ast, 0, logger_enabled);
+            print_ast(ast, 0);
+            int depths = 0;
+            pretty_print(ast, pretty_print_enabled, &depths);
         }
-        return_value = match_ast(ast, logger_enabled);
-        if (return_value != 0 && return_value != 1)
+
+        if (ast->type != AST_EMPTY)
         {
-            fprintf(stderr, "Error while executing\n");
-            // ast_free(ast);
-            // return return_value;
+            return_value = match_ast(ast);
         }
         ast_free(ast);
-    }
 
+        if (return_value != 0 && return_value != 1 && return_value != 127)
+        {
+            fprintf(stderr, "Error while executing\n");
+        }
+    }
+    free_variables();
     return return_value;
 }

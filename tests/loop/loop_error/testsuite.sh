@@ -1,0 +1,1 @@
+run_test error1.test

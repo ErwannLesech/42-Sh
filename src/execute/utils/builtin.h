@@ -1,7 +1,7 @@
 /**
  * \file builtin.h
- * \brief Builtin functions.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \brief Header of the builtin functions.
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */

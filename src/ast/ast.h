@@ -1,7 +1,7 @@
 /**
  * \file ast.h
  * \brief Represent a node of the AST.
- * \author Erwann Lesech, Valentin Gibert, Ugo Majer, Alexandre Privat
+ * \author Erwann Lesech, Valentin Gibbe, Ugo Majer, Alexandre Privat
  * \version 1.0
  * \date 12/01/2024
  */
@@ -9,10 +9,9 @@
 #ifndef AST_H
 #define AST_H
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "../options/options.h"
 
 /**
  * \enum ast_type
@@ -26,6 +25,20 @@ enum ast_type
     AST_WORD,
     AST_EMPTY,
     AST_UNEXPECTED,
+    AST_IONUMBER,
+    AST_REDIRECTION,
+    AST_PIPELINE,
+    AST_WHILE,
+    AST_UNTIL,
+    AST_FOR,
+    AST_AND_OR,
+    AST_NEGATE,
+    AST_AND,
+    AST_OR,
+    AST_COMMAND,
+    AST_WORD_ASSIGNMENT,
+    AST_VARIABLE,
+    AST_WORD_DOUBLE_QUOTE
 };
 
 /**
@@ -68,10 +81,24 @@ void ast_free(struct ast_node *node);
 struct ast_node *ast_node_word(char *value);
 
 /**
+ * \brief Create a new AST node of type AST_WORD_DOUBLE_QUOTE.
+ * \param value The value of the node.
+ * \return The new node.
+ */
+struct ast_node *ast_node_word_double_quote(char *value);
+
+/**
+ * \brief Convert an AST type to a string.
+ * \param type The type to convert.
+ * \return The AST type string.
+ */
+char *ast_type_to_string(enum ast_type type);
+
+/**
  * \brief Create a new AST node of type AST_SIMPLE_COMMAND.
  * \param value The value of the node.
  * \return The new node.
  */
-void print_ast(struct ast_node *node, int depth, bool logger_enabled);
+void print_ast(struct ast_node *node, int depth);
 
 #endif /* ! AST_H  */

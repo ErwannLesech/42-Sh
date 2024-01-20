@@ -9,19 +9,20 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "../ast/ast.h"
-#include "../lexer/lexer.h"
-#include "../lexer/token.h"
+#include <string.h>
+
+#include "ast/ast.h"
+#include "lexer/lexer.h"
+#include "lexer/token.h"
+#include "options/options.h"
 
 /**
  * \brief Parse loop the given lexer
  * \param lexer The lexer to parse.
- * \param logger_enabled The option logger.
  * \param pretty_print_enabled The option pretty_print.
- * \return code of execution.
+ * \return code of execution 0 if success, 1 if error.
  */
-int parser_loop(struct lexer *lexer, bool logger_enabled,
-                bool pretty_print_enabled);
+int parser_loop(struct lexer *lexer, bool pretty_print_enabled);
 
 /**
  * \brief Parse the given lexer.
@@ -88,6 +89,7 @@ struct ast_node *pipeline(struct lexer *lexer);
 
 /**
  * \brief command = simple_command | shell_command ;
+ *  \brief IMPORTANT !!! AST_COMMAND CAN HANDLE REDIRECTION !!
  * \param lexer The lexer to parse.
  * \return A pointer to the AST.
  */
@@ -108,6 +110,37 @@ struct ast_node *simple_command(struct lexer *lexer);
 struct ast_node *element(struct lexer *lexer);
 
 /**
+ * \brief  redirection = [IONUMBER] ( '>' | '<' | '>>' | '>&' | '<&' | '>|' |
+ * '<>' ) WORD ; \param lexer The lexer to parse. \return A pointer to the AST.
+ */
+struct ast_node *redirection(struct lexer *lexer);
+
+/**
+ * \brief  rule_while = 'while' compound_list 'do' compound_list 'done' ;
+ * \param lexer The lexer to parse.
+ * \return A pointer to the AST.
+ */
+struct ast_node *rule_while(struct lexer *lexer);
+
+/**
+ * \brief  rule_until = 'until' compound_list 'do' compound_list 'done' ;
+ * \param lexer The lexer to parse.
+ * \return A pointer to the AST.
+ */
+struct ast_node *rule_until(struct lexer *lexer);
+
+/**
+ * \brief  rule_for = 'for' WORD [in WORD {',' WORD}] 'do' compound_list 'done'
+ * ; \param lexer The lexer to parse. \return A pointer to the AST.
+ */
+struct ast_node *rule_for(struct lexer *lexer);
+/**
+ * \brief  redirection;
+ * \param lexer The lexer to parse.
+ * \return A pointer to the AST.
+ */
+struct ast_node *prefix(struct lexer *lexer);
+/**
  * \brief Return the next token type without consuming it.
  * \param lexer The lexer to parse.
  * \return The next token type.
@@ -121,4 +154,11 @@ enum token_type parser_peek(struct lexer *lexer);
  */
 enum token_type parser_pop(struct lexer *lexer);
 
-#endif /* ! PARSER_H*/
+/**
+ * \brief Return the next token type and consume it if it matches the given
+ * \param lexer The lexer to parse.
+ * \return The next token type.
+ */
+struct ast_node *parse_variable(struct lexer *lexer);
+
+#endif /* ! PARSER_H */
