@@ -33,3 +33,74 @@ void print_token(struct token token)
     };
     printf("Token: %s\n", tokens[token.type]);
 }
+
+bool check_variable_name_simulated(const char *data, int index)
+{
+    bool is_in_braces = false;
+
+    index += 1;
+
+    // Check if it's a special variable (like $?, $*, $@, $# or $$)
+    if (data[index] == '?' || data[index] == '*'
+        || data[index] == '@' || data[index] == '#'
+        || data[index] == '$')
+    {
+        return true;
+    }
+
+    // Chech if it's a special variable (like $n)
+    else if (data[index] >= '0'
+             && data[index] <= '9')
+    {
+        return true;
+    }
+
+    else if (data[index] == '{')
+    {
+        index += 1;
+        is_in_braces = true;
+    }
+
+    // Classic variable name
+    else if (data[index] == '_'
+             || data[index] == '-'
+             || (data[index] >= 'a'
+                 && data[index] <= 'z')
+             || (data[index] >= 'A'
+                 && data[index] <= 'Z'))
+    {
+        index += 1;
+    }
+    // Not a valid variable name
+    else
+    {
+        return false;
+    }
+
+    // Check the rest of the variable name break
+    while (data[index] == '_' || data[index] == '-'
+           || (data[index] >= 'a'
+               && data[index] <= 'z')
+           || (data[index] >= 'A'
+               && data[index] <= 'Z')
+           || (data[index] >= '0'
+               && data[index] <= '9'))
+    {
+        index += 1;
+    }  
+
+    if (is_in_braces)
+    {
+        if (data[index] == '}')
+        {
+            index += 1;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
