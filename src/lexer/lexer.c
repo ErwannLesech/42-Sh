@@ -193,12 +193,12 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
             {
                 // Handle the end of the double quote
-                if (lexer->data[lexer->index - 1] == '\"')
+                if (word_index > 0 && lexer->data[lexer->index - 1] == '\"')
                 {
                     word_index -= 1;
                     lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
                 }
-
+                
                 // Handle the double quote
                 word = handle_double_quote(lexer, is_diactivated, word,
                                            &word_index);

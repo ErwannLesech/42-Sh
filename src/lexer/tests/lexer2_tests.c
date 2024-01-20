@@ -882,9 +882,9 @@ Test(lexer2, variable_find4)
     cr_assert_eq(tok.type, TOKEN_VARIABLE);
     cr_assert_str_eq(tok.data, "$a1_dddfff");
     token_free(tok);
-
+    
     tok = lexer_pop(lexer);
-    cr_assert_eq(tok.type, TOKEN_VARIABLE);
+    cr_assert_eq(tok.type, TOKEN_VARIABLE, "got %d", tok.type);
     cr_assert_str_eq(tok.data, "$toto");
     token_free(tok);
 
