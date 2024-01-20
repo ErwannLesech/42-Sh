@@ -175,6 +175,15 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
             lexer->index += 1;
             *is_in_braces = false;
         }
+        else
+        {
+            return false;
+        }
+    }
+    if (lexer->data[lexer->index] == '\"' && lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+    {
+        lexer->index += 1;
+        lexer->curr_tok.type = TOKEN_VARIABLE;
     }
     *word = curr_word;
     return true;
@@ -234,7 +243,8 @@ char *handle_double_quote(struct lexer *lexer, bool *is_diactivated, char *word,
             if (lexer->data[lexer->index] == '\"'
                 || lexer->data[lexer->index] == '$'
                 || lexer->data[lexer->index] == '\\'
-                || lexer->data[lexer->index] == '\n')
+                || lexer->data[lexer->index] == '\n'
+                || lexer->data[lexer->index] == '`')
             {
                 if (lexer->data[lexer->index] != '\n')
                 {
