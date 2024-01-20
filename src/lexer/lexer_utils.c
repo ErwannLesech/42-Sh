@@ -98,7 +98,8 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
     char *curr_word = *word;
     *is_in_braces = false;
     // Handle variable in double quote
-    if (lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+    if (lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE
+        || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
     {
         lexer->curr_tok.type = TOKEN_VARIABLE_AND_DOUBLE_QUOTE;
     }

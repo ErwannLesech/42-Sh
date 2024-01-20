@@ -58,7 +58,7 @@ void token_free(struct token token);
 /**
  * \brief Print the given token.
  * \param token The token to print.
-*/
+ */
 void print_token(struct token token);
 
 /**
@@ -133,7 +133,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
  * \param data The word to check
  * \param index The index of the data to check
  * \return true if it's a valid variable name, false otherwise
-*/
+ */
 bool check_variable_name_simulated(const char *data, int index);
 
 /**
@@ -141,11 +141,10 @@ bool check_variable_name_simulated(const char *data, int index);
  * \param lexer The lexer.
  * \param word The word.
  * \param word_index The index of the word.
-*/
-
+ */
 
 void handle_back_slash_in_double_quote(struct lexer *lexer, char *word,
-                                  unsigned *word_index);
+                                       unsigned *word_index);
 
 /**
  * \brief Handle the dollar character.
