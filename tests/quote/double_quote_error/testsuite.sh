@@ -1,0 +1,8 @@
+run_test double_quote_error1.test
+run_test double_quote_error2.test
+run_test double_quote_error3.test
+run_test double_quote_error4.test
+run_test double_quote_error5.test
+run_test double_quote_error6.test
+run_test double_quote_error7.test
+run_test double_quote_error8.test

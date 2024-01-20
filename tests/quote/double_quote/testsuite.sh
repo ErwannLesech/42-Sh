@@ -2,3 +2,11 @@ run_test double_quote1.test
 run_test double_quote2.test
 run_test double_quote3.test
 run_test double_quote4.test
+run_test double_quote5.test
+run_test double_quote6.test
+run_test double_quote7.test
+run_test double_quote8.test
+run_test double_quote9.test
+run_test double_quote10.test
+run_test double_quote11.test
+run_test double_quote12.test

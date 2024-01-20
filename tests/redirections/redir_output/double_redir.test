@@ -1,0 +1,4 @@
+ls -l non_existent_directory 1> success.txt 2> error.txt; echo tata
+cat success.txt
+if [ -s error.txt ]; then echo tata;fi
+rm success.txt error.txt
