@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['uid_5ffun_379',['uid_fun',['../environment__variable_8c.html#a7fff1b6c715d1a530993754fb533522a',1,'uid_fun():&#160;environment_variable.c'],['../environment__variable_8h.html#a7fff1b6c715d1a530993754fb533522a',1,'uid_fun():&#160;environment_variable.c']]],
-  ['until_5floop_380',['until_loop',['../ast__eval_8h.html#a18577bcabab70d7a082596836de82ed4',1,'until_loop(struct ast_node *node):&#160;loop.c'],['../loop_8c.html#a18577bcabab70d7a082596836de82ed4',1,'until_loop(struct ast_node *node):&#160;loop.c']]]
+  ['while_5floop_370',['while_loop',['../ast__eval_8h.html#ab7e563c2a398eea9df1f9ff8aca255e3',1,'while_loop(struct ast_node *node):&#160;loop.c'],['../loop_8c.html#ab7e563c2a398eea9df1f9ff8aca255e3',1,'while_loop(struct ast_node *node):&#160;loop.c']]]
 ];

@@ -77,30 +77,18 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ast_8h_source.html">ast/ast.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ast__eval_8h_source.html">ast_eval.h</a>&quot;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="options_8h_source.html">options/options.h</a>&quot;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;sys/types.h&gt;</code><br />
-<code>#include &lt;sys/stat.h&gt;</code><br />
-<code>#include &lt;dirent.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for loop.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="loop_8c__incl.png" border="0" usemap="#asrc_2execute_2utils_2loop_8c" alt=""/></div>
 <map name="asrc_2execute_2utils_2loop_8c" id="asrc_2execute_2utils_2loop_8c">
-<area shape="rect" title="Loop functions." alt="" coords="205,5,376,32"/>
-<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="93,229,171,256"/>
-<area shape="rect" title=" " alt="" coords="5,304,72,331"/>
-<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="142,80,231,107"/>
-<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="65,155,199,181"/>
-<area shape="rect" title=" " alt="" coords="255,80,326,107"/>
-<area shape="rect" title=" " alt="" coords="351,80,447,107"/>
-<area shape="rect" title=" " alt="" coords="471,80,556,107"/>
-<area shape="rect" title=" " alt="" coords="580,80,652,107"/>
-<area shape="rect" title=" " alt="" coords="676,80,751,107"/>
-<area shape="rect" title=" " alt="" coords="192,304,275,331"/>
-<area shape="rect" title=" " alt="" coords="97,304,167,331"/>
+<area shape="rect" title="Loop functions." alt="" coords="5,5,176,32"/>
+<area shape="rect" href="ast_8h.html" title="Represent a node of the AST." alt="" coords="66,229,145,256"/>
+<area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="123,80,213,107"/>
+<area shape="rect" title=" " alt="" coords="248,304,331,331"/>
+<area shape="rect" title=" " alt="" coords="157,304,224,331"/>
+<area shape="rect" title=" " alt="" coords="62,304,133,331"/>
+<area shape="rect" href="options_8h.html" title="Header for options functions." alt="" coords="138,155,273,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -112,16 +100,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a18577bcabab70d7a082596836de82ed4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="loop_8c.html#a18577bcabab70d7a082596836de82ed4">until_loop</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:a18577bcabab70d7a082596836de82ed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the until loop.  <a href="loop_8c.html#a18577bcabab70d7a082596836de82ed4">More...</a><br /></td></tr>
 <tr class="separator:a18577bcabab70d7a082596836de82ed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06b081965c6c5d4f337279c232497b9a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="loop_8c.html#a06b081965c6c5d4f337279c232497b9a">build_num</a> (char *str, int *start)</td></tr>
-<tr class="separator:a06b081965c6c5d4f337279c232497b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a862052e6e0a00306c5e94f07cd5ac85a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="loop_8c.html#a862052e6e0a00306c5e94f07cd5ac85a">isValidPattern</a> (const char *<a class="el" href="parser__element_8c.html#a5b1b8771c0736c2ae1614532831ccbab">input</a>)</td></tr>
-<tr class="separator:a862052e6e0a00306c5e94f07cd5ac85a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a107a6dffcbce55ab24400fdd4b7ec870"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="loop_8c.html#a107a6dffcbce55ab24400fdd4b7ec870">case_number</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int index)</td></tr>
-<tr class="separator:a107a6dffcbce55ab24400fdd4b7ec870"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2d4a3c713b432b2d971b2d276d3fa2a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="loop_8c.html#aa2d4a3c713b432b2d971b2d276d3fa2a">isDirectory</a> (const char *path)</td></tr>
-<tr class="separator:aa2d4a3c713b432b2d971b2d276d3fa2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af59b05c38b814a525d20a40eaf1b058e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="loop_8c.html#af59b05c38b814a525d20a40eaf1b058e">case_directory</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int i)</td></tr>
-<tr class="separator:af59b05c38b814a525d20a40eaf1b058e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9b3b63a3424cd52399404843f283707"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="loop_8c.html#ae9b3b63a3424cd52399404843f283707">for_loop</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:ae9b3b63a3424cd52399404843f283707"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the for loop.  <a href="loop_8c.html#ae9b3b63a3424cd52399404843f283707">More...</a><br /></td></tr>
 <tr class="separator:ae9b3b63a3424cd52399404843f283707"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,90 +110,6 @@ Functions</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a06b081965c6c5d4f337279c232497b9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06b081965c6c5d4f337279c232497b9a">&#9670;&nbsp;</a></span>build_num()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int build_num </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>start</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af59b05c38b814a525d20a40eaf1b058e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af59b05c38b814a525d20a40eaf1b058e">&#9670;&nbsp;</a></span>case_directory()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int case_directory </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>i</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a107a6dffcbce55ab24400fdd4b7ec870"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a107a6dffcbce55ab24400fdd4b7ec870">&#9670;&nbsp;</a></span>case_number()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int case_number </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ae9b3b63a3424cd52399404843f283707"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9b3b63a3424cd52399404843f283707">&#9670;&nbsp;</a></span>for_loop()</h2>
 
@@ -240,42 +134,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status of the last command. </dd></dl>
-
-</div>
-</div>
-<a id="aa2d4a3c713b432b2d971b2d276d3fa2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2d4a3c713b432b2d971b2d276d3fa2a">&#9670;&nbsp;</a></span>isDirectory()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int isDirectory </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a862052e6e0a00306c5e94f07cd5ac85a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a862052e6e0a00306c5e94f07cd5ac85a">&#9670;&nbsp;</a></span>isValidPattern()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int isValidPattern </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
