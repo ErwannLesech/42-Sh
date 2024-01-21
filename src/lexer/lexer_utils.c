@@ -85,7 +85,7 @@ void append_char_to_word(struct lexer *lexer, char **word, unsigned *word_index)
 char *append_end_of_word(char *word, unsigned word_index)
 {
     char *curr_word = word;
-    curr_word = realloc(word, sizeof(char) * (word_index + 1));
+    curr_word = realloc(curr_word, sizeof(char) * (word_index + 1));
     curr_word[word_index] = '\0';
     word = curr_word;
 
@@ -158,6 +158,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
         {
             lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
         }
+        *word = curr_word;
         return false;
     }
 
@@ -182,6 +183,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
         }
         else
         {
+            *word = curr_word;
             return false;
         }
     }
