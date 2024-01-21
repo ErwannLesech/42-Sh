@@ -154,6 +154,10 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
         {
             lexer->curr_tok.type = TOKEN_WORD;
         }
+        else
+        {
+            lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
+        }
         return false;
     }
 
