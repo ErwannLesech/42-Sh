@@ -164,6 +164,10 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                     free(word);
                     return NULL;
                 }
+                else if (lexer->data[lexer->index] == '\0')
+                {
+                    break;
+                }
             }
             // Handle the word assignement if it's contain '=' and it's not the
             // first character
@@ -183,6 +187,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 lexer->index += 1;
             }
             // Take next char and put it in the word
+            word = realloc(word, sizeof(char) * (word_index + 1));
             word[word_index] = lexer->data[lexer->index];
             ++word_index;
             ++lexer->index;
@@ -323,6 +328,7 @@ struct token parse_input_for_tok(struct lexer *lexer)
             {
                 token.type = TOKEN_ERROR;
                 token.data = "parse_input_for_tok - Missing closing quote.";
+                free(word);
                 return token;
             }
             token.type = lex_match[i].type;
