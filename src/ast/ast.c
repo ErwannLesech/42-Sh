@@ -59,8 +59,11 @@ void ast_free(struct ast_node *node)
     }
     if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT
         || node->type == AST_VARIABLE || node->type == AST_WORD_DOUBLE_QUOTE
-        || node->type == AST_IONUMBER)
+        || node->type == AST_IONUMBER || node->type == AST_REDIRECTION)
+    {
         free(node->value);
+    }
+
     free(node);
 }
 
