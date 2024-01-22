@@ -10,6 +10,6 @@ var searchData=
   ['io_5fbackend_5fstdin_116',['io_backend_stdin',['../io__backend_8c.html#a1da7265d3965d24d045e96da0e253eaf',1,'io_backend.c']]],
   ['io_5fbackend_5ftests_2ec_117',['io_backend_tests.c',['../io__backend__tests_8c.html',1,'']]],
   ['is_5fnumber_118',['is_number',['../options_8c.html#aa5dda8dfb7843e3379779c346c3c905d',1,'is_number(char *str):&#160;options.c'],['../options_8h.html#aa5dda8dfb7843e3379779c346c3c905d',1,'is_number(char *str):&#160;options.c']]],
-  ['isdirectory_119',['isDirectory',['../loop_8c.html#aa2d4a3c713b432b2d971b2d276d3fa2a',1,'loop.c']]],
+  ['isdirectory_119',['isDirectory',['../loop_8c.html#ad39f7e90940057a732371bfee6135a8d',1,'loop.c']]],
   ['isvalidpattern_120',['isValidPattern',['../loop_8c.html#a862052e6e0a00306c5e94f07cd5ac85a',1,'loop.c']]]
 ];
