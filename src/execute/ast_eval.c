@@ -115,7 +115,7 @@ int ast_eval_simple_command(struct ast_node *node)
         }
         return return_val;
     }
-    char *command = node->children[0]->value;
+    char *command = handle_word(node->children[0]);
     for (size_t i = 0; i < 3; i++)
     {
         if (strcmp(command, builtin[i].name) == 0)
