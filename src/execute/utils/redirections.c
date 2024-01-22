@@ -132,8 +132,7 @@ int redir_handling(struct ast_node *node, int *fd_ionumber, int *fd_dup)
  */
 void remove_node(struct ast_node *ast, int index)
 {
-    free(ast->children[index]->value);
-    free(ast->children[index]);
+    ast_free(ast->children[index]);
     ast->children[index] = NULL;
 }
 
