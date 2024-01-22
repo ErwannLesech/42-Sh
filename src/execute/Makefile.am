@@ -10,5 +10,5 @@ libexecute_a_SOURCES = ast_eval.c ast_eval.h \
                     utils/redirections.c
                 
 
-libexecute_a_CFLAGS = -Wall -Wextra -Werror -Wvla
+libexecute_a_CFLAGS = -Wall -Wextra -Werror -Wvla -pedantic -std=c99
 libexecute_a_CPPFLAGS =-I$(top_srcdir)/src
