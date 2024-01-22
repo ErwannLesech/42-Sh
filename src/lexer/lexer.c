@@ -25,8 +25,7 @@ struct lex_match lex_match[] = {
     { ">>", TOKEN_REDIR },  { "<&", TOKEN_REDIR },  { ">&", TOKEN_REDIR },
     { "done", TOKEN_DONE }, { ">|", TOKEN_REDIR },  { "<>", TOKEN_REDIR },
     { "(", TOKEN_OPEN_PAR}, { ")", TOKEN_CLOSE_PAR},
-    { "{", TOKEN_OPEN_BRACES}, { "}", TOKEN_CLOSE_BRACES},
-    { "$(", TOKEN_SUBTITUTION}
+    { "{", TOKEN_OPEN_BRACES}, { "}", TOKEN_CLOSE_BRACES}
 };
 
 struct lexer *lexer_new(const char *input)
@@ -98,6 +97,15 @@ bool first_char_check(struct lexer *lexer, char **current_word,
             ++lexer->index;
         }
     }
+
+    // Handle (, ) return the token
+    else if (lexer->data[lexer->index] == '('
+             || lexer->data[lexer->index] == ')')
+    {
+        word[0] = lexer->data[lexer->index];
+        *word_index = 1;
+        ++lexer->index;
+    }
     else
     {
         return false;
@@ -147,7 +155,9 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                && lexer->data[lexer->index] != '>'
                && lexer->data[lexer->index] != '<'
                && lexer->data[lexer->index] != '|'
-               && lexer->data[lexer->index] != '&')
+               && lexer->data[lexer->index] != '&'
+               && lexer->data[lexer->index] != '('
+               && lexer->data[lexer->index] != ')')
         {
             word = append_end_of_word(word, word_index);
             // Handle the variable
@@ -317,6 +327,14 @@ struct token parse_input_for_tok(struct lexer *lexer)
         {
             lexer->curr_tok.type = TOKEN_EOL;
         }
+        return token;
+    }
+
+    if (lexer->curr_tok.type == TOKEN_SUBSTITUTION)
+    {
+        token.type = TOKEN_SUBSTITUTION;
+        token.data = word;
+        lexer->curr_tok.type = TOKEN_EOL;
         return token;
     }
 

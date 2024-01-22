@@ -137,6 +137,14 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
 bool check_variable_name_simulated(const char *data, int index);
 
 /**
+ * \brief Check if the current word is a valid subshell.
+ * \param lexer The lexer.
+ * \param word The word to check
+ * \param word_index The index of the word to check
+ * \return a word containing the subshell if it's a valid subshell, NULL otherwise
+*/
+bool check_subshell(struct lexer *lexer, char **word, unsigned *word_index);
+/**
  * \brief Handle the backslash character in a double quote.
  * \param lexer The lexer.
  * \param word The word.

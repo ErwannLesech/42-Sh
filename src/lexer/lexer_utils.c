@@ -200,6 +200,13 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
 bool handle_dollar(struct lexer *lexer, char **word, unsigned *word_index,
                    bool *is_in_braces)
 {
+    if (lexer->data[lexer->index + 1] == '(')
+    {
+        lexer->index += 1;
+        *is_in_braces = true;
+        lexer->curr_tok.type = TOKEN_SUBSTITUTION;
+        return check_subshell(lexer, word, word_index);
+    }
     char *curr_word = *word;
     // Add the dollar to the word
     curr_word = realloc(curr_word, sizeof(char) * (*word_index + 1));
