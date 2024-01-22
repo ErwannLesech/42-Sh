@@ -23,7 +23,6 @@ struct ast_node *prefix(struct lexer *lexer)
 struct ast_node *redirection(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_REDIRECTION);
-    current->value = NULL;
     if (parser_peek(lexer) == TOKEN_IONUMBER)
     {
         struct ast_node *io_number = ast_node_new(AST_IONUMBER);
