@@ -113,8 +113,10 @@ int isDirectory(const char *path)
     struct stat pathStat;
     if (stat(cleanedString, &pathStat) != 0)
     {
+        free(cleanedString);
         return 0;
     }
+    free(cleanedString);
     return S_ISDIR(
         pathStat.st_mode); // Vérifiez si le chemin pointe vers un répertoire
 }

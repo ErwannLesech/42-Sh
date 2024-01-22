@@ -24,7 +24,7 @@ char *dollar_fun()
     char pid_str[10];
     sprintf(pid_str, "%d", pid);
     set_variable("$", pid_str);
-    return get_variable("$");
+    return get_environment_variable("$");
 }
 
 char *quest_fun()
@@ -47,10 +47,11 @@ char *random_fun()
     srand(time(NULL));
     int random_number = rand();
     random_number %= 32768;
-    char random_number_str[10];
-    sprintf(random_number_str, "%d", random_number);
+    char *random_number_str = malloc(sizeof(char) * 10);
+    sprintf(random_number_str, "%d", random_number);   
     set_variable("RANDOM", random_number_str);
-    return get_variable("RANDOM");
+    free(random_number_str);
+    return get_environment_variable("RANDOM");
 }
 
 char *uid_fun()
@@ -59,7 +60,7 @@ char *uid_fun()
     char user_id_str[10];
     sprintf(user_id_str, "%d", user_id);
     set_variable("UID", user_id_str);
-    return get_variable("UID");
+    return get_environment_variable("UID");
 }
 
 char *oldpwd_fun()
