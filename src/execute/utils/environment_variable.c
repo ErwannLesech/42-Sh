@@ -21,9 +21,10 @@ char *star_fun()
 char *dollar_fun()
 {
     pid_t pid = getpid();
-    char *pid_str = malloc(sizeof(char) * 10);
+    char pid_str[10];
     sprintf(pid_str, "%d", pid);
-    return pid_str;
+    set_variable("$", pid_str);
+    return get_variable("$");
 }
 
 char *quest_fun()
@@ -46,18 +47,19 @@ char *random_fun()
     srand(time(NULL));
     int random_number = rand();
     random_number %= 32768;
-    char *random_number_str = malloc(sizeof(char) * 10);
+    char random_number_str[10];
     sprintf(random_number_str, "%d", random_number);
-
-    return random_number_str;
+    set_variable("RANDOM", random_number_str);
+    return get_variable("RANDOM");
 }
 
 char *uid_fun()
 {
     uid_t user_id = getuid();
-    char *user_id_str = malloc(sizeof(char) * 10);
+    char user_id_str[10];
     sprintf(user_id_str, "%d", user_id);
-    return user_id_str;
+    set_variable("UID", user_id_str);
+    return get_variable("UID");
 }
 
 char *oldpwd_fun()
