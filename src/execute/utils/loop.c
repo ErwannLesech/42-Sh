@@ -12,6 +12,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <err.h>
 
 #include "ast/ast.h"
 #include "ast_eval.h"
@@ -100,57 +101,36 @@ int case_number(struct ast_node *node, int index)
     return status;
 }
 
-int isDirectory(const char *path)
+int isDirectory(char *path)
 {
-    if (path[strlen(path) - 1] != '*')
-    {
-        // Le chemin pointe vers un répertoire
+    if (path[strlen(path) - 1] == '*')
+        path[strlen(path) - 1] = '\0';
+    struct stat fileStat;
+    if (stat(path, &fileStat) == -1)
         return 0;
-    }
-    char *cleanedString = malloc(sizeof(char) * strlen(path));
-    strncpy(cleanedString, path, strlen(path) - 1);
-    cleanedString[strlen(path) - 1] = '\0';
-    struct stat pathStat;
-    if (stat(cleanedString, &pathStat) != 0)
-    {
-        free(cleanedString);
-        return 0;
-    }
-    free(cleanedString);
-    return S_ISDIR(
-        pathStat.st_mode); // Vérifiez si le chemin pointe vers un répertoire
+    return S_ISDIR(fileStat.st_mode);
 }
 
 int case_directory(struct ast_node *node, int i)
 {
     int status = 0;
     char *var = node->children[i]->value;
-    var[strlen(var) - 1] = '\0';
-    DIR *dir;
-    struct dirent *entry;
-    struct stat fileStat;
-
-    dir = opendir(var);
-
+    DIR *dir = opendir(var);
     if (dir == NULL)
+        errx(1, "'%s': No such file or directory", var);
+    struct dirent *entry = readdir(dir);
+    for (; entry != NULL; entry = readdir(dir))
     {
-        perror("Erreur lors de l'ouverture du dossier");
-        return 0;
-    }
-    while ((entry = readdir(dir)) != NULL)
-    {
-        char filePath[1024];
-        snprintf(filePath, sizeof(filePath), "%s/%s", var, entry->d_name);
-
-        if (stat(filePath, &fileStat) == 0)
-        {
-            if (S_ISREG(fileStat.st_mode))
-            {
-                printf("%s\n", entry->d_name);
-            }
+        if (strcmp(entry->d_name, ".") == 0
+               || strcmp(entry->d_name, "..") == 0)
+                continue;
+        char str[1024];
+            strcpy(str, var);
+            if (var[strlen(var) - 1] != '/')
+                strcat(str, "/");
+            strcat(str, entry->d_name);
+            printf("%s\n", str);
         }
-    }
-
     closedir(dir);
     return status;
 }
