@@ -296,7 +296,7 @@ struct ast_node *rule_for(struct lexer *lexer)
                 }
             }
         }
-        // free(value);
+        free(value);
     }
 ERROR:
     ast_free(current);
