@@ -165,21 +165,30 @@ struct ast_node *simple_command(struct lexer *lexer)
             return current;
         }
     }
+    struct ast_node *variable = parse_variable(lexer);
     if (parser_peek(lexer) == TOKEN_WORD
-        || parser_peek(lexer) == TOKEN_WORD_DOUBLE_QUOTE)
+        || parser_peek(lexer) == TOKEN_WORD_DOUBLE_QUOTE
+        || variable != NULL)
     {
-        char *value = lexer_peek(lexer).data;
-        if (strcmp(value, "while") == 0 || strcmp(value, "until") == 0
-            || strcmp(value, "for") == 0 || strcmp(value, "do") == 0)
+        if (variable != NULL)
         {
-            free(value);
-            ast_free(current);
-            return NULL;
+            ast_append(current, variable);
         }
-        free(value);
-        struct ast_node *new = ast_node_word(lexer_peek(lexer).data);
-        parser_pop(lexer);
-        ast_append(current, new);
+        else
+        {
+            char *value = lexer_peek(lexer).data;
+            if (strcmp(value, "while") == 0 || strcmp(value, "until") == 0
+                || strcmp(value, "for") == 0 || strcmp(value, "do") == 0)
+            {
+                free(value);
+                ast_free(current);
+                return NULL;
+            }
+            free(value);
+            struct ast_node *new = ast_node_word(lexer_peek(lexer).data);
+            parser_pop(lexer);
+            ast_append(current, new);
+        }
         struct ast_node *curr = element(lexer);
         while (curr != NULL)
         {

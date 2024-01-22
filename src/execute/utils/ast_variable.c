@@ -78,6 +78,16 @@ void set_variable(char *key, char *value)
     // hash_map_dump(variables);
 }
 
+char *get_environment_variable(char *key)
+{
+    char *value = hash_map_get(variables, key);
+    if (value == NULL)
+    {
+        return "";
+    }
+    return value;
+}
+
 /**
  * \brief Get a variable from the hash map.
  * \param key The key of the variable.
@@ -86,23 +96,16 @@ void set_variable(char *key, char *value)
 char *get_variable(char *key)
 {
     key++;
-    // gerer les variables envirovment
     for (int i = 0; environment[i].name[0] != '\0'; i++)
     {
+        //printf("key:%s\n", key);
         if (strcmp(key, environment[i].name) == 0)
         {
+            //printf("key:%s\n", key);
             return environment[i].fun(key);
         }
     }
-    char *value = hash_map_get(variables, key);
-    if (value == NULL)
-    {
-        // printf("key:%s\n", key);
-        return "";
-    }
-    // printf("value:%s$\n", value);
-    // printf("key:%s\n", key);
-    return value;
+    return get_environment_variable(key);
 }
 
 /**
