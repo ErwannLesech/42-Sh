@@ -73,6 +73,7 @@ bool first_char_check(struct lexer *lexer, char **current_word,
     else if (lexer->data[lexer->index] == '>'
              || lexer->data[lexer->index] == '<')
     {
+        free(*current_word);
         word = handle_redir(lexer, word_index);
     }
 
@@ -98,7 +99,6 @@ bool first_char_check(struct lexer *lexer, char **current_word,
     {
         return false;
     }
-
     *current_word = word;
 
     return true;

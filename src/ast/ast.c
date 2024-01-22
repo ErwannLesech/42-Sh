@@ -14,6 +14,7 @@ struct ast_node *ast_node_new(enum ast_type type)
 {
     struct ast_node *node = malloc(sizeof(struct ast_node));
     node->type = type;
+    node->value = NULL;
     node->children = NULL;
     node->children_count = 0;
     return node;
@@ -57,10 +58,10 @@ void ast_free(struct ast_node *node)
         }
         free(node->children);
     }
-    if (node->type == AST_WORD || node->type == AST_WORD_ASSIGNMENT
-        || node->type == AST_VARIABLE)
+    if (node->value)
         free(node->value);
     free(node);
+    node = NULL;
 }
 
 char *ast_type_to_string(enum ast_type type)
