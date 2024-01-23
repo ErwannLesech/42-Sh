@@ -111,7 +111,7 @@ bool check_subshell(struct lexer *lexer, char **word, unsigned *word_index)
     {
         return false;
     }
-    
+
     while (lexer->data[lexer->index] != '\0')
     {
         if (lexer->data[lexer->index] == '(')
@@ -130,7 +130,6 @@ bool check_subshell(struct lexer *lexer, char **word, unsigned *word_index)
         }
         else
         {
-            printf("%c\n", lexer->data[lexer->index]);
             subshell = realloc(subshell, sizeof(char) * (*word_index + 1));
             subshell[*word_index] = lexer->data[lexer->index];
             *word_index += 1;
