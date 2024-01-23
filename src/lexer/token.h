@@ -49,7 +49,8 @@ enum token_type
     
     // Internal values for lexer
     TOKEN_VARIABLE_VALUE, // =value
-    TOKEN_VARIABLE_AND_DOUBLE_QUOTE // $variable"
+    TOKEN_VARIABLE_AND_DOUBLE_QUOTE, // $variable"
+    TOKEN_SUB_AND_DOUBLE_QUOTE // $(command)"
 };
 
 /**

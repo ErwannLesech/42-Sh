@@ -238,7 +238,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 {
                     return NULL;
                 }
-                if (lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+                if (lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE ||
+                    lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
                 {
                     return word;
                 }
@@ -332,7 +333,8 @@ struct token parse_input_for_tok(struct lexer *lexer)
         return token;
     }
 
-    if (lexer->curr_tok.type == TOKEN_SUBSTITUTION)
+    if (lexer->curr_tok.type == TOKEN_SUBSTITUTION ||
+        lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
     {
         token.type = TOKEN_SUBSTITUTION;
         token.data = word;

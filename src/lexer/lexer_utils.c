@@ -204,7 +204,14 @@ bool handle_dollar(struct lexer *lexer, char **word, unsigned *word_index,
     {
         lexer->index += 1;
         *is_in_braces = true;
-        lexer->curr_tok.type = TOKEN_SUBSTITUTION;
+        if (lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE)
+        {
+            lexer->curr_tok.type = TOKEN_SUB_AND_DOUBLE_QUOTE;
+        }
+        else
+        {
+            lexer->curr_tok.type = TOKEN_SUBSTITUTION;
+        }
         return check_subshell(lexer, word, word_index);
     }
     char *curr_word = *word;

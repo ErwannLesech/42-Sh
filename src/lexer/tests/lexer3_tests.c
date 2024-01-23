@@ -457,7 +457,7 @@ Test(lexer3, variable_substitution)
     lexer_free(lexer);
 }
 
-/*Test(lexer3, command_substitution_double_quote)
+Test(lexer3, command_substitution_double_quote)
 {
     struct lexer *lexer = lexer_new("echo \"$(echo test)\"");
     struct token tok = lexer_pop(lexer);
@@ -471,4 +471,4 @@ Test(lexer3, variable_substitution)
     token_free(tok);
 
     lexer_free(lexer);
-}*/
+}
