@@ -424,3 +424,51 @@ Test(lexer3, command_substitution_simple)
 
     lexer_free(lexer);
 }
+
+Test(lexer3, command_substitution_simple2)
+{
+    struct lexer *lexer = lexer_new("echo $(echo $(echo test))");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_SUBSTITUTION, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "echo $(echo test)");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+Test(lexer3, variable_substitution)
+{
+    struct lexer *lexer = lexer_new("a=$(cat file)");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD_ASSIGNMENT);
+    cr_assert_str_eq(tok.data, "a");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_SUBSTITUTION, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "cat file");
+    token_free(tok);
+
+    lexer_free(lexer);
+}
+
+/*Test(lexer3, command_substitution_double_quote)
+{
+    struct lexer *lexer = lexer_new("echo \"$(echo test)\"");
+    struct token tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_WORD);
+    cr_assert_str_eq(tok.data, "echo");
+    token_free(tok);
+
+    tok = lexer_pop(lexer);
+    cr_assert_eq(tok.type, TOKEN_SUBSTITUTION, "got %d", tok.type);
+    cr_assert_str_eq(tok.data, "echo test");
+    token_free(tok);
+
+    lexer_free(lexer);
+}*/

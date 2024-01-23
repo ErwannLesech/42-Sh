@@ -116,11 +116,20 @@ bool check_subshell(struct lexer *lexer, char **word, unsigned *word_index)
     {
         if (lexer->data[lexer->index] == '(')
         {
+            subshell = realloc(subshell, sizeof(char) * (*word_index + 1));
+            subshell[*word_index] = lexer->data[lexer->index];
+            *word_index += 1;
             subshell_depth += 1; 
             lexer->index += 1;
         }
         else if (lexer->data[lexer->index] == ')')
-        {
+        {   
+            if (subshell_depth > 1)
+            {
+                subshell = realloc(subshell, sizeof(char) * (*word_index + 1));
+                subshell[*word_index] = lexer->data[lexer->index];
+                *word_index += 1;
+            }
             subshell_depth -= 1; 
             lexer->index += 1;
             if (subshell_depth == 0)
