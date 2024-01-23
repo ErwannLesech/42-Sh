@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 200112L
+
 /**
  * \file builtin.c
  * \brief Builtin functions.
@@ -8,6 +10,8 @@
 
 #include "builtin.h"
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int true_fun(struct ast_node *node)
@@ -116,5 +120,88 @@ DEFAULT:
     if (!no_newline)
         putchar('\n');
     fflush(stdout);
+    return 0;
+}
+
+extern char **environ;
+
+/**
+ * \brief Insert an environment variable in alphabetical order.
+ * \param env The environment variable to insert.
+ * \param insert_env The environment variable array.
+ * \return The environment variable array.
+*/
+char **insert_env(char *env, char **env_alpha, int env_count)
+{
+    int i = 0;
+    while (env_alpha[i] && strcmp(env, env_alpha[i]) > 0)
+    {
+        i++;
+    }
+    if (env_alpha[i])
+    {
+        char *tmp = env_alpha[i];
+        env_alpha[i] = env;
+        env_alpha = insert_env(tmp, env_alpha, env_count);
+    }
+    else
+    {
+        env_alpha[i] = env;
+    }
+    return env_alpha;
+}
+
+int export_fun(struct ast_node *node)
+{
+    if (node->children_count == 1 || !strcmp(node->children[1]->value, "-p"))
+    {
+        int env_count = 0;
+        char **save_environ = NULL;
+        for (size_t i = 0; environ[i]; i++)
+        {
+            env_count++;
+            save_environ = realloc(save_environ, sizeof(char *) * (env_count + 1));
+            save_environ[i] = environ[i];
+        }
+
+        char **environ_alpha = malloc(sizeof(char *) * (env_count + 1));
+        for (size_t i = 0; environ[i]; i++)
+        {
+            environ_alpha[i] = NULL;
+        }
+
+        for (int i = 0; i < env_count; i++)
+        {
+            environ = insert_env(save_environ[i], environ_alpha, env_count);
+        }
+        environ_alpha[env_count] = NULL;
+        for (size_t i = 0; environ_alpha[i]; i++)
+        {
+            char *var = strtok(environ_alpha[i], "=");
+            char *value = strtok(NULL, "\0");
+            printf("export %s=\"%s\"\n", var, value);
+        }
+        free(environ_alpha);
+        free(save_environ);
+        return 0;
+    }
+
+    if (node->children_count != 3)
+    {
+        fprintf(stderr, "export: too many arguments\n");
+        return 1;
+    }
+
+    char *var = node->children[1]->value;
+    char *value = node->children[2]->value;
+
+    if (setenv(var, value, 1) == -1)
+    {
+        fprintf(stderr, "export: setenv failed\n");
+        return 1;
+    }
+
+    printf("export %s=%s\n", var, getenv(var));
+
     return 0;
 }
