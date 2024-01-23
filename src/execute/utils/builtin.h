@@ -39,4 +39,11 @@ int false_fun(struct ast_node *node);
  */
 int export_fun(struct ast_node *node);
 
+/**
+ * \brief Cd builtin function and returns the exit status.
+ * \param node The AST node.
+ * \return The exit status.
+*/
+int cd_fun(struct ast_node *node);
+
 #endif /* BUILTIN_H */
