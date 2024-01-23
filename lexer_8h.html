@@ -100,14 +100,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="lexer_8h__dep__incl.png" border="0" usemap="#asrc_2lexer_2lexer_8hdep" alt=""/></div>
 <map name="asrc_2lexer_2lexer_8hdep" id="asrc_2lexer_2lexer_8hdep">
-<area shape="rect" title="Header of the lexer." alt="" coords="976,5,1100,32"/>
+<area shape="rect" title="Header of the lexer." alt="" coords="893,5,1017,32"/>
 <area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="5,169,172,211"/>
 <area shape="rect" href="lexer_8c.html" title="Lex the input." alt="" coords="811,87,934,114"/>
 <area shape="rect" href="lexer__utils_8c.html" title=" " alt="" coords="959,87,1117,114"/>
 <area shape="rect" href="lexer__utils2_8c.html" title=" " alt="" coords="1141,87,1308,114"/>
 <area shape="rect" href="lexer2__tests_8c.html" title="Tests the lexer functions." alt="" coords="1333,80,1490,121"/>
-<area shape="rect" href="lexer3__tests_8c.html" title=" " alt="" coords="1514,80,1671,121"/>
-<area shape="rect" href="lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="1695,80,1845,121"/>
+<area shape="rect" href="lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="1514,80,1663,121"/>
 <area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="196,177,285,203"/>
 <area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="644,87,787,114"/>
 <area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="728,177,895,203"/>
@@ -173,9 +172,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ae1e9d115e54937107038a898e63863ef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#ae1e9d115e54937107038a898e63863ef">check_variable_name_simulated</a> (const char *data, int index)</td></tr>
 <tr class="memdesc:ae1e9d115e54937107038a898e63863ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the current word is a valid variable name (simulated mode) meaning that pointers to the lexer and the word won't be modified.  <a href="lexer_8h.html#ae1e9d115e54937107038a898e63863ef">More...</a><br /></td></tr>
 <tr class="separator:ae1e9d115e54937107038a898e63863ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a198305ec70f33a0df242b723128c0dd9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a198305ec70f33a0df242b723128c0dd9">check_subshell</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char **word, unsigned *word_index)</td></tr>
-<tr class="memdesc:a198305ec70f33a0df242b723128c0dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the current word is a valid subshell.  <a href="lexer_8h.html#a198305ec70f33a0df242b723128c0dd9">More...</a><br /></td></tr>
-<tr class="separator:a198305ec70f33a0df242b723128c0dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0374bcee805ea8cc7bd66f20d50f9a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#ac0374bcee805ea8cc7bd66f20d50f9a7">handle_back_slash_in_double_quote</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char *word, unsigned *word_index)</td></tr>
 <tr class="memdesc:ac0374bcee805ea8cc7bd66f20d50f9a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle the backslash character in a double quote.  <a href="lexer_8h.html#ac0374bcee805ea8cc7bd66f20d50f9a7">More...</a><br /></td></tr>
 <tr class="separator:ac0374bcee805ea8cc7bd66f20d50f9a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,51 +231,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a198305ec70f33a0df242b723128c0dd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a198305ec70f33a0df242b723128c0dd9">&#9670;&nbsp;</a></span>check_subshell()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool check_subshell </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
-          <td class="paramname"><em>lexer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>word</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned *&#160;</td>
-          <td class="paramname"><em>word_index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check if the current word is a valid subshell. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">lexer</td><td>The lexer. </td></tr>
-    <tr><td class="paramname">word</td><td>The word to check </td></tr>
-    <tr><td class="paramname">word_index</td><td>The index of the word to check </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a word containing the subshell if it's a valid subshell, NULL otherwise </dd></dl>
 
 </div>
 </div>
@@ -627,7 +578,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>false if it's not correct, true otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The next word. </dd></dl>
 
 </div>
 </div>
