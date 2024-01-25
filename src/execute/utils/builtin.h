@@ -33,6 +33,17 @@ int true_fun(struct ast_node *node);
 int false_fun(struct ast_node *node);
 
 /**
+ * \brief Refactor the path.
+ * \param path The path to refactor.
+ * \param cd_builtin If the path is for the cd builtin.
+ * \param exit_status The exit status.
+ * \return The refactored path. If the return value is NULL,
+ * the path is invalid.(path == NULL then return 2 for cd builtin)
+ * \example "../test.sh" -> "/home/user/test.sh"
+*/
+char *refactor_path(char *path, bool cd_builtin, int *exit_status);
+
+/**
  * \brief Cd builtin function and returns the exit status.
  * \param node The AST node.
  * \return The exit status.
