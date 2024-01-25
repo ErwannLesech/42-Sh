@@ -37,7 +37,13 @@ int false_fun(struct ast_node *node);
  * \param node The AST node.
  * \return The exit status.
 */
-
 int cd_fun(struct ast_node *node);
+
+/**
+ * \brief Dot builtin function and returns the exit status.
+ * \param node The AST node.
+ * \return The exit status.
+*/
+int dot_fun(struct ast_node *node);
 
 #endif /* BUILTIN_H */

@@ -9,6 +9,7 @@
 #define _POSIX_C_SOURCE 200112L
 #define PATH_MAX 4096
 
+#include "ast_eval.h"
 #include "builtin.h"
 
 #include <stdio.h>
@@ -376,4 +377,87 @@ int cd_fun(struct ast_node *node)
 
     free(path);
     return 0;
+}
+
+int dot_fun(struct ast_node *node)
+{
+    if (node->children_count > 2)
+    {
+        fprintf(stderr, "dot: too many arguments\n");
+        return 1;
+    }
+    char *filename = NULL;
+    char *path = NULL;
+    // ./file
+    if (node->children_count == 1)
+    {
+        filename = handle_word(node->children[0]);
+        size_t filename_len = strlen(filename);
+        if (filename_len > 1 && filename[0] == '.' && filename[1] == '/')
+        {
+            path = malloc(sizeof(char) * (filename_len - 1));
+            for (size_t i = 0; i < filename_len - 1; i++)
+            {
+                path[i] = filename[i + 2];
+            }
+            path[filename_len - 2] = '\0';
+        }
+        else
+        {
+            fprintf(stderr, ". : utilisation : . nom_fichier [arguments]\n");
+            return 2;
+        }
+    }
+    // . file
+    else
+    {
+        filename = handle_word(node->children[0]);
+        if (strlen(filename) == 1 && filename[0] == '.')
+        {
+            
+            remove_node(node, 0);
+            --node->children_count;
+            node->children[0] = node->children[1];
+            filename = handle_word(node->children[0]);
+            path = malloc(sizeof(char) * (strlen(filename) + 1));
+            strcpy(path, filename);
+        }
+        else
+        {
+            return 2;
+        }
+    }
+    
+    char *PWD = getenv("PWD");
+    if (PWD == NULL)
+    {
+        PWD = "/";
+    }
+
+    filename = path;
+    path = malloc(strlen(PWD) + strlen(filename) + 2);
+    for (size_t i = 0; i < strlen(PWD); i++)
+    {
+        path[i] = PWD[i];
+    }
+    int j = 0;
+    if (PWD[strlen(PWD) - 1] != '/')
+    {
+        j++;
+        path[strlen(PWD)] = '/';
+    }
+
+    for (size_t i = 0; i < strlen(filename); i++)
+    {
+        path[strlen(PWD) + i + j] = filename[i];
+    }
+    path[strlen(PWD) + strlen(filename) + j] = '\0';
+    free(node->children[0]->value);
+    free(filename);
+
+    node->children[0]->value = path;
+    node->children[1] = NULL;
+    int return_val = exec_cmd(node);
+
+    return return_val;
 }

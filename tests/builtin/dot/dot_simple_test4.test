@@ -1,0 +1,1 @@
+echo 'tata' | base64; cd ..; . dot/test.sh; ./dot/test.sh
