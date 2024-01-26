@@ -25,6 +25,8 @@ struct exec_grammar
     int (*func)(struct ast_node *);
 };
 
+int exec_cmd(struct ast_node *node);
+
 /**
  * \brief Evaluate the given AST
  * \param node The AST to evaluate.
@@ -92,6 +94,13 @@ char *handle_word(struct ast_node *node);
 int ast_eval_function_def(struct ast_node *node);
 
 int redir_manager(struct ast_node *ast, int *save_fd, int *fd_dup);
+
+/**
+ * \brief Remove a node from the ast
+ * \param ast The ast
+ * \param index The index of the node to remove
+ */
+void remove_node(struct ast_node *ast, int index);
 
 /**
  * \brief Set variable

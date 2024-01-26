@@ -97,6 +97,59 @@ bool check_variable_name_simulated(const char *data, int index)
     return true;
 }
 
+bool check_subshell(struct lexer *lexer, char **word, unsigned *word_index)
+{   
+    char *subshell = *word;
+    int subshell_depth = 0;
+
+    if (lexer->data[lexer->index] == '(')
+    {
+        subshell_depth += 1; 
+        lexer->index += 1;
+    }
+    else
+    {
+        return false;
+    }
+
+    while (lexer->data[lexer->index] != '\0')
+    {
+        if (lexer->data[lexer->index] == '(')
+        {
+            subshell = realloc(subshell, sizeof(char) * (*word_index + 1));
+            subshell[*word_index] = lexer->data[lexer->index];
+            *word_index += 1;
+            subshell_depth += 1; 
+            lexer->index += 1;
+        }
+        else if (lexer->data[lexer->index] == ')')
+        {   
+            if (subshell_depth > 1)
+            {
+                subshell = realloc(subshell, sizeof(char) * (*word_index + 1));
+                subshell[*word_index] = lexer->data[lexer->index];
+                *word_index += 1;
+            }
+            subshell_depth -= 1; 
+            lexer->index += 1;
+            if (subshell_depth == 0)
+            {
+                return true;
+            }
+        }
+        else
+        {
+            subshell = realloc(subshell, sizeof(char) * (*word_index + 1));
+            subshell[*word_index] = lexer->data[lexer->index];
+            *word_index += 1;
+            lexer->index += 1;
+        }
+    }
+
+    return false;
+}
+
+
 void handle_back_slash_in_double_quote(struct lexer *lexer, char *word,
                                        unsigned *word_index)
 {
