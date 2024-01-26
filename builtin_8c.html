@@ -68,7 +68,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">builtin.c File Reference</div>  </div>
 </div><!--header-->
@@ -104,6 +105,8 @@ Include dependency graph for builtin.c:</div>
 Macros</h2></td></tr>
 <tr class="memitem:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a3024ccd4a9af5109d24e6c57565d74a1">_POSIX_C_SOURCE</a>&#160;&#160;&#160;200112L</td></tr>
 <tr class="separator:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a3024ccd4a9af5109d24e6c57565d74a1">_POSIX_C_SOURCE</a>&#160;&#160;&#160;200112L</td></tr>
+<tr class="separator:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae688d728e1acdfe5988c7db45d6f0166"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#ae688d728e1acdfe5988c7db45d6f0166">PATH_MAX</a>&#160;&#160;&#160;4096</td></tr>
 <tr class="separator:ae688d728e1acdfe5988c7db45d6f0166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -121,6 +124,14 @@ Functions</h2></td></tr>
 <tr class="memitem:abffc452d6b9d572f0df8554b1d7351ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#abffc452d6b9d572f0df8554b1d7351ca">echo_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:abffc452d6b9d572f0df8554b1d7351ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Echo builtin function and returns the exit status.  <a href="builtin_8c.html#abffc452d6b9d572f0df8554b1d7351ca">More...</a><br /></td></tr>
 <tr class="separator:abffc452d6b9d572f0df8554b1d7351ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a707b4fc13a2921bb895c7179768e69c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a707b4fc13a2921bb895c7179768e69c1">export_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
+<tr class="memdesc:a707b4fc13a2921bb895c7179768e69c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export builtin function and returns the exit status.  <a href="builtin_8c.html#a707b4fc13a2921bb895c7179768e69c1">More...</a><br /></td></tr>
+<tr class="separator:a707b4fc13a2921bb895c7179768e69c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a83b73d1ef0aaa1e331098148f855ab"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a1a83b73d1ef0aaa1e331098148f855ab">insert_env</a> (char *env, char **env_alpha, int env_count)</td></tr>
+<tr class="memdesc:a1a83b73d1ef0aaa1e331098148f855ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an environment variable in alphabetical order.  <a href="builtin_8c.html#a1a83b73d1ef0aaa1e331098148f855ab">More...</a><br /></td></tr>
+<tr class="separator:a1a83b73d1ef0aaa1e331098148f855ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a647bc5f2c58e9d646a7ed1033e3d7300"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a647bc5f2c58e9d646a7ed1033e3d7300">remove_at</a> (char **curpath, size_t index)</td></tr>
+<tr class="separator:a647bc5f2c58e9d646a7ed1033e3d7300"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ccabcf48ec69d3e488d88b225d05860"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a1ccabcf48ec69d3e488d88b225d05860">cd_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:a1ccabcf48ec69d3e488d88b225d05860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cd builtin function and returns the exit status.  <a href="builtin_8c.html#a1ccabcf48ec69d3e488d88b225d05860">More...</a><br /></td></tr>
 <tr class="separator:a1ccabcf48ec69d3e488d88b225d05860"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,6 +146,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a7164145b19d6b1bff0cc74ed340c20fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a7164145b19d6b1bff0cc74ed340c20fe">dot_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:a7164145b19d6b1bff0cc74ed340c20fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dot builtin function and returns the exit status.  <a href="builtin_8c.html#a7164145b19d6b1bff0cc74ed340c20fe">More...</a><br /></td></tr>
 <tr class="separator:a7164145b19d6b1bff0cc74ed340c20fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa006daaf11f1e2e45a6ababaf463212b"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#aa006daaf11f1e2e45a6ababaf463212b">environ</a></td></tr>
+<tr class="separator:aa006daaf11f1e2e45a6ababaf463212b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Builtin functions. </p>
@@ -143,7 +159,21 @@ Functions</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a3024ccd4a9af5109d24e6c57565d74a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3024ccd4a9af5109d24e6c57565d74a1">&#9670;&nbsp;</a></span>_POSIX_C_SOURCE</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3024ccd4a9af5109d24e6c57565d74a1">&#9670;&nbsp;</a></span>_POSIX_C_SOURCE <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _POSIX_C_SOURCE&#160;&#160;&#160;200112L</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3024ccd4a9af5109d24e6c57565d74a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3024ccd4a9af5109d24e6c57565d74a1">&#9670;&nbsp;</a></span>_POSIX_C_SOURCE <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -314,6 +344,33 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a707b4fc13a2921bb895c7179768e69c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a707b4fc13a2921bb895c7179768e69c1">&#9670;&nbsp;</a></span>export_fun()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int export_fun </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Export builtin function and returns the exit status. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status. </dd></dl>
+
+</div>
+</div>
 <a id="a007537cae5d53ffb4477ee3cc305117c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a007537cae5d53ffb4477ee3cc305117c">&#9670;&nbsp;</a></span>false_fun()</h2>
 
@@ -356,6 +413,50 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a83b73d1ef0aaa1e331098148f855ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a83b73d1ef0aaa1e331098148f855ab">&#9670;&nbsp;</a></span>insert_env()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char** insert_env </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>env</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>env_alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>env_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Insert an environment variable in alphabetical order. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">env</td><td>The environment variable to insert. </td></tr>
+    <tr><td class="paramname">insert_env</td><td>The environment variable array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The environment variable array. </dd></dl>
 
 </div>
 </div>
@@ -420,6 +521,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a647bc5f2c58e9d646a7ed1033e3d7300"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a647bc5f2c58e9d646a7ed1033e3d7300">&#9670;&nbsp;</a></span>remove_at()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char** remove_at </td>
+          <td>(</td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>curpath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae632901b7062689107e91b8122a63cc6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae632901b7062689107e91b8122a63cc6">&#9670;&nbsp;</a></span>true_fun()</h2>
 
@@ -444,6 +573,29 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aa006daaf11f1e2e45a6ababaf463212b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa006daaf11f1e2e45a6ababaf463212b">&#9670;&nbsp;</a></span>environ</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char** environ</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
