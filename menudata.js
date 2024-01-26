@@ -88,4 +88,5 @@ var menudata={children:[
 {text:"Enumerator",url:"globals_eval.html",children:[
 {text:"a",url:"globals_eval.html#index_a"},
 {text:"t",url:"globals_eval.html#index_t"}]},
-{text:"Macros",url:"globals_defs.html"}]}]}]}
+{text:"Macros",url:"globals_defs.html"}]}]},
+{text:"Examples",url:"examples.html"}]}

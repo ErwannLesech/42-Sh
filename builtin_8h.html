@@ -95,9 +95,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="builtin_8h__dep__incl.png" border="0" usemap="#asrc_2execute_2utils_2builtin_8hdep" alt=""/></div>
 <map name="asrc_2execute_2utils_2builtin_8hdep" id="asrc_2execute_2utils_2builtin_8hdep">
-<area shape="rect" title="Header of the builtin functions." alt="" coords="96,5,281,32"/>
-<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="5,80,172,107"/>
-<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="197,80,381,107"/>
+<area shape="rect" title="Header of the builtin functions." alt="" coords="196,5,381,32"/>
+<area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="5,87,172,114"/>
+<area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="197,87,381,114"/>
+<area shape="rect" href="builtin__path_8c.html" title=" " alt="" coords="405,80,578,121"/>
 </map>
 </div>
 </div>
@@ -114,9 +115,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a007537cae5d53ffb4477ee3cc305117c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8h.html#a007537cae5d53ffb4477ee3cc305117c">false_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:a007537cae5d53ffb4477ee3cc305117c"><td class="mdescLeft">&#160;</td><td class="mdescRight">False builtin function and returns the exit status.  <a href="builtin_8h.html#a007537cae5d53ffb4477ee3cc305117c">More...</a><br /></td></tr>
 <tr class="separator:a007537cae5d53ffb4477ee3cc305117c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b6bb1391854b4804eef871201fc396a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8h.html#a2b6bb1391854b4804eef871201fc396a">refactor_path</a> (char *path, bool cd_builtin, int *exit_status)</td></tr>
+<tr class="separator:a2b6bb1391854b4804eef871201fc396a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ccabcf48ec69d3e488d88b225d05860"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8h.html#a1ccabcf48ec69d3e488d88b225d05860">cd_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:a1ccabcf48ec69d3e488d88b225d05860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cd builtin function and returns the exit status.  <a href="builtin_8h.html#a1ccabcf48ec69d3e488d88b225d05860">More...</a><br /></td></tr>
 <tr class="separator:a1ccabcf48ec69d3e488d88b225d05860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7164145b19d6b1bff0cc74ed340c20fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8h.html#a7164145b19d6b1bff0cc74ed340c20fe">dot_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
+<tr class="memdesc:a7164145b19d6b1bff0cc74ed340c20fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dot builtin function and returns the exit status.  <a href="builtin_8h.html#a7164145b19d6b1bff0cc74ed340c20fe">More...</a><br /></td></tr>
+<tr class="separator:a7164145b19d6b1bff0cc74ed340c20fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header of the builtin functions. </p>
@@ -141,6 +147,33 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Cd builtin function and returns the exit status. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status. </dd></dl>
+
+</div>
+</div>
+<a id="a7164145b19d6b1bff0cc74ed340c20fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7164145b19d6b1bff0cc74ed340c20fe">&#9670;&nbsp;</a></span>dot_fun()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int dot_fun </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dot builtin function and returns the exit status. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>The AST node. </td></tr>
@@ -209,6 +242,40 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status. </dd></dl>
+
+</div>
+</div>
+<a id="a2b6bb1391854b4804eef871201fc396a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b6bb1391854b4804eef871201fc396a">&#9670;&nbsp;</a></span>refactor_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* refactor_path </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>cd_builtin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>exit_status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
