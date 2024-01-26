@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['get_5fenvironment_5fvariable_106',['get_environment_variable',['../ast__variable_8c.html#a9ee7719ef66bb04822ec5633519abadf',1,'get_environment_variable(char *key):&#160;ast_variable.c'],['../environment__variable_8h.html#a9ee7719ef66bb04822ec5633519abadf',1,'get_environment_variable(char *key):&#160;ast_variable.c']]],
-  ['get_5ffunction_107',['get_function',['../ast__eval_8h.html#accd7668bb768bca655e40270bc81e6df',1,'get_function(char *key):&#160;ast_functions.c'],['../ast__functions_8c.html#accd7668bb768bca655e40270bc81e6df',1,'get_function(char *key):&#160;ast_functions.c']]],
-  ['get_5fvariable_108',['get_variable',['../ast__variable_8c.html#ad4e3feacd3754c8402b9a37c5fdbb24e',1,'get_variable(char *key):&#160;ast_variable.c'],['../environment__variable_8h.html#ad4e3feacd3754c8402b9a37c5fdbb24e',1,'get_variable(char *key):&#160;ast_variable.c']]],
-  ['get_5fword_109',['get_word',['../lexer_8c.html#a45a6eab5fba2f945d03becf77985b64a',1,'get_word(struct lexer *lexer, bool *is_diactivated):&#160;lexer.c'],['../lexer_8h.html#a45a6eab5fba2f945d03becf77985b64a',1,'get_word(struct lexer *lexer, bool *is_diactivated):&#160;lexer.c']]]
+  ['get_5fenvironment_5fvariable_99',['get_environment_variable',['../ast__variable_8c.html#a9ee7719ef66bb04822ec5633519abadf',1,'get_environment_variable(char *key):&#160;ast_variable.c'],['../environment__variable_8h.html#a9ee7719ef66bb04822ec5633519abadf',1,'get_environment_variable(char *key):&#160;ast_variable.c']]],
+  ['get_5fvariable_100',['get_variable',['../ast__variable_8c.html#ad4e3feacd3754c8402b9a37c5fdbb24e',1,'get_variable(char *key):&#160;ast_variable.c'],['../environment__variable_8h.html#ad4e3feacd3754c8402b9a37c5fdbb24e',1,'get_variable(char *key):&#160;ast_variable.c']]],
+  ['get_5fword_101',['get_word',['../lexer_8c.html#a45a6eab5fba2f945d03becf77985b64a',1,'get_word(struct lexer *lexer, bool *is_diactivated):&#160;lexer.c'],['../lexer_8h.html#a45a6eab5fba2f945d03becf77985b64a',1,'get_word(struct lexer *lexer, bool *is_diactivated):&#160;lexer.c']]]
 ];

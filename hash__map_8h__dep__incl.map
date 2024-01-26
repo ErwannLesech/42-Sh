@@ -1,7 +1,6 @@
 <map id="src/execute/hash_map/hash_map.h" name="src/execute/hash_map/hash_map.h">
-<area shape="rect" id="node1" title="Header of the hash map." alt="" coords="288,5,455,47"/>
+<area shape="rect" id="node1" title="Header of the hash map." alt="" coords="196,5,363,47"/>
 <area shape="rect" id="node2" href="$hash_8c.html" title="Implement the hash function." alt="" coords="5,95,172,136"/>
 <area shape="rect" id="node3" href="$hash__map_8c.html" title="Implement the hash map." alt="" coords="196,95,363,136"/>
-<area shape="rect" id="node4" href="$ast__functions_8c.html" title=" " alt="" coords="387,95,539,136"/>
-<area shape="rect" id="node5" href="$ast__variable_8c.html" title="Handle variables." alt="" coords="563,95,715,136"/>
+<area shape="rect" id="node4" href="$ast__variable_8c.html" title="Handle variables." alt="" coords="387,95,539,136"/>
 </map>

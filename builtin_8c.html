@@ -77,22 +77,22 @@ $(function() {
 
 <p>Builtin functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="ast__eval_8h_source.html">ast_eval.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="builtin_8h_source.html">builtin.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="builtin_8h_source.html">builtin.h</a>&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="ast__eval_8h_source.html">ast_eval.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for builtin.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="builtin_8c__incl.png" border="0" usemap="#asrc_2execute_2utils_2builtin_8c" alt=""/></div>
 <map name="asrc_2execute_2utils_2builtin_8c" id="asrc_2execute_2utils_2builtin_8c">
 <area shape="rect" title="Builtin functions." alt="" coords="185,5,369,32"/>
+<area shape="rect" href="builtin_8h.html" title="Header of the builtin functions." alt="" coords="140,80,215,107"/>
 <area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="58,155,147,181"/>
 <area shape="rect" title=" " alt="" coords="141,379,208,405"/>
 <area shape="rect" title=" " alt="" coords="250,379,321,405"/>
-<area shape="rect" href="builtin_8h.html" title="Header of the builtin functions." alt="" coords="140,80,215,107"/>
 <area shape="rect" title=" " alt="" coords="341,80,411,107"/>
 <area shape="rect" title=" " alt="" coords="436,80,511,107"/>
 <area shape="rect" title=" " alt="" coords="5,379,88,405"/>
@@ -105,28 +105,20 @@ Include dependency graph for builtin.c:</div>
 Macros</h2></td></tr>
 <tr class="memitem:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a3024ccd4a9af5109d24e6c57565d74a1">_POSIX_C_SOURCE</a>&#160;&#160;&#160;200112L</td></tr>
 <tr class="separator:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a3024ccd4a9af5109d24e6c57565d74a1">_POSIX_C_SOURCE</a>&#160;&#160;&#160;200112L</td></tr>
-<tr class="separator:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae688d728e1acdfe5988c7db45d6f0166"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#ae688d728e1acdfe5988c7db45d6f0166">PATH_MAX</a>&#160;&#160;&#160;4096</td></tr>
 <tr class="separator:ae688d728e1acdfe5988c7db45d6f0166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af387edc567f179aec9a6c3092da93d6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#af387edc567f179aec9a6c3092da93d6b">true_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int c)</td></tr>
-<tr class="memdesc:af387edc567f179aec9a6c3092da93d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">True builtin function and returns the exit status.  <a href="builtin_8c.html#af387edc567f179aec9a6c3092da93d6b">More...</a><br /></td></tr>
-<tr class="separator:af387edc567f179aec9a6c3092da93d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04606a7875b2dc793d5b548cae09b525"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a04606a7875b2dc793d5b548cae09b525">false_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int c)</td></tr>
-<tr class="memdesc:a04606a7875b2dc793d5b548cae09b525"><td class="mdescLeft">&#160;</td><td class="mdescRight">False builtin function and returns the exit status.  <a href="builtin_8c.html#a04606a7875b2dc793d5b548cae09b525">More...</a><br /></td></tr>
-<tr class="separator:a04606a7875b2dc793d5b548cae09b525"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf8f92a2fae224a17cd4d9793f5797d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#aaf8f92a2fae224a17cd4d9793f5797d8">print_echo</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int enable_escapes, int j)</td></tr>
-<tr class="memdesc:aaf8f92a2fae224a17cd4d9793f5797d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the current working directory.  <a href="builtin_8c.html#aaf8f92a2fae224a17cd4d9793f5797d8">More...</a><br /></td></tr>
-<tr class="separator:aaf8f92a2fae224a17cd4d9793f5797d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9da7aec639b3577bf10d6de7d87d1a54"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a9da7aec639b3577bf10d6de7d87d1a54">echo_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int c)</td></tr>
-<tr class="memdesc:a9da7aec639b3577bf10d6de7d87d1a54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Echo builtin function and returns the exit status.  <a href="builtin_8c.html#a9da7aec639b3577bf10d6de7d87d1a54">More...</a><br /></td></tr>
-<tr class="separator:a9da7aec639b3577bf10d6de7d87d1a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a83b73d1ef0aaa1e331098148f855ab"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a1a83b73d1ef0aaa1e331098148f855ab">insert_env</a> (char *env, char **env_alpha, int env_count)</td></tr>
-<tr class="memdesc:a1a83b73d1ef0aaa1e331098148f855ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an environment variable in alphabetical order.  <a href="builtin_8c.html#a1a83b73d1ef0aaa1e331098148f855ab">More...</a><br /></td></tr>
-<tr class="separator:a1a83b73d1ef0aaa1e331098148f855ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae632901b7062689107e91b8122a63cc6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#ae632901b7062689107e91b8122a63cc6">true_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
+<tr class="memdesc:ae632901b7062689107e91b8122a63cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">True builtin function and returns the exit status.  <a href="builtin_8c.html#ae632901b7062689107e91b8122a63cc6">More...</a><br /></td></tr>
+<tr class="separator:ae632901b7062689107e91b8122a63cc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007537cae5d53ffb4477ee3cc305117c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a007537cae5d53ffb4477ee3cc305117c">false_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
+<tr class="memdesc:a007537cae5d53ffb4477ee3cc305117c"><td class="mdescLeft">&#160;</td><td class="mdescRight">False builtin function and returns the exit status.  <a href="builtin_8c.html#a007537cae5d53ffb4477ee3cc305117c">More...</a><br /></td></tr>
+<tr class="separator:a007537cae5d53ffb4477ee3cc305117c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abffc452d6b9d572f0df8554b1d7351ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#abffc452d6b9d572f0df8554b1d7351ca">echo_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
+<tr class="memdesc:abffc452d6b9d572f0df8554b1d7351ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Echo builtin function and returns the exit status.  <a href="builtin_8c.html#abffc452d6b9d572f0df8554b1d7351ca">More...</a><br /></td></tr>
+<tr class="separator:abffc452d6b9d572f0df8554b1d7351ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a707b4fc13a2921bb895c7179768e69c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8c.html#a707b4fc13a2921bb895c7179768e69c1">export_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:a707b4fc13a2921bb895c7179768e69c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export builtin function and returns the exit status.  <a href="builtin_8c.html#a707b4fc13a2921bb895c7179768e69c1">More...</a><br /></td></tr>
 <tr class="separator:a707b4fc13a2921bb895c7179768e69c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,21 +149,7 @@ Variables</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a3024ccd4a9af5109d24e6c57565d74a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3024ccd4a9af5109d24e6c57565d74a1">&#9670;&nbsp;</a></span>_POSIX_C_SOURCE <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define _POSIX_C_SOURCE&#160;&#160;&#160;200112L</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a3024ccd4a9af5109d24e6c57565d74a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3024ccd4a9af5109d24e6c57565d74a1">&#9670;&nbsp;</a></span>_POSIX_C_SOURCE <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3024ccd4a9af5109d24e6c57565d74a1">&#9670;&nbsp;</a></span>_POSIX_C_SOURCE</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,6 +201,8 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_8h-example.html#a8">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -312,11 +292,13 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_8h-example.html#a9">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin.h</a>.</dd>
+</dl>
 
 </div>
 </div>
-<a id="a9da7aec639b3577bf10d6de7d87d1a54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9da7aec639b3577bf10d6de7d87d1a54">&#9670;&nbsp;</a></span>echo_fun()</h2>
+<a id="abffc452d6b9d572f0df8554b1d7351ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abffc452d6b9d572f0df8554b1d7351ca">&#9670;&nbsp;</a></span>echo_fun()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -325,18 +307,8 @@ Variables</h2></td></tr>
           <td class="memname">int echo_fun </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>node</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>c</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -349,6 +321,8 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status of the last command 0 if success, 1 if error. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_8h-example.html#a2">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -376,11 +350,13 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_8h-example.html#a6">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin.h</a>.</dd>
+</dl>
 
 </div>
 </div>
-<a id="a04606a7875b2dc793d5b548cae09b525"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04606a7875b2dc793d5b548cae09b525">&#9670;&nbsp;</a></span>false_fun()</h2>
+<a id="a007537cae5d53ffb4477ee3cc305117c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a007537cae5d53ffb4477ee3cc305117c">&#9670;&nbsp;</a></span>false_fun()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -389,18 +365,8 @@ Variables</h2></td></tr>
           <td class="memname">int false_fun </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>node</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>c</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -413,6 +379,8 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_8h-example.html#a4">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin.h</a>.</dd>
+</dl>
 
 </div>
 </div>
@@ -434,50 +402,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a1a83b73d1ef0aaa1e331098148f855ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a83b73d1ef0aaa1e331098148f855ab">&#9670;&nbsp;</a></span>insert_env()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char** insert_env </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>env</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>env_alpha</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>env_count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Insert an environment variable in alphabetical order. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">env</td><td>The environment variable to insert. </td></tr>
-    <tr><td class="paramname">insert_env</td><td>The environment variable array. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The environment variable array. </dd></dl>
-
-</div>
-</div>
 <a id="a5450d897987e25e49d2b96c942b97ef5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5450d897987e25e49d2b96c942b97ef5">&#9670;&nbsp;</a></span>is_binary()</h2>
 
@@ -496,51 +420,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aaf8f92a2fae224a17cd4d9793f5797d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf8f92a2fae224a17cd4d9793f5797d8">&#9670;&nbsp;</a></span>print_echo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void print_echo </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>enable_escapes</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>j</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the current working directory. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command 0 if success, 1 if error. </dd></dl>
-
-</div>
-</div>
-<a id="af387edc567f179aec9a6c3092da93d6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af387edc567f179aec9a6c3092da93d6b">&#9670;&nbsp;</a></span>true_fun()</h2>
+<a id="ae632901b7062689107e91b8122a63cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae632901b7062689107e91b8122a63cc6">&#9670;&nbsp;</a></span>true_fun()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -549,18 +430,8 @@ Variables</h2></td></tr>
           <td class="memname">int true_fun </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>node</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>c</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -573,6 +444,8 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_8h-example.html#a3">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin.h</a>.</dd>
+</dl>
 
 </div>
 </div>

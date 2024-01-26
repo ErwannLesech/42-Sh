@@ -2,10 +2,10 @@
 <area shape="rect" id="node1" title="Evaluate the AST." alt="" coords="443,5,609,32"/>
 <area shape="rect" id="node2" href="$ast__eval_8h.html" title="Evaluate the AST." alt="" coords="55,155,144,181"/>
 <area shape="rect" id="node5" title=" " alt="" coords="338,379,405,405"/>
-<area shape="rect" id="node8" title=" " alt="" coords="460,155,531,181"/>
-<area shape="rect" id="node9" title=" " alt="" coords="599,80,687,107"/>
-<area shape="rect" id="node10" title=" " alt="" coords="711,80,786,107"/>
-<area shape="rect" id="node11" title=" " alt="" coords="810,80,898,107"/>
+<area shape="rect" id="node8" title=" " alt="" coords="599,80,687,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="460,155,531,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="711,80,799,107"/>
+<area shape="rect" id="node11" title=" " alt="" coords="823,80,898,107"/>
 <area shape="rect" id="node12" href="$parser_8h.html" title="Header for the parser." alt="" coords="325,80,444,107"/>
 <area shape="rect" id="node16" href="$builtin_8h.html" title="Header of the builtin functions." alt="" coords="185,80,291,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="130,379,213,405"/>
