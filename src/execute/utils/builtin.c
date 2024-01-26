@@ -276,7 +276,7 @@ int check_file(struct ast_node *node, char *first_arg, char *path)
         free(first_arg);
         node->children[0]->value = path;
         fclose(file);
-        return 1;
+        return 126;
     }
     fclose(file);
 
@@ -332,9 +332,12 @@ int dot_fun(struct ast_node *node)
     {
         return return_val;
     }
-    if (doted && check_file(node, first_arg, path) == 1)
+    
+    if (doted)
     {
-        return 1;
+        int r = check_file(node, first_arg, path);
+        if (r != 0)
+            return r;
     }
     if (!doted)
         free(path);
