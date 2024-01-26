@@ -155,20 +155,13 @@ int cd_fun(struct ast_node *node)
         curr_path = handle_word(node->children[1]);
         
         size_t len_cr = strlen(curr_path);
-        // If cd is called with only '~' or '~/' as argument
-        if (len_cr == 0 || (len_cr == 1 && curr_path[0] == '~'))
+        if (len_cr == 0)
         {
             curr_path = HOME;
         }
-        if (len_cr > 0 && curr_path[0] == '~')
-        {
-            char *tmp = malloc(sizeof(char) * (strlen(HOME) + len_cr));
-            strcpy(tmp, HOME);
-            strcat(tmp, curr_path + 1);
-            curr_path = tmp;
-            to_free = true;
-        }
+        
     }
+
     int return_val = 0;
     char *path = refactor_path(curr_path, true, &return_val);
     if (to_free)
@@ -196,85 +189,156 @@ int cd_fun(struct ast_node *node)
     return 0;
 }
 
-int dot_fun(struct ast_node *node)
+bool contains_char(char *str, char c)
 {
-    if (node->children_count > 2)
+    for (size_t i = 0; i < strlen(str); i++)
     {
-        fprintf(stderr, "dot: too many arguments\n");
+        if (str[i] == c)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+/**
+ * \brief Try to find if the first arg is an executable in the PATH.
+ * \param first_arg The first arg of the command.
+ * \return The path of the executable if found, NULL otherwise.
+ * \example "ls" -> "/bin/ls"
+ */
+char *find_executable(char *first_arg)
+{
+    char* PATH = getenv("PATH");
+    if (PATH == NULL)
+    {
+        fprintf(stderr, "PATH is not set\n");
+        return NULL;
+    }
+    bool found = false;
+    char* PATH_copy = malloc(sizeof(char) * (strlen(PATH) + 1));
+    strcpy(PATH_copy, PATH);
+    char* token = strtok(PATH_copy, ":");
+    while (token != NULL)
+    {
+        char* path = malloc(sizeof(char) * (strlen(token) + strlen(first_arg) + 2));
+        strcpy(path, token);
+        strcat(path, "/");
+        strcat(path, first_arg);
+        if (access(path, F_OK) == 0)
+        {
+            free(first_arg);
+            first_arg = path;
+            found = true;
+            break;
+        }
+        free(path);
+        token = strtok(NULL, ":");
+    }
+    free(PATH_copy);
+    if (!found)
+    {
+        fprintf(stderr, "%s: file not found\n", first_arg);
+        return NULL;
+    }
+    return first_arg;
+}
+
+int is_binary(FILE *fichier)
+{
+    int c;
+
+    while ((c = fgetc(fichier)) != EOF)
+    {
+        if (c < 0x20 && c != '\t' && c != '\n' && c != '\r')
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int check_file(struct ast_node *node, char *first_arg, char *path)
+{
+    if (access(path, R_OK) != 0)
+    {
+        fprintf(stderr, "%s: permission denied\n", path);
+        free(first_arg);
+        node->children[0]->value = path;
         return 1;
     }
-    char *filename = NULL;
-    char *path = NULL;
-    // ./file
-    if (node->children_count == 1)
+    FILE *file = fopen(path, "r");
+    if (is_binary(file))
     {
-        filename = handle_word(node->children[0]);
-        size_t filename_len = strlen(filename);
-        if (filename_len > 1 && filename[0] == '.' && filename[1] == '/')
-        {
-            path = malloc(sizeof(char) * (filename_len - 1));
-            for (size_t i = 0; i < filename_len - 1; i++)
-            {
-                path[i] = filename[i + 2];
-            }
-            path[filename_len - 2] = '\0';
-        }
-        else
+        fprintf(stderr, "%s: cannot execute binary file\n", path);
+
+        free(first_arg);
+        node->children[0]->value = path;
+        fclose(file);
+        return 1;
+    }
+    fclose(file);
+
+    free(first_arg);
+    node->children[0]->value = path;
+    return 0;
+}
+
+int dot_fun(struct ast_node *node)
+{
+    int return_val = 0;
+
+    char *first_arg = handle_word(node->children[0]);
+    bool doted = false;
+    // . file
+    if (node->children_count > 0 && strcmp(first_arg, ".") == 0)
+    {
+        if (node->children_count == 1)
         {
             fprintf(stderr, ". : utilisation : . nom_fichier [arguments]\n");
             return 2;
         }
-    }
-    // . file
-    else
-    {
-        filename = handle_word(node->children[0]);
-        if (strlen(filename) == 1 && filename[0] == '.')
+        
+        // Remove the first arg which is '.'
+        ast_free(node->children[0]);
+        for (int i = 0; i < node->children_count - 1; i++)
         {
-            
-            remove_node(node, 0);
-            --node->children_count;
-            node->children[0] = node->children[1];
-            filename = handle_word(node->children[0]);
-            path = malloc(sizeof(char) * (strlen(filename) + 1));
-            strcpy(path, filename);
+            node->children[i] = node->children[i + 1];
         }
-        else
-        {
-            return 2;
-        }
-    }
+        node->children_count--;
+        node->children = realloc(node->children, sizeof(struct ast_node *) * node->children_count);
+        first_arg = handle_word(node->children[0]);
     
-    char *PWD = getenv("PWD");
-    if (PWD == NULL)
-    {
-        PWD = "/";
-    }
+        if (first_arg == NULL)
+        {
+            return 1;
+        }
 
-    filename = path;
-    path = malloc(strlen(PWD) + strlen(filename) + 2);
-    for (size_t i = 0; i < strlen(PWD); i++)
-    {
-        path[i] = PWD[i];
+        if (!contains_char(first_arg, '/'))
+        {
+            first_arg = find_executable(first_arg);
+            if (first_arg == NULL)
+            {
+                return 1;
+            }
+        }
+        doted = true;
+        
     }
-    int j = 0;
-    if (PWD[strlen(PWD) - 1] != '/')
+    char *path = refactor_path(first_arg, false, &return_val);
+    
+    if (path == NULL)
     {
-        j++;
-        path[strlen(PWD)] = '/';
+        return return_val;
     }
-
-    for (size_t i = 0; i < strlen(filename); i++)
+    if (doted && check_file(node, first_arg, path) == 1)
     {
-        path[strlen(PWD) + i + j] = filename[i];
+        return 1;
     }
-    path[strlen(PWD) + strlen(filename) + j] = '\0';
-    free(node->children[0]->value);
-    free(filename);
-
-    node->children[0]->value = path;
-    node->children[1] = NULL;
-    int return_val = exec_cmd(node);
+    if (!doted)
+        free(path);
+    return_val = exec_cmd(node);
 
     return return_val;
 }

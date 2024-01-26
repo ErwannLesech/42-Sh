@@ -205,20 +205,32 @@ char **create_curr_path_array(char *path, size_t *curpath_len)
     return curpath;
 }
 
-char *refactor_path(char *curr_path, bool cd_builtin, int *exit_status)
+
+/**
+ * \brief Append the current path to the given path.
+ * \param curr_path The path to append.
+ * \param cd_builtin If the path is for the cd builtin.
+ * \param exit_status The exit status.
+ * \return The path. If the return value is NULL,
+ * the path is invalid.
+ * \example "test.sh" -> "/home/user/test.sh"
+*/
+char *append_pwd(char *curr_path, bool cd_builtin, int *exit_status)
 {
     char *OLDPWD = getenv("OLDPWD") == NULL ? "/" : getenv("OLDPWD");
     char *PWD = getenv("PWD") == NULL ? "/" : getenv("PWD");
-
-    // Current pwd is OLDPWD if cd is called with '-'
     size_t curr_path_len = strlen(curr_path);
+
     char *curr_pwd = PWD;
 
+    // Current pwd is OLDPWD if cd is called with '-'
     // Enable '-' for cd builtin
     if (cd_builtin)
     {
         curr_pwd = curr_path_len > 0 && curr_path[0] == '-' ? OLDPWD : PWD;
     }
+    
+
     char *path = strcpy(malloc(strlen(curr_pwd) + 1), curr_pwd);
 
     // Case where cd is called with '-'
@@ -251,6 +263,39 @@ char *refactor_path(char *curr_path, bool cd_builtin, int *exit_status)
         // Case where curr_path is starting by '/'
         path = realloc(path, strlen(curr_path) + 1);
         path = strcpy(path, curr_path);
+    }
+    return path;
+}
+
+char *refactor_path(char *curr_path, bool cd_builtin, int *exit_status)
+{
+    char *HOME = getenv("HOME") == NULL ? "/" : getenv("HOME");
+    
+
+    size_t curr_path_len = strlen(curr_path);
+    bool to_free = false;
+
+    // Handle the '~' in the path
+    if (curr_path_len > 0 && curr_path[0] == '~')
+    {
+        char *tmp = malloc(sizeof(char) * (strlen(HOME) + curr_path_len));
+        strcpy(tmp, HOME);
+        strcat(tmp, curr_path + 1);
+        curr_path = tmp;
+        to_free = true;
+        curr_path_len = strlen(curr_path);
+    }
+
+    char *path = append_pwd(curr_path, cd_builtin, exit_status);
+    if (path == NULL)
+    {
+        return NULL;
+    }
+
+    // Need to free curr_path if the curr_path starts with '~'
+    if (to_free)
+    {
+        free(curr_path);
     }
     
     // Path contains the PWD / OLDPWD + curr_path
