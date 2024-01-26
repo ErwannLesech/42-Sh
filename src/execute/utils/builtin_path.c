@@ -1,9 +1,9 @@
-#include "builtin.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+
+#include "builtin.h"
 
 /**
  * \brief Remove the i-th element of the array.
@@ -11,7 +11,7 @@
  * \param index The index of the element to remove.
  * \return The array of strings containing the current path.
  * \example ["home", "user", "Documents"] -> ["home", "Documents"]
-*/
+ */
 
 char **remove_at(char **curpath, size_t index)
 {
@@ -37,7 +37,7 @@ char **remove_at(char **curpath, size_t index)
     {
         curpath[i] = curpath[i + 1];
     }
-    curpath = realloc(curpath, sizeof(char*) * (curpath_len));
+    curpath = realloc(curpath, sizeof(char *) * (curpath_len));
     curpath[curpath_len - 1] = NULL;
 
     return curpath;
@@ -49,7 +49,7 @@ char **remove_at(char **curpath, size_t index)
  * \param curpath_len The length of the array.
  * \return The array of strings containing the current path.
  * \example ["home", "user", "Documents", ".."] -> ["home", "Documents"]
-*/
+ */
 
 char **remove_dotdot_from_array(char **curpath, size_t *curpath_len)
 {
@@ -59,7 +59,8 @@ char **remove_dotdot_from_array(char **curpath, size_t *curpath_len)
         if (strcmp(curpath[*curpath_len - 1], "..") == 0)
         {
             size_t to_remove = 0;
-            while (*curpath_len > 0 && strcmp(curpath[*curpath_len - 1], "..") == 0)
+            while (*curpath_len > 0
+                   && strcmp(curpath[*curpath_len - 1], "..") == 0)
             {
                 curpath = remove_at(curpath, *curpath_len - 1);
                 *curpath_len -= 1;
@@ -85,7 +86,7 @@ char **remove_dotdot_from_array(char **curpath, size_t *curpath_len)
     // If the path is empty
     if (*curpath_len == 0)
     {
-        curpath = realloc(curpath, sizeof(char*));
+        curpath = realloc(curpath, sizeof(char *));
         curpath[0] = malloc(sizeof(char));
         curpath[0][0] = '\0';
         // Adding one to the length because we will add a '/' at the end
@@ -94,7 +95,6 @@ char **remove_dotdot_from_array(char **curpath, size_t *curpath_len)
     return curpath;
 }
 
-
 /**
  * \brief Rebuild the path from the array of strings.
  * \param curpath The array of strings containing the current path.
@@ -102,10 +102,9 @@ char **remove_dotdot_from_array(char **curpath, size_t *curpath_len)
  * \param curpath_len The length of the array.
  * \return The path.
  * \example ["home", "user", "Documents"] -> /home/user/Documents
-*/
+ */
 char *rebuild_path_from_array(char **curpath, size_t curpath_len)
 {
-
     // Remove all the '..' from the path
     curpath = remove_dotdot_from_array(curpath, &curpath_len);
 
@@ -149,15 +148,14 @@ char *rebuild_path_from_array(char **curpath, size_t curpath_len)
 }
 
 /**
- * \brief Create an array of strings containing the current path without the '/'.
- * \param path The path to split.
- * \param curpath_len The length of the array.
- * \return The array of strings containing the current path.
- * \example /home/user/Documents -> ["home", "user", "Documents"]
-*/
+ * \brief Create an array of strings containing the current path without the
+ * '/'. \param path The path to split. \param curpath_len The length of the
+ * array. \return The array of strings containing the current path. \example
+ * /home/user/Documents -> ["home", "user", "Documents"]
+ */
 char **create_curr_path_array(char *path, size_t *curpath_len)
 {
-    char **curpath = malloc(sizeof(char*));
+    char **curpath = malloc(sizeof(char *));
     size_t path_len = strlen(path);
     size_t path_index = 0;
 
@@ -180,16 +178,17 @@ char **create_curr_path_array(char *path, size_t *curpath_len)
 
         while (path_index < path_len && path[path_index] != '/')
         {
-            curpath[*curpath_len] = realloc(curpath[*curpath_len], sizeof(char) * (components_index + 2));
+            curpath[*curpath_len] = realloc(
+                curpath[*curpath_len], sizeof(char) * (components_index + 2));
             curpath[*curpath_len][components_index] = path[path_index];
             curpath[*curpath_len][components_index + 1] = '\0';
             components_index++;
             path_index++;
         }
-        curpath = realloc(curpath, sizeof(char*) * (*curpath_len + 2));
+        curpath = realloc(curpath, sizeof(char *) * (*curpath_len + 2));
         *curpath_len += 1;
     }
-    curpath = realloc(curpath, sizeof(char*) * (*curpath_len + 1));
+    curpath = realloc(curpath, sizeof(char *) * (*curpath_len + 1));
     curpath[*curpath_len] = NULL;
 
     // Remove all the '.' from the path
@@ -205,7 +204,6 @@ char **create_curr_path_array(char *path, size_t *curpath_len)
     return curpath;
 }
 
-
 /**
  * \brief Append the current path to the given path.
  * \param curr_path The path to append.
@@ -214,7 +212,7 @@ char **create_curr_path_array(char *path, size_t *curpath_len)
  * \return The path. If the return value is NULL,
  * the path is invalid.
  * \example "test.sh" -> "/home/user/test.sh"
-*/
+ */
 char *append_pwd(char *curr_path, bool cd_builtin, int *exit_status)
 {
     char *OLDPWD = getenv("OLDPWD") == NULL ? "/" : getenv("OLDPWD");
@@ -229,7 +227,6 @@ char *append_pwd(char *curr_path, bool cd_builtin, int *exit_status)
     {
         curr_pwd = curr_path_len > 0 && curr_path[0] == '-' ? OLDPWD : PWD;
     }
-    
 
     char *path = strcpy(malloc(strlen(curr_pwd) + 1), curr_pwd);
 
@@ -270,7 +267,6 @@ char *append_pwd(char *curr_path, bool cd_builtin, int *exit_status)
 char *refactor_path(char *curr_path, bool cd_builtin, int *exit_status)
 {
     char *HOME = getenv("HOME") == NULL ? "/" : getenv("HOME");
-    
 
     size_t curr_path_len = strlen(curr_path);
     bool to_free = false;
@@ -297,7 +293,7 @@ char *refactor_path(char *curr_path, bool cd_builtin, int *exit_status)
     {
         free(curr_path);
     }
-    
+
     // Path contains the PWD / OLDPWD + curr_path
     if (access(path, F_OK) != 0)
     {

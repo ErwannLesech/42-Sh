@@ -141,8 +141,9 @@ bool check_variable_name_simulated(const char *data, int index);
  * \param lexer The lexer.
  * \param word The word to check
  * \param word_index The index of the word to check
- * \return a word containing the subshell if it's a valid subshell, NULL otherwise
-*/
+ * \return a word containing the subshell if it's a valid subshell, NULL
+ * otherwise
+ */
 bool check_subshell(struct lexer *lexer, char **word, unsigned *word_index);
 /**
  * \brief Handle the backslash character in a double quote.
@@ -160,7 +161,7 @@ void handle_back_slash_in_double_quote(struct lexer *lexer, char *word,
  * \param word The word.
  * \param word_index The index of the word.
  * \param is_in_braces A pointer to a boolean that will be set to true if the
- * word is in braces. 
+ * word is in braces.
  * \return false if it's not correct, true otherwise.
  */
 bool handle_dollar(struct lexer *lexer, char **word, unsigned *word_index,

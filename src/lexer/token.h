@@ -46,7 +46,7 @@ enum token_type
     TOKEN_OPEN_PAR, // (
     TOKEN_CLOSE_PAR, // )
     TOKEN_SUBSTITUTION, // $(command)
-    
+
     // Internal values for lexer
     TOKEN_VARIABLE_VALUE, // =value
     TOKEN_VARIABLE_AND_DOUBLE_QUOTE, // $variable"
