@@ -26,7 +26,6 @@ struct environment_function environment[] = {
     { .name = "*", .fun = star_fun },
     { .name = "?", .fun = quest_fun },
     { .name = "$", .fun = dollar_fun },
-    { .name = "number", .fun = number_fun },
     { .name = "#", .fun = sharp_fun },
     { .name = "RANDOM", .fun = random_fun },
     { .name = "UID", .fun = uid_fun },
@@ -64,8 +63,6 @@ void set_variable(char *key, char *value)
 {
     init_variables();
     bool updated;
-    // printf("key:%s\n", key);
-    // printf("value:%s\n", value);
     if (strlen(key) == 0 || strlen(value) == 0)
     {
         return;
@@ -96,12 +93,14 @@ char *get_environment_variable(char *key)
 char *get_variable(char *key)
 {
     key++;
+    if (is_number(key))
+    {
+        return number_fun(key);
+    }
     for (int i = 0; environment[i].name[0] != '\0'; i++)
     {
-        //printf("key:%s\n", key);
         if (strcmp(key, environment[i].name) == 0)
         {
-            //printf("key:%s\n", key);
             return environment[i].fun(key);
         }
     }
@@ -113,15 +112,15 @@ char *get_variable(char *key)
  * \param node The AST to evaluate.
  * \return The exit status of the last command 0 if success, 1 if error.
  */
-int ast_eval_assignment(struct ast_node *node)
+int ast_eval_assignment(struct ast_node *node, int c)
 {
-    char *key = node->children[0]->value;
-    if (node->children_count == 1)
+    char *key = node->children[c]->value;
+    if (node->children_count == c + 1)
     {
         set_variable(key, "");
         return 0;
     }
-    char *value = node->children[1]->value;
+    char *value = node->children[c + 1]->value;
     set_variable(key, value);
     return 0;
 }
@@ -135,6 +134,11 @@ char *handle_word(struct ast_node *node)
 {
     if (node->type == AST_WORD || node->type == AST_WORD_DOUBLE_QUOTE)
     {
+        if (get_function(node->value) != NULL)
+        {
+            //return get_function(node->value);
+            return "";
+        }
         return node->value;
     }
     else if (node->type == AST_VARIABLE)

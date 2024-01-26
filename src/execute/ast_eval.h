@@ -73,7 +73,7 @@ int ast_and_or(struct ast_node *node);
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
  */
-int ast_eval_assignment(struct ast_node *node);
+int ast_eval_assignment(struct ast_node *node, int c);
 
 /**
  * \brief Evaluate command from ast
@@ -88,6 +88,8 @@ int ast_command(struct ast_node *node);
  * \return The exit status of the last command.
  */
 char *handle_word(struct ast_node *node);
+
+int ast_eval_function_def(struct ast_node *node);
 
 int redir_manager(struct ast_node *ast, int *save_fd, int *fd_dup);
 
@@ -104,5 +106,9 @@ void set_variable(char *key, char *value);
  *
  */
 void free_variables();
+
+struct ast_node *get_function(char *key);
+
+void free_functions();
 
 #endif /* AST_EVAL_H */

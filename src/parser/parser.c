@@ -75,7 +75,7 @@ int parser_loop(struct lexer *lexer, bool pretty_print_enabled)
         {
             return 2;
         }
-        // print_ast(ast, 0);
+         print_ast(ast, 0);
         if (pretty_print_enabled)
         {
             print_ast(ast, 0);

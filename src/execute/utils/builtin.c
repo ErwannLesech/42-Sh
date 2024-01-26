@@ -10,18 +10,18 @@
 
 #include <string.h>
 
-int true_fun(struct ast_node *node)
+int true_fun(struct ast_node *node, int c)
 {
     fflush(stdout);
-    if (node == NULL)
+    if (node == NULL && c < 0)
         return 1;
     return 0;
 }
 
-int false_fun(struct ast_node *node)
+int false_fun(struct ast_node *node, int c)
 {
     fflush(stdout);
-    if (node == NULL)
+    if (node == NULL && c < 0)
         return 0;
     return 1;
 }
@@ -78,12 +78,12 @@ void print_echo(struct ast_node *node, int enable_escapes, int j)
  * \param node The AST node.
  * \return The exit status of the last command 0 if success, 1 if error.
  */
-int echo_fun(struct ast_node *node)
+int echo_fun(struct ast_node *node, int c)
 {
     int no_newline = 0;
     int enable_escapes = 0;
-    int j = 1;
-    for (int i = 1; i < node->children_count; i++)
+    int j = c;
+    for (int i = c; i < node->children_count; i++)
     {
         if (strlen(handle_word(node->children[i])) >= 1
             && handle_word(node->children[i])[0] == '-')

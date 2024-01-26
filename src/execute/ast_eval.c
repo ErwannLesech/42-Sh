@@ -27,7 +27,7 @@
 struct builtin_function
 {
     char *name;
-    int (*fun)(struct ast_node *);
+    int (*fun)(struct ast_node*, int);
 };
 
 /**
@@ -43,18 +43,18 @@ struct builtin_function builtin[] = { { .name = "echo", .fun = echo_fun },
  * \param node The AST to evaluate.
  * \return The exit status of the last command.
  */
-int exec_cmd(struct ast_node *node)
+int exec_cmd(struct ast_node *node, int c)
 {
-    int pid = fork();
+   int pid = fork();
     if (pid == 0)
     {
-        char **args = malloc(sizeof(char *) * (node->children_count + 1));
-        for (int i = 0; i < node->children_count; i++)
+        char **args = malloc(sizeof(char *) * (node->children_count + 1 - c));
+        for (int i = c; i < node->children_count; i++)
         {
             args[i] = handle_word(node->children[i]);
         }
-        args[node->children_count] = NULL;
-        if (execvp(node->children[0]->value, args) == -1)
+        args[node->children_count - c] = NULL;
+        if (execvp(handle_word(node->children[c]), args) == -1)
         {
             free(args);
             exit(127);
@@ -96,48 +96,32 @@ int ast_command(struct ast_node *node)
  */
 int ast_eval_simple_command(struct ast_node *node)
 {
-    int save_fd = -1;
-    int fd_dup = -1;
-    int fd_redir = redir_manager(node, &save_fd, &fd_dup);
-    if (fd_redir == -2)
+    int statut = 0;
+    for (int i = 0; i < node->children_count; i++)
     {
-        fprintf(stderr, "Wrong file descriptor\n");
-        return 2;
-    }
-    if (node->children[0]->type == AST_WORD_ASSIGNMENT)
-    {
-        int return_val = ast_eval_assignment(node);
-        if (fd_redir != -1)
+        if (node->children[i]->type == AST_FUNCDEC)
         {
-            dup2(save_fd, fd_dup);
-            close(save_fd);
-            close(fd_redir);
+            statut = ast_eval_function_def(node->children[i]);
+            i++;
         }
-        return return_val;
-    }
-    char *command = handle_word(node->children[0]);
-    for (size_t i = 0; i < 3; i++)
-    {
-        if (strcmp(command, builtin[i].name) == 0)
+        else if (node->children[i]->type == AST_WORD_ASSIGNMENT)
         {
-            int return_val = builtin[i].fun(node);
-            if (fd_redir != -1)
+            statut = ast_eval_assignment(node, i);
+            i++;
+        }
+        else 
+        {
+            for (size_t j = 0; j < sizeof(builtin) / sizeof(struct builtin_function); j++)
             {
-                dup2(save_fd, fd_dup);
-                close(save_fd);
-                close(fd_redir);
+                if (strcmp(node->children[i]->value, builtin[j].name) == 0)
+                {
+                    return builtin[j].fun(node, i + 1);
+                }
             }
-            return return_val;
+            return exec_cmd(node, i);
         }
     }
-    int return_val = exec_cmd(node);
-    if (fd_redir != -1)
-    {
-        dup2(save_fd, fd_dup);
-        close(save_fd);
-        close(fd_redir);
-    }
-    return return_val;
+    return statut;
 }
 
 /**

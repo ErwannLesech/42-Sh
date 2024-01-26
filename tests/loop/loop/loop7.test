@@ -1,0 +1,1 @@
+for i in {"arg1", "arg2"}; do echo $i; done

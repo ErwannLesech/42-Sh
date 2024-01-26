@@ -8,14 +8,61 @@
 #include <time.h>
 #include <unistd.h>
 
+char **args = NULL;
+
+void set_args(char * arg)
+{
+    if (args == NULL)
+    {
+        args = malloc(sizeof(char *) * 2);
+        args[0] = arg;
+        args[1] = NULL;
+    }
+    else
+    {
+        int i = 0;
+        while (args[i] != NULL)
+        {
+            i++;
+        }
+        args = realloc(args, sizeof(char *) * (i + 2));
+        args[i] = arg;
+        args[i + 1] = NULL;
+    }
+}
+
+void clear_args()
+{
+    if (args != NULL)
+    {
+        free(args);
+        args = NULL;
+    }
+}
+
 char *at_fun()
 {
-    return "";
+    char *at_str = malloc(sizeof(char) *1);
+    for (int i = 0; args[i] != NULL; i++)
+    {
+        at_str = realloc(at_str, sizeof(char) * (strlen(at_str) + strlen(args[i]) + 1));
+        strcat(at_str, args[i]);
+        strcat(at_str, " ");
+    }
+    return at_str;
+
 }
 
 char *star_fun()
 {
-    return "";
+    char *star_str = malloc(sizeof(char) *1);
+    for (int i = 0; args[i] != NULL; i++)
+    {
+        star_str = realloc(star_str, sizeof(char) * (strlen(star_str) + strlen(args[i]) + 1));
+        strcat(star_str, args[i]);
+        strcat(star_str, " ");
+    }
+    return star_str;
 }
 
 char *dollar_fun()
@@ -29,17 +76,42 @@ char *dollar_fun()
 
 char *quest_fun()
 {
-    return "";
+    return get_environment_variable("?");
 }
 
-char *number_fun()
+char *number_fun(char *key)
 {
+    if (args == NULL)
+    {
+        return "";
+    }
+    int num = atoi(key);
+    if (num < 0)
+    {
+        num = 0;
+    }
+    for (int i = 0; args[i] != NULL; i++)
+    {
+        if (i == num)
+        {
+            return args[i];
+        }
+    }
     return "";
 }
 
 char *sharp_fun()
 {
-    return "";
+    int number_of_args = 0;
+    for (int i = 0; args[i] != NULL; i++)
+    {
+        number_of_args++;
+    }
+    char *number_of_args_str = malloc(sizeof(char) * 20);
+    sprintf(number_of_args_str, "%d", number_of_args);
+    set_variable("#", number_of_args_str);
+    free(number_of_args_str);
+    return get_environment_variable("#");
 }
 
 char *random_fun()

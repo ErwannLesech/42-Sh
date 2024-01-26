@@ -43,3 +43,33 @@ struct ast_node *redirection(struct lexer *lexer)
     ast_free(current);
     return NULL;
 }
+
+struct ast_node *funcdec(struct lexer *lexer)
+{
+    if (parser_peek(lexer) == TOKEN_WORD)
+    {
+        struct ast_node *current = ast_node_new(AST_FUNCDEC);
+        ast_append(current, ast_node_word(lexer_peek(lexer).data));
+        parser_pop(lexer);
+        if (parser_peek(lexer) == TOKEN_OPEN_BRACES)
+        {
+            parser_pop(lexer);
+            if (parser_peek(lexer) == TOKEN_CLOSE_BRACES)
+            {
+                parser_pop(lexer);
+                while (parser_peek(lexer) == TOKEN_EOL)
+                {
+                    parser_pop(lexer);
+                }
+                struct ast_node *child = shell_command(lexer);
+                if (child != NULL)
+                {
+                    ast_append(current, child);
+                    return current;
+                }
+            }
+        }
+        ast_free(current);
+    }
+    return NULL;
+}

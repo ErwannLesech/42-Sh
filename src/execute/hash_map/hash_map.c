@@ -25,7 +25,7 @@ struct hash_map *hash_map_init(size_t size)
     return new;
 }
 
-bool hash_map_insert(struct hash_map *hash_map, char *key, char *value,
+bool hash_map_insert(struct hash_map *hash_map, char *key, void *value,
                      bool *updated)
 {
     if (hash_map == NULL || hash_map->size == 0)
@@ -106,10 +106,10 @@ void hash_map_dump(struct hash_map *hash_map)
             struct pair_list *index = hash_map->data[i];
             while (index->next != NULL)
             {
-                printf("%s: %s, ", index->key, index->value);
+                printf("%s: %s, ", index->key, (char *)index->value);
                 index = index->next;
             }
-            printf("%s: %s", index->key, index->value);
+            printf("%s: %s", index->key, (char *)index->value);
             printf("\n");
         }
     }

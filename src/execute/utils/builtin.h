@@ -16,20 +16,20 @@
  * \param node The AST node.
  * \return The exit status.
  */
-int echo_fun(struct ast_node *node);
+int echo_fun(struct ast_node *node, int c);
 
 /**
  * \brief True builtin function and returns the exit status.
  * \param node The AST node.
  * \return The exit status.
  */
-int true_fun(struct ast_node *node);
+int true_fun(struct ast_node *node, int c);
 
 /**
  * \brief False builtin function and returns the exit status.
  * \param node The AST node.
  * \return The exit status.
  */
-int false_fun(struct ast_node *node);
+int false_fun(struct ast_node *node, int c);
 
 #endif /* BUILTIN_H */

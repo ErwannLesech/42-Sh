@@ -19,7 +19,7 @@
 struct pair_list
 {
     char *key;
-    char *value;
+    void *value;
     struct pair_list *next;
 };
 
@@ -56,7 +56,7 @@ struct hash_map *hash_map_init(size_t size);
  * was updated.
  * \return True if the pair was inserted, false otherwise.
  */
-bool hash_map_insert(struct hash_map *hash_map, char *key, char *value,
+bool hash_map_insert(struct hash_map *hash_map, char *key, void *value,
                      bool *updated);
 
 /**
