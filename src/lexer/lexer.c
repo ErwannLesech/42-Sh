@@ -25,8 +25,7 @@ struct lex_match lex_match[] = {
     { ">>", TOKEN_REDIR },  { "<&", TOKEN_REDIR },  { ">&", TOKEN_REDIR },
     { "done", TOKEN_DONE }, { ">|", TOKEN_REDIR },  { "<>", TOKEN_REDIR },
     { "(", TOKEN_OPEN_PAR}, { ")", TOKEN_CLOSE_PAR},
-    { "{", TOKEN_OPEN_BRACES}, { "}", TOKEN_CLOSE_BRACES},
-    { "$(", TOKEN_SUBTITUTION}
+    { "{", TOKEN_OPEN_BRACES}, { "}", TOKEN_CLOSE_BRACES}
 };
 
 struct lexer *lexer_new(const char *input)
@@ -98,6 +97,15 @@ bool first_char_check(struct lexer *lexer, char **current_word,
             ++lexer->index;
         }
     }
+
+    // Handle (, ) return the token
+    else if (lexer->data[lexer->index] == '('
+             || lexer->data[lexer->index] == ')')
+    {
+        word[0] = lexer->data[lexer->index];
+        *word_index = 1;
+        ++lexer->index;
+    }
     else
     {
         return false;
@@ -147,9 +155,30 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                && lexer->data[lexer->index] != '>'
                && lexer->data[lexer->index] != '<'
                && lexer->data[lexer->index] != '|'
-               && lexer->data[lexer->index] != '&')
+               && lexer->data[lexer->index] != '&'
+               && lexer->data[lexer->index] != '('
+               && lexer->data[lexer->index] != ')')
         {
             word = append_end_of_word(word, word_index);
+            
+            // Handle the word assignement if it's contain '=' and it's not the
+            // first character
+
+            if (lexer->data[lexer->index] == '=' && word_index > 0
+                     && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE
+                     && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE
+                     && check_variable_assignement(word))
+            {
+                lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;
+                break;
+            }
+
+            else if (lexer->data[lexer->index] == '=' && word_index == 0
+                     && lexer->curr_tok.type == TOKEN_VARIABLE_VALUE)
+            {
+                lexer->index += 1;
+            }
+
             // Handle the variable
             if (lexer->data[lexer->index] == '$')
             {
@@ -172,23 +201,6 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 {
                     break;
                 }
-            }
-            // Handle the word assignement if it's contain '=' and it's not the
-            // first character
-
-            else if (lexer->data[lexer->index] == '=' && word_index > 0
-                     && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE
-                     && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE
-                     && check_variable_assignement(word))
-            {
-                lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;
-                break;
-            }
-
-            else if (lexer->data[lexer->index] == '=' && word_index == 0
-                     && lexer->curr_tok.type == TOKEN_VARIABLE_VALUE)
-            {
-                lexer->index += 1;
             }
             // Take next char and put it in the word
             word = realloc(word, sizeof(char) * (word_index + 1));
@@ -226,7 +238,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 {
                     return NULL;
                 }
-                if (lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+                if (lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE ||
+                    lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
                 {
                     return word;
                 }
@@ -317,6 +330,15 @@ struct token parse_input_for_tok(struct lexer *lexer)
         {
             lexer->curr_tok.type = TOKEN_EOL;
         }
+        return token;
+    }
+
+    if (lexer->curr_tok.type == TOKEN_SUBSTITUTION ||
+        lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
+    {
+        token.type = TOKEN_SUBSTITUTION;
+        token.data = word;
+        lexer->curr_tok.type = TOKEN_EOL;
         return token;
     }
 
