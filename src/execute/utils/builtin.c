@@ -9,6 +9,7 @@
 #define _POSIX_C_SOURCE 200112L
 #define PATH_MAX 4096
 
+#include "ast_eval.h"
 #include "builtin.h"
 
 #include <stdio.h>
@@ -125,29 +126,6 @@ DEFAULT:
     return 0;
 }
 
-char **remove_at(char **curpath, size_t index)
-{
-    size_t curpath_len = 0;
-    while (curpath[curpath_len] != NULL)
-    {
-        curpath_len++;
-    }
-    if (index >= curpath_len)
-    {
-        return curpath;
-    }
-    free(curpath[index]);
-    curpath[index] = NULL;
-
-    for (size_t i = index; i < curpath_len - 1; i++)
-    {
-        curpath[i] = curpath[i + 1];
-    }
-    curpath = realloc(curpath, sizeof(char*) * (curpath_len));
-    curpath[curpath_len - 1] = NULL;
-
-    return curpath;
-}
 
 int cd_fun(struct ast_node *node)
 {
@@ -156,224 +134,211 @@ int cd_fun(struct ast_node *node)
         fprintf(stderr, "cd: too many arguments\n");
         return 1;
     }
+
+    // Get env variables
     char *HOME = getenv("HOME");
-    char *OLDPWD = getenv("OLDPWD");
-    if (OLDPWD == NULL)
-    {
-        OLDPWD = "/";
-    }
     char *PWD = getenv("PWD");
     if (PWD == NULL)
     {
         PWD = "/";
     }
-    char *directory = NULL;
-    char *curr_path = NULL;
+
+    char *curr_path = handle_word(node->children[0]);
+    bool to_free = false;
+    // If cd is called without arguments
     if (node->children_count == 1)
     {
-        // Step1: The default behavior is implementation-defined and no further
-        // steps shall be taken.
-        if (!HOME)
-        {
-            directory = "~";
-        }
-        // Step2
-        else
-        {
-            directory = HOME;
-        }
-        curr_path = directory;
+        curr_path = HOME;
     }
     else
     {
-        directory = handle_word(node->children[1]);
+        curr_path = handle_word(node->children[1]);
         
-        size_t directory_len = strlen(directory);
-        // Step3
-        if (directory_len == 0)
+        size_t len_cr = strlen(curr_path);
+        if (len_cr == 0)
         {
             curr_path = HOME;
         }
-        else if (directory_len > 0 && directory[0] == '/')
-        {
-            // Go to step7
-            curr_path = directory;
-        }
-        // Step4
-        else if ((directory_len > 0 && directory[0] == '.')
-                 || (directory_len > 1 && strcmp(directory, "..") == 0))
-        {
-            // Go to step6
-            // Step6
-            curr_path = directory;
-        }
-        else
-            curr_path = directory;
+        
     }
-    // Step 7
-    size_t curr_path_len = strlen(curr_path);
 
-    char *path = NULL;
-    char *curr_pwd = curr_path_len > 0 && curr_path[0] == '-' ? OLDPWD : PWD;
-    path = strcpy(malloc(strlen(curr_pwd) + 1), curr_pwd);
-    if (curr_path_len > 0 && curr_path[0] == '-')
+    int return_val = 0;
+    char *path = refactor_path(curr_path, true, &return_val);
+    if (to_free)
     {
-        printf("%s\n", path);
-        fflush(stdout);
+        free(curr_path);
     }
-    else if (curr_path_len > 0 && curr_path[0] != '/')
+    if (path == NULL)
     {
-        if (PWD[strlen(PWD) - 1] != '/')
-        {
-            path = realloc(path, strlen(PWD) + 2);
-            path[strlen(PWD)] = '/';
-            path[strlen(PWD) + 1] = '\0';
-        }
-        path = realloc(path, strlen(path) + strlen(curr_path) + 1);
-        path = strcat(path, curr_path);
-    }
-    else
-    {
-        path = realloc(path, strlen(curr_path) + 1);
-        path = strcpy(path, curr_path);
+        return return_val;
     }
     
-    // Step8
-    char **curpath = malloc(sizeof(char*));
-    size_t path_len = strlen(path);
-    size_t i = 0;
-    size_t curpath_len = 0;
-    size_t h = 0;
-    //char *preceding_component = NULL;
-    while (i < path_len)
-    {
-        while (i < path_len && path[i] == '/')
-        {
-            i++;
-        }
-        h = 0;
-        curpath[curpath_len] = malloc(sizeof(char));
-        curpath[curpath_len][0] = '\0';
-        while (i < path_len && path[i] != '/')
-        {
-            curpath[curpath_len] = realloc(curpath[curpath_len], sizeof(char) * (h + 2));
-            curpath[curpath_len][h] = path[i];
-            curpath[curpath_len][h + 1] = '\0';
-            h++;
-            i++;
-        }
-        curpath = realloc(curpath, sizeof(char*) * (curpath_len + 2));
-        curpath_len++;
-    }
-    curpath = realloc(curpath, sizeof(char*) * (curpath_len + 1));
-    curpath[curpath_len] = NULL;
-    for (size_t k = 0; k < curpath_len; k++)
-    {
-        if (strcmp(curpath[k], ".") == 0)
-        {
-            curpath = remove_at(curpath, k);
-            curpath_len--;
-            k--;
-        }
-    }
-    free(path);
-    // Debug
-    /*
-    for (size_t k = 0; k < curpath_len; k++)
-    {
-        printf("%s\n", curpath[k]);
-    }*/
-
-    while (curpath_len > 0)
-    {
-        if (strcmp(curpath[curpath_len - 1], "..") == 0)
-        {
-            size_t to_remove = 0;
-            while (curpath_len > 0 && strcmp(curpath[curpath_len - 1], "..") == 0)
-            {
-                curpath = remove_at(curpath, curpath_len - 1);
-                curpath_len--;
-                to_remove++;
-            }
-            while (curpath_len > 0 && to_remove > 0)
-            {
-                curpath = remove_at(curpath, curpath_len - 1);
-                curpath_len--;
-                to_remove--;
-            }
-        }
-        else
-            curpath_len--;
-    }
-
-    while (curpath[curpath_len])
-    {
-        curpath_len++;
-    }
-    /*printf("curpath_len: %zu\n", curpath_len);
-    //Debug
-    for (size_t k = 0; k < curpath_len; k++)
-    {
-        printf("%s\n", curpath[k]); 
-    }*/
-
-    if (curpath_len == 0)
-    {
-        curpath = realloc(curpath, sizeof(char*));
-        curpath[0] = malloc(sizeof(char));
-        curpath[0][0] = '\0';
-        curpath_len++;
-    }
-
-    path = malloc(sizeof(char));
-    path[0] = '\0';
-    size_t j = 0;
-
-    for (size_t k = 0; k < curpath_len; k++)
-    {
-        path = realloc(path, j + strlen(curpath[k]) + 2);
-        path[j] = '/';
-        j++;
-        for (size_t l = 0; l < strlen(curpath[k]); l++)
-        {
-            path[j] = curpath[k][l];
-            j++;
-        }
-        if (k == curpath_len - 1)
-        {
-            path = realloc(path, j + 1);
-            path[j] = '\0';
-            break;
-        }
-    }
-    if (j > 0 && path[j - 1] == '/' && j > 1)
-    {
-        path = realloc(path, j);
-        path[j - 1] = '\0';
-        j--;
-    }
-    else
-    {
-        path = realloc(path, j + 1);
-        path[j] = '\0';
-    }
-
-    for (size_t k = 0; k < curpath_len; k++)
-    {
-        free(curpath[k]);
-    }
-    free(curpath);
-
+    // Change the current directory
     if (chdir(path) != 0)
     {
         fprintf(stderr, "cd: %s: No such file or directory\n", path);
         free(path);
         return 1;
     }
-    
+
+    // Update the env variables
     setenv("OLDPWD", PWD, 1);
     setenv("PWD", path, 1);
 
     free(path);
     return 0;
+}
+
+bool contains_char(char *str, char c)
+{
+    for (size_t i = 0; i < strlen(str); i++)
+    {
+        if (str[i] == c)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+/**
+ * \brief Try to find if the first arg is an executable in the PATH.
+ * \param first_arg The first arg of the command.
+ * \return The path of the executable if found, NULL otherwise.
+ * \example "ls" -> "/bin/ls"
+ */
+char *find_executable(char *first_arg)
+{
+    char* PATH = getenv("PATH");
+    if (PATH == NULL)
+    {
+        fprintf(stderr, "PATH is not set\n");
+        return NULL;
+    }
+    bool found = false;
+    char* PATH_copy = malloc(sizeof(char) * (strlen(PATH) + 1));
+    strcpy(PATH_copy, PATH);
+    char* token = strtok(PATH_copy, ":");
+    while (token != NULL)
+    {
+        char* path = malloc(sizeof(char) * (strlen(token) + strlen(first_arg) + 2));
+        strcpy(path, token);
+        strcat(path, "/");
+        strcat(path, first_arg);
+        if (access(path, F_OK) == 0)
+        {
+            free(first_arg);
+            first_arg = path;
+            found = true;
+            break;
+        }
+        free(path);
+        token = strtok(NULL, ":");
+    }
+    free(PATH_copy);
+    if (!found)
+    {
+        fprintf(stderr, "%s: file not found\n", first_arg);
+        return NULL;
+    }
+    return first_arg;
+}
+
+int is_binary(FILE *fichier)
+{
+    int c;
+
+    while ((c = fgetc(fichier)) != EOF)
+    {
+        if (c < 0x20 && c != '\t' && c != '\n' && c != '\r')
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int check_file(struct ast_node *node, char *first_arg, char *path)
+{
+    if (access(path, R_OK) != 0)
+    {
+        fprintf(stderr, "%s: permission denied\n", path);
+        free(first_arg);
+        node->children[0]->value = path;
+        return 1;
+    }
+    FILE *file = fopen(path, "r");
+    if (is_binary(file))
+    {
+        fprintf(stderr, "%s: cannot execute binary file\n", path);
+
+        free(first_arg);
+        node->children[0]->value = path;
+        fclose(file);
+        return 1;
+    }
+    fclose(file);
+
+    free(first_arg);
+    node->children[0]->value = path;
+    return 0;
+}
+
+int dot_fun(struct ast_node *node)
+{
+    int return_val = 0;
+
+    char *first_arg = handle_word(node->children[0]);
+    bool doted = false;
+    // . file
+    if (node->children_count > 0 && strcmp(first_arg, ".") == 0)
+    {
+        if (node->children_count == 1)
+        {
+            fprintf(stderr, ". : utilisation : . nom_fichier [arguments]\n");
+            return 2;
+        }
+        
+        // Remove the first arg which is '.'
+        ast_free(node->children[0]);
+        for (int i = 0; i < node->children_count - 1; i++)
+        {
+            node->children[i] = node->children[i + 1];
+        }
+        node->children_count--;
+        node->children = realloc(node->children, sizeof(struct ast_node *) * node->children_count);
+        first_arg = handle_word(node->children[0]);
+    
+        if (first_arg == NULL)
+        {
+            return 1;
+        }
+
+        if (!contains_char(first_arg, '/'))
+        {
+            first_arg = find_executable(first_arg);
+            if (first_arg == NULL)
+            {
+                return 1;
+            }
+        }
+        doted = true;
+        
+    }
+    char *path = refactor_path(first_arg, false, &return_val);
+    
+    if (path == NULL)
+    {
+        return return_val;
+    }
+    if (doted && check_file(node, first_arg, path) == 1)
+    {
+        return 1;
+    }
+    if (!doted)
+        free(path);
+    return_val = exec_cmd(node);
+
+    return return_val;
 }
