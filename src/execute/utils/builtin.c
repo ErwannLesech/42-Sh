@@ -128,7 +128,35 @@ DEFAULT:
     return 0;
 }
 
+// Export builtin part
+
 extern char **environ;
+
+/**
+ * \brief Insert an environment variable in alphabetical order.
+ * \param env The environment variable to insert.
+ * \param insert_env The environment variable array.
+ * \return The environment variable array.
+*/
+char **insert_env(char *env, char **env_alpha, int env_count)
+{
+    int i = 0;
+    while (env_alpha[i] && strcmp(env, env_alpha[i]) > 0)
+    {
+        i++;
+    }
+    if (env_alpha[i])
+    {
+        char *tmp = env_alpha[i];
+        env_alpha[i] = env;
+        env_alpha = insert_env(tmp, env_alpha, env_count);
+    }
+    else
+    {
+        env_alpha[i] = env;
+    }
+    return env_alpha;
+}
 
 int export_fun(struct ast_node *node)
 {
@@ -185,55 +213,7 @@ int export_fun(struct ast_node *node)
     return 0;
 }
 
-/**
- * \brief Insert an environment variable in alphabetical order.
- * \param env The environment variable to insert.
- * \param insert_env The environment variable array.
- * \return The environment variable array.
-*/
-char **insert_env(char *env, char **env_alpha, int env_count)
-{
-    int i = 0;
-    while (env_alpha[i] && strcmp(env, env_alpha[i]) > 0)
-    {
-        i++;
-    }
-    if (env_alpha[i])
-    {
-        char *tmp = env_alpha[i];
-        env_alpha[i] = env;
-        env_alpha = insert_env(tmp, env_alpha, env_count);
-    }
-    else
-    {
-        env_alpha[i] = env;
-    }
-    return env_alpha;
-}
-
-char **remove_at(char **curpath, size_t index)
-{
-    size_t curpath_len = 0;
-    while (curpath[curpath_len] != NULL)
-    {
-        curpath_len++;
-    }
-    if (index >= curpath_len)
-    {
-        return curpath;
-    }
-    free(curpath[index]);
-    curpath[index] = NULL;
-
-    for (size_t i = index; i < curpath_len - 1; i++)
-    {
-        curpath[i] = curpath[i + 1];
-    }
-    curpath = realloc(curpath, sizeof(char*) * (curpath_len));
-    curpath[curpath_len - 1] = NULL;
-
-    return curpath;
-}
+// Cd builtin part
 
 int cd_fun(struct ast_node *node)
 {
