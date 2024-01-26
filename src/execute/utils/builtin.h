@@ -33,6 +33,13 @@ int true_fun(struct ast_node *node);
 int false_fun(struct ast_node *node);
 
 /**
+ * \brief Export builtin function and returns the exit status.
+ * \param node The AST node.
+ * \return The exit status.
+ */
+int export_fun(struct ast_node *node);
+
+/**
  * \brief Refactor the path this handle the '.', '..' and '~' (and '-' for cd) in the path.
  * \param path The path to refactor.
  * \param cd_builtin If the path is for the cd builtin.
