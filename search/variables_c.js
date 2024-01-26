@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['value_459',['value',['../structast__node.html#ab7f3b882b6e9b6d351126d774058c263',1,'ast_node::value()'],['../structpair__list.html#af1d78f9ab4241f4b7d1e339fc1a64e26',1,'pair_list::value()']]],
-  ['variables_460',['variables',['../ast__variable_8c.html#a87db4b0d316863d95378db9f5346ddf2',1,'ast_variable.c']]]
+  ['type_481',['type',['../structast__node.html#abc7b267b982b6c5f4e4d6c87189b58e4',1,'ast_node::type()'],['../structlex__match.html#a80f2a084a5a7d097f4a477cb80b38088',1,'lex_match::type()'],['../structtoken.html#ab4178fc4879d84588a44b5ab5360089f',1,'token::type()']]]
 ];

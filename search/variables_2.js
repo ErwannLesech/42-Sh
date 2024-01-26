@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['data_438',['data',['../structhash__map.html#af7879175d1eacb8d23a09ecae30b89af',1,'hash_map::data()'],['../structlexer.html#a5a4523635589f5a9fabb63cc25730927',1,'lexer::data()'],['../structtoken.html#a47d951f58649b445f559200012fc681e',1,'token::data()']]]
+  ['children_457',['children',['../structast__node.html#a09ffd711be5056bec1d04f91e697cc73',1,'ast_node']]],
+  ['children_5fcount_458',['children_count',['../structast__node.html#a45e2eef43ea26e41d1b5a041eea736c6',1,'ast_node']]],
+  ['curr_5ftok_459',['curr_tok',['../structlexer.html#a5fdee5338120d6266d84ae788910f05d',1,'lexer']]]
 ];

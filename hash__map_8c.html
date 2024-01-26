@@ -100,9 +100,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac390852e11ca32e20a86a859895c3402"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structhash__map.html">hash_map</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#ac390852e11ca32e20a86a859895c3402">hash_map_init</a> (size_t size)</td></tr>
 <tr class="memdesc:ac390852e11ca32e20a86a859895c3402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a hash map.  <a href="hash__map_8c.html#ac390852e11ca32e20a86a859895c3402">More...</a><br /></td></tr>
 <tr class="separator:ac390852e11ca32e20a86a859895c3402"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7014bb449924e3dbadf3944db23eb485"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#a7014bb449924e3dbadf3944db23eb485">hash_map_insert</a> (struct <a class="el" href="structhash__map.html">hash_map</a> *<a class="el" href="structhash__map.html">hash_map</a>, char *key, char *value, bool *updated)</td></tr>
-<tr class="memdesc:a7014bb449924e3dbadf3944db23eb485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new pair in the hash map.  <a href="hash__map_8c.html#a7014bb449924e3dbadf3944db23eb485">More...</a><br /></td></tr>
-<tr class="separator:a7014bb449924e3dbadf3944db23eb485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10c380a81757da202121999ba50b0778"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#a10c380a81757da202121999ba50b0778">hash_map_insert</a> (struct <a class="el" href="structhash__map.html">hash_map</a> *<a class="el" href="structhash__map.html">hash_map</a>, char *key, void *value, bool *updated)</td></tr>
+<tr class="memdesc:a10c380a81757da202121999ba50b0778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert a new pair in the hash map.  <a href="hash__map_8c.html#a10c380a81757da202121999ba50b0778">More...</a><br /></td></tr>
+<tr class="separator:a10c380a81757da202121999ba50b0778"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c93b2c4b3360618d4e16c2b77474e63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash__map_8c.html#a4c93b2c4b3360618d4e16c2b77474e63">hash_map_free</a> (struct <a class="el" href="structhash__map.html">hash_map</a> *<a class="el" href="structhash__map.html">hash_map</a>)</td></tr>
 <tr class="memdesc:a4c93b2c4b3360618d4e16c2b77474e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a hash map.  <a href="hash__map_8c.html#a4c93b2c4b3360618d4e16c2b77474e63">More...</a><br /></td></tr>
 <tr class="separator:a4c93b2c4b3360618d4e16c2b77474e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,8 +239,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7014bb449924e3dbadf3944db23eb485"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7014bb449924e3dbadf3944db23eb485">&#9670;&nbsp;</a></span>hash_map_insert()</h2>
+<a id="a10c380a81757da202121999ba50b0778"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10c380a81757da202121999ba50b0778">&#9670;&nbsp;</a></span>hash_map_insert()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,7 +260,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
