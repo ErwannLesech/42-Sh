@@ -8,18 +8,6 @@
 
 #include "parser.h"
 
-struct ast_node *shell_command(struct lexer *lexer)
-{
-    struct ast_node *current = rule_if(lexer);
-    if (current == NULL)
-        current = rule_while(lexer);
-    if (current == NULL)
-        current = rule_until(lexer);
-    if (current == NULL)
-        current = rule_for(lexer);
-    return current;
-}
-
 struct ast_node *rule_if(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_CONDITION);
@@ -212,6 +200,68 @@ ERROR:
     return NULL;
 }
 
+void for_2(struct lexer *lexer, struct ast_node *current)
+{
+    parser_pop(lexer);
+    char *value = lexer_peek(lexer).data;
+    while ((parser_peek(lexer) == TOKEN_WORD
+            || parser_peek(lexer) == TOKEN_VARIABLE)
+           && strcmp(value, "do") != 0)
+    {
+        struct ast_node *condition = ast_node_new(AST_WORD);
+        condition->value = value;
+        ast_append(current, condition);
+        parser_pop(lexer);
+        value = lexer_peek(lexer).data;
+    }
+    free(value);
+}
+
+void eol(struct lexer *lexer)
+{
+    while (parser_peek(lexer) == TOKEN_EOL)
+    {
+        parser_pop(lexer);
+    }
+}
+
+void for_3(struct lexer *lexer, struct ast_node *current)
+{
+    char *value = lexer_peek(lexer).data;
+    struct ast_node *var = ast_node_new(AST_WORD);
+    var->value = value;
+    ast_append(current, var);
+    parser_pop(lexer);
+}
+
+struct ast_node *for_4(struct lexer *lexer, struct ast_node *current)
+{
+    char *value = lexer_peek(lexer).data;
+    if (strcmp(value, "do") == 0)
+    {
+        free(value);
+        parser_pop(lexer);
+        struct ast_node *response = compound_list(lexer);
+        if (response == NULL)
+        {
+            ast_free(current);
+            return NULL;
+        }
+        ast_append(current, response);
+        value = lexer_peek(lexer).data;
+
+        if (strcmp(value, "done") == 0)
+        {
+            free(value);
+            parser_pop(lexer);
+            return current;
+        }
+    }
+    free(value);
+    ast_free(current);
+    return NULL;
+}
+
 struct ast_node *rule_for(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_FOR);
@@ -227,38 +277,19 @@ struct ast_node *rule_for(struct lexer *lexer)
             {
                 goto ERROR;
             }
-            value = lexer_peek(lexer).data;
-            struct ast_node *var = ast_node_new(AST_WORD);
-            var->value = value;
-            ast_append(current, var);
-            parser_pop(lexer);
+            for_3(lexer, current);
             if (parser_peek(lexer) == TOKEN_SEMICOLON)
             {
                 goto END;
             }
 
-            while (parser_peek(lexer) == TOKEN_EOL)
-            {
-                parser_pop(lexer);
-            }
+            eol(lexer);
 
             value = lexer_peek(lexer).data;
             if (strcmp(value, "in") == 0)
             {
                 free(value);
-                parser_pop(lexer);
-                value = lexer_peek(lexer).data;
-                while ((parser_peek(lexer) == TOKEN_WORD
-                        || parser_peek(lexer) == TOKEN_VARIABLE)
-                       && strcmp(value, "do") != 0)
-                {
-                    struct ast_node *condition = ast_node_new(AST_WORD);
-                    condition->value = value;
-                    ast_append(current, condition);
-                    parser_pop(lexer);
-                    value = lexer_peek(lexer).data;
-                }
-                free(value);
+                for_2(lexer, current);
                 if (parser_peek(lexer) != TOKEN_SEMICOLON
                     && parser_peek(lexer) != TOKEN_EOL)
                 {
@@ -272,29 +303,8 @@ struct ast_node *rule_for(struct lexer *lexer)
             }
 
         END:
-            while (parser_peek(lexer) == TOKEN_EOL)
-            {
-                parser_pop(lexer);
-            }
-
-            value = lexer_peek(lexer).data;
-            if (strcmp(value, "do") == 0)
-            {
-                free(value);
-                parser_pop(lexer);
-                struct ast_node *response = compound_list(lexer);
-                if (response == NULL)
-                    goto ERROR;
-                ast_append(current, response);
-                value = lexer_peek(lexer).data;
-
-                if (strcmp(value, "done") == 0)
-                {
-                    free(value);
-                    parser_pop(lexer);
-                    return current;
-                }
-            }
+            eol(lexer);
+            return for_4(lexer, current);
         }
         free(value);
     }
