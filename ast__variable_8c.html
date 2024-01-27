@@ -136,8 +136,6 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a87db4b0d316863d95378db9f5346ddf2"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structhash__map.html">hash_map</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__variable_8c.html#a87db4b0d316863d95378db9f5346ddf2">variables</a> = NULL</td></tr>
 <tr class="separator:a87db4b0d316863d95378db9f5346ddf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a085696f7cab5a1f73352f62e16ea4429"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structenvironment__function.html">environment_function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ast__variable_8c.html#a085696f7cab5a1f73352f62e16ea4429">environment</a> []</td></tr>
-<tr class="separator:a085696f7cab5a1f73352f62e16ea4429"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handle variables. </p>
@@ -324,43 +322,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a085696f7cab5a1f73352f62e16ea4429"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a085696f7cab5a1f73352f62e16ea4429">&#9670;&nbsp;</a></span>environment</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structenvironment__function.html">environment_function</a> environment[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;@&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#a2dcbe7f5ef84dc1933509dc9249a3499">at_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;*&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#a87a2b56c4fcc3507136be63eff3d8fd0">star_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;?&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#aab96d23d884d0e8eaa47fa55361157c3">quest_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;$&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#a957284b1e43c438cc048cda2a526fc26">dollar_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;number&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#aed6fee6327234fe663079b39a301b83d">number_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;#&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#a561f1cce7afea932d2c0f9ccf66ccdc1">sharp_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;RANDOM&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#a40115d82897d5886d229034dd30d222e">random_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;UID&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#a821bc6dba65cb60e05b955e52a73f2c7">uid_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;OLDWPD&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#a5e6258824801268a1d5c184f103026cb">oldpwd_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;PWD&quot;</span>, .fun = <a class="code" href="environment__variable_8c.html#a385b5113feafe71c630e2b010dd1dd3b">pwd_fun</a> },</div>
-<div class="line">    { .name = <span class="stringliteral">&quot;&quot;</span> }</div>
-<div class="line">}</div>
-<div class="ttc" id="aenvironment__variable_8c_html_a2dcbe7f5ef84dc1933509dc9249a3499"><div class="ttname"><a href="environment__variable_8c.html#a2dcbe7f5ef84dc1933509dc9249a3499">at_fun</a></div><div class="ttdeci">char * at_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:11</div></div>
-<div class="ttc" id="aenvironment__variable_8c_html_a385b5113feafe71c630e2b010dd1dd3b"><div class="ttname"><a href="environment__variable_8c.html#a385b5113feafe71c630e2b010dd1dd3b">pwd_fun</a></div><div class="ttdeci">char * pwd_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:71</div></div>
-<div class="ttc" id="aenvironment__variable_8c_html_a40115d82897d5886d229034dd30d222e"><div class="ttname"><a href="environment__variable_8c.html#a40115d82897d5886d229034dd30d222e">random_fun</a></div><div class="ttdeci">char * random_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:45</div></div>
-<div class="ttc" id="aenvironment__variable_8c_html_a561f1cce7afea932d2c0f9ccf66ccdc1"><div class="ttname"><a href="environment__variable_8c.html#a561f1cce7afea932d2c0f9ccf66ccdc1">sharp_fun</a></div><div class="ttdeci">char * sharp_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:40</div></div>
-<div class="ttc" id="aenvironment__variable_8c_html_a5e6258824801268a1d5c184f103026cb"><div class="ttname"><a href="environment__variable_8c.html#a5e6258824801268a1d5c184f103026cb">oldpwd_fun</a></div><div class="ttdeci">char * oldpwd_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:66</div></div>
-<div class="ttc" id="aenvironment__variable_8c_html_a821bc6dba65cb60e05b955e52a73f2c7"><div class="ttname"><a href="environment__variable_8c.html#a821bc6dba65cb60e05b955e52a73f2c7">uid_fun</a></div><div class="ttdeci">char * uid_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:57</div></div>
-<div class="ttc" id="aenvironment__variable_8c_html_a87a2b56c4fcc3507136be63eff3d8fd0"><div class="ttname"><a href="environment__variable_8c.html#a87a2b56c4fcc3507136be63eff3d8fd0">star_fun</a></div><div class="ttdeci">char * star_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:16</div></div>
-<div class="ttc" id="aenvironment__variable_8c_html_a957284b1e43c438cc048cda2a526fc26"><div class="ttname"><a href="environment__variable_8c.html#a957284b1e43c438cc048cda2a526fc26">dollar_fun</a></div><div class="ttdeci">char * dollar_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:21</div></div>
-<div class="ttc" id="aenvironment__variable_8c_html_aab96d23d884d0e8eaa47fa55361157c3"><div class="ttname"><a href="environment__variable_8c.html#aab96d23d884d0e8eaa47fa55361157c3">quest_fun</a></div><div class="ttdeci">char * quest_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:30</div></div>
-<div class="ttc" id="aenvironment__variable_8c_html_aed6fee6327234fe663079b39a301b83d"><div class="ttname"><a href="environment__variable_8c.html#aed6fee6327234fe663079b39a301b83d">number_fun</a></div><div class="ttdeci">char * number_fun(void)</div><div class="ttdef"><b>Definition:</b> environment_variable.c:35</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a87db4b0d316863d95378db9f5346ddf2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a87db4b0d316863d95378db9f5346ddf2">&#9670;&nbsp;</a></span>variables</h2>
 
