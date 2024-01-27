@@ -21,7 +21,7 @@ struct environment_function
     char *(*fun)();
 };
 
-struct environment_function environment[] = {
+static struct environment_function environment[] = {
     { .name = "@", .fun = at_fun },
     { .name = "*", .fun = star_fun },
     { .name = "?", .fun = quest_fun },
