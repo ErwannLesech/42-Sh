@@ -150,36 +150,16 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
     if (!first_char_check(lexer, &word, &word_index))
     {
         // Handle the word
-        while (lexer->data[lexer->index] != ' '
-               && lexer->data[lexer->index] != '\0'
-               && lexer->data[lexer->index] != ';'
-               && lexer->data[lexer->index] != '\n'
-               && lexer->data[lexer->index] != '\t'
-               && lexer->data[lexer->index] != '>'
-               && lexer->data[lexer->index] != '<'
-               && lexer->data[lexer->index] != '|'
-               && lexer->data[lexer->index] != '&'
-               && lexer->data[lexer->index] != '('
-               && lexer->data[lexer->index] != ')')
+        while (word_separator_check(lexer))
         {
             word = append_end_of_word(word, word_index);
 
             // Handle the word assignement if it's contain '=' and it's not the
             // first character
 
-            if (lexer->data[lexer->index] == '=' && word_index > 0
-                && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE
-                && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE
-                && check_variable_assignement(word))
+            if (handle_egal(lexer, word, word_index))
             {
-                lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;
                 break;
-            }
-
-            else if (lexer->data[lexer->index] == '=' && word_index == 0
-                     && lexer->curr_tok.type == TOKEN_VARIABLE_VALUE)
-            {
-                lexer->index += 1;
             }
 
             // Handle the variable
@@ -206,15 +186,10 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 }
             }
             // Take next char and put it in the word
-            word = realloc(word, sizeof(char) * (word_index + 1));
-            word[word_index] = lexer->data[lexer->index];
-            ++word_index;
-            ++lexer->index;
+            append_char_to_word(lexer, &word, &word_index);
 
             // Handle the double quote
-            if (lexer->data[lexer->index - 1] == '\"'
-                || lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE
-                || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+            if (check_double_quote(lexer))
             {
                 // Handle the end of the double quote
                 if (word_index > 0 && lexer->data[lexer->index - 1] == '\"')
@@ -241,31 +216,16 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 {
                     return NULL;
                 }
-                if (lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE
-                    || lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
+
+                if (is_sub_or_var_and_double_quote(lexer))
                 {
                     return word;
                 }
             }
 
-            // Handle backslash
-            else if (lexer->data[lexer->index - 1] == '\\')
+            else if (NULL == hbsq(lexer, word, &word_index, is_diactivated))
             {
-                handle_backslash(lexer, is_diactivated, word, word_index);
-            }
-
-            // Handle simple quote
-            else if (lexer->data[lexer->index - 1] == '\'')
-            {
-                word = handle_simple_quote(lexer, is_diactivated, word,
-                                           &word_index);
-
-                // Missing closing simple quote
-                if (!word)
-                {
-                    return NULL;
-                }
-                lexer->index += 1;
+                return NULL;
             }
         }
     }
@@ -299,49 +259,10 @@ struct token parse_input_for_tok(struct lexer *lexer)
         return token;
     }
 
-    // Check if the word is a word_assignement (contains a '=') and if it's a
-    // variable name is valid
-    if (lexer->curr_tok.type == TOKEN_WORD_ASSIGNMENT
-        && check_variable_assignement(word))
+    // Check if the word is a special case
+    token = check_special_cases(lexer, word, token);
+    if (token.type != TOKEN_ERROR)
     {
-        token.type = TOKEN_WORD_ASSIGNMENT;
-        token.data = word;
-        // Usefull to have the next word token
-        lexer->curr_tok.type = TOKEN_VARIABLE_VALUE;
-        return token;
-    }
-
-    if (lexer->curr_tok.type == TOKEN_IONUMBER)
-    {
-        token.type = TOKEN_IONUMBER;
-        token.data = word;
-        lexer->curr_tok.type = TOKEN_EOL;
-        return token;
-    }
-
-    // Check if the word is a variable name
-    if (lexer->curr_tok.type == TOKEN_VARIABLE
-        || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
-    {
-        token.type = TOKEN_VARIABLE;
-        token.data = word;
-        if (lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
-        {
-            lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
-        }
-        else
-        {
-            lexer->curr_tok.type = TOKEN_EOL;
-        }
-        return token;
-    }
-
-    if (lexer->curr_tok.type == TOKEN_SUBSTITUTION
-        || lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
-    {
-        token.type = TOKEN_SUBSTITUTION;
-        token.data = word;
-        lexer->curr_tok.type = TOKEN_EOL;
         return token;
     }
 

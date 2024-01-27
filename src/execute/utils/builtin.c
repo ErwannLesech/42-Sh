@@ -346,7 +346,7 @@ int dot_fun(struct ast_node *node)
     {
         return return_val;
     }
-    
+
     if (doted)
     {
         int r = check_file(node, first_arg, path);

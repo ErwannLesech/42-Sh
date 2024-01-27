@@ -202,4 +202,65 @@ char *handle_redir(struct lexer *lexer, unsigned *word_index);
  */
 char *get_word(struct lexer *lexer, bool *is_diactivated);
 
+// clang_tidy functions
+
+/**
+ * \brief replace if of line 101 in check_variable_name
+ */
+enum token_type affect_curr_tok_type_var_name(struct lexer *lexer);
+
+/**
+ * \brief replace if of line 120 in check_variable_name
+ */
+bool not_valid_check_var(struct lexer *lexer, char **word, char *curr_word);
+
+/**
+ * \brief replace elif of line 140 in check_variable_name
+ */
+bool elif_check_var(struct lexer *lexer);
+
+/**
+ * \brief replace while of line 160 in check_variable_name
+ */
+bool while_check_var(struct lexer *lexer);
+
+/**
+ * \brief replace check cases in parse_input_for_tok
+ */
+struct token check_special_cases(struct lexer *lexer, char *word,
+                                 struct token token);
+
+/**
+ * \brief replace while separator condition of get_word
+ */
+bool word_separator_check(struct lexer *lexer);
+
+/**
+ * \brief replace egal handling of get_word
+ */
+bool handle_egal(struct lexer *lexer, char *word, unsigned word_index);
+
+/**
+ * \brief replace append char to word of get_word
+ */
+void append_char_to_word(struct lexer *lexer, char **word,
+                         unsigned *word_index);
+
+/**
+ * \brief replace backslash and simple quote handling of get_word
+ * handle backslash & single quote
+ */
+char *hbsq(struct lexer *lexer, char *word, unsigned *word_index,
+           bool *is_diactivated);
+
+/**
+ * \brief replace if double quote handling of get_word
+ */
+bool check_double_quote(struct lexer *lexer);
+
+/**
+ * \brief replace spacial curr_tok type handling of get_word
+ */
+bool is_sub_or_var_and_double_quote(struct lexer *lexer);
+
 #endif /* !LEXER_H */

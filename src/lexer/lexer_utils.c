@@ -98,15 +98,7 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
     char *curr_word = *word;
     *is_in_braces = false;
     // Handle variable in double quote
-    if (lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE
-        || lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
-    {
-        lexer->curr_tok.type = TOKEN_VARIABLE_AND_DOUBLE_QUOTE;
-    }
-    else
-    {
-        lexer->curr_tok.type = TOKEN_VARIABLE;
-    }
+    lexer->curr_tok.type = affect_curr_tok_type_var_name(lexer);
 
     // Check if it's a special variable (like $?, $*, $@, $# or $$)
     if (lexer->data[lexer->index] == '?' || lexer->data[lexer->index] == '*'
@@ -138,38 +130,18 @@ bool check_variable_name(struct lexer *lexer, char **word, unsigned *word_index,
     }
 
     // Classic variable name
-    else if (lexer->data[lexer->index] == '_'
-             || lexer->data[lexer->index] == '-'
-             || (lexer->data[lexer->index] >= 'a'
-                 && lexer->data[lexer->index] <= 'z')
-             || (lexer->data[lexer->index] >= 'A'
-                 && lexer->data[lexer->index] <= 'Z'))
+    else if (elif_check_var(lexer))
     {
         append_char_to_word(lexer, &curr_word, word_index);
     }
     // Not a valid variable name
     else
     {
-        if (lexer->curr_tok.type != TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
-        {
-            lexer->curr_tok.type = TOKEN_WORD;
-        }
-        else
-        {
-            lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
-        }
-        *word = curr_word;
-        return false;
+        return not_valid_check_var(lexer, word, curr_word);
     }
 
     // Check the rest of the variable name break
-    while (lexer->data[lexer->index] == '_' || lexer->data[lexer->index] == '-'
-           || (lexer->data[lexer->index] >= 'a'
-               && lexer->data[lexer->index] <= 'z')
-           || (lexer->data[lexer->index] >= 'A'
-               && lexer->data[lexer->index] <= 'Z')
-           || (lexer->data[lexer->index] >= '0'
-               && lexer->data[lexer->index] <= '9'))
+    while (while_check_var(lexer))
     {
         append_char_to_word(lexer, &curr_word, word_index);
     }
