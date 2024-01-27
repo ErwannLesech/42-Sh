@@ -167,8 +167,7 @@ struct ast_node *simple_command(struct lexer *lexer)
     }
     struct ast_node *variable = parse_variable(lexer);
     if (parser_peek(lexer) == TOKEN_WORD
-        || parser_peek(lexer) == TOKEN_WORD_DOUBLE_QUOTE
-        || variable != NULL)
+        || parser_peek(lexer) == TOKEN_WORD_DOUBLE_QUOTE || variable != NULL)
     {
         if (variable != NULL)
         {

@@ -16,16 +16,19 @@
 #include <string.h>
 
 struct lex_match lex_match[] = {
-    { "if", TOKEN_IF },     { "then", TOKEN_THEN }, { "elif", TOKEN_ELIF },
-    { "else", TOKEN_ELSE }, { "fi", TOKEN_FI },     { ";", TOKEN_SEMICOLON },
-    { "\n", TOKEN_EOL },    { "\0", TOKEN_EOF },
+    { "if", TOKEN_IF },         { "then", TOKEN_THEN },
+    { "elif", TOKEN_ELIF },     { "else", TOKEN_ELSE },
+    { "fi", TOKEN_FI },         { ";", TOKEN_SEMICOLON },
+    { "\n", TOKEN_EOL },        { "\0", TOKEN_EOF },
 
-    { "&&", TOKEN_AND },    { "||", TOKEN_OR },     { "|", TOKEN_PIPE },
-    { "!", TOKEN_NEGATE },  { "<", TOKEN_REDIR },   { ">", TOKEN_REDIR },
-    { ">>", TOKEN_REDIR },  { "<&", TOKEN_REDIR },  { ">&", TOKEN_REDIR },
-    { "done", TOKEN_DONE }, { ">|", TOKEN_REDIR },  { "<>", TOKEN_REDIR },
-    { "(", TOKEN_OPEN_PAR}, { ")", TOKEN_CLOSE_PAR},
-    { "{", TOKEN_OPEN_BRACES}, { "}", TOKEN_CLOSE_BRACES}
+    { "&&", TOKEN_AND },        { "||", TOKEN_OR },
+    { "|", TOKEN_PIPE },        { "!", TOKEN_NEGATE },
+    { "<", TOKEN_REDIR },       { ">", TOKEN_REDIR },
+    { ">>", TOKEN_REDIR },      { "<&", TOKEN_REDIR },
+    { ">&", TOKEN_REDIR },      { "done", TOKEN_DONE },
+    { ">|", TOKEN_REDIR },      { "<>", TOKEN_REDIR },
+    { "(", TOKEN_OPEN_PAR },    { ")", TOKEN_CLOSE_PAR },
+    { "{", TOKEN_OPEN_BRACES }, { "}", TOKEN_CLOSE_BRACES }
 };
 
 struct lexer *lexer_new(const char *input)
@@ -160,14 +163,14 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                && lexer->data[lexer->index] != ')')
         {
             word = append_end_of_word(word, word_index);
-            
+
             // Handle the word assignement if it's contain '=' and it's not the
             // first character
 
             if (lexer->data[lexer->index] == '=' && word_index > 0
-                     && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE
-                     && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE
-                     && check_variable_assignement(word))
+                && lexer->curr_tok.type != TOKEN_DOUBLE_QUOTE
+                && lexer->curr_tok.type != TOKEN_VARIABLE_VALUE
+                && check_variable_assignement(word))
             {
                 lexer->curr_tok.type = TOKEN_WORD_ASSIGNMENT;
                 break;
@@ -238,8 +241,8 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 {
                     return NULL;
                 }
-                if (lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE ||
-                    lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
+                if (lexer->curr_tok.type == TOKEN_VARIABLE_AND_DOUBLE_QUOTE
+                    || lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
                 {
                     return word;
                 }
@@ -333,8 +336,8 @@ struct token parse_input_for_tok(struct lexer *lexer)
         return token;
     }
 
-    if (lexer->curr_tok.type == TOKEN_SUBSTITUTION ||
-        lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
+    if (lexer->curr_tok.type == TOKEN_SUBSTITUTION
+        || lexer->curr_tok.type == TOKEN_SUB_AND_DOUBLE_QUOTE)
     {
         token.type = TOKEN_SUBSTITUTION;
         token.data = word;
@@ -390,6 +393,8 @@ struct token lexer_peek(struct lexer *lexer)
     struct token token = parse_input_for_tok(lexer);
     lexer->index = save_index;
     lexer->curr_tok = save_token;
+    /*free(token.data);
+    token.data = NULL;*/
     return token;
 }
 

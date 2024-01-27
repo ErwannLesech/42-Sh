@@ -7,12 +7,12 @@
  */
 
 #include <dirent.h>
+#include <err.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <err.h>
 
 #include "ast/ast.h"
 #include "ast_eval.h"
@@ -121,16 +121,15 @@ int case_directory(struct ast_node *node, int i)
     struct dirent *entry = readdir(dir);
     for (; entry != NULL; entry = readdir(dir))
     {
-        if (strcmp(entry->d_name, ".") == 0
-               || strcmp(entry->d_name, "..") == 0)
-                continue;
+        if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
+            continue;
         char str[1024];
-            strcpy(str, var);
-            if (var[strlen(var) - 1] != '/')
-                strcat(str, "/");
-            strcat(str, entry->d_name);
-            printf("%s\n", str);
-        }
+        strcpy(str, var);
+        if (var[strlen(var) - 1] != '/')
+            strcat(str, "/");
+        strcat(str, entry->d_name);
+        printf("%s\n", str);
+    }
     closedir(dir);
     return status;
 }

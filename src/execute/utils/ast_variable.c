@@ -98,10 +98,10 @@ char *get_variable(char *key)
     key++;
     for (int i = 0; environment[i].name[0] != '\0'; i++)
     {
-        //printf("key:%s\n", key);
+        // printf("key:%s\n", key);
         if (strcmp(key, environment[i].name) == 0)
         {
-            //printf("key:%s\n", key);
+            // printf("key:%s\n", key);
             return environment[i].fun(key);
         }
     }

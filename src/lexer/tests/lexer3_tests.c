@@ -12,7 +12,7 @@
 
 #include "lexer/lexer.h"
 
-TestSuite(lexer3, .timeout=20);
+TestSuite(lexer3, .timeout = 20);
 
 Test(lexer3, command_block_simple)
 {
@@ -258,7 +258,7 @@ Test(lexer3, function_simple)
     tok = lexer_pop(lexer);
     cr_assert_eq(tok.type, TOKEN_CLOSE_BRACES);
     cr_assert_str_eq(tok.data, "}");
-    token_free(tok);    
+    token_free(tok);
 
     lexer_free(lexer);
 }

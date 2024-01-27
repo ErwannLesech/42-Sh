@@ -48,7 +48,7 @@ char *random_fun()
     int random_number = rand();
     random_number %= 32768;
     char *random_number_str = malloc(sizeof(char) * 10);
-    sprintf(random_number_str, "%d", random_number);   
+    sprintf(random_number_str, "%d", random_number);
     set_variable("RANDOM", random_number_str);
     free(random_number_str);
     return get_environment_variable("RANDOM");

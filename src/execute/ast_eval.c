@@ -8,11 +8,11 @@
 
 #include "ast_eval.h"
 
+#include <fnmatch.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <fnmatch.h>
 
 #include "parser/parser.h"
 #include "utils/builtin.h"
@@ -40,7 +40,7 @@ struct builtin_function builtin[] = { { .name = "echo", .fun = echo_fun },
                                       { .name = "false", .fun = false_fun },
                                       { .name = "export", .fun = export_fun },
                                       { .name = "cd", .fun = cd_fun },
-                                      { .name = ".*", .fun = dot_fun} };
+                                      { .name = ".*", .fun = dot_fun } };
 
 /**
  * \brief Evaluate the while loop
