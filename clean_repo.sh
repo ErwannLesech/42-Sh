@@ -15,5 +15,6 @@ find . -name "*.a" -type f -delete
 find . -name "*.o" -type f -delete
 find . -name ".deps" -type d -exec rm -r {} +
 find . -name ".dirstamp" -type f -delete
+find . -name "*.gv" -type f -delete
 
 ./tests/testsuite.sh -clean
