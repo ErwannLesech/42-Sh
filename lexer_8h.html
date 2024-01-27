@@ -100,14 +100,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="lexer_8h__dep__incl.png" border="0" usemap="#asrc_2lexer_2lexer_8hdep" alt=""/></div>
 <map name="asrc_2lexer_2lexer_8hdep" id="asrc_2lexer_2lexer_8hdep">
-<area shape="rect" title="Header of the lexer." alt="" coords="976,5,1100,32"/>
+<area shape="rect" title="Header of the lexer." alt="" coords="1069,5,1193,32"/>
 <area shape="rect" href="exec__tests_8c.html" title="Tests the exec function." alt="" coords="5,169,172,211"/>
 <area shape="rect" href="lexer_8c.html" title="Lex the input." alt="" coords="811,87,934,114"/>
 <area shape="rect" href="lexer__utils_8c.html" title=" " alt="" coords="959,87,1117,114"/>
 <area shape="rect" href="lexer__utils2_8c.html" title=" " alt="" coords="1141,87,1308,114"/>
-<area shape="rect" href="lexer2__tests_8c.html" title="Tests the lexer functions." alt="" coords="1333,80,1490,121"/>
-<area shape="rect" href="lexer3__tests_8c.html" title=" " alt="" coords="1514,80,1671,121"/>
-<area shape="rect" href="lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="1695,80,1845,121"/>
+<area shape="rect" href="lexer__utils3_8c.html" title=" " alt="" coords="1332,87,1499,114"/>
+<area shape="rect" href="lexer2__tests_8c.html" title="Tests the lexer functions." alt="" coords="1523,80,1681,121"/>
+<area shape="rect" href="lexer3__tests_8c.html" title=" " alt="" coords="1705,80,1862,121"/>
+<area shape="rect" href="lexer__tests_8c.html" title="Tests the lexer functions." alt="" coords="1886,80,2035,121"/>
 <area shape="rect" href="main_8c.html" title="Main file of the project (entry point)" alt="" coords="196,177,285,203"/>
 <area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="644,87,787,114"/>
 <area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="728,177,895,203"/>
@@ -194,6 +195,39 @@ Functions</h2></td></tr>
 <tr class="memitem:a45a6eab5fba2f945d03becf77985b64a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a45a6eab5fba2f945d03becf77985b64a">get_word</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, bool *is_diactivated)</td></tr>
 <tr class="memdesc:a45a6eab5fba2f945d03becf77985b64a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next word in the input string.  <a href="lexer_8h.html#a45a6eab5fba2f945d03becf77985b64a">More...</a><br /></td></tr>
 <tr class="separator:a45a6eab5fba2f945d03becf77985b64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33323fcb74210868051c4e5c72ebf1c2"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d">token_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a33323fcb74210868051c4e5c72ebf1c2">affect_curr_tok_type_var_name</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="memdesc:a33323fcb74210868051c4e5c72ebf1c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace if of line 101 in check_variable_name  <a href="lexer_8h.html#a33323fcb74210868051c4e5c72ebf1c2">More...</a><br /></td></tr>
+<tr class="separator:a33323fcb74210868051c4e5c72ebf1c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7c0424ce789edbbaada470371f0bb82"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#aa7c0424ce789edbbaada470371f0bb82">not_valid_check_var</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char **word, char *curr_word)</td></tr>
+<tr class="memdesc:aa7c0424ce789edbbaada470371f0bb82"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace if of line 120 in check_variable_name  <a href="lexer_8h.html#aa7c0424ce789edbbaada470371f0bb82">More...</a><br /></td></tr>
+<tr class="separator:aa7c0424ce789edbbaada470371f0bb82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0739f99c66bc1bf881e3a01d7718255"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#af0739f99c66bc1bf881e3a01d7718255">elif_check_var</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="memdesc:af0739f99c66bc1bf881e3a01d7718255"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace elif of line 140 in check_variable_name  <a href="lexer_8h.html#af0739f99c66bc1bf881e3a01d7718255">More...</a><br /></td></tr>
+<tr class="separator:af0739f99c66bc1bf881e3a01d7718255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1977f6f4d7bb9e9b2d6de43aa2f32144"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a1977f6f4d7bb9e9b2d6de43aa2f32144">while_check_var</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="memdesc:a1977f6f4d7bb9e9b2d6de43aa2f32144"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace while of line 160 in check_variable_name  <a href="lexer_8h.html#a1977f6f4d7bb9e9b2d6de43aa2f32144">More...</a><br /></td></tr>
+<tr class="separator:a1977f6f4d7bb9e9b2d6de43aa2f32144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c1fcb28f4546abdfb04828297ff7b27"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtoken.html">token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a7c1fcb28f4546abdfb04828297ff7b27">check_special_cases</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char *word, struct <a class="el" href="structtoken.html">token</a> <a class="el" href="structtoken.html">token</a>)</td></tr>
+<tr class="memdesc:a7c1fcb28f4546abdfb04828297ff7b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace check cases in parse_input_for_tok  <a href="lexer_8h.html#a7c1fcb28f4546abdfb04828297ff7b27">More...</a><br /></td></tr>
+<tr class="separator:a7c1fcb28f4546abdfb04828297ff7b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43bdcfcbcc5102055188d6fd97274146"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a43bdcfcbcc5102055188d6fd97274146">word_separator_check</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="memdesc:a43bdcfcbcc5102055188d6fd97274146"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace while separator condition of get_word  <a href="lexer_8h.html#a43bdcfcbcc5102055188d6fd97274146">More...</a><br /></td></tr>
+<tr class="separator:a43bdcfcbcc5102055188d6fd97274146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c03e41d26135971b714c887f7df459"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#af6c03e41d26135971b714c887f7df459">handle_egal</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char *word, unsigned word_index)</td></tr>
+<tr class="memdesc:af6c03e41d26135971b714c887f7df459"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace egal handling of get_word  <a href="lexer_8h.html#af6c03e41d26135971b714c887f7df459">More...</a><br /></td></tr>
+<tr class="separator:af6c03e41d26135971b714c887f7df459"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a193938a6e9a18900e067c3ecbbcc8451"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a193938a6e9a18900e067c3ecbbcc8451">append_char_to_word</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char **word, unsigned *word_index)</td></tr>
+<tr class="memdesc:a193938a6e9a18900e067c3ecbbcc8451"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace append char to word of get_word  <a href="lexer_8h.html#a193938a6e9a18900e067c3ecbbcc8451">More...</a><br /></td></tr>
+<tr class="separator:a193938a6e9a18900e067c3ecbbcc8451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abed602ab95f9267f35f145076d4d9036"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#abed602ab95f9267f35f145076d4d9036">hbsq</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char *word, unsigned *word_index, bool *is_diactivated)</td></tr>
+<tr class="memdesc:abed602ab95f9267f35f145076d4d9036"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace backslash and simple quote handling of get_word handle backslash &amp; single quote  <a href="lexer_8h.html#abed602ab95f9267f35f145076d4d9036">More...</a><br /></td></tr>
+<tr class="separator:abed602ab95f9267f35f145076d4d9036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f3cf08f4b9fef901b68d54602b0df1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#a5f3cf08f4b9fef901b68d54602b0df1e">check_double_quote</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="memdesc:a5f3cf08f4b9fef901b68d54602b0df1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace if double quote handling of get_word  <a href="lexer_8h.html#a5f3cf08f4b9fef901b68d54602b0df1e">More...</a><br /></td></tr>
+<tr class="separator:a5f3cf08f4b9fef901b68d54602b0df1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4ae15fd5e534bac0ab0c9179fa2aeb9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer_8h.html#ae4ae15fd5e534bac0ab0c9179fa2aeb9">is_sub_or_var_and_double_quote</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="memdesc:ae4ae15fd5e534bac0ab0c9179fa2aeb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace spacial curr_tok type handling of get_word  <a href="lexer_8h.html#ae4ae15fd5e534bac0ab0c9179fa2aeb9">More...</a><br /></td></tr>
+<tr class="separator:ae4ae15fd5e534bac0ab0c9179fa2aeb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header of the lexer. </p>
@@ -201,6 +235,62 @@ Functions</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>12/01/2024 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a33323fcb74210868051c4e5c72ebf1c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33323fcb74210868051c4e5c72ebf1c2">&#9670;&nbsp;</a></span>affect_curr_tok_type_var_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="token_8h.html#afe5ef662303b6b710ea6ee1a944bad0d">token_type</a> affect_curr_tok_type_var_name </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace if of line 101 in check_variable_name </p>
+
+</div>
+</div>
+<a id="a193938a6e9a18900e067c3ecbbcc8451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a193938a6e9a18900e067c3ecbbcc8451">&#9670;&nbsp;</a></span>append_char_to_word()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void append_char_to_word </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>word_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace append char to word of get_word </p>
+
+</div>
+</div>
 <a id="af296f29342692afff7dbeed4f6c509c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af296f29342692afff7dbeed4f6c509c3">&#9670;&nbsp;</a></span>append_end_of_word()</h2>
 
@@ -235,6 +325,62 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a5f3cf08f4b9fef901b68d54602b0df1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f3cf08f4b9fef901b68d54602b0df1e">&#9670;&nbsp;</a></span>check_double_quote()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool check_double_quote </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace if double quote handling of get_word </p>
+
+</div>
+</div>
+<a id="a7c1fcb28f4546abdfb04828297ff7b27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c1fcb28f4546abdfb04828297ff7b27">&#9670;&nbsp;</a></span>check_special_cases()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtoken.html">token</a> check_special_cases </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structtoken.html">token</a>&#160;</td>
+          <td class="paramname"><em>token</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace check cases in parse_input_for_tok </p>
 
 </div>
 </div>
@@ -397,6 +543,26 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if it's a valid variable name, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="af0739f99c66bc1bf881e3a01d7718255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0739f99c66bc1bf881e3a01d7718255">&#9670;&nbsp;</a></span>elif_check_var()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool elif_check_var </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace elif of line 140 in check_variable_name </p>
 
 </div>
 </div>
@@ -683,6 +849,42 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="af6c03e41d26135971b714c887f7df459"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6c03e41d26135971b714c887f7df459">&#9670;&nbsp;</a></span>handle_egal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool handle_egal </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>word_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace egal handling of get_word </p>
+
+</div>
+</div>
 <a id="af434c41dd8cd364cf5e5770bfca1f406"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af434c41dd8cd364cf5e5770bfca1f406">&#9670;&nbsp;</a></span>handle_redir()</h2>
 
@@ -770,6 +972,68 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>false if a closing quote was not found, true otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="abed602ab95f9267f35f145076d4d9036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abed602ab95f9267f35f145076d4d9036">&#9670;&nbsp;</a></span>hbsq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* hbsq </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned *&#160;</td>
+          <td class="paramname"><em>word_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>is_diactivated</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace backslash and simple quote handling of get_word handle backslash &amp; single quote </p>
+
+</div>
+</div>
+<a id="ae4ae15fd5e534bac0ab0c9179fa2aeb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4ae15fd5e534bac0ab0c9179fa2aeb9">&#9670;&nbsp;</a></span>is_sub_or_var_and_double_quote()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool is_sub_or_var_and_double_quote </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace spacial curr_tok type handling of get_word </p>
 
 </div>
 </div>
@@ -880,6 +1144,42 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa7c0424ce789edbbaada470371f0bb82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7c0424ce789edbbaada470371f0bb82">&#9670;&nbsp;</a></span>not_valid_check_var()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool not_valid_check_var </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>curr_word</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace if of line 120 in check_variable_name </p>
+
+</div>
+</div>
 <a id="a45271734a4ec33b2f9937f096a8c6faa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45271734a4ec33b2f9937f096a8c6faa">&#9670;&nbsp;</a></span>parse_input_for_tok()</h2>
 
@@ -956,6 +1256,46 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a1977f6f4d7bb9e9b2d6de43aa2f32144"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1977f6f4d7bb9e9b2d6de43aa2f32144">&#9670;&nbsp;</a></span>while_check_var()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool while_check_var </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace while of line 160 in check_variable_name </p>
+
+</div>
+</div>
+<a id="a43bdcfcbcc5102055188d6fd97274146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43bdcfcbcc5102055188d6fd97274146">&#9670;&nbsp;</a></span>word_separator_check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool word_separator_check </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>replace while separator condition of get_word </p>
 
 </div>
 </div>
