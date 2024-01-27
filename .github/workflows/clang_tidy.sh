@@ -80,3 +80,5 @@ for header_file in $(find "$root_dir/src" -type f -name '*.h'); do
     # Check if the header file has a newline at the end
     test "$(tail -c 1 "$header_file" | wc -l)" -eq 0 && echo "no newline at EOF in file: $header_file"
 done
+
+exit 0
