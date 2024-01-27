@@ -8,18 +8,6 @@
 
 #include "parser.h"
 
-struct ast_node *shell_command(struct lexer *lexer)
-{
-    struct ast_node *current = rule_if(lexer);
-    if (current == NULL)
-        current = rule_while(lexer);
-    if (current == NULL)
-        current = rule_until(lexer);
-    if (current == NULL)
-        current = rule_for(lexer);
-    return current;
-}
-
 struct ast_node *rule_if(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_CONDITION);
@@ -246,6 +234,34 @@ void for_3(struct lexer *lexer, struct ast_node *current)
     parser_pop(lexer);
 }
 
+struct ast_node *for_4(struct lexer *lexer, struct ast_node *current)
+{
+    char *value = lexer_peek(lexer).data;
+    if (strcmp(value, "do") == 0)
+    {
+        free(value);
+        parser_pop(lexer);
+        struct ast_node *response = compound_list(lexer);
+        if (response == NULL)
+        {
+            ast_free(current);
+            return NULL;
+        }
+        ast_append(current, response);
+        value = lexer_peek(lexer).data;
+
+        if (strcmp(value, "done") == 0)
+        {
+            free(value);
+            parser_pop(lexer);
+            return current;
+        }
+    }
+    free(value);
+    ast_free(current);
+    return NULL;
+}
+
 struct ast_node *rule_for(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_FOR);
@@ -288,25 +304,7 @@ struct ast_node *rule_for(struct lexer *lexer)
 
         END:
             eol(lexer);
-
-            value = lexer_peek(lexer).data;
-            if (strcmp(value, "do") == 0)
-            {
-                free(value);
-                parser_pop(lexer);
-                struct ast_node *response = compound_list(lexer);
-                if (response == NULL)
-                    goto ERROR;
-                ast_append(current, response);
-                value = lexer_peek(lexer).data;
-
-                if (strcmp(value, "done") == 0)
-                {
-                    free(value);
-                    parser_pop(lexer);
-                    return current;
-                }
-            }
+            return for_4(lexer, current);
         }
         free(value);
     }
