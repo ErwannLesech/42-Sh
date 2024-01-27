@@ -1,0 +1,1 @@
+a=test.sh;b=lpdl; . ../dot/$a; ./$a; . $a; . ../dot/$b $a; . ../dot/$a $b
