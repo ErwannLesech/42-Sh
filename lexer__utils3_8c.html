@@ -101,9 +101,9 @@ Functions</h2></td></tr>
 <tr class="memitem:af6c03e41d26135971b714c887f7df459"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils3_8c.html#af6c03e41d26135971b714c887f7df459">handle_egal</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char *word, unsigned word_index)</td></tr>
 <tr class="memdesc:af6c03e41d26135971b714c887f7df459"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace egal handling of get_word  <a href="lexer__utils3_8c.html#af6c03e41d26135971b714c887f7df459">More...</a><br /></td></tr>
 <tr class="separator:af6c03e41d26135971b714c887f7df459"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abed602ab95f9267f35f145076d4d9036"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils3_8c.html#abed602ab95f9267f35f145076d4d9036">hbsq</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char *word, unsigned *word_index, bool *is_diactivated)</td></tr>
-<tr class="memdesc:abed602ab95f9267f35f145076d4d9036"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace backslash and simple quote handling of get_word handle backslash &amp; single quote  <a href="lexer__utils3_8c.html#abed602ab95f9267f35f145076d4d9036">More...</a><br /></td></tr>
-<tr class="separator:abed602ab95f9267f35f145076d4d9036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a995e78a7906692bcfd5fe189d9582a8d"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils3_8c.html#a995e78a7906692bcfd5fe189d9582a8d">hbsq</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>, char **word, unsigned *word_index, bool *is_diactivated)</td></tr>
+<tr class="memdesc:a995e78a7906692bcfd5fe189d9582a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace backslash and simple quote handling of get_word handle backslash &amp; single quote  <a href="lexer__utils3_8c.html#a995e78a7906692bcfd5fe189d9582a8d">More...</a><br /></td></tr>
+<tr class="separator:a995e78a7906692bcfd5fe189d9582a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f3cf08f4b9fef901b68d54602b0df1e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lexer__utils3_8c.html#a5f3cf08f4b9fef901b68d54602b0df1e">check_double_quote</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="memdesc:a5f3cf08f4b9fef901b68d54602b0df1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">replace if double quote handling of get_word  <a href="lexer__utils3_8c.html#a5f3cf08f4b9fef901b68d54602b0df1e">More...</a><br /></td></tr>
 <tr class="separator:a5f3cf08f4b9fef901b68d54602b0df1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,8 +204,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abed602ab95f9267f35f145076d4d9036"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abed602ab95f9267f35f145076d4d9036">&#9670;&nbsp;</a></span>hbsq()</h2>
+<a id="a995e78a7906692bcfd5fe189d9582a8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a995e78a7906692bcfd5fe189d9582a8d">&#9670;&nbsp;</a></span>hbsq()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,7 +219,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">char **&#160;</td>
           <td class="paramname"><em>word</em>, </td>
         </tr>
         <tr>
