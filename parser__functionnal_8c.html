@@ -97,6 +97,9 @@ Include dependency graph for parser_functionnal.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a0f47a7ffbc83a04a35f94ecdd6daefca"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser__functionnal_8c.html#a0f47a7ffbc83a04a35f94ecdd6daefca">shell_command</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
+<tr class="memdesc:a0f47a7ffbc83a04a35f94ecdd6daefca"><td class="mdescLeft">&#160;</td><td class="mdescRight">shell_command = rule_if ;  <a href="parser__functionnal_8c.html#a0f47a7ffbc83a04a35f94ecdd6daefca">More...</a><br /></td></tr>
+<tr class="separator:a0f47a7ffbc83a04a35f94ecdd6daefca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ac5fed7feb25ad4a06c8c2f1913ed08"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parser__functionnal_8c.html#a7ac5fed7feb25ad4a06c8c2f1913ed08">prefix</a> (struct <a class="el" href="structlexer.html">lexer</a> *<a class="el" href="structlexer.html">lexer</a>)</td></tr>
 <tr class="memdesc:a7ac5fed7feb25ad4a06c8c2f1913ed08"><td class="mdescLeft">&#160;</td><td class="mdescRight">redirection;  <a href="parser__functionnal_8c.html#a7ac5fed7feb25ad4a06c8c2f1913ed08">More...</a><br /></td></tr>
 <tr class="separator:a7ac5fed7feb25ad4a06c8c2f1913ed08"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,6 +157,33 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>redirection = [IONUMBER] ( '&gt;' | '&lt;' | '&gt;&gt;' | '&gt;&amp;' | '&lt;&amp;' | '&gt;|' | '&lt;&gt;' ) WORD ; </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lexer</td><td>The lexer to parse. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the AST. </dd></dl>
+
+</div>
+</div>
+<a id="a0f47a7ffbc83a04a35f94ecdd6daefca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f47a7ffbc83a04a35f94ecdd6daefca">&#9670;&nbsp;</a></span>shell_command()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structast__node.html">ast_node</a>* shell_command </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlexer.html">lexer</a> *&#160;</td>
+          <td class="paramname"><em>lexer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>shell_command = rule_if ; </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lexer</td><td>The lexer to parse. </td></tr>
