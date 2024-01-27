@@ -5,15 +5,15 @@ void set_variable(char *key, char *value);
 char *get_variable(char *key);
 char *get_environment_variable(char *key);
 
-char *at_fun();
-char *dollar_fun();
-char *star_fun();
-char *quest_fun();
-char *number_fun();
-char *sharp_fun();
-char *uid_fun();
-char *random_fun();
-char *oldpwd_fun();
-char *pwd_fun();
+char *at_fun(void);
+char *dollar_fun(void);
+char *star_fun(void);
+char *quest_fun(void);
+char *number_fun(void);
+char *sharp_fun(void);
+char *uid_fun(void);
+char *random_fun(void);
+char *oldpwd_fun(void);
+char *pwd_fun(void);
 
 #endif /* ! ENVIRONMENT_VARIABLE_H */

@@ -40,9 +40,17 @@ enum token_type
     TOKEN_WORD_ASSIGNMENT, // variable=
     TOKEN_VARIABLE, // $variable
 
+    // Step 3
+    TOKEN_OPEN_BRACES, // {
+    TOKEN_CLOSE_BRACES, // }
+    TOKEN_OPEN_PAR, // (
+    TOKEN_CLOSE_PAR, // )
+    TOKEN_SUBSTITUTION, // $(command)
+
     // Internal values for lexer
     TOKEN_VARIABLE_VALUE, // =value
-    TOKEN_VARIABLE_AND_DOUBLE_QUOTE // $variable"
+    TOKEN_VARIABLE_AND_DOUBLE_QUOTE, // $variable"
+    TOKEN_SUB_AND_DOUBLE_QUOTE // $(command)"
 };
 
 /**

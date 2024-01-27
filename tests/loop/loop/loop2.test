@@ -1,3 +1,3 @@
-for file in ../loop/*; do
+for file in ../loop_error/*; do
     echo $file
 done

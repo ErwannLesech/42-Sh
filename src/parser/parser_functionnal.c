@@ -8,6 +8,18 @@
 
 #include "parser.h"
 
+struct ast_node *shell_command(struct lexer *lexer)
+{
+    struct ast_node *current = rule_if(lexer);
+    if (current == NULL)
+        current = rule_while(lexer);
+    if (current == NULL)
+        current = rule_until(lexer);
+    if (current == NULL)
+        current = rule_for(lexer);
+    return current;
+}
+
 struct ast_node *prefix(struct lexer *lexer)
 {
     if (parser_peek(lexer) == TOKEN_WORD_ASSIGNMENT)
@@ -23,7 +35,6 @@ struct ast_node *prefix(struct lexer *lexer)
 struct ast_node *redirection(struct lexer *lexer)
 {
     struct ast_node *current = ast_node_new(AST_REDIRECTION);
-    current->value = NULL;
     if (parser_peek(lexer) == TOKEN_IONUMBER)
     {
         struct ast_node *io_number = ast_node_new(AST_IONUMBER);

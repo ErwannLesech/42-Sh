@@ -97,6 +97,58 @@ bool check_variable_name_simulated(const char *data, int index)
     return true;
 }
 
+bool check_subshell(struct lexer *lexer, char **word, unsigned *word_index)
+{
+    char *subshell = *word;
+    int subshell_depth = 0;
+
+    if (lexer->data[lexer->index] == '(')
+    {
+        subshell_depth += 1;
+        lexer->index += 1;
+    }
+    else
+    {
+        return false;
+    }
+
+    while (lexer->data[lexer->index] != '\0')
+    {
+        if (lexer->data[lexer->index] == '(')
+        {
+            subshell = realloc(subshell, sizeof(char) * (*word_index + 1));
+            subshell[*word_index] = lexer->data[lexer->index];
+            *word_index += 1;
+            subshell_depth += 1;
+            lexer->index += 1;
+        }
+        else if (lexer->data[lexer->index] == ')')
+        {
+            if (subshell_depth > 1)
+            {
+                subshell = realloc(subshell, sizeof(char) * (*word_index + 1));
+                subshell[*word_index] = lexer->data[lexer->index];
+                *word_index += 1;
+            }
+            subshell_depth -= 1;
+            lexer->index += 1;
+            if (subshell_depth == 0)
+            {
+                return true;
+            }
+        }
+        else
+        {
+            subshell = realloc(subshell, sizeof(char) * (*word_index + 1));
+            subshell[*word_index] = lexer->data[lexer->index];
+            *word_index += 1;
+            lexer->index += 1;
+        }
+    }
+
+    return false;
+}
+
 void handle_back_slash_in_double_quote(struct lexer *lexer, char *word,
                                        unsigned *word_index)
 {
@@ -120,4 +172,64 @@ void handle_back_slash_in_double_quote(struct lexer *lexer, char *word,
         word[*word_index] = '\\';
     }
     *word_index += 1;
+}
+
+enum token_type affect_curr_tok_type_var_name(struct lexer *lexer)
+{
+    if (lexer->curr_tok.type == TOKEN_DOUBLE_QUOTE)
+    {
+        return TOKEN_VARIABLE_AND_DOUBLE_QUOTE;
+    }
+    else
+    {
+        return TOKEN_VARIABLE;
+    }
+}
+
+bool elif_check_var(struct lexer *lexer)
+{
+    if (lexer->data[lexer->index] == '_' || lexer->data[lexer->index] == '-'
+        || (lexer->data[lexer->index] >= 'a'
+            && lexer->data[lexer->index] <= 'z')
+        || (lexer->data[lexer->index] >= 'A'
+            && lexer->data[lexer->index] <= 'Z'))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool while_check_var(struct lexer *lexer)
+{
+    if (lexer->data[lexer->index] == '_' || lexer->data[lexer->index] == '-'
+        || (lexer->data[lexer->index] >= 'a'
+            && lexer->data[lexer->index] <= 'z')
+        || (lexer->data[lexer->index] >= 'A'
+            && lexer->data[lexer->index] <= 'Z')
+        || (lexer->data[lexer->index] >= '0'
+            && lexer->data[lexer->index] <= '9'))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool not_valid_check_var(struct lexer *lexer, char **word, char *curr_word)
+{
+    if (lexer->curr_tok.type != TOKEN_VARIABLE_AND_DOUBLE_QUOTE)
+    {
+        lexer->curr_tok.type = TOKEN_WORD;
+    }
+    else
+    {
+        lexer->curr_tok.type = TOKEN_DOUBLE_QUOTE;
+    }
+    *word = curr_word;
+    return false;
 }

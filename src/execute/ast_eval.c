@@ -8,6 +8,7 @@
 
 #include "ast_eval.h"
 
+#include <fnmatch.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/wait.h>
@@ -36,7 +37,10 @@ struct builtin_function
  */
 struct builtin_function builtin[] = { { .name = "echo", .fun = echo_fun },
                                       { .name = "true", .fun = true_fun },
-                                      { .name = "false", .fun = false_fun } };
+                                      { .name = "false", .fun = false_fun },
+                                      { .name = "export", .fun = export_fun },
+                                      { .name = "cd", .fun = cd_fun },
+                                      { .name = ".*", .fun = dot_fun } };
 
 /**
  * \brief Evaluate the while loop
@@ -116,9 +120,11 @@ int ast_eval_simple_command(struct ast_node *node)
         return return_val;
     }
     char *command = handle_word(node->children[0]);
-    for (size_t i = 0; i < 3; i++)
+
+    for (size_t i = 0; i < sizeof(builtin) / sizeof(struct builtin_function);
+         i++)
     {
-        if (strcmp(command, builtin[i].name) == 0)
+        if (fnmatch(builtin[i].name, command, 0) == 0)
         {
             int return_val = builtin[i].fun(node);
             if (fd_redir != -1)

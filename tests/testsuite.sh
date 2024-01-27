@@ -18,6 +18,8 @@ ref_file_err="/tmp/.ref_file_err"
 my_file_out="/tmp/.my_file_out"
 my_file_err="/tmp/.my_file_err"
 
+pretty_print=false
+
 verbose=false
 
 ex=../../../src/42sh
@@ -34,7 +36,11 @@ run_test()
     bash --posix "$1" > "$ref_file_out" 2> "$ref_file_err"
     REF_CODE=$?
 
-    "$PWD/$ex" "$1" > "$my_file_out" 2> "$my_file_err"
+    if [ $pretty_print = true ]; then
+        "$PWD/$ex" "$1" "--pretty-print" > "$my_file_out" 2> "$my_file_err"
+    else
+        "$PWD/$ex" "$1" > "$my_file_out" 2> "$my_file_err"
+    fi
     MY_CODE=$?
 
     diff -u "$ref_file_out" "$my_file_out" > $1.diff
@@ -152,11 +158,19 @@ main()
             echo "$RED=============================="
             echo "${TURQUOISE}Usage: ./testsuite.sh -clean$WHITE"
             echo "Remove all .diff files"
+            echo "$RED=============================="
+            echo "${TURQUOISE}Usage: ./testsuite.sh -v$WHITE"
+            echo "Run all testsuites in verbose mode"
+            echo "$RED=============================="
+            echo "${TURQUOISE}Usage: ./testsuite.sh -p$WHITE"
+            echo "Run all testsuites in pretty-print mode"
             exit 0
         elif [ $1 = "--verbose" ] || [ $1 = "-v" ]; then
                 verbose=true
                 run_testsuite $(find . -maxdepth 1 -type d)
-            
+        elif [ $1 = "--pretty-print" ] || [ $1 = "-p" ]; then
+                pretty_print=true
+                run_testsuite $(find . -maxdepth 1 -type d)
         else
             if [ $1 = "-clean" ]; then
                 echo "$TURQUOISE===================================$WHITE"
