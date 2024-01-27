@@ -5,5 +5,6 @@ var searchData=
   ['builtin_2ec_49',['builtin.c',['../builtin_8c.html',1,'']]],
   ['builtin_2eh_50',['builtin.h',['../builtin_8h.html',1,'']]],
   ['builtin_5ffunction_51',['builtin_function',['../structbuiltin__function.html',1,'']]],
-  ['builtin_5fpath_2ec_52',['builtin_path.c',['../builtin__path_8c.html',1,'']]]
+  ['builtin_5fpath_2ec_52',['builtin_path.c',['../builtin__path_8c.html',1,'']]],
+  ['builtin_5futils_2ec_53',['builtin_utils.c',['../builtin__utils_8c.html',1,'']]]
 ];

@@ -78,11 +78,11 @@ $(function() {
 <p>Evaluate the AST.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ast__eval_8h_source.html">ast_eval.h</a>&quot;</code><br />
+<code>#include &lt;fnmatch.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;sys/wait.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &lt;fnmatch.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="parser_8h_source.html">parser/parser.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="builtin_8h_source.html">utils/builtin.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -93,10 +93,10 @@ Include dependency graph for ast_eval.c:</div>
 <area shape="rect" title="Evaluate the AST." alt="" coords="443,5,609,32"/>
 <area shape="rect" href="ast__eval_8h.html" title="Evaluate the AST." alt="" coords="55,155,144,181"/>
 <area shape="rect" title=" " alt="" coords="338,379,405,405"/>
-<area shape="rect" title=" " alt="" coords="460,155,531,181"/>
 <area shape="rect" title=" " alt="" coords="599,80,687,107"/>
-<area shape="rect" title=" " alt="" coords="711,80,786,107"/>
-<area shape="rect" title=" " alt="" coords="810,80,898,107"/>
+<area shape="rect" title=" " alt="" coords="460,155,531,181"/>
+<area shape="rect" title=" " alt="" coords="711,80,799,107"/>
+<area shape="rect" title=" " alt="" coords="823,80,898,107"/>
 <area shape="rect" href="parser_8h.html" title="Header for the parser." alt="" coords="325,80,444,107"/>
 <area shape="rect" href="builtin_8h.html" title="Header of the builtin functions." alt="" coords="185,80,291,107"/>
 <area shape="rect" title=" " alt="" coords="130,379,213,405"/>
@@ -326,13 +326,13 @@ Variables</h2></td></tr>
 <div class="line">                                      { .name = <span class="stringliteral">&quot;false&quot;</span>, .fun = <a class="code" href="builtin_8c.html#a007537cae5d53ffb4477ee3cc305117c">false_fun</a> },</div>
 <div class="line">                                      { .name = <span class="stringliteral">&quot;export&quot;</span>, .fun = <a class="code" href="builtin_8c.html#a707b4fc13a2921bb895c7179768e69c1">export_fun</a> },</div>
 <div class="line">                                      { .name = <span class="stringliteral">&quot;cd&quot;</span>, .fun = <a class="code" href="builtin_8c.html#a1ccabcf48ec69d3e488d88b225d05860">cd_fun</a> },</div>
-<div class="line">                                      { .name = <span class="stringliteral">&quot;.*&quot;</span>, .fun = <a class="code" href="builtin_8c.html#a7164145b19d6b1bff0cc74ed340c20fe">dot_fun</a>} }</div>
-<div class="ttc" id="abuiltin_8c_html_a007537cae5d53ffb4477ee3cc305117c"><div class="ttname"><a href="builtin_8c.html#a007537cae5d53ffb4477ee3cc305117c">false_fun</a></div><div class="ttdeci">int false_fun(struct ast_node *node)</div><div class="ttdoc">False builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:30</div></div>
-<div class="ttc" id="abuiltin_8c_html_a1ccabcf48ec69d3e488d88b225d05860"><div class="ttname"><a href="builtin_8c.html#a1ccabcf48ec69d3e488d88b225d05860">cd_fun</a></div><div class="ttdeci">int cd_fun(struct ast_node *node)</div><div class="ttdoc">Cd builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:218</div></div>
-<div class="ttc" id="abuiltin_8c_html_a707b4fc13a2921bb895c7179768e69c1"><div class="ttname"><a href="builtin_8c.html#a707b4fc13a2921bb895c7179768e69c1">export_fun</a></div><div class="ttdeci">int export_fun(struct ast_node *node)</div><div class="ttdoc">Export builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:161</div></div>
-<div class="ttc" id="abuiltin_8c_html_a7164145b19d6b1bff0cc74ed340c20fe"><div class="ttname"><a href="builtin_8c.html#a7164145b19d6b1bff0cc74ed340c20fe">dot_fun</a></div><div class="ttdeci">int dot_fun(struct ast_node *node)</div><div class="ttdoc">Dot builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:376</div></div>
-<div class="ttc" id="abuiltin_8c_html_abffc452d6b9d572f0df8554b1d7351ca"><div class="ttname"><a href="builtin_8c.html#abffc452d6b9d572f0df8554b1d7351ca">echo_fun</a></div><div class="ttdeci">int echo_fun(struct ast_node *node)</div><div class="ttdoc">Echo builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:90</div></div>
-<div class="ttc" id="abuiltin_8c_html_ae632901b7062689107e91b8122a63cc6"><div class="ttname"><a href="builtin_8c.html#ae632901b7062689107e91b8122a63cc6">true_fun</a></div><div class="ttdeci">int true_fun(struct ast_node *node)</div><div class="ttdoc">True builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:22</div></div>
+<div class="line">                                      { .name = <span class="stringliteral">&quot;.*&quot;</span>, .fun = <a class="code" href="builtin_8c.html#a7164145b19d6b1bff0cc74ed340c20fe">dot_fun</a> } }</div>
+<div class="ttc" id="abuiltin_8c_html_a007537cae5d53ffb4477ee3cc305117c"><div class="ttname"><a href="builtin_8c.html#a007537cae5d53ffb4477ee3cc305117c">false_fun</a></div><div class="ttdeci">int false_fun(struct ast_node *node)</div><div class="ttdoc">False builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:29</div></div>
+<div class="ttc" id="abuiltin_8c_html_a1ccabcf48ec69d3e488d88b225d05860"><div class="ttname"><a href="builtin_8c.html#a1ccabcf48ec69d3e488d88b225d05860">cd_fun</a></div><div class="ttdeci">int cd_fun(struct ast_node *node)</div><div class="ttdoc">Cd builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:145</div></div>
+<div class="ttc" id="abuiltin_8c_html_a707b4fc13a2921bb895c7179768e69c1"><div class="ttname"><a href="builtin_8c.html#a707b4fc13a2921bb895c7179768e69c1">export_fun</a></div><div class="ttdeci">int export_fun(struct ast_node *node)</div><div class="ttdoc">Export builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:87</div></div>
+<div class="ttc" id="abuiltin_8c_html_a7164145b19d6b1bff0cc74ed340c20fe"><div class="ttname"><a href="builtin_8c.html#a7164145b19d6b1bff0cc74ed340c20fe">dot_fun</a></div><div class="ttdeci">int dot_fun(struct ast_node *node)</div><div class="ttdoc">Dot builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:302</div></div>
+<div class="ttc" id="abuiltin_8c_html_abffc452d6b9d572f0df8554b1d7351ca"><div class="ttname"><a href="builtin_8c.html#abffc452d6b9d572f0df8554b1d7351ca">echo_fun</a></div><div class="ttdeci">int echo_fun(struct ast_node *node)</div><div class="ttdoc">Echo builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:42</div></div>
+<div class="ttc" id="abuiltin_8c_html_ae632901b7062689107e91b8122a63cc6"><div class="ttname"><a href="builtin_8c.html#ae632901b7062689107e91b8122a63cc6">true_fun</a></div><div class="ttdeci">int true_fun(struct ast_node *node)</div><div class="ttdoc">True builtin function and returns the exit status.</div><div class="ttdef"><b>Definition:</b> builtin.c:21</div></div>
 </div><!-- fragment -->
 </div>
 </div>
