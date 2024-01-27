@@ -250,7 +250,7 @@ void append_char_to_word(struct lexer *lexer, char **word,
  * \brief replace backslash and simple quote handling of get_word
  * handle backslash & single quote
  */
-char *hbsq(struct lexer *lexer, char *word, unsigned *word_index,
+char *hbsq(struct lexer *lexer, char **word, unsigned *word_index,
            bool *is_diactivated);
 
 /**

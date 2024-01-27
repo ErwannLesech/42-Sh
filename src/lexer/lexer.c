@@ -223,7 +223,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
                 }
             }
 
-            else if (NULL == hbsq(lexer, word, &word_index, is_diactivated))
+            else if (NULL == hbsq(lexer, &word, &word_index, is_diactivated))
             {
                 return NULL;
             }

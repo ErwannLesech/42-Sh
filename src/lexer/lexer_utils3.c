@@ -89,28 +89,28 @@ bool handle_egal(struct lexer *lexer, char *word, unsigned word_index)
     return false;
 }
 
-char *hbsq(struct lexer *lexer, char *word, unsigned *word_index,
+char *hbsq(struct lexer *lexer, char **word, unsigned *word_index,
            bool *is_diactivated)
 {
     if (lexer->data[lexer->index - 1] == '\\')
     {
-        handle_backslash(lexer, is_diactivated, word, *word_index);
+        handle_backslash(lexer, is_diactivated, *word, *word_index);
     }
 
     // Handle simple quote
     else if (lexer->data[lexer->index - 1] == '\'')
     {
-        word = handle_simple_quote(lexer, is_diactivated, word, word_index);
+        *word = handle_simple_quote(lexer, is_diactivated, *word, word_index);
 
         // Missing closing simple quote
-        if (!word)
+        if (!*word)
         {
             return NULL;
         }
         lexer->index += 1;
     }
 
-    return word;
+    return *word;
 }
 
 bool check_double_quote(struct lexer *lexer)
