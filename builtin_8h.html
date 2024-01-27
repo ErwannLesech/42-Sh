@@ -95,11 +95,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="builtin_8h__dep__incl.png" border="0" usemap="#asrc_2execute_2utils_2builtin_8hdep" alt=""/></div>
 <map name="asrc_2execute_2utils_2builtin_8hdep" id="asrc_2execute_2utils_2builtin_8hdep">
-<area shape="rect" title="Header of the builtin functions." alt="" coords="297,5,483,32"/>
+<area shape="rect" title="Header of the builtin functions." alt="" coords="196,5,381,32"/>
 <area shape="rect" href="ast__eval_8c.html" title="Evaluate the AST." alt="" coords="5,87,172,114"/>
 <area shape="rect" href="builtin_8c.html" title="Builtin functions." alt="" coords="197,87,381,114"/>
 <area shape="rect" href="builtin__path_8c.html" title=" " alt="" coords="405,80,578,121"/>
-<area shape="rect" href="builtin__utils_8c.html" title=" " alt="" coords="602,80,775,121"/>
 </map>
 </div>
 </div>
@@ -107,9 +106,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aaf8f92a2fae224a17cd4d9793f5797d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8h.html#aaf8f92a2fae224a17cd4d9793f5797d8">print_echo</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node, int enable_escapes, int j)</td></tr>
-<tr class="memdesc:aaf8f92a2fae224a17cd4d9793f5797d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the current working directory.  <a href="builtin_8h.html#aaf8f92a2fae224a17cd4d9793f5797d8">More...</a><br /></td></tr>
-<tr class="separator:aaf8f92a2fae224a17cd4d9793f5797d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abffc452d6b9d572f0df8554b1d7351ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8h.html#abffc452d6b9d572f0df8554b1d7351ca">echo_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:abffc452d6b9d572f0df8554b1d7351ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Echo builtin function and returns the exit status.  <a href="builtin_8h.html#abffc452d6b9d572f0df8554b1d7351ca">More...</a><br /></td></tr>
 <tr class="separator:abffc452d6b9d572f0df8554b1d7351ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,9 +115,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a007537cae5d53ffb4477ee3cc305117c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8h.html#a007537cae5d53ffb4477ee3cc305117c">false_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:a007537cae5d53ffb4477ee3cc305117c"><td class="mdescLeft">&#160;</td><td class="mdescRight">False builtin function and returns the exit status.  <a href="builtin_8h.html#a007537cae5d53ffb4477ee3cc305117c">More...</a><br /></td></tr>
 <tr class="separator:a007537cae5d53ffb4477ee3cc305117c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a83b73d1ef0aaa1e331098148f855ab"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8h.html#a1a83b73d1ef0aaa1e331098148f855ab">insert_env</a> (char *env, char **env_alpha, int env_count)</td></tr>
-<tr class="memdesc:a1a83b73d1ef0aaa1e331098148f855ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert an environment variable in alphabetical order.  <a href="builtin_8h.html#a1a83b73d1ef0aaa1e331098148f855ab">More...</a><br /></td></tr>
-<tr class="separator:a1a83b73d1ef0aaa1e331098148f855ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a707b4fc13a2921bb895c7179768e69c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="builtin_8h.html#a707b4fc13a2921bb895c7179768e69c1">export_fun</a> (struct <a class="el" href="structast__node.html">ast_node</a> *node)</td></tr>
 <tr class="memdesc:a707b4fc13a2921bb895c7179768e69c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Export builtin function and returns the exit status.  <a href="builtin_8h.html#a707b4fc13a2921bb895c7179768e69c1">More...</a><br /></td></tr>
 <tr class="separator:a707b4fc13a2921bb895c7179768e69c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,6 +210,13 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>The exit status.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>The AST node. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>The exit status of the last command 0 if success, 1 if error. </dd></dl>
 
 </div>
@@ -275,97 +275,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1a83b73d1ef0aaa1e331098148f855ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a83b73d1ef0aaa1e331098148f855ab">&#9670;&nbsp;</a></span>insert_env()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char** insert_env </td>
-          <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>env</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>env_alpha</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>env_count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Insert an environment variable in alphabetical order. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">env</td><td>The environment variable to insert. </td></tr>
-    <tr><td class="paramname">insert_env</td><td>The environment variable array. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The environment variable array. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_8h-example.html#a5">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin.h</a>.</dd>
-</dl>
-
-</div>
-</div>
-<a id="aaf8f92a2fae224a17cd4d9793f5797d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf8f92a2fae224a17cd4d9793f5797d8">&#9670;&nbsp;</a></span>print_echo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void print_echo </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structast__node.html">ast_node</a> *&#160;</td>
-          <td class="paramname"><em>node</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>enable_escapes</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>j</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print the current working directory. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">node</td><td>The AST to evaluate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The exit status of the last command 0 if success, 1 if error. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_8h-example.html#a0">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin.h</a>.</dd>
-</dl>
-
-</div>
-</div>
 <a id="a2b6bb1391854b4804eef871201fc396a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2b6bb1391854b4804eef871201fc396a">&#9670;&nbsp;</a></span>refactor_path()</h2>
 
@@ -397,8 +306,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_8h-example.html#a7">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin.h</a>, and <a class="el" href="_2home_2runner_2work_242-Sh_242-Sh_2src_2execute_2utils_2builtin_path_8c-example.html#a6">/home/runner/work/42-Sh/42-Sh/src/execute/utils/builtin_path.c</a>.</dd>
-</dl>
 
 </div>
 </div>

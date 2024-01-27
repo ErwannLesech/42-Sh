@@ -1,12 +1,12 @@
 <map id="src/execute/utils/builtin_path.c" name="src/execute/utils/builtin_path.c">
-<area shape="rect" id="node1" title=" " alt="" coords="113,5,286,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="250,393,317,420"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,393,76,420"/>
-<area shape="rect" id="node4" title=" " alt="" coords="164,95,235,121"/>
-<area shape="rect" id="node5" title=" " alt="" coords="259,95,334,121"/>
-<area shape="rect" id="node6" href="$builtin_8h.html" title="Header of the builtin functions." alt="" coords="65,95,139,121"/>
-<area shape="rect" id="node7" href="$ast__eval_8h.html" title="Evaluate the AST." alt="" coords="75,169,164,196"/>
-<area shape="rect" id="node8" title=" " alt="" coords="114,393,197,420"/>
-<area shape="rect" id="node9" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="116,319,195,345"/>
-<area shape="rect" id="node10" href="$options_8h.html" title="Header for options functions." alt="" coords="167,244,301,271"/>
+<area shape="rect" id="node1" title=" " alt="" coords="218,5,391,47"/>
+<area shape="rect" id="node2" href="$builtin_8h.html" title="Header of the builtin functions." alt="" coords="138,95,212,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="143,393,210,420"/>
+<area shape="rect" id="node7" title=" " alt="" coords="252,393,322,420"/>
+<area shape="rect" id="node9" title=" " alt="" coords="342,95,413,121"/>
+<area shape="rect" id="node10" title=" " alt="" coords="438,95,512,121"/>
+<area shape="rect" id="node3" href="$ast__eval_8h.html" title="Evaluate the AST." alt="" coords="90,169,180,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="7,393,90,420"/>
+<area shape="rect" id="node5" href="$ast_8h.html" title="Represent a node of the AST." alt="" coords="137,319,216,345"/>
+<area shape="rect" id="node8" href="$options_8h.html" title="Header for options functions." alt="" coords="30,244,165,271"/>
 </map>
