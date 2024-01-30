@@ -38,7 +38,7 @@ static struct environment_function environment[] = {
 /**
  * \brief Initialize the variables hash map.
  */
-void init_variables()
+void init_variables(void)
 {
     if (variables == NULL)
     {
@@ -49,7 +49,7 @@ void init_variables()
 /**
  * \brief Free the variables hash map.
  */
-void free_variables()
+void free_variables(void)
 {
     if (variables != NULL)
         hash_map_free(variables);
