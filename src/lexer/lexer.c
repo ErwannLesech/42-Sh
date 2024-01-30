@@ -236,7 +236,7 @@ char *get_word(struct lexer *lexer, bool *is_diactivated)
 
 struct token parse_input_for_tok(struct lexer *lexer)
 {
-    struct token token;
+    struct token token = lexer->curr_tok;
 
     // Usefull to diactivate the special meaning of the next character when it's
     // a backslash
